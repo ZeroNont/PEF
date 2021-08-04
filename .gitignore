@@ -1,0 +1,46 @@
+.DS_Store
+
+application/cache/*
+!application/cache/index.html
+
+application/logs/*
+!application/logs/index.html
+
+!application/*/.htaccess
+
+composer.lock
+
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+/vendor/
+
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+/tests/tests/
+/tests/results/
+assets/file/layout/640x390_665557_1442294044 - Copy.jpg
+assets/file/Plan/121693962_791271488331111_6796334749071791814_n.jpg
+assets/file/layout/Layout (1).jpg
+assets/file/layout/Layout.html
+assets/file/layout/Plan.jpg
+assets/file/layout/schedule (1).sql
+assets/file/layout/schedule (2).sql
+assets/file/layout/ttps_database_3.sql
+assets/file/plan/image (3).jpg
+assets/file/plan/Layout (1).html
+assets/file/plan/my_exported_file (1).txt
+assets/file/plan/Plan.jpg
+assets/file/plan/schedule (1).sql
+assets/file/plan/schedule (2).sql
+assets/file/plan/ttps_database_3.sql
