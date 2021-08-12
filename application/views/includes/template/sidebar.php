@@ -43,8 +43,9 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo base_url() . 'Renewal/Renewal/show_renewal/' ?>">
-                                      <i class="ni ni-single-copy-04 text-primary"></i> //เปลี่ยนไอคอนด้วย
+                                  <a class="nav-link" 
+                                  href="<?php echo base_url() . 'Report/Report/show_report/' ?>">
+                                      <i class="ni ni-chart-bar-32 text-blue"></i>
                                       <span class="nav-link-text">Report</span>
                                   </a>
                               </li>
