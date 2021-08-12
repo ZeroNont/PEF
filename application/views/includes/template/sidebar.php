@@ -59,12 +59,18 @@
                                   <a class="nav-link"
                                       href="<?php echo base_url() . 'Check_out_form/Check_out_form/index/' ?>">
                                       <i class="ni ni-user-run text-default"></i> //เปลี่ยนไอคอนด้วย
-                                      <span class="nav-link-text">Assessor Management </span>
+                                      <span class="nav-link-text">Assessor Management</span>
+                                  </a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link"
+                                      href="<?php echo base_url() . 'Check_out_form/Check_out_form/index/' ?>">
+                                      <i class="ni ni-user-run text-default"></i> //เปลี่ยนไอคอนด้วย
+                                      <span class="nav-link-text">Add File Nominee</span>
                                   </a>
                               </li>
                           </ul>
                           
-
                           </ul>
                       </div>
                   </div>
