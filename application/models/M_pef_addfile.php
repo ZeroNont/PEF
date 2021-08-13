@@ -21,7 +21,7 @@ class M_pef_addfile extends Da_pef_addfile
 
     function get_all_nominee()
     { //call file nominee
-        $sql = "SELECT employee.Emp_ID,employee.Empname_th,employee.Empsurname_th,position.Pos_shortName,sectioncode.Department 
+        $sql = "SELECT employee.Emp_ID,employee.Empname_eng,employee.Empsurname_eng,position.Pos_shortName,sectioncode.Department 
         FROM dbmc.employee 
         INNER JOIN pefs_database.pef_group_nominee AS nominee 
         ON nominee.grn_emp_id = employee.Emp_ID 

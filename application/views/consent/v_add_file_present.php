@@ -76,7 +76,7 @@ div.a {
 
                     </td>
                     <td>
-                        <?php echo $emp_nominee[$i]->Empname_th . ' ' . $emp_nominee[$i]->Empsurname_th ?>
+                        <?php echo $emp_nominee[$i]->Empname_eng . ' ' . $emp_nominee[$i]->Empsurname_eng ?>
 
                     </td>
                     <td>
