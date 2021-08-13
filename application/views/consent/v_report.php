@@ -17,7 +17,7 @@
 <br>
 <div class="card-header" id="card_radius">
     <h1 style="text-align:center">
-        Temporary Tag Permission Report
+        Performance Evaluation Factor System
     </h1>
     <br>
 
@@ -47,13 +47,13 @@
     <div class="row" id="count_requested">
         <!-- <div class="col-xl-1"></div> -->
 
-        <div class="col-xl-4 col-md-6">
+        <div class="col-xl-2 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">All Requests</h5>
+                            <h5 class="card-title text-uppercase text-muted mb-0">Number of people all that must assess</h5>
                             <span class="h2 font-weight-bold mb-0" id="total_request">
 
                             </span>
@@ -66,20 +66,20 @@
                     </div>
                     <p class="mt-3 mb-0 text-sm">
                         <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span> -->
-                        <span class="text-nowrap">Send to requests</span>
+                        <span class="text-nowrap">People</span>
                     </p>
                 </div>
             </div>
         </div>
         <!-- All Requests  -->
 
-        <div class="col-xl-4 col-md-6">
+        <div class="col-xl-2 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Approved</h5>
+                            <h5 class="card-title text-uppercase text-muted mb-0">Number of people assessed</h5>
                             <span class="h2 font-weight-bold mb-0" id="total_approval">
 
                             </span>
@@ -92,20 +92,20 @@
                     </div>
                     <p class="mt-3 mb-0 text-sm">
                         <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span> -->
-                        <span class="text-nowrap">Send to requests</span>
+                        <span class="text-nowrap">People</span>
                     </p>
                 </div>
             </div>
         </div>
         <!-- Approved -->
 
-        <div class="col-xl-4 col-md-6">
+        <div class="col-xl-2 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Pending Approval</h5>
+                            <h5 class="card-title text-uppercase text-muted mb-0">The number of people who have not been assessed</h5>
                             <span class="h2 font-weight-bold mb-0" id="pending_approval">
 
                             </span>
@@ -118,7 +118,85 @@
                     </div>
                     <p class="mt-3 mb-0 text-sm">
                         <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span> -->
-                        <span class="text-nowrap">Send to requests</span>
+                        <span class="text-nowrap">People</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Pending Approval  -->
+
+        <div class="col-xl-2 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Number of people who passed the assessment</h5>
+                            <span class="h2 font-weight-bold mb-0" id="total_request">
+
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <i class="ni ni-single-copy-04"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-sm">
+                        <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span> -->
+                        <span class="text-nowrap">People</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- All Requests  -->
+
+        <div class="col-xl-2 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Number of people who fail in the assessment</h5>
+                            <span class="h2 font-weight-bold mb-0" id="total_approval">
+
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                <i class="ni ni-check-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-sm">
+                        <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span> -->
+                        <span class="text-nowrap">People</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Approved -->
+
+        <div class="col-xl-2 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Number of people (assessed / yearly)</h5>
+                            <span class="h2 font-weight-bold mb-0" id="pending_approval">
+
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-yellow text-white rounded-circle shadow">
+                                <i class="ni ni-time-alarm"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-sm">
+                        <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span> -->
+                        <span class="text-nowrap">People</span>
                     </p>
                 </div>
             </div>
@@ -133,17 +211,9 @@
                 <div class="card-header bg-transparent">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
-                            <h5 class="h2 text-black mb-0">Graph number of requests for permission</h5>
+                            <h5 class="h2 text-black mb-0">The graph shows the results of the assessment of each position</h5>
                         </div>
-                        <!-- <div class="col-lg-6" align="right">
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-city">department
-                                    (แผนก)</label><br>
-                                <select name="Dep_id" id="Department" class="form-select" aria-label="Default select example">
-                                    <option value="0">-----------Please select-----------</option>
-                                </select>
-                            </div>
-                        </div> -->
+                        
                     </div>
                 </div>
                 <div class="card-body">
@@ -156,19 +226,12 @@
     <div class="row" id="count_table">
         <div class="col-xl-12">
             <div class="card">
-                <div class="card-header border-0">
-                    <div class="form-group mb-0">
-                        <div class="input-group input-group-alternative input-group-merge">
-                            <div class="col-xl-3" align="right">
-
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
-                                    <input class="form-control" placeholder="Search" type="text">
-                                </div>
-
-                            </div>
+            <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <h5 class="h2 text-black mb-0">The Table Shows The Reports Of Each Position</h5>
                         </div>
-
+                        
                     </div>
                 </div>
                 <div class="table-responsive" table id='myTable'>
@@ -177,9 +240,10 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Running No.</th>
-                                <th scope="col">Requester</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Number</th>
+                                <th scope="col">Pass</th>
+                                <th scope="col">Fail</th>
                                 <th scope="col">Details</th>
                             </tr>
                         </thead>
@@ -200,10 +264,10 @@
 
 <script>
     $(document).ready(function() {
-        $("#count_requested").hide();
-        $("#count_graph").hide();
-        $("#count_table").hide();
-        $("#count_export").hide();
+        // $("#count_requested").hide();
+        // $("#count_graph").hide();
+        // $("#count_table").hide();
+        // $("#count_export").hide();
     });
 
     function ExcelReport() //function สำหรับสร้าง ไฟล์ excel จากตาราง

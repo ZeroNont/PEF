@@ -3,8 +3,8 @@
 * Report
 * show and get data of report
 * @author   Chakrit
-* @Create Date 2564-07-24
-* @Update Date 2564-07-28
+* @Create Date 2564-08-13
+* @Update Date 
 */  
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
@@ -23,9 +23,11 @@ class Report extends MainController
 	*/
 	public function show_report()
 	{
-		$this->load->model('M_ttp_report', 'ttp');
-		$data['requested'] = $this->ttp->get_all_requested_form()->result();
-		$this->output('consent/v_report', $data);
+		// $this->load->model('M_ttp_report', 'ttp');
+		// $data['requested'] = $this->ttp->get_all_requested_form()->result();
+		// $this->output('consent/v_report', $data);
+		$this->output('consent/v_report');
+
 	}
 
 	/*
