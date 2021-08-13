@@ -46,11 +46,11 @@ class Add_file_present extends MainController
 	* @Update   Date 26/7/2564
 	*/
     
-    function show_file_present(){
-        $id = $_SESSION['UsEmp_ID'];
-        $this->load->model('M_ttp_history', 'ttp');
-        $data['em_form'] = $this->ttp->get_history_em($id)->result();
-        $data['arr_emp'] = $this->ttp->get_employee($id)->result();
-        $this->output('consent/v_history_user', $data);
-    }
+    // function show_file_present(){
+    //     $id = $_SESSION['UsEmp_ID'];
+    //     $this->load->model('M_ttp_history', 'ttp');
+    //     $data['em_form'] = $this->ttp->get_history_em($id)->result();
+    //     $data['arr_emp'] = $this->ttp->get_employee($id)->result();
+    //     $this->output('consent/v_history_user', $data);
+    // }
 }
