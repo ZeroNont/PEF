@@ -39,8 +39,19 @@
     margin-top: 20px;
     margin-left: 10px;
 }
+
+div.b {
+  text-align: left;
+
+}
+div.a {
+  text-align: center !important;
+
+}
+
 </style>
 <h1>Add File Nominee</h1>
+<!-- <input type="file" name="Layout" class="form-control" required=""> -->
 <!-- Table Requestd form -->
 <div class="card-header" id="card_radius">
     <div class="table-responsive">
@@ -84,13 +95,7 @@
                     <!-- column ดำเนินการ -->
                     <td style='text-align: center;'>
                     
-                        <!-- ปุ่มดำเนินการ -->
-                        <!-- <a -->
-                            <!-- href=" <?php echo site_url() . '/history/History/show_history_detail/' . $em_form[$i]->req_form_id; ?>"> -->
-                            <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
-                            <i class="fas fa-download"></i>
-                            </button>
-                        <!-- </a> -->
+                       
                     </td>
                 </tr>
                <?php } ?>
@@ -111,3 +116,4 @@ $(document).ready(function() {
 <!-- Argon JS -->
 <script src="../../assets/js/argon.js?v=1.2.0"></script>
 <script type="text/javascript">
+
