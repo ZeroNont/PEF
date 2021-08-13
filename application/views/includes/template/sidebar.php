@@ -24,7 +24,7 @@
                       <li class="nav-item">
                           <a class="nav-link" href="<?php echo base_url() . 'Renewal/Renewal/show_renewal/' ?>">
                               <i class="ni ni-single-copy-04 text-primary"></i> //เปลี่ยนไอคอนด้วย
-                              <span class="nav-link-text">Result<span> 
+                              <span class="nav-link-text">Result<span>
                           </a>
                       </li>
                   </ul>
@@ -37,14 +37,13 @@
                           <ul class="navbar-nav">
                               <li class="nav-item">
                                   <a class="nav-link"
-                                      href="<?php echo base_url() . 'Licence_form/Licence_input/index/' ?>">
-                                      <i class="ni ni-badge text-orange"></i> //เปลี่ยนไอคอนด้วย
-                                      <span class="nav-link-text">Section Management</span>
+                                      href="<?php echo base_url() . 'Group_management/Group_list/index/' ?>">
+                                      <i class="ni ni-calendar-grid-58 text-orange"></i>
+                                      <span class="nav-link-text">Group Management</span>
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" 
-                                  href="<?php echo base_url() . 'Report/Report/show_report/' ?>">
+                                  <a class="nav-link" href="<?php echo base_url() . 'Report/Report/show_report/' ?>">
                                       <i class="ni ni-chart-bar-32 text-blue"></i>
                                       <span class="nav-link-text">Report</span>
                                   </a>
@@ -71,7 +70,7 @@
                                   </a>
                               </li>
                           </ul>
-                          
+
                           </ul>
                       </div>
                   </div>

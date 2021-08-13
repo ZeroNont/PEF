@@ -61,8 +61,7 @@ function getEmp_edit(i) {
 <h1>
     Group Management (การจัดการข้อมูลกลุ่ม)
     <button class="btn btn-primary float-right" data-toggle="modal" data-target="#Add"><i class="material-icons">Add
-            Approve
-            Plan</i></button>
+            Group</i></button>
 </h1>
 <div id="Add" class="modal fade" role="dialog">
     <div class="modal-dialog" role="document">
@@ -114,20 +113,20 @@ function getEmp_edit(i) {
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
-                    <th>Plan No.</th>
-                    <th>Plan Name</th>
-                    <th>Name</th>
+                    <th>Group name</th>
+                    <th>Position</th>
+                    <th>Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <?php for ($i = 0; $i < count($obj_plan); $i++) { ?>
+                <?php for ($i = 0; $i < count($obj_group); $i++) { ?>
                 <tr>
                     <td>
                         <?php echo $i + 1 ?>
                     </td>
                     <td>
-                        <?php echo $obj_plan[$i]->pla_plant_no ?>
+                        <?php echo $obj_group[$i]->grp_name ?>
                     </td>
                     <td>
                         <?php echo $obj_plan[$i]->pla_plant_name ?>

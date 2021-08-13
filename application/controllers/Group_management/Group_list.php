@@ -12,7 +12,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
 
-class Plant_list extends MainController
+class Group_list extends MainController
 {
 
     /**
@@ -41,9 +41,9 @@ class Plant_list extends MainController
 	*/
     function index()
     {
-        $this->load->model('M_ttp_plant_list', 'ttp');
-        $data['obj_plan'] = $this->ttp->get_plant()->result();
-        $this->output('consent/v_plant_list', $data);
+        $this->load->model('M_pef_group', 'pef');
+        $data['obj_group'] = $this->pef->get_group()->result();
+        $this->output('consent/v_group_list', $data);
     }
 }
 // 
