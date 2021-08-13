@@ -7,10 +7,10 @@ Describtion:Requested Form
 
  -->
 <?php
-include_once("ttps_model.php");
+include_once("pefs_model.php");
 
 
-class Da_ttp_plant_list extends ttps_model
+class Da_ttp_plant_list extends pefs_model
 {
     // Table Name:ttps_database.plant
     // Describtion:Approve Plant management

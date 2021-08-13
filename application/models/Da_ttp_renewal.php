@@ -8,10 +8,10 @@
     Update date 2564-07-27
 -->
 <?php
-include_once("ttps_model.php");
+include_once("pefs_model.php");
 
 
-class Da_ttp_renewal extends ttps_model
+class Da_ttp_renewal extends pefs_model
 {
     public $End_date;
     function construct()

@@ -8,9 +8,9 @@
     Update date 28/7/2564 
 -->
 <?php
-include_once("ttps_model.php");
+include_once("pefs_model.php");
 
-class Da_ttp_history extends ttps_model
+class Da_ttp_history extends pefs_model
 {
 
     function construct()

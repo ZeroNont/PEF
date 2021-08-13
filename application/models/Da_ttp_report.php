@@ -7,10 +7,10 @@
 // @author Chakrit
 // Create date 25/7/2564 
 
-include_once("ttps_model.php");
+include_once("pefs_model.php");
 
 
-class Da_ttp_report extends ttps_model
+class Da_ttp_report extends pefs_model
 {
 
     function construct()

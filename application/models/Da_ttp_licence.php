@@ -1,8 +1,8 @@
 <?php
-include_once("ttps_model.php");
+include_once("pefs_model.php");
 
 
-class Da_ttp_licence extends ttps_model
+class Da_ttp_licence extends pefs_model
 {
     // Table Name:ttps_database.requested_form
     // Describtion:Requested Form

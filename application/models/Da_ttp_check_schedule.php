@@ -8,11 +8,11 @@
     Update date 28/7/2564 
 -->
 <?php
-include_once("ttps_model.php");
+include_once("pefs_model.php");
 
-class Da_ttp_check_schedule extends ttps_model
+
+class Da_ttp_check_schedule extends pefs_model
 {
-
     function construct()
     {
         parent::construct();

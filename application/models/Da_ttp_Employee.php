@@ -1,5 +1,5 @@
 <?php
-include_once("ttps_model.php");
+include_once("pefs_model.php");
 /*
 * Da_ttp_Employee
 * 
@@ -9,7 +9,7 @@ include_once("ttps_model.php");
 * @Create 
 */
 
-class Da_ttp_Employee extends ttps_model
+class Da_ttp_Employee extends pefs_model
 {
 
     function construct()

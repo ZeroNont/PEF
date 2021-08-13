@@ -13,9 +13,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-include_once ('ttps_model.php');
+include_once('pefs_model.php');
 
-class Da_ttp_approve_form extends ttps_model
+class Da_ttp_approve_form extends pefs_model
 {
     public $app_reject_reason; //ตัวแปรเพื่อมารับค่า เหตุผลที่ปฏิเสธแบบฟอร์มคำขออนุญาต
     
