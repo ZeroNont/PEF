@@ -64,7 +64,7 @@
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link"
-                                      href="<?php echo base_url() . 'Check_out_form/Check_out_form/index/' ?>">
+                                      href="<?php echo base_url() . 'Add_file_present/Add_file_present/show_list_nominee/' ?>">
                                       <i class="ni ni-user-run text-default"></i> //เปลี่ยนไอคอนด้วย
                                       <span class="nav-link-text">Add File Nominee</span>
                                   </a>
