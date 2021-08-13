@@ -39,19 +39,8 @@
     margin-top: 20px;
     margin-left: 10px;
 }
-
-div.b {
-  text-align: left;
-
-}
-div.a {
-  text-align: center !important;
-
-}
-
 </style>
 <h1>Add File Nominee</h1>
-<!-- <input type="file" name="Layout" class="form-control" required=""> -->
 <!-- Table Requestd form -->
 <div class="card-header" id="card_radius">
     <div class="table-responsive">
@@ -67,38 +56,40 @@ div.a {
                 </tr>
             </thead>
             <tbody class="list">
-                <?php for ($i = 0; $i < 5; $i++) { ?>
+                <?php for ($i = 0; $i < count($emp_nominee); $i++) { ?>
                 <tr>
                     <td class="text-center">
-                        <!-- <?php echo ($i + 1); ?> </td> -->
-                        1
+                        <?php echo ($i + 1); ?>
                     </td>
                     <td>
-                        <!-- <?php echo $em_form[$i]->req_form_id ?></td> -->
-                        2
+                        <?php echo $emp_nominee[$i]->Emp_ID ?>
+
                     </td>
                     <td>
-                        <!-- <?php echo $em_form[$i]->req_item ?></td> -->
-                        3
+                        <?php echo $emp_nominee[$i]->Empname_eng . ' ' . $emp_nominee[$i]->Empsurname_eng ?>
+
                     </td>
                     <td>
-                        <!-- <?php
-                            $startDate = date("d/m/Y", strtotime($em_form[$i]->req_start_date));
-                            $endDate  = date("d/m/Y", strtotime($em_form[$i]->req_end_date)); ?>
-                        <?php echo $startDate . " - " . $endDate ?></td> -->
-                        4
+                        <?php echo $emp_nominee[$i]->Pos_shortName ?>
+
                     </td>
                     <td>
-                        <!-- <?php echo $arr_emp[0]->Empname_eng . ' ' . $arr_emp[0]->Empsurname_eng ?></td> -->
-                        5
+                        <?php echo $emp_nominee[$i]->Department ?>
+
                     </td>
                     <!-- column ดำเนินการ -->
                     <td style='text-align: center;'>
-                    
-                       
+
+                        <!-- ปุ่มดำเนินการ -->
+                        <!-- <a -->
+                        <!-- href=" <?php echo site_url() . '/history/History/show_history_detail/' . $emp_nominee[$i]->req_form_id; ?>"> -->
+                        <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <!-- </a> -->
                     </td>
                 </tr>
-               <?php } ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
@@ -116,4 +107,3 @@ $(document).ready(function() {
 <!-- Argon JS -->
 <script src="../../assets/js/argon.js?v=1.2.0"></script>
 <script type="text/javascript">
-

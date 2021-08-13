@@ -1,11 +1,12 @@
 <!--
-    History
-    Controller for history schedule module
-    @input -
+   Add_file_present
+    Controller_for_add_file_present 
+    @input *
     @output -
-    @author Phatchara  and Pontakon 
-    Create date 18/7/2564  
-    Update date 26/7/2564
+    @author Ponprapai  and Thitima
+    @author -
+    Create date 13/8/2564 
+    Update date 13/8/2564
 -->
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -35,22 +36,23 @@ class Add_file_present extends MainController
     {
         $this->output('consent/v_add_file_present');
     }
-    
-        /*
-	* show_history_employee
-	* เรียกหน้าจอ v_history_user
+
+    /*
+	* show_list_nominee
+	* เรียกหน้าจอ v_add_file_present
 	* @input 	-
-	* @output 	หน้าจอประวัติใบคำขอ
-	* @author 	Phatchara  Khongthandee
-	* @Create   Date 18/7/2564   
-	* @Update   Date 26/7/2564
+	* @output 	list_nominee
+	* @author 	Ponprapai  and Thitima
+	* @Create   Date 13/8/2564 
+	* @Update   Date 13/8/2564 
 	*/
-    
-    // function show_file_present(){
-    //     $id = $_SESSION['UsEmp_ID'];
-    //     $this->load->model('M_ttp_history', 'ttp');
-    //     $data['em_form'] = $this->ttp->get_history_em($id)->result();
-    //     $data['arr_emp'] = $this->ttp->get_employee($id)->result();
-    //     $this->output('consent/v_history_user', $data);
-    // }
+
+    function show_list_nominee()
+    {
+        // $id = $_SESSION['UsEmp_ID'];
+        $this->load->model('M_pef_addfile', 'list');
+        $data['emp_nominee'] = $this->list->get_all_nominee();
+        // $data[''] = $this->list->get_employee($id)->result();
+        $this->output('consent/v_add_file_present', $data);
+    }
 }
