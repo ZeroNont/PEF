@@ -56,38 +56,44 @@
                 </tr>
             </thead>
             <tbody class="list">
-                <!--<?php for ($i = 0; $i < count($em_form); $i++) { ?>-->
+                <?php for ($i = 0; $i < 5; $i++) { ?>
                 <tr>
                     <td class="text-center">
-                        <?php echo ($i + 1); ?> </td>
+                        <!-- <?php echo ($i + 1); ?> </td> -->
+                        1
                     </td>
                     <td>
-                        <?php echo $em_form[$i]->req_form_id ?></td>
+                        <!-- <?php echo $em_form[$i]->req_form_id ?></td> -->
+                        2
                     </td>
                     <td>
-                        <?php echo $em_form[$i]->req_item ?></td>
+                        <!-- <?php echo $em_form[$i]->req_item ?></td> -->
+                        3
                     </td>
                     <td>
-                        <?php
+                        <!-- <?php
                             $startDate = date("d/m/Y", strtotime($em_form[$i]->req_start_date));
                             $endDate  = date("d/m/Y", strtotime($em_form[$i]->req_end_date)); ?>
-                        <?php echo $startDate . " - " . $endDate ?></td>
+                        <?php echo $startDate . " - " . $endDate ?></td> -->
+                        4
                     </td>
                     <td>
-                        <?php echo $arr_emp[0]->Empname_eng . ' ' . $arr_emp[0]->Empsurname_eng ?></td>
+                        <!-- <?php echo $arr_emp[0]->Empname_eng . ' ' . $arr_emp[0]->Empsurname_eng ?></td> -->
+                        5
                     </td>
                     <!-- column ดำเนินการ -->
                     <td style='text-align: center;'>
+                    
                         <!-- ปุ่มดำเนินการ -->
-                        <a
-                            href=" <?php echo site_url() . '/history/History/show_history_detail/' . $em_form[$i]->req_form_id; ?>">
+                        <!-- <a -->
+                            <!-- href=" <?php echo site_url() . '/history/History/show_history_detail/' . $em_form[$i]->req_form_id; ?>"> -->
                             <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
-                            <i class="fas fa-arrow-square-down"></i>
+                            <i class="fas fa-download"></i>
                             </button>
-                        </a>
+                        <!-- </a> -->
                     </td>
                 </tr>
-               <!-- <?php } ?>-->
+               <?php } ?>
             </tbody>
         </table>
     </div>
