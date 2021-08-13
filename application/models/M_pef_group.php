@@ -19,7 +19,7 @@ class M_pef_group extends Da_pef_group
     } //function construct
 
     /*
-* check_login
+*  get_group
 * Check User_login and Pass_login in database
 * @input User_login and Pass_loginn
 * @output - 
@@ -34,6 +34,22 @@ class M_pef_group extends Da_pef_group
 			";
         $query = $this->db->query($sql);
         return $query;
-    } //end check_login
+    } //end  get_group
+    /*
+*  get_group
+* Check User_login and Pass_login in database
+* @input User_login and Pass_loginn
+* @output - 
+* @author Niphat Kuhokciw
+* @Create Date 2564-07-28
+*/
+    function get_section()
+    { //check User_login and Pass_login in database
+        $sql = "SELECT *
+			FROM pefs_database.pef_section
+			";
+        $query = $this->db->query($sql);
+        return $query;
+    } //end get_section
 
 }//end class M_pef_group 

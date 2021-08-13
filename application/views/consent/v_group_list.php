@@ -59,9 +59,8 @@ function getEmp_edit(i) {
 }
 </script>
 <h1>
-    Group Management (การจัดการข้อมูลกลุ่ม)
-    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#Add"><i class="material-icons">Add
-            Group</i></button>
+    Group Management (การจัดการข้อมูลกลุ่ม)<a href="../../Group_insert/index">
+        <button class="btn btn-primary float-right" value="Add group"> Add group</button></a>
 </h1>
 <div id="Add" class="modal fade" role="dialog">
     <div class="modal-dialog" role="document">
