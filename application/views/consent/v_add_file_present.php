@@ -39,6 +39,16 @@
     margin-top: 20px;
     margin-left: 10px;
 }
+
+div.b {
+    text-align: left;
+
+}
+
+div.a {
+    text-align: center !important;
+
+}
 </style>
 <h1>Add File Nominee</h1>
 <!-- Table Requestd form -->
@@ -66,7 +76,7 @@
 
                     </td>
                     <td>
-                        <?php echo $emp_nominee[$i]->Empname_eng . ' ' . $emp_nominee[$i]->Empsurname_eng ?>
+                        <?php echo $emp_nominee[$i]->Empname_th . ' ' . $emp_nominee[$i]->Empsurname_th ?>
 
                     </td>
                     <td>
