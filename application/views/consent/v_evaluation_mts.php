@@ -287,7 +287,7 @@
                     </table>
                     <br>
                     <form>
-                        <!-- comment -->
+                        <!-- Comment -->
                         <div class="form-group">
                             <label for="comment"><b>Comment :</b></label>
                             <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
@@ -308,7 +308,7 @@
     </div>
 </div>
 
-<!-- Modal ยืนยันการอนุมัติคำขอ -->
+<!-- Modal ยืนยันการประเมิน -->
 <div class="modal fade" id="Modal_approve" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -328,7 +328,7 @@
                 <button type="button" class="btn btn-danger btn-lg float-right" data-dismiss="modal">Cancel</button>
                 <!-- <a href=""> -->
 
-                <!-- ปุ่มยืนยันการอนุมัติคำขอ -->
+                <!-- Modal Confirm Evaluation -->
                 <button type="button" class="btn btn-success btn-lg float-right" id="btn_success" data-toggle="modal"
                     data-target="#successModal">
                     Confirm
@@ -338,9 +338,9 @@
         </div>
     </div>
 </div>
-<!-- end modal ยืนยันการอนุมัติคำขอ -->
+<!-- End Modal Confirm Evaluation -->
 
-<!-- model แจ้งเจือน อนุมัติคำขอสำเร็จ -->
+<!-- model success -->
 <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -359,7 +359,7 @@
         </div>
     </div>
 </div>
-<!-- end modal แจ้งเจือน อนุมัติคำขอสำเร็จ -->
+<!-- end modal success -->
 
 <!-- Modal -->
 <script>

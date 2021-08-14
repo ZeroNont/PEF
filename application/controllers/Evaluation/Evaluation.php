@@ -32,9 +32,9 @@ class Evaluation extends MainController
 
     /*
 	* show_evaluation
-	* แสดงหน้าจอ v_check_schedule
+	* แสดงหน้าจอ v_evaluation
 	* @input  -
-	* @output   หน้าจอระยะเวลาใบคำขอ
+	* @output   
 	* @author 	Phatchara Khongthandee   
 	* @Create Date 13/08/2564 
     * @author   Pontakon Mujit
@@ -50,7 +50,7 @@ class Evaluation extends MainController
 	* show_evaluation_mts
 	* แสดงหน้าจอ v_evaluation_mts
 	* @input  -
-	* @output   หน้าจอระยะเวลาใบคำขอ
+	* @output   
 	* @author 	Phatchara Khongthandee   
 	* @Create Date 13/08/2564 
     * @author   Pontakon Mujit

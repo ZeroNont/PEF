@@ -27,7 +27,7 @@ class M_pef_evaluation extends Da_pef_evaluation
     public function get_all()
     {
         $sql = "SELECT *
-                FROM ttps_database.requested_form AS requested
+                FROM pefs_database.requested_form AS requested
                 INNER JOIN dbmc.employee AS emp
                 ON requested.req_emp_id = emp.Emp_ID";
 

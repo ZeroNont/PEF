@@ -16,14 +16,14 @@
                     if ($id == 1) { ?>
                   <ul class="navbar-nav">
                       <li class="nav-item">
-                          <a class="nav-link" href="<?php echo base_url() . 'Licence_form/Licence_input/index/' ?>">
-                              <i class="ni ni-badge text-orange"></i> //เปลี่ยนไอคอนด้วย
+                          <a class="nav-link" href="<?php echo base_url() . 'Evaluation/Evaluation/show_evaluation' ?>">
+                              <i class="fas fa-file-signature text-green"></i> 
                               <span class="nav-link-text">Evaluation</span>
                           </a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="<?php echo base_url() . 'Renewal/Renewal/show_renewal/' ?>">
-                              <i class="ni ni-single-copy-04 text-primary"></i> //เปลี่ยนไอคอนด้วย
+                              <i class="fas fa-clipboard-list text-primary"></i>
                               <span class="nav-link-text">Result<span>
                           </a>
                       </li>
