@@ -1,6 +1,6 @@
 <?php
 /*
-	* M_pef_addfile.php
+	* M_pef_file_present.php
     * M add file present nominee
     * @Author : Ponprapai Atsawanurak
     * @Author : Thitima Popila
@@ -8,10 +8,10 @@
 */
 defined('BASEPATH') or exit('No direct script access allowed');
 
-include_once('Da_pef_addfile.php');
+include_once('Da_pef_file_present.php');
 
 
-class M_pef_addfile extends Da_pef_addfile
+class M_pef_file_present extends Da_pef_file_present
 { //class M_pef_addfile
 
     public function __construct()
