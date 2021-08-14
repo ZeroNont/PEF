@@ -1,28 +1,25 @@
 <!--
-    v_history_user
-    display history list
-    @author Phatchara and Pontakon
-    Create date 22/7/2564   
-    Update date 25/7/2564
-    Update date 26/7/2564
-    Update date 27/7/2564
-    Update date 28/7/2564
-    Update date 30/7/2564
+    v_add_file_present
+    display Management file present of Nominee list
+    @author : 1. Jaraspon and Nutthanit
+    Create date : 13/08/2564   
+    Update date : 14/08/2564
+    Update by : Ponprapai and Thitima
 -->
 
 <!-- CSS -->
 <style>
-#history_table td,
-#history_table th {
+#Nominee_file_table td,
+#Nominee_file_table th {
     padding: 8px;
     text-align: center;
 }
 
-#history_table tr:nth-child(even) {
+#Nominee_file_table tr:nth-child(even) {
     background-color: #e9ecef;
 }
 
-#history_table tr:hover {
+#Nominee_file_table tr:hover {
     background-color: #adb5bd;
 }
 
@@ -34,7 +31,7 @@
     min-height: 300px;
 }
 
-#history_table {
+#Nominee_file_table {
     width: 98%;
     margin-top: 20px;
     margin-left: 10px;
@@ -51,15 +48,15 @@ div.a {
 }
 </style>
 <h1>Add File Nominee</h1>
-<!-- Table Requestd form -->
+<!-- Table group Nominee list -->
 <div class="card-header" id="card_radius">
     <div class="table-responsive">
-        <table class="table align-items-center" id="history_table">
+        <table class="table align-items-center" id="Nominee_file_table">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">ID Employee.</th>
-                    <th scope="col">Assessor Name</th>
+                    <th scope="col">Nominee Name</th>
                     <th scope="col">Position</th>
                     <th scope="col">Department</th>
                     <th scope="col">Action</th>
@@ -106,7 +103,7 @@ div.a {
 </div>
 <script>
 $(document).ready(function() {
-    $('#history_table').DataTable();
+    $('#Nominee_file_table').DataTable();
 });
 </script>
 <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
