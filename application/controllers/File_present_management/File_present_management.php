@@ -1,18 +1,17 @@
 <!--
-   Add_file_present
+    File_present_management
     Controller_for_add_file_present 
     @input *
     @output -
     @author Ponprapai  and Thitima
-    @author -
     Create date 13/8/2564 
-    Update date 13/8/2564
+    Update date 14/8/2564
 -->
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
 
-class Add_file_present extends MainController
+class File_present_management extends MainController
 {
 
     /**
