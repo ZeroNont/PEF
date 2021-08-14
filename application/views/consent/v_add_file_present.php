@@ -2,11 +2,10 @@
     * v_add_file_present
     * display Management file present of Nominee list
     * @author : 1. Jaraspon and Nutthanit
-    * @Create date : 2564-08-13   
+    * @Create date : 2564-08-13
     * @Update date : 2564-08-14
     * @Update by : Ponprapai and Thitima
 -->
-
 <!-- CSS -->
 <style>
 #Nominee_file_table td,
@@ -87,12 +86,41 @@ div.a {
                     <!-- column ดำเนินการ -->
                     <td style='text-align: center;'>
 
-                        <!-- ปุ่มดำเนินการ -->
+                         <!-- ปุ่มดำเนินการ -->
+                        <!-- <a -->
                         <a href="<?php site_url() . '/File_present_management/File_present_management/insert_file_nominee/' . $emp_nominee[$i]->Emp_ID; ?>"
                             <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                             <i class="fas fa-download"></i>
                             </button>
                         </a>
+
+
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"> <i class="fas fa-download"></i> </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                                    </div>
+                                    <div class= "b"> <h4 class="modal-title">&emsp;Attachment :</h4></div>
+                                    <div class="modal-body">
+
+                                    <input type="file" name="Layout" class="form-control" required="">
+                                    </div>
+                                    <div class="modal-dialog" >
+                                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Uplord This File</button> -->
+                                    <button type="submit" class="btn btn-success" >Uplord This File</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                        <!-- </a> -->
                     </td>
                 </tr>
                 <?php } ?>
