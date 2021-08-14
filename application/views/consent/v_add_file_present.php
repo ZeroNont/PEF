@@ -6,6 +6,7 @@
     * @Update date : 2564-08-14
     * @Update by : Ponprapai and Thitima
 -->
+
 <!-- CSS -->
 <style>
 #Nominee_file_table td,
@@ -87,12 +88,11 @@ div.a {
                     <td style='text-align: center;'>
 
                         <!-- ปุ่มดำเนินการ -->
-                        <!-- <a -->
-                        <!-- href=" <?php echo site_url() . '/history/History/show_history_detail/' . $emp_nominee[$i]->req_form_id; ?>"> -->
-                        <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                        <a href="<?php site_url() . '/File_present_management/File_present_management/insert_file_nominee/' . $emp_nominee[$i]->Emp_ID; ?>"
+                            <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                             <i class="fas fa-download"></i>
-                        </button>
-                        <!-- </a> -->
+                            </button>
+                        </a>
                     </td>
                 </tr>
                 <?php } ?>

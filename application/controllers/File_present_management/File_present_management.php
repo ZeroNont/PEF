@@ -51,7 +51,15 @@ class File_present_management extends MainController
         // $id = $_SESSION['UsEmp_ID'];
         $this->load->model('M_pef_file_present', 'list');
         $data['emp_nominee'] = $this->list->get_all_nominee()->result();
-        // $data[''] = $this->list->get_employee($id)->result();
         $this->output('consent/v_add_file_present', $data);
+    }
+
+    function insert_file_nominee()
+    {
+        $this->load->model('Da_pef_file_present', 'pef');
+
+        move_uploaded_file($pef_file, 'assets/file/present' . $fil_name);
+        $this->pef->fil_location = $fil_name;
+        $this->pef->insert_file();
     }
 }

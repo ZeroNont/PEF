@@ -18,4 +18,12 @@ class Da_pef_file_present extends pefs_model
     {
         parent::__construct();
     }
+
+    function insert_file()
+    {
+        $sql = "INSERT INTO pefs_database.pef_file(fil_location,fil_emp_id) 
+        VALUES (?,?)";
+
+        $this->db->query($sql, array($this->fil_location, $this->fil_emp_id));
+    }
 }//end class Da_pef_addfile
