@@ -88,10 +88,7 @@ div.a {
 
                          <!-- ปุ่มดำเนินการ -->
                         <!-- <a -->
-                        <a href="<?php site_url() . '/File_present_management/File_present_management/insert_file_nominee/' . $emp_nominee[$i]->Emp_ID; ?>"
-                            <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
-                            <i class="fas fa-download"></i>
-                            </button>
+                        <a href="<?php site_url() . '/File_present_management/File_present_management/insert_file_nominee/' . $emp_nominee[$i]->Emp_ID; ?>">
                         </a>
 
 
