@@ -11,7 +11,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
 
-class Evaluation_mts extends MainController
+class Evaluation extends MainController
 {
 
     /**
@@ -31,12 +31,28 @@ class Evaluation_mts extends MainController
      */
 
     /*
-	* show_check_schedule
+	* show_evaluation
 	* แสดงหน้าจอ v_check_schedule
 	* @input  -
-	* @output  หน้าจอระยะเวลาใบคำขอ
+	* @output   หน้าจอระยะเวลาใบคำขอ
 	* @author 	Phatchara Khongthandee   
-	* @Create Date 19/7/2564 
+	* @Create Date 13/08/2564 
+    * @author   Pontakon Mujit
+    * @Update Date 25/7/2564
+	*/
+    function show_evaluation()
+    {
+        
+        $this->output('consent/v_evaluation');
+    }// function show_evaluation
+
+    /*
+	* show_evaluation_mts
+	* แสดงหน้าจอ v_evaluation_mts
+	* @input  -
+	* @output   หน้าจอระยะเวลาใบคำขอ
+	* @author 	Phatchara Khongthandee   
+	* @Create Date 13/08/2564 
     * @author   Pontakon Mujit
     * @Update Date 25/7/2564
 	*/
@@ -44,6 +60,6 @@ class Evaluation_mts extends MainController
     {
         
         $this->output('consent/v_evaluation_mts');
-    }// function show_check_schedule()
+    }// function show_evaluation_mts
 
 }

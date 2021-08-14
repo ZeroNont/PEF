@@ -12,8 +12,10 @@
 -->
 <!-- CSS -->
 <style>
-    #tab_col table{
-        border: 1px solid black;
+    #img 
+    {
+        display: block;
+        margin-left: 150px;
     }
     #card_radius
     {
@@ -34,6 +36,10 @@
         text-align: center;
     }
 
+    /* จัดตำแหน่งชื่อบริษัท */
+    .center_com  {
+        padding: 70px;
+    }
 </style>
 
 <!-- Evaluation form -->
@@ -41,8 +47,14 @@
 <div class="container"> 
     <div class="card" id="border-radius">  
         <div class="card-body">
-            <img src=<?php echo base_url() ?> width="150" height="150">
-            <br><br>
+            <!-- Logo บริษัท และชื่อบริษัท -->
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src=<?php echo base_url()."argon/assets/img/brand/denso_1.png" ?> width="150" height="150">
+                    </div>
+                <div class="col-sm-8 center_com"><h3>ชื่อบริษัท gggggggggggggggggggggggggg</h3></div>
+            </div>  
+                <!-- ชื่อกรรมการ และวันประเมิน -->
                 <div class="row">
                     <div class="col-sm-6"><h3>Assessor Name :</h3></div>
                     <div class="col-sm-3"><h3>Date :</h3></div>
@@ -274,7 +286,7 @@
                             </tr>
                     </table>
                     <br>
-                    <form action="/action_page.php">
+                    <form>
                         <!-- comment -->
                         <div class="form-group">
                             <label for="comment"><b>Comment :</b></label>
@@ -287,12 +299,75 @@
                             <textarea class="form-control" rows="5" id="QnA" name="text"></textarea>
                         </div>
                         <br>
-                        <!-- Confirm -->
-                        <button type="submit" class="btn btn-success float-right">Confirm</button>
                     </form>
+                    <!-- Confirm -->
+                    <button type="submit" class="btn btn-success float-right" data-toggle="modal"
+                        data-target="#Modal_approve">Confirm</button>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal ยืนยันการอนุมัติคำขอ -->
+<div class="modal fade" id="Modal_approve" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" id="img">
+                <!-- icon -->
+                <img src=<?php echo base_url() ."argon/assets/img/brand/danger.png"?> width="150" height="150">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" align="center">
+                <div class="modal-title" id="ModalLabel">
+                    <h1><b>Evaluation Confirm</b></h1>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-lg float-right" data-dismiss="modal">Cancel</button>
+                <!-- <a href=""> -->
+
+                <!-- ปุ่มยืนยันการอนุมัติคำขอ -->
+                <button type="button" class="btn btn-success btn-lg float-right" id="btn_success" data-toggle="modal"
+                    data-target="#successModal">
+                    Confirm
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end modal ยืนยันการอนุมัติคำขอ -->
+
+<!-- model แจ้งเจือน อนุมัติคำขอสำเร็จ -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" align="center">
+                <!-- icon -->
+                <img src=<?php echo base_url() ."argon/assets/img/brand/tick.png"?> width="150" height="150">
+                <br><br>
+                <h1> <b>Success</b> </h1>
+            </div>
+            <div class="modal-footer">
+                <!-- <a href=""> -->
+                    <button type="button" class="btn btn-success btn-lg float-right">OK</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal แจ้งเจือน อนุมัติคำขอสำเร็จ -->
+
+<!-- Modal -->
+<script>
+$(document).ready(function() {
+    $("#btn_success").click(function() {
+        $("#Modal_approve").hide()
+    });
+});
+</script>
     
  

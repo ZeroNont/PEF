@@ -1,14 +1,14 @@
 <!--
-    M_ttp_history
-    Model for history module
+    M_pef_evaluation
+    Model for evaluation module
     @author Phatchara and Pontakon
-    Create date 18/7/2564   
+    Create date 13/08/2564   
     Update date 26/7/2564
 -->
 <?php
-include_once("Da_ttp_history.php");
+include_once("Da_pef_evaluation.php");
 
-class M_ttp_history extends Da_ttp_history
+class M_pef_evaluation extends Da_pef_evaluation
 {
     public function __construct()
     {
