@@ -1,18 +1,17 @@
 <!--
-   Add_file_present
+    File_present_management
     Controller_for_add_file_present 
     @input *
     @output -
     @author Ponprapai  and Thitima
-    @author -
     Create date 13/8/2564 
-    Update date 13/8/2564
+    Update date 14/8/2564
 -->
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
 
-class Add_file_present extends MainController
+class File_present_management extends MainController
 {
 
     /**
@@ -50,7 +49,7 @@ class Add_file_present extends MainController
     function show_list_nominee()
     {
         // $id = $_SESSION['UsEmp_ID'];
-        $this->load->model('M_pef_addfile', 'list');
+        $this->load->model('M_pef_file_present', 'list');
         $data['emp_nominee'] = $this->list->get_all_nominee()->result();
         // $data[''] = $this->list->get_employee($id)->result();
         $this->output('consent/v_add_file_present', $data);
