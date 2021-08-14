@@ -87,65 +87,51 @@ div.a {
                     <td style='text-align: center;'>
 
                         <!-- ปุ่มดำเนินการ -->
-                        <!-- <a -->
-                        <!-- <a
-                            href="<?php site_url() . '/File_present_management/File_present_management/insert_file_nominee/' . $emp_nominee[$i]->Emp_ID; ?>">
-                        </a> -->
-
 
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"> <i
                                 class="fas fa-download"></i> </button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" role="dialog">
+                            <!-- <form action="<?php site_url() . '/File_present_management/File_present_management/insert_file_nominee/'
+                                                        . $emp_nominee[$i]->Emp_ID; ?>" method="post"
+                                enctype="multipart/form-data" onSubmit="JavaScript:return fncSubmit();" name="present"> -->
                             <div class="modal-dialog">
 
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-
                                     </div>
                                     <div class="b">
                                         <h4 class="modal-title">&emsp;Attachment :</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <input type="file" name="fil_name" class="form-control" required=""
-                                            accept="pdf">
-                                        <a
-                                            href="<?php site_url() . '/File_present_management/File_present_management/insert_file_nominee/' . $emp_nominee[$i]->Emp_ID; ?>">
-                                            <button type="submit" class="btn btn-success" data-dismiss="modal">Uplord
-                                                ThisFile</button> </a>
+                                        <input type="file" name="fil" class="form-control" required="" accept="pdf">
+                                        <button type="submit" class="btn btn-success" data-dismiss="modal">Upload
+                                            This File</button>
                                     </div>
-                                    <!-- <div class="modal-dialog">
-                                        <a
-                                            href="<?php site_url() . '/File_present_management/File_present_management/insert_file_nominee/' . $emp_nominee[$i]->Emp_ID; ?>">
-                                            <button type="submit" class="btn btn-success" data-dismiss="modal">Uplord
-                                                ThisFile</button> </a>
-                                        <!-- <button type="" class="btn btn-success">Uplord This File</button> -->
-                                </div> -->
+                                </div>
                             </div>
+                            <!-- </form> -->
                         </div>
-    </div>
 
-    <!-- </a> -->
-    </td>
-    </tr>
-    <?php } ?>
-    </tbody>
-    </table>
-</div>
+                        <!-- </a> -->
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 <script>
 $(document).ready(function() {
     $('#Nominee_file_table').DataTable();
 });
 </script>
-<script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
+<!-- <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script> -->
 <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
 <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
 <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-<!-- Argon JS -->
-<script src="../../assets/js/argon.js?v=1.2.0"></script>
 <script type="text/javascript">

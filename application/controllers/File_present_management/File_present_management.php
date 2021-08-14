@@ -1,13 +1,14 @@
-<!--
-    File_present_management
-    Controller_for_add_file_present 
-    @input *
-    @output -
-    @author Ponprapai  and Thitima
-    Create date 13/8/2564 
-    Update date 14/8/2564
--->
 <?php
+
+// File_present_management
+// Controller_for_add_file_present 
+// @input -
+// @output -
+// @author Ponprapai  and Thitima
+// Create date 13/8/2564 
+// Update date 14/8/2564
+
+
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
 
@@ -56,10 +57,15 @@ class File_present_management extends MainController
 
     function insert_file_nominee()
     {
+        $pefs_file =  $_FILES['fil']['temp'];
+        $fil_name =  $_FILES['fil']['ptemp'];
         $this->load->model('Da_pef_file_present', 'pef');
 
-        move_uploaded_file($pef_file, 'assets/file/present' . $fil_name);
+        move_uploaded_file($pefs_file, 'upload' . $fil_name);
         $this->pef->fil_location = $fil_name;
+        // $this->load->model('M_pef_file_present', 'list');
+
+        // $this->pef->fil_emp_id = $id;
         $this->pef->insert_file();
     }
 }
