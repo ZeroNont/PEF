@@ -61,7 +61,7 @@
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link" href="<?php echo base_url() . 'File_present_management/File_present_management/show_list_nominee/' ?>">
-                                      <i class="fas fa-download text-default"></i>
+                                      <i class="fas fa-file-upload text-default"></i>
                                       <span class="nav-link-text">Add File Nominee</span>
                                   </a>
                               </li>

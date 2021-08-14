@@ -26,4 +26,13 @@ class Da_pef_file_present extends pefs_model
 
         $this->db->query($sql, array($this->fil_location, $this->fil_emp_id));
     }
+
+    function update_file()
+    {
+        $sql = "UPDATE pefs_database.pef_file
+        SET fil_location= ?
+        WHERE fil_emp_id = ?";
+
+        $this->db->query($sql, array($this->fil_location, $this->fil_emp_id));
+    }
 }//end class Da_pef_addfile

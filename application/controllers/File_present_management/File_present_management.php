@@ -52,20 +52,40 @@ class File_present_management extends MainController
         // $id = $_SESSION['UsEmp_ID'];
         $this->load->model('M_pef_file_present', 'list');
         $data['emp_nominee'] = $this->list->get_all_nominee()->result();
+
+        $this->load->model('M_pef_file_present', 'file');
+        $data['emp_file'] = $this->file->get_all()->result();
+
         $this->output('consent/v_add_file_present', $data);
     }
 
     function insert_file_nominee()
     {
-        $pefs_file =  $_FILES['fil']['temp'];
-        $fil_name =  $_FILES['fil']['ptemp'];
+        $pefs_file =  $_FILES['fil']['tmp_name'];
+        $fil_name =  $_FILES['fil']['name'];
+        $Emp_ID = $this->input->post("Emp_ID");
+
         $this->load->model('Da_pef_file_present', 'pef');
+        $this->pef->fil_location = $Emp_ID."_".$fil_name;
+        $this->pef->fil_emp_id = $Emp_ID;
 
-        move_uploaded_file($pefs_file, 'upload' . $fil_name);
-        $this->pef->fil_location = $fil_name;
-        // $this->load->model('M_pef_file_present', 'list');
-
-        // $this->pef->fil_emp_id = $id;
         $this->pef->insert_file();
+        copy($pefs_file, 'upload/' . $Emp_ID."_".$fil_name);
+        $this->show_list_nominee();
+    }
+
+    function edit_file_nominee()
+    {
+        $pefs_file =  $_FILES['fil']['tmp_name'];
+        $fil_name =  $_FILES['fil']['name'];
+        $Emp_ID = $this->input->post("Emp_ID");
+
+        $this->load->model('Da_pef_file_present', 'pef');
+        $this->pef->fil_location = $Emp_ID."_".$fil_name;
+        $this->pef->fil_emp_id = $Emp_ID;
+
+        $this->pef->update_file();
+        copy($pefs_file, 'upload/' . $Emp_ID."_".$fil_name);
+        $this->show_list_nominee();
     }
 }
