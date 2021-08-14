@@ -1,14 +1,9 @@
 <!--
     v_check_schedule
     display for schedule
-    @author Phatchara and Pontakon
-    Create date 22/7/2564   
-    Update date 25/7/2564
-    Update date 26/7/2564
-    Update date 27/7/2564
-    Update date 28/7/2564
-    Update date 29/7/2564
-    Update date 30/7/2564
+    @author Apinya Phadungkit
+    Create date 13/8/2564   
+    Update date 14/8/2564
 -->
 <!-- CSS -->
 <style>

@@ -3,9 +3,9 @@
     Controller for check schedule module
     @input -
     @output -
-    @author Phatchara and Pontakon 
-    Create date 18/7/2564 
-    Update date 25/7/2564
+    @author Apinya Phadungkit
+    Create date 13/8/2564 
+    Update date 14/8/2564
 -->
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -31,19 +31,17 @@ class Evaluation_am extends MainController
      */
 
     /*
-	* show_check_schedule
-	* แสดงหน้าจอ v_check_schedule
+	* show_evaluation_am
+	* แสดงหน้าจอ v_evaluation_am
 	* @input  -
-	* @output  หน้าจอระยะเวลาใบคำขอ
-	* @author 	Phatchara Khongthandee   
-	* @Create Date 19/7/2564 
-    * @author   Pontakon Mujit
-    * @Update Date 25/7/2564
+	* @output  หน้าจอประเมินคะแนนของ AM
+	* @author  Apinya Phadungkit  
+	* @Create Date 13/8/2564 
 	*/
     function show_evaluation_am()
     {
         
         $this->output('consent/v_evaluation_am');
-    }// function show_check_schedule()
+    }// function show_evaluation_am()
 
 }
