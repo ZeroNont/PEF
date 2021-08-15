@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "application\\controllers"
+		},
+		{
+			"path": "application\\models"
+		},
+		{
+			"path": "application\\views"
+		}
+	]
+}

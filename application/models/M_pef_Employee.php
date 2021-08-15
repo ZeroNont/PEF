@@ -7,7 +7,7 @@
 */
 defined('BASEPATH') or exit('No direct script access allowed');
 
-include_once("Da_pef_group.php");
+include_once("Da_pef_Employee.php");
 
 
 class M_pef_Employee extends Da_pef_Employee
@@ -26,13 +26,14 @@ class M_pef_Employee extends Da_pef_Employee
 * @author Niphat Kuhokciw
 * @Create Date 2564-07-28
 */
-    function get_assessor($level)
+    function get_assessor()
     { //check User_login and Pass_login in database
-        $sql = "SELECT *
-			FROM pefs_database.pef_assessor AS ass
-			WHERE ass.position_level=$level
-			";
-        $query = $this->db->query($sql);
+        $sql =
+            "SELECT *
+			FROM pefs_database.pef_assessor AS ass INNER JOIN dbmc.sectioncode AS sec
+            ON ass.Sectioncode_ID = sec.Sectioncode
+			WHERE ass.position_level =?";
+        $query = $this->db->query($sql, array($this->position_level));
         return $query;
     } //end  get_group
     /*

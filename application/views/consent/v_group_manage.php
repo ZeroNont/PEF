@@ -1,28 +1,5 @@
 <?php ?>
-<script>
-function get_Emp() {
-    position_level = document.getElementById('position_level').value;
-    console.log(position_level)
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>ttp_Emp/Employee/search_by_employee_id",
-        data: {
-            "position_level": position_level
-        },
-        dataType: "JSON",
-        success: function(data, status) {
-            console.log(data);
-            if (data.length == 0) {
-                document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
-            } else {
-                empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
-                document.getElementById("showname_modal").value = empname;
-                console.log(999)
-            }
-        }
-    });
-}
-</script>
+
 <!-- Page content -->
 
 <h1>
@@ -51,12 +28,12 @@ function get_Emp() {
                                 <div class="form-group">
 
                                     <label class="form-control-label" for="input-city">Posotion to Promote</label>
-                                    <select name="position" id="position" class="form-select"
-                                        aria-label="Default select example" required>
+                                    <select name="position" id="select" class="form-select"
+                                        aria-label="Default select example" onchange="get_assessor()">
                                         <option value="0">--------------------------------------------Please
                                             select--------------------------------</option>
                                         <?php for ($i = 0; $i < count($obj_sec); $i++) { ?>
-                                        <option value="<?php echo $obj_sec[$i]->sec_id ?>">
+                                        <option value="<?php echo $obj_sec[$i]->sec_level ?>">
                                             <?php echo $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name;
                                         }
                                             ?>
@@ -94,40 +71,58 @@ function get_Emp() {
                                     <th>Departmant</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php for ($i = 0; $i < 10; $i++) { ?>
-                                <tr>
-                                    <td>
-                                        <?php echo $i + 1 ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $i + 1  ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $i + 1  ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $i + 1  ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $i + 1  ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $i + 1  ?>
-                                    </td>
-
-
-
-
-
-
+                            <tbody id="select_data"></tbody>
+                        </table>
                     </div>
-                    </td>
-                    </tr>
-                    <?php  } ?>
-                    </tbody>
-                    </table>
+
+
+
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+    function get_assessor() {
+        var position_level = document.getElementById('select').value;
+
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url() ?>Get_Employee/Get_assessor/get_assessor_by_sec",
+            data: {
+                "position_level": position_level
+            },
+            dataType: "JSON",
+            success: function(data, status) {
+                console.log(data);
+                var count = 0;
+                var i = 1;
+                var data_row = '';
+                data.forEach((row, index) => {
+                    data_row += '<tr>'
+                    data_row += '<td>'
+                    data_row += i++;
+                    data_row += '</td>'
+                    data_row += '<td>'
+                    data_row += '<input type="checkbox" id="check_box' + index +
+                        '" name="checkbox1">'
+                    data_row += '</td>'
+                    data_row += '<td id="gro_ase_id_' + index + '">'
+                    data_row += row.ase_emp_id
+                    data_row += '</td>'
+                    data_row += '<td>'
+                    data_row += row.ase_name_eng + " " + row.ase_surename_eng
+                    data_row += '</td>'
+                    data_row += '<td>'
+                    data_row += row.position_level
+                    data_row += '</td>'
+                    data_row += '<td>'
+                    data_row += row.Department
+                    data_row += '</td>'
+                    data_row += '</tr>'
+                })
+                $("select_data").html(data_row)
+            }
+        })
+    }
+    </script>

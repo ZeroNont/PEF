@@ -42,9 +42,12 @@ class Get_assessor extends MainController
     function get_assessor_by_sec()
     {
 
-        $level = $this->input->post('level');
+        $level = $this->input->post('position_level');
         $this->load->model('M_pef_Employee', 'emp');
-        $data['assessor'] = $this->emp->get_assessor($level)->result();
+        $this->emp->position_level =  $level;
+
+        $data = $this->emp->get_assessor($level)->result();
+        // echo $data['assessor'];
         echo json_encode($data);
     }
 }
