@@ -211,9 +211,9 @@
                 <div class="card-header bg-transparent">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
-                            <h5 class="h2 text-black mb-0">The graph shows the results of the assessment of each position</h5>
+                            <h4 class="text-black mb-0">The graph shows the results of the assessment of each position</h4>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="card-body">
@@ -226,12 +226,12 @@
     <div class="row" id="count_table">
         <div class="col-xl-12">
             <div class="card">
-            <div class="card-header bg-transparent">
+                <div class="card-header bg-transparent">
                     <div class="row align-items-center">
                         <div class="col-lg-6">
-                            <h5 class="h2 text-black mb-0">The Table Shows The Reports Of Each Position</h5>
+                            <h4 class="text-black mb-0">The table shows the reports of each position</h4>
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="table-responsive" table id='myTable'>
@@ -250,6 +250,14 @@
                         <tbody id="data_table">
 
                         </tbody>
+                        <tfoot>
+                            <td colspan="2" align="right">Total :</td>
+                            <td id='sum_total'>0</td>
+                            <td id='pass_total'>0</td>
+                            <td id='fail_total'>0</td>
+                            <td></td>
+
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -268,6 +276,8 @@
         // $("#count_graph").hide();
         // $("#count_table").hide();
         // $("#count_export").hide();
+        show_table();
+        show_data_table();
     });
 
     function ExcelReport() //function สำหรับสร้าง ไฟล์ excel จากตาราง
@@ -410,7 +420,7 @@
 
                 show_chart(label, data);
                 //show_label_select(label, Dep);
-                show_table(data_charts);
+                show_data_table(data_charts);
                 $('#total_request').text(approve + pending);
                 $('#total_approval').text(approve);
                 $('#pending_approval').text(pending);
@@ -435,32 +445,49 @@
         $('#Department').append(data_row);
     }
 
-    function show_table(data_chart) {
+    function show_table() {
         var data_row = '';
-        data_chart.forEach((row, index) => {
-
+        for (i = 0; i < 5; i++) {
             data_row += '<tr>';
-            data_row += '<td>' + (index + 1) + '</td>';
-            if (row.req_hr_no == '') {
-                data_row += '<td>-</td>';
-            } else {
-                data_row += '<td>' + row.req_hr_no + '</td>';
-            }
-            data_row += '<td>' + row.Empname_eng +''+ row.Empsurname_eng + '</td>';
-            if (row.req_status == '4') {
-                data_row += '<td>ยังอยู่ในคลัง</td>';
-            } else if (row.req_status > '4') {
-                data_row += '<td>สิ้นสุดการวาง</td>';
-            } else if (row.req_status < '4') {
-                data_row += '<td>รอการอนุมัติ</td>';
-            }
-            data_row += '<td><a href="<?php echo site_url() ?>Report/Report/show_report_detail?req_form_id= ' + row.req_form_id + ' ">'
+            data_row += '<td>' + (i + 1) + '</td>';
+            data_row += '<td>' + "Promote to T" + (i + 2) + '</td>';
+            data_row += '<td id="sum_' + i + '">0</td>';
+            data_row += '<td id="pass_' + i + '">0</td>';
+            data_row += '<td id="fail_' + i + '">0</td>';
+            data_row += '<td><a href="">'
             data_row += '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
             data_row += '<i class="fas fa-search"></i></button></a></td>'
             data_row += '</tr>';
-        });
-        // forEach label
+        }
         $('#data_table').html(data_row);
+
+    }
+
+    function show_data_table(data_charts) {
+        var sum_total = 0;
+        var pass_total = 0;
+        var fail_total = 0;
+        var sum = [5,5,1,4,4];
+        var pass = [2,2,3,7,7];
+        var fail = [6,6,4,8,8];
+
+        // data_charts.forEach((row_label, index) => {
+
+        // });
+        // forEach data_charts
+
+        for (i = 0; i < 5; i++) {
+            $("#sum_" + i).text(sum[i]);
+            $("#pass_" + i).text(pass[i]);
+            $("#fail_" + i).text(fail[i]);
+            sum_total += sum[i];
+            pass_total += pass[i];
+            fail_total += fail[i];
+        }
+
+        $("#sum_total").text(sum_total);
+        $("#pass_total").text(pass_total);
+        $("#fail_total").text(fail_total);
 
     }
 </script>

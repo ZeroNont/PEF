@@ -60,7 +60,7 @@ class M_ttp_Employee extends Da_ttp_Employee
             ON pos.Position_ID = emp.Position_ID
             INNER JOIN dbmc.sectioncode AS sec
             ON sec.Sectioncode = emp.Sectioncode_ID
-            INNER JOIN ttps_database.user_login AS ulog
+            INNER JOIN pefs_database.user_login AS ulog
             ON emp.Emp_ID = ulog.Enp_ID
             WHERE emp.Emp_ID=?";
         $query = $this->db->query($sql, array($this->Emp_ID));

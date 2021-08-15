@@ -68,7 +68,7 @@ class Login extends MainController
 		$User_login = $this->input->POST('User_login');
 		$Pass_login = $this->input->POST('Pass_login');
 		
-		$this->load->model('M_ttp_login','mlog');
+		$this->load->model('M_pef_login','mlog');
 
 		$userlogin = $this->mlog->check_login($User_login,$Pass_login)->row();
 		if(count($userlogin)==1){
@@ -94,10 +94,6 @@ class Login extends MainController
 			if($_SESSION['Usrole']==1){
             	redirect('Main/Main/show_main', 'refresh');
 			}else if($_SESSION['Usrole']==2){
-				redirect('Main/Main/show_main', 'refresh');
-			}else if($_SESSION['Usrole']==3){
-				redirect('Main/Main/show_main', 'refresh');
-			}else if($_SESSION['Usrole']==4){
 				redirect('Main/Main/show_main', 'refresh');
 			}
         }

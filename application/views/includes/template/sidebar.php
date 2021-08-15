@@ -16,14 +16,14 @@
                     if ($id == 1) { ?>
                   <ul class="navbar-nav">
                       <li class="nav-item">
-                          <a class="nav-link" href="<?php echo base_url() . 'Licence_form/Licence_input/index/' ?>">
-                              <i class="ni ni-badge text-orange"></i> //เปลี่ยนไอคอนด้วย
+                          <a class="nav-link" href="<?php echo base_url() . 'Evaluation/Evaluation/show_evaluation' ?>">
+                              <i class="fas fa-file-signature text-green"></i> 
                               <span class="nav-link-text">Evaluation</span>
                           </a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="<?php echo base_url() . 'Renewal/Renewal/show_renewal/' ?>">
-                              <i class="ni ni-single-copy-04 text-primary"></i> //เปลี่ยนไอคอนด้วย
+                              <i class="fas fa-clipboard-list text-primary"></i>
                               <span class="nav-link-text">Result<span>
                           </a>
                       </li>
@@ -36,8 +36,7 @@
                           <!-- Nav items -->
                           <ul class="navbar-nav">
                               <li class="nav-item">
-                                  <a class="nav-link"
-                                      href="<?php echo base_url() . 'Group_management/Group_list/index/' ?>">
+                                  <a class="nav-link" href="<?php echo base_url() . 'Group_management/Group_list/index/' ?>">
                                       <i class="ni ni-calendar-grid-58 text-orange"></i>
                                       <span class="nav-link-text">Group Management</span>
                                   </a>
@@ -49,23 +48,20 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link"
-                                      href="<?php echo base_url() . 'check_schedule/Check_schedule/show_check_schedule/' ?>">
+                                  <a class="nav-link" href="<?php echo base_url() . 'check_schedule/Check_schedule/show_check_schedule/' ?>">
                                       <i class="ni ni-calendar-grid-58 text-yellow"></i> //เปลี่ยนไอคอนด้วย
                                       <span class="nav-link-text">Reviewer</span>
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link"
-                                      href="<?php echo base_url() . 'Check_out_form/Check_out_form/index/' ?>">
-                                      <i class="ni ni-user-run text-default"></i> //เปลี่ยนไอคอนด้วย
+                                  <a class="nav-link" href="<?php echo base_url() . 'Assessor_management/Promote_list/index/' ?>">
+                                      <i class="fas fa-address-book text-default"></i> 
                                       <span class="nav-link-text">Assessor Management</span>
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link"
-                                      href="<?php echo base_url() . 'Check_out_form/Check_out_form/index/' ?>">
-                                      <i class="ni ni-user-run text-default"></i> //เปลี่ยนไอคอนด้วย
+                                  <a class="nav-link" href="<?php echo base_url() . 'File_present_management/File_present_management/show_list_nominee/' ?>">
+                                      <i class="fas fa-file-upload text-default"></i>
                                       <span class="nav-link-text">Add File Nominee</span>
                                   </a>
                               </li>
