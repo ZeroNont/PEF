@@ -64,7 +64,10 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>#</th>
-                                    <th>List</th>
+                                    <th>
+                                        <input type="checkbox" onclick="select_all(this);">
+                                        Select
+                                    </th>
                                     <th>Employee ID</th>
                                     <th>Name</th>
                                     <th>Position</th>
@@ -78,11 +81,41 @@
 
 
                 </div>
+                <button class="btn btn-primary float-right" onclick="save_data()">Save</button>
             </div>
         </div>
     </div>
 
     <script>
+    var count = 0;
+    var count_nominee = 0;
+
+    function save_data() {
+        var emp = []
+        var emp_nominee = []
+        for (var i = 0; i < count; i++) {
+            if (document.getElementById('check_box' + i).checked) {
+                emp.push(document.getElementById('gro_ase_id_' + i).innerHTML)
+            }
+        }
+        for (var i = 0; i < count_nominee; i++) {
+            if (document.getElementById('check_box' + i).checked) {
+                emp.push(document.getElementById('gro_ase_id_' + i).innerHTML)
+            }
+        }
+        console.log(emp)
+        //ใช้ ajax 
+    }
+
+    function select_all(source) {
+        var check = document.querySelectorAll('input[name="checkbox1"]');
+        for (var i = 0; i < check.length; i++) {
+            if (check[i] != source) {
+                check[i].checked = source.checked
+            }
+        }
+    }
+
     function get_assessor() {
         var position_level = document.getElementById('select').value;
 
@@ -90,12 +123,12 @@
             type: "POST",
             url: "<?php echo base_url() ?>Get_Employee/Get_assessor/get_assessor_by_sec",
             data: {
-                "position_level": position_level
+                "pos": position_level
             },
             dataType: "JSON",
             success: function(data, status) {
                 console.log(data);
-                var count = 0;
+                var count_index = 0;
                 var i = 1;
                 var data_row = '';
                 data.forEach((row, index) => {
@@ -111,7 +144,7 @@
                     data_row += row.ase_emp_id
                     data_row += '</td>'
                     data_row += '<td>'
-                    data_row += row.ase_name_eng + " " + row.ase_surename_eng
+                    data_row += row.ase_name_eng + "          " + row.ase_surename_eng
                     data_row += '</td>'
                     data_row += '<td>'
                     data_row += row.position_level
@@ -120,8 +153,10 @@
                     data_row += row.Department
                     data_row += '</td>'
                     data_row += '</tr>'
+                    count_index++
                 })
-                $("select_data").html(data_row)
+                $("#select_data").html(data_row)
+                count = count_index;
             }
         })
     }
