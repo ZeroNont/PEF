@@ -42,11 +42,11 @@ class M_pef_file_present extends Da_pef_file_present
         return $query;
     } //end get_all_nominee
 
-    function get_by_id($id_nominee)
+    function get_by_id($id)
     {
         $sql = "SELECT * 
         FROM pefs_database.pef_file
-        WHERE pef_file.fil_emp_id = $id_nominee";
+        WHERE fil_emp_id = $id";
         $query = $this->db->query($sql);
         return $query;
     }
