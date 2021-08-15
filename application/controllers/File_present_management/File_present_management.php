@@ -51,7 +51,7 @@ class File_present_management extends MainController
     {
         // $id = $_SESSION['UsEmp_ID'];
         $this->load->model('M_pef_file_present', 'list');
-        $data['emp_nominee'] = $this->list->get_all_nominee()->result();
+        $data['emp_nominee'] = $this->list->get_nominee()->result();
 
         $this->load->model('M_pef_file_present', 'file');
         $data['emp_file'] = $this->file->get_all()->result();
@@ -59,6 +59,15 @@ class File_present_management extends MainController
         $this->output('consent/v_add_file_present', $data);
     }
 
+    /*
+	* insert_file_nominee
+	* แนบไฟล์นำเสนอผลงานของผู้ถูกประเมิน โดยการเพิ่มไฟล์
+	* @input : 	file type pdf
+	* @output :	status file
+	* @author : Ponprapai  and Thitima
+	* @Create Date : 2564-08-13 
+	* @Update Date : 2564-08-14 
+	*/
     function insert_file_nominee()
     {
         $pefs_file =  $_FILES['fil']['tmp_name'];
@@ -66,14 +75,22 @@ class File_present_management extends MainController
         $Emp_ID = $this->input->post("Emp_ID");
 
         $this->load->model('Da_pef_file_present', 'pef');
-        $this->pef->fil_location = $Emp_ID."_".$fil_name;
+        $this->pef->fil_location = $Emp_ID . "_" . $fil_name;
         $this->pef->fil_emp_id = $Emp_ID;
 
-        $this->pef->insert_file();
-        copy($pefs_file, 'upload/' . $Emp_ID."_".$fil_name);
+        $this->pef->insert_file(); // add file to table pef_file
+        copy($pefs_file, 'upload/' . $Emp_ID . "_" . $fil_name); // add file to floder upload
         $this->show_list_nominee();
     }
 
+    /*
+	* edit_file_nominee
+	* แก้ไขการแนบไฟล์นำเสนอผลงานของผู้ถูกประเมิน
+	* @input : 	file type pdf
+	* @output :	status file
+	* @author : Ponprapai  and Thitima
+	* @Create Date : 2564-08-14 
+	*/
     function edit_file_nominee()
     {
         $pefs_file =  $_FILES['fil']['tmp_name'];
@@ -81,11 +98,11 @@ class File_present_management extends MainController
         $Emp_ID = $this->input->post("Emp_ID");
 
         $this->load->model('Da_pef_file_present', 'pef');
-        $this->pef->fil_location = $Emp_ID."_".$fil_name;
+        $this->pef->fil_location = $Emp_ID . "_" . $fil_name;
         $this->pef->fil_emp_id = $Emp_ID;
 
-        $this->pef->update_file();
-        copy($pefs_file, 'upload/' . $Emp_ID."_".$fil_name);
+        $this->pef->update_file(); // update file to table pef_file
+        copy($pefs_file, 'upload/' . $Emp_ID . "_" . $fil_name); // add file to floder upload
         $this->show_list_nominee();
     }
 }
