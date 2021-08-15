@@ -88,6 +88,7 @@ div.a {
 
                         <!-- ปุ่มดำเนินการ -->
                         <?php
+                            // ตรวจสอบว่ามีไฟล์หรือยัง
                             $check = 0;
                             foreach ($emp_file as $row) {
                                 if ($row->fil_emp_id == $emp_nominee[$i]->Emp_ID) {
@@ -96,19 +97,20 @@ div.a {
                                 // if 
                             }
                             // foreach 
-
+                            // ยังไม่มีไฟล์จะเพิ่มไฟล์
                             if ($check == 0) { ?>
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#insertModal_<?php echo $i ?>"><i class="fas fa-file-upload"></i></button>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#insert_modal_file<?php echo $i ?>"><i class="fas fa-file-upload"></i></button>
                         <?php  }
                             // if
+                            //เคยมีไฟล์แล้วจะอัปเดต
                             else { ?>
-                        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#editModal_<?php echo $i ?>"><i class="fas fa-file-upload"></i></button>
+                        <button type=" button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#edit_modal_file<?php echo $i ?>"><i class="fas fa-file-upload"></i></button>
                         <?php  } ?>
                         <!-- else -->
 
 
                         <!-- Modal insert-->
-                        <div class="modal fade" id="insertModal_<?php echo $i ?>" role="dialog">
+                        <div class="modal fade" id="insert_modal_file<?php echo $i ?>" role="dialog">
                             <form action="<?php echo site_url() ?>File_present_management/File_present_management/insert_file_nominee" method="post" enctype="multipart/form-data" onSubmit="JavaScript:return fncSubmit();" name="present">
                                 <div class="modal-dialog">
 
@@ -121,7 +123,7 @@ div.a {
                                             <h4 class="modal-title">&emsp;Attachment :</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <input type="file" name="fil" class="form-control" required="" accept="pdf">
+                                            <input type="file" name="fil" class="form-control" required="" accept="application/pdf">
                                             <input type="text" name="Emp_ID" value="<?php echo $emp_nominee[$i]->Emp_ID ?>" hidden>
                                             <br>
                                             <button type="submit" class="btn btn-success">Upload This File</button>
@@ -132,7 +134,7 @@ div.a {
                         </div>
 
                         <!-- Modal edit -->
-                        <div class="modal fade" id="editModal_<?php echo $i ?>" role="dialog">
+                        <div class="modal fade" id="edit_modal_file<?php echo $i ?>" role="dialog">
                             <form action="<?php echo site_url() ?>File_present_management/File_present_management/edit_file_nominee" method="post" enctype="multipart/form-data" onSubmit="JavaScript:return fncSubmit();" name="present">
                                 <div class="modal-dialog">
 
@@ -145,8 +147,9 @@ div.a {
                                             <h4 class="modal-title">&emsp;Attachment :</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <input type="file" name="fil" class="form-control" required="" accept="pdf">
+                                            <input type="file" name="fil" class="form-control" required="" accept="application/pdf">
                                             <input type="text" name="Emp_ID" value="<?php echo $emp_nominee[$i]->Emp_ID ?>" hidden>
+                                            <br>
                                             <button type="submit" class="btn btn-success">Upload This File</button>
                                         </div>
                                     </div>
