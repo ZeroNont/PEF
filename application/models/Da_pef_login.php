@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 include_once('pefs_model.php');
 
-class Da_ttp_login extends pefs_model 
+class Da_pef_login extends pefs_model 
 {//class Da_ttp_login
     
 

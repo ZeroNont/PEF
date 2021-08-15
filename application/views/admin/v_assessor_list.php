@@ -97,7 +97,7 @@ function get_ase_id() {
     <br>
         <div>
             <h1>Promote To <?php echo $obj_assessor->sec_level?></h1>
-            <button class="btn btn-success" data-toggle="modal" data-target="#Add" style = "margin-left : 87.3%"> 
+            <button class="btn btn-success" data-toggle="modal" data-target="#Add" style = "margin-left : 84%"> 
                 <i class="fa fa-plus-square-o" style="font-size:20px;"></i>&nbsp;Add Assessor
             </button>
         </div>

@@ -7,10 +7,10 @@
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-include_once("Da_ttp_login.php");
+include_once("Da_pef_login.php");
 
 
-class M_ttp_login extends Da_ttp_login 
+class M_pef_login extends Da_pef_login 
 {//class M_ttp_login
 
 	public function __construct()
@@ -29,7 +29,7 @@ class M_ttp_login extends Da_ttp_login
 	function check_login($User_login,$Pass_login)
 	{//check User_login and Pass_login in database
 		$sql="SELECT *
-			FROM ttps_database.user_login AS ulog 
+			FROM pefs_database.user_login AS ulog 
 			WHERE User_login='$User_login' 
 			AND Pass_login = '$Pass_login'
 			";
