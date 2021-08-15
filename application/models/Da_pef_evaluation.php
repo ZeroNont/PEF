@@ -17,4 +17,46 @@ class Da_pef_evaluation extends pefs_model
     {
         parent::construct();
     }
+
+    function insert_performance_form()
+    {
+        $sql = "INSERT INTO pefs_database.pef_performance_form(per_q_and_a, per_comment, per_date, per_emp_id, per_ase_id) 
+        VALUES (?,?,?,?,?)";
+
+        $this->db->query($sql, array($this->per_id, $this->per_q_and_a, $this->per_comment, $this->per_date, $this->per_emp_id, $this->per_ase_id));
+    }
+    
+    function insert_point()
+    {
+        $sql = "INSERT INTO pefs_database.pef_point_form(ptf_point, ptf_date, ptf_row, ptf_ase_id, ptf_for_id, ptf_emp_id, ptf_per_id)
+        VALUES (?,?,?,?,?,?,?,?)";
+
+        $this->db->query($sql, array($this->ptf_point, $this->pef_date, $this->pef_row, $this->ptf_ase_id, $this->ptf_for_id, $this->ptf_emp_id, $this->ptf_per_id));
+    }
+
+    function update_performance_form()
+    {
+        $sql = "UPDATE pefs_database.pef_performance_form
+        SET per_q_and_a = ?, 
+            per_comment = ?, 
+            per_date = ?,  
+            per_ase_id = ?
+        WHERE per_emp_id = ?";
+
+        $this->db->query($sql, array($this->per_id, $this->per_q_and_a, $this->per_comment, $this->per_date, $this->per_emp_id, $this->per_ase_id));
+    }
+
+    function update_point()
+    {
+        $sql = "UPDATE pefs_database.pef_performance_form
+        SET ptf_point = ?, 
+            ptf_date = ?, 
+            ptf_row = ?,  
+            per_ase_id = ?,
+            ptf_for_id = ?,
+            ptf_per_id = ?
+        WHERE ptf_emp_id = ?";
+
+        $this->db->query($sql, array($this->ptf_point, $this->pef_date, $this->pef_row, $this->ptf_ase_id, $this->ptf_for_id, $this->ptf_emp_id, $this->ptf_per_id));
+    }
 }

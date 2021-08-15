@@ -40,6 +40,10 @@
     .center_com  {
         padding: 70px;
     }
+    #set_id
+    {
+        width: 10px;
+    }
 </style>
 
 <!-- Evaluation form -->
@@ -60,6 +64,7 @@
                     <div class="col-sm-3"><h3>Date :</h3></div>
                 </div>      
             <div class="table-responsive">
+            <form action="<?php echo site_url() ?>Evaluation/Evaluation/insert_performance_form" method="post" enctype="multipart/form-data" name="evaluation">
                 <table class="table table-bordered table-sm">
                     <tr id="Manage">
                         <th colspan="5"><center><b>Performance Factor Evaluation <br> (Promote to Master, Master-Interpreting, Senior Specialist, Senior Specialist-Interpreting)</b>
@@ -100,9 +105,8 @@
                             <tr>
                                 <td align='center'>Awareness of the issue <br>
                                        ตระหนักในปัญหา</td>
-                                <td>
-                                    Is aware of the issues of the business in their area of responsibility; <br>
-                                    understands the environment or issues of their department.<br>
+                                <td id="set_id">
+                                    Is aware of the issues of the business in their area of responsibility;understands the environment or issues of their department.<br>
                                     ตระหนักในปัญหาของงานที่รับผิดชอบ เข้าใจสิ่งแวดล้อมหรือสภาพปัญหา <br>
                                     ของแผนกตนเอง
                                 </td>
@@ -110,7 +114,7 @@
                                 <td>
                                     <div class="form-group">
                                         <label for="sel1"></label>
-                                            <select class="form-control" id="sel1">
+                                            <select class="form-control" id="sel1" name="row">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -125,7 +129,7 @@
                                 <td align='center'>Analytical ability <br>
                                     ความสามารถเชิงวิเคราะห์
                                 </td>
-                                <td>
+                                <td id="set_id">
                                     Can logically analyze issues in order to solve them and extract the <br>
                                     problems appropriately based on the analysis.<br>
                                     สามารถวิเคราะห์ปัญหาได้อย่างมีเหตุผลเพื่อแก้ไขและขจัดปัญหาออกไป <br>
@@ -135,7 +139,7 @@
                                 <td>
                                     <div class="form-group">
                                         <label for="sel1"></label>
-                                            <select class="form-control" id="sel1">
+                                            <select class="form-control" id="sel1" name="row">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -150,7 +154,7 @@
                                 <td align='center'>Problem solving ability <br>
                                     ความสามารถในการแก้ปัญหา
                                 </td>
-                                <td>
+                                <td id="set_id">
                                     Figures out new solutions or mechanisms for solving the issues by <br>
                                     combining existing facts with information.<br>
                                     หาหนทางใหม่ๆ หรือกลวิธีในการแก้ไขปัญหาโดยการรวบรวมข้อเท็จจริงและข้อมูล
@@ -159,7 +163,7 @@
                                 <td>
                                     <div class="form-group">
                                         <label for="sel1"></label>
-                                            <select class="form-control" id="sel1">
+                                            <select class="form-control" id="sel1" name="row">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -176,7 +180,7 @@
                                     ความสามารถในการสร้าง <br>
                                     สัมพันธภาพอันดี
                                 </td>
-                                <td>
+                                <td id="set_id">
                                     Involves their supervisors, workplace, or related departments and gains<br>
                                     cooperation, obtaining necessary information from inside and outside<br>
                                     the company. <br>
@@ -187,7 +191,7 @@
                                 <td>
                                     <div class="form-group">
                                         <label for="sel1"></label>
-                                            <select class="form-control" id="sel1">
+                                            <select class="form-control" id="sel1" name="row">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -203,7 +207,7 @@
                                     เต็มที่ด้วยจิตวิญญาณและ <br>
                                     เป็นที่ไว้วางใจ
                                 </td>
-                                <td>
+                                <td id="set_id">
                                     Possesses the energy to execute tasks with a sense of responsibility <br>
                                     and is highly trusted by people around them.<br>
                                     มีพลังเต็มที่ในการทำงานพร้อมทั้งมีความรับผิดชอบและได้รับความไว้วางใจ <br>
@@ -213,7 +217,7 @@
                                 <td>
                                     <div class="form-group">
                                         <label for="sel1"></label>
-                                            <select class="form-control" id="sel1">
+                                            <select class="form-control" id="sel1" name="row">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -230,7 +234,7 @@
                                     ความรู้ความชำนาญ 
                                     และทักษะ <br>
                                 </td>
-                                <td>
+                                <td id="set_id">
                                     Possesses expert knowledge and skills required to execute the tasks <br>
                                     for which they are responsible. <br>
                                     มีความรู้ความเชี่ยวชาญและทักษะที่จำเป็นต่องานที่รับผิดชอบ
@@ -239,7 +243,7 @@
                                 <td>
                                     <div class="form-group">
                                         <label for="sel1"></label>
-                                            <select class="form-control" id="sel1">
+                                            <select class="form-control" id="sel1" name="row">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -256,7 +260,7 @@
                                     ความสามารถในการเป็นผู้นำ <br>
                                     และถ่ายทอดความรู้
                                 </td>
-                                <td>
+                                <td id="set_id">
                                     Has the ability to explain and impart knowledge and skills of the business <br>
                                     in their area of responsibility to their more colleagues and <br>
                                     enhance the total power of the Organization. <br>
@@ -267,7 +271,7 @@
                                 <td>
                                     <div class="form-group">
                                         <label for="sel1"></label>
-                                            <select class="form-control" id="sel1">
+                                            <select class="form-control" id="sel1" type="number" name="row">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -286,30 +290,28 @@
                             </tr>
                     </table>
                     <br>
-                    <form>
                         <!-- Comment -->
                         <div class="form-group">
                             <label for="comment"><b>Comment :</b></label>
-                            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment"></textarea>
                         </div>
                         <br>
                         <!-- Q/A -->
                         <div class="form-group">
                             <label for="QnA"><b>Q/A :</b></label>
-                            <textarea class="form-control" rows="5" id="QnA" name="text"></textarea>
+                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"></textarea>
                         </div>
                         <br>
-                    </form>
+                        </form>
                     <!-- Confirm -->
-                    <button type="submit" class="btn btn-success float-right" data-toggle="modal"
-                        data-target="#Modal_approve">Confirm</button>
+                    <button type="submit" class="btn btn-success float-right" data-toggle="modal" data-target="#Modal_confirm">Confirm</button>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Modal ยืนยันการประเมิน -->
-<div class="modal fade" id="Modal_approve" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div class="modal fade"  data-backdrop="static" id="Modal_confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header" id="img">
@@ -326,7 +328,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger btn-lg float-right" data-dismiss="modal">Cancel</button>
-                <!-- <a href=""> -->
 
                 <!-- Modal Confirm Evaluation -->
                 <button type="button" class="btn btn-success btn-lg float-right" id="btn_success" data-toggle="modal"
@@ -341,31 +342,35 @@
 <!-- End Modal Confirm Evaluation -->
 
 <!-- model success -->
-<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" data-backdrop="static" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-body" align="center">
+            <div class="modal-header" id="img">
                 <!-- icon -->
                 <img src=<?php echo base_url() ."argon/assets/img/brand/tick.png"?> width="150" height="150">
-                <br><br>
-                <h1> <b>Success</b> </h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="modal-footer">
-                <!-- <a href=""> -->
+                <div class="modal-body" align="center">
+                    <h1> <b>Success</b> </h1>
+                </div>
+                <div class="modal-footer">
+                    <!-- <a href=""> -->
                     <button type="button" class="btn btn-success btn-lg float-right">OK</button>
-                </a>
-            </div>
+                    <!-- </a> -->
+                </div>
         </div>
     </div>
 </div>
 <!-- end modal success -->
 
-<!-- Modal -->
+<!--ซ่อน Modal ยืนยันการประเมิน-->
 <script>
 $(document).ready(function() {
     $("#btn_success").click(function() {
-        $("#Modal_approve").hide()
+        $("#Modal_confirm").hide()
     });
 });
 </script>
