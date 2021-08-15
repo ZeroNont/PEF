@@ -126,7 +126,7 @@ div.a {
                                             <input type="file" name="fil" class="form-control" required="" accept="application/pdf">
                                             <input type="text" name="Emp_ID" value="<?php echo $emp_nominee[$i]->Emp_ID ?>" hidden>
                                             <br>
-                                            <button type="submit" class="btn btn-success">Upload This File</button>
+                                            <button type="submit" class="btn btn-success" onclick="show_message_success()">Upload This File</button>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@ div.a {
                                             <input type="file" name="fil" class="form-control" required="" accept="application/pdf">
                                             <input type="text" name="Emp_ID" value="<?php echo $emp_nominee[$i]->Emp_ID ?>" hidden>
                                             <br>
-                                            <button type="submit" class="btn btn-success">Upload This File</button>
+                                            <button type="submit" class="btn btn-success" onclick="show_message_success()">Upload This File</button>
                                         </div>
                                     </div>
                                 </div>
@@ -168,6 +168,12 @@ div.a {
 $(document).ready(function() {
     $('#Nominee_file_table').DataTable();
 });
+
+// notification upload file
+function show_message_success() {
+    alert("Upload File Success.");
+    return;
+}
 </script>
 <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
 <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

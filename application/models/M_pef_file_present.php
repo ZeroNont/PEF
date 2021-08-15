@@ -36,9 +36,18 @@ class M_pef_file_present extends Da_pef_file_present
 
     function get_all()
     { //call all nominee list 
-        $sql = "SELECT * FROM pefs_database.pef_file";
+        $sql = "SELECT * 
+        FROM pefs_database.pef_file";
         $query = $this->db->query($sql);
         return $query;
     } //end get_all_nominee
 
+    function get_by_id($id_nominee)
+    {
+        $sql = "SELECT * 
+        FROM pefs_database.pef_file
+        WHERE pef_file.fil_emp_id = $id_nominee";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }//end class M_pef_group 
