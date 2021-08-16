@@ -37,28 +37,18 @@
                         </thead>
                         <tbody id="data_table">
                             <tr>
-                                <!-- <td><?php echo $Form_data->HR_No; ?></td>
-                                <td><?php echo $Form_data->Company_name . ' ' . "(" .  $Form_data->Company_name_th . ")" ?></td>
-                                <td><?php echo $Form_data->Officer; ?></td>
-                                <td><?php echo $Form_data->Plant_No; ?></td>
-                                <td><?php echo $Form_data->Plant_name; ?></td>
-                                <td><?php echo $Form_data->Reason; ?></td>
-                                <td><?php echo date("d-m-Y", strtotime($Form_data->Requested_date)); ?></td>
-                                <td><?php echo date("d-m-Y", strtotime($Form_data->Approve_date)) ?></td>
-                                <td><?php echo date("d-m-Y", strtotime($Form_data->Start_date)) ?></td>
-                                <td><?php echo date("d-m-Y", strtotime($Form_data->End_date)) ?></td>
-                                <td><?php echo $Form_data->Empname_engTitle . ' ' . $Form_data->Empname_eng . ' ' . $Form_data->Empsurname_eng; ?></td>
-                                <?php
-                                if ($Form_data->Status == '4') {
-                                    $Status = 'ยังอยู่ในคลัง';
-                                } else if ($Form_data->Status > '4') {
-                                    $Status = 'สิ้นสุดการวาง';
-                                } else if ($Form_data->Status < '4') {
-                                    $Status = 'รอการอนุมัติ';
-                                }
-                                ?>
-                                <td><?php echo $Status; ?></td> -->
-
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><a href="<?php echo site_url() ?>Report/Report/show_report_detail_assessor? . (i+2)">
+                                        <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

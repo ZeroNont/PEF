@@ -30,7 +30,7 @@
                 <b>Section code : </b> <br><br>
             </div>
             <div class="col-xl-6 col-md-6">
-                <b>Promote to : </b><br><br>
+                <b>Promote to : </b> <br><br>
             </div>
             <div class="col-xl-6 col-md-6">
                 <b>Presentation Date : </b>

@@ -15,6 +15,12 @@
     <!-- <a href='#' id='download_link' onClick='javascript:ExcelReport();' class="btn btn-primary float-right"><i class="fa fa-download"></i> Export Excel</a> -->
 </h1>
 <br>
+จำนวนคนทั้งหมดที่ต้องประเมิน
+จำนวนผู้เข้ารับการประเมิน
+จำนวนคนที่ยังไม่ได้รับการประเมิน
+จำนวนผู้ที่ผ่านการประเมิน
+จำนวนคนที่ล้มเหลวในการประเมิน
+จำนวนคน (ประเมิน / รายปี)
 <div class="card-header" id="card_radius">
     <h1 style="text-align:center">
         Performance Evaluation Factor System
@@ -44,7 +50,7 @@
     </div>
 
 
-    <div class="row" id="count_requested">
+    <div class="row" id="count_assessed">
         <!-- <div class="col-xl-1"></div> -->
 
         <div class="col-xl-4 col-md-6">
@@ -54,12 +60,12 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Number of people all that must assess</h5>
-                            <span class="h2 font-weight-bold mb-0" id="total_request">
+                            <span class="h2 font-weight-bold mb-0" id="total_nominee">
 
                             </span>
                         </div>
                         <div class="col-auto">
-                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                            <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
                                 <i class="ni ni-single-copy-04"></i>
                             </div>
                         </div>
@@ -86,7 +92,7 @@
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
-                                <i class="ni ni-check-bold"></i>
+                                <i class="fas fa-user-alt"></i>
                             </div>
                         </div>
                     </div>
@@ -111,8 +117,8 @@
                             </span>
                         </div>
                         <div class="col-auto">
-                            <div class="icon icon-shape bg-gradient-yellow text-white rounded-circle shadow">
-                                <i class="ni ni-time-alarm"></i>
+                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <i class="fas fa-user-alt-slash"></i>
                             </div>
                         </div>
                     </div>
@@ -137,8 +143,8 @@
                             </span>
                         </div>
                         <div class="col-auto">
-                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                <i class="ni ni-single-copy-04"></i>
+                            <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                <i class="ni ni-check-bold"></i>
                             </div>
                         </div>
                     </div>
@@ -163,8 +169,8 @@
                             </span>
                         </div>
                         <div class="col-auto">
-                            <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
-                                <i class="ni ni-check-bold"></i>
+                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <i class="fas fa-times"></i>
                             </div>
                         </div>
                     </div>
@@ -190,7 +196,7 @@
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-yellow text-white rounded-circle shadow">
-                                <i class="ni ni-time-alarm"></i>
+                                <i class="fas fa-users"></i>
                             </div>
                         </div>
                     </div>
@@ -273,7 +279,7 @@
 
 <script>
     $(document).ready(function() {
-        // $("#count_requested").hide();
+        // $("#count_assessed").hide();
         // $("#count_graph").hide();
         // $("#count_table").hide();
         // $("#count_export").hide();
@@ -414,7 +420,7 @@
                     count = 0;
                 });
                 // forEach label
-                $("#count_requested").show();
+                $("#count_assessed").show();
                 $("#count_graph").show();
                 $("#count_table").show();
                 $("#count_export").show();
@@ -422,7 +428,7 @@
                 show_chart(label, data);
                 //show_label_select(label, Dep);
                 show_data_table(data_charts);
-                $('#total_request').text(approve + pending);
+                $('#total_nominee').text(approve + pending);
                 $('#total_approval').text(approve);
                 $('#pending_approval').text(pending);
 

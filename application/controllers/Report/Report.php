@@ -23,11 +23,9 @@ class Report extends MainController
 	*/
 	public function show_report()
 	{
-		// $this->load->model('M_ttp_report', 'ttp');
-		// $data['requested'] = $this->ttp->get_all_requested_form()->result();
-		// $this->output('consent/v_report', $data);
-		$this->output('consent/v_report');
-
+		$this->load->model('M_ttp_report', 'pef');
+		$data['nominee'] = $this->pef->get_all_nominee()->result();
+		$this->output('consent/v_report', $data);
 	}
 
 	/*
