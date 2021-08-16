@@ -5,13 +5,13 @@
     * @input    -
     * @output   -
     * @author   Chakrit
-    * @Create Date 2564-07-24
-    * @Update Date 2564-07-28
+    * @Create Date 2564-08-13
+    * @Update Date 2564-08-
     */ -->
 
 <h1>
     Report (รายงานข้อมูล)
-    <a href='<?php echo site_url() . 'Report/Report/show_report_export_excel'; ?>' class="btn btn-secondary btn-lg canter float-right" id="count_export"><i class="fa fa-download"></i> Export Excel</a>
+    <!-- <a href='<?php echo site_url() . 'Report/Report/show_report_export_excel'; ?>' class="btn btn-secondary btn-lg canter float-right" id="count_export"><i class="fa fa-download"></i> Export Excel</a> -->
     <!-- <a href='#' id='download_link' onClick='javascript:ExcelReport();' class="btn btn-primary float-right"><i class="fa fa-download"></i> Export Excel</a> -->
 </h1>
 <br>
@@ -47,7 +47,7 @@
     <div class="row" id="count_requested">
         <!-- <div class="col-xl-1"></div> -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
@@ -71,9 +71,9 @@
                 </div>
             </div>
         </div>
-        <!-- All Requests  -->
+        <!-- Number of people all that must assess  -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
@@ -97,9 +97,9 @@
                 </div>
             </div>
         </div>
-        <!-- Approved -->
+        <!-- Number of people assessed -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
@@ -123,9 +123,9 @@
                 </div>
             </div>
         </div>
-        <!-- Pending Approval  -->
+        <!-- The number of people who have not been assessed  -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
@@ -149,9 +149,9 @@
                 </div>
             </div>
         </div>
-        <!-- All Requests  -->
+        <!-- Number of people who passed the assessment  -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
@@ -175,9 +175,9 @@
                 </div>
             </div>
         </div>
-        <!-- Approved -->
+        <!-- Number of people who fail in the assessment -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
@@ -201,7 +201,7 @@
                 </div>
             </div>
         </div>
-        <!-- Pending Approval  -->
+        <!-- Number of people (assessed / yearly)  -->
     </div>
 
     <div class="row" id="count_graph">
@@ -222,6 +222,7 @@
             </div>
         </div>
     </div>
+    <!-- The graph shows the results of the assessment of each position -->
 
     <div class="row" id="count_table">
         <div class="col-xl-12">
@@ -252,9 +253,9 @@
                         </tbody>
                         <tfoot>
                             <td colspan="2" align="right">Total :</td>
-                            <td id='sum_total'>0</td>
-                            <td id='pass_total'>0</td>
-                            <td id='fail_total'>0</td>
+                            <td id='sum_total'></td>
+                            <td id='pass_total'></td>
+                            <td id='fail_total'></td>
                             <td></td>
 
                         </tfoot>
@@ -454,7 +455,7 @@
             data_row += '<td id="sum_' + i + '">0</td>';
             data_row += '<td id="pass_' + i + '">0</td>';
             data_row += '<td id="fail_' + i + '">0</td>';
-            data_row += '<td><a href="">'
+            data_row += '<td><a href="<?php echo site_url() ?>Report/Report/show_report_detail?' + (i+2) + '">'
             data_row += '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
             data_row += '<i class="fas fa-search"></i></button></a></td>'
             data_row += '</tr>';

@@ -1,14 +1,11 @@
 <!-- /*
-* v_report_detail
-* Display detail of requests for permission
-* @input    Form_ID
+* v_report_export_excel
+* Display detail of requests for permission to excel
+* @input    -
 * @output   -
 * @author   Chakrit
 * @Create Date 2564-08-16
-* @Update Date 2564-08-
 */ -->
-
-<a href='#' id='download_link' onClick='javascript:ExcelReport();' class="btn btn-secondary btn-lg canter float-right"><i class="fa fa-download"></i> Export Excel</a>
 
 <h1>
     &nbsp; Report Detail (รายละเอียดรายงานข้อมูล)
@@ -16,8 +13,39 @@
 <br>
 <div class="card-header">
     <h2>
-        Promote to T
+        List of assessed :
     </h2>
+
+    <hr class="my-4" color="gray">
+
+    <h3 style="text-align:left">
+        <div class="row">
+            <div class="col-xl-6 col-md-6">
+                <b>Current Position : </b> <br><br>
+            </div>
+            <div class="col-xl-6 col-md-6">
+                <b>Department : </b> <br><br>
+            </div>
+            <div class="col-xl-6 col-md-6">
+                <b>Section code : </b> <br><br>
+            </div>
+            <div class="col-xl-6 col-md-6">
+                <b>Promote to : </b><br><br>
+            </div>
+            <div class="col-xl-6 col-md-6">
+                <b>Presentation Date : </b>
+            </div>
+            <div class="col-xl-6 col-md-6">
+                <b>Company : </b>
+            </div>
+        </div>
+    </h3>
+
+    <hr class="my-4" color="gray">
+
+    <h3 style="text-align:left">
+        <b>Assessors : </b>
+    </h3>
     <br>
     <div class="row" id="count_table">
         <div class="col-xl-12">
@@ -28,11 +56,8 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Employee ID</th>
-                                <th scope="col">List of assessed </th>
-                                <th scope="col">Group ID</th>
-                                <th scope="col">Position</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Details</th>
+                                <th scope="col">Assessors Name</th>
+                                <th scope="col">Score</th>
                             </tr>
                         </thead>
                         <tbody id="data_table">
@@ -66,22 +91,16 @@
             </div>
         </div>
     </div>
-    <center><a href="<?php echo site_url() . 'Report/Report/show_report'; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
+    <br>
+
+    <h3 style="text-align:left">
+        <b>Totally score : </b><br><br>
+        <b>Get score : </b><br><br>
+        <b>Total score : </b><br><br>
+        <b>Judgement : </b>
+    </h3>
+
+    <br>
+    <center><a href="<?php echo site_url() . 'Report/Report/show_report_detail'; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
+
 </div>
-
-<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-<script src="https://unpkg.com/file-saver@1.3.3/FileSaver.js"></script>
-
-<script>
-    function ExcelReport() //function สำหรับสร้าง ไฟล์ excel จากตาราง
-    {
-        var sheet_name = "Report"; /* กำหหนดชื่อ sheet ให้กับ excel โดยต้องไม่เกิน 31 ตัวอักษร */
-        var elt = document.getElementById('myTable'); /*กำหนดสร้างไฟล์ excel จาก table element ที่มี id ชื่อว่า myTable*/
-
-        /*------สร้างไฟล์ excel------*/
-        var wb = XLSX.utils.table_to_book(elt, {
-            sheet: sheet_name
-        });
-        XLSX.writeFile(wb, 'SDM&SKD Temporary Tag Permission Report.xlsx'); //Download ไฟล์ excel จากตาราง html โดยใช้ชื่อว่า SDM&SKD Temporary Tag Permission Report.xlsx
-    }
-</script>
