@@ -54,7 +54,7 @@ function get_ase_id() {
         <div class="modal-content">
             <div class="modal-header ">
 
-            <!--   <h4 align='center' class="modal-title" id="exampleModalLabel">
+                <!--   <h4 align='center' class="modal-title" id="exampleModalLabel">
 
                     Add Detail
                 </h4> -->
@@ -69,8 +69,8 @@ function get_ase_id() {
                     enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="focusedinput" class="form-label">Enter ID Assessor</label>
-                        <input type="text" class="form-control" name="ase_id" id="ase_id_modal" placeholder="ID Assessor"
-                            onkeyup="get_ase_id()" required>
+                        <input type="text" class="form-control" name="ase_id" id="ase_id_modal"
+                            placeholder="ID Assessor" onkeyup="get_ase_id()" required>
                     </div>
                     <div class="mb-3">
                         <label for="focusedinput" class="form-label">Name</label>
@@ -85,66 +85,66 @@ function get_ase_id() {
     </div>
 </div>
 <h1>
-    Assessor Management 
+    Assessor Management
 </h1>
 
 <div class="card-header" id="card_radius">
-    
 
 
 
-<div>
-    <br>
+
+    <div>
+        <br>
         <div>
             <h1>Promote To <?php echo $obj_assessor->sec_level?></h1>
-            <button class="btn btn-success" data-toggle="modal" data-target="#Add" style = "margin-left : 84%"> 
+            <button class="btn btn-success" data-toggle="modal" data-target="#Add" style="margin-left : 84%">
                 <i class="fa fa-plus-square-o" style="font-size:20px;"></i>&nbsp;Add Assessor
             </button>
         </div>
         <br>
         <div>
-        <table class="table" id="example">
-            <thead class="thead-light">
-                <tr>
-                    <th>#</th>
-                    <th>ID Employee</th>
-                    <th>Assessor Name</th>
-                    <th>Position</th>
-                    <th>Department</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-        <tbody>
-                <?php for ($i = 0; $i < count($arr_assessor); $i++) { ?>
-                <tr>
-                    <td><?php echo $i+1 ?></td>
-                    <td><?php echo $arr_assessor[$i]->ase_emp_id ?></td>
-                    <td><?php echo $arr_assessor[$i]->ase_name_eng.' '.$arr_assessor[$i]->ase_surename_eng ?></td>
-                    <td><?php echo $arr_assessor[$i]->sec_name ?></td>
-                    <td><?php  ?></td>
-                    <td>
-                        <button class="btn btn-sm btn-danger">
-                            <i class="fa fa-pencil-square"></i>
-                        </button>
-                    </td>
-                </tr>
-                    <?php  } ?>   
-                
-            </tbody>
-        </table>
+            <table class="table" id="example">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>ID Employee</th>
+                        <th>Assessor Name</th>
+                        <th>Position</th>
+                        <th>Department</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php for ($i = 0; $i < count($arr_assessor); $i++) { ?>
+                    <tr>
+                        <td><?php echo $i+1 ?></td>
+                        <td><?php echo $arr_assessor[$i]->ase_emp_id ?></td>
+                        <td><?php echo $arr_assessor[$i]->ase_name_eng.' '.$arr_assessor[$i]->ase_surename_eng ?></td>
+                        <td><?php echo $arr_assessor[$i]->sec_name ?></td>
+                        <td><?php  ?></td>
+                        <td>
+                            <button class="btn btn-sm btn-danger">
+                                <i class="fa fa-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <?php  } ?>
+
+                </tbody>
+            </table>
         </div>
-    <div>
-</div> 
-    <script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-    </script>
-    <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
-    <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-    <!-- Argon JS -->
-    <script src="../../assets/js/argon.js?v=1.2.0"></script>
-    <script type="text/javascript">
+        <div>
+        </div>
+        <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+        </script>
+        <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
+        <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+        <!-- Argon JS -->
+        <script src="../../assets/js/argon.js?v=1.2.0"></script>
+        <script type="text/javascript">
