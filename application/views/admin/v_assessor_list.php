@@ -15,7 +15,7 @@ function get_ase_id() {
             if (data.length == 0) {
                 document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
             } else {
-                empname = data[0].ase_name_eng + " " + data[0].ase_surname_eng;
+                empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
                 document.getElementById("showname_modal").value = empname;
                 console.log(999)
                 console.log(empname)
@@ -65,7 +65,7 @@ function get_ase_id() {
             </div>
 
             <div class="modal-body">
-                <form action="<?php echo site_url() . 'Assessor_management/Assessor_input/insert'; ?>" method="post"
+                <form action="<?php echo site_url() . 'Assessor_management/Assessor_input/insert/'.$obj_assessor->sec_id.'/' ?>" method="post"
                     enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="focusedinput" class="form-label">Enter ID Assessor</label>
@@ -119,9 +119,9 @@ function get_ase_id() {
                 <tr>
                     <td><?php echo $i+1 ?></td>
                     <td><?php echo $arr_assessor[$i]->ase_emp_id ?></td>
-                    <td><?php echo $arr_assessor[$i]->ase_name_eng.' '.$arr_assessor[$i]->ase_surename_eng ?></td>
+                    <td><?php echo $arr_assessor[$i]->Empname_eng.' '.$arr_assessor[$i]->Empsurname_eng ?></td>
                     <td><?php echo $arr_assessor[$i]->sec_name ?></td>
-                    <td><?php  ?></td>
+                    <td><?php echo $arr_assessor[$i]->Department?></td>
                     <td>
                         <button class="btn btn-sm btn-danger">
                             <i class="fa fa-pencil-square"></i>

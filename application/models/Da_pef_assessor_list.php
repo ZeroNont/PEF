@@ -8,8 +8,13 @@ class Da_pef_assessor_list extends pefs_model
     }
     public function insert()
     {
-        $sql = "INSERT INTO pefs_database.pef_group_assessor(gro_ase_id) 
-                VALUES (?)";
-        $this->db->query($sql, array($this->gro_ase_id));
+        $sql = "INSERT INTO pefs_database.pef_assessor(ase_emp_id,position_level,ase_date) 
+                VALUES (?,?,?)";
+        $this->db->query($sql, array($this->ase_emp_id,$this->position_level,$this->ase_date));
+}
+public function delete()
+{
+    $sql = "DELETE FROM {$this->db_name}.ossd_book WHERE bk_id = ?";
+    $this->db->query($sql,array($this->bk_id));        
 }
 }
