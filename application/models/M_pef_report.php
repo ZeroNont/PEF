@@ -6,9 +6,9 @@
 * @Create Date 2564-08-16
 */ 
 
-include_once("Da_ttp_report.php");
+include_once("Da_pef_report.php");
 
-class M_ttp_report extends Da_ttp_report
+class M_pef_report extends Da_pef_report
 {
     
     /*

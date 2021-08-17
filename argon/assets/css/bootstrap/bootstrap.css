@@ -1646,7 +1646,7 @@ pre code {
 
 .table-bordered th,
 .table-bordered td {
-    border: 1px solid #dee2e6;
+    border: 1.5px solid #000000;
 }
 
 .table-bordered thead th,
@@ -1834,7 +1834,7 @@ pre code {
 .table-dark td,
 .table-dark thead th,
 .table-dark tbody+tbody {
-    border-color: #95999c;
+    border-color: #000000;
 }
 
 .table-hover .table-dark:hover {

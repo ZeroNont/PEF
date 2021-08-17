@@ -44,10 +44,9 @@ class Assessor_list extends MainController
     }
     function search_by_ase_id()
     {
-
         $Ase_id = $this->input->post('Ase_id');
         $this->load->model('M_pef_assessor_list', 'pef');
-        $data = $this->emp->get_assessor()->result();
+        $data = $this->pef->get_addassessor($Ase_id)->result();
         echo json_encode($data);
     }
 }
