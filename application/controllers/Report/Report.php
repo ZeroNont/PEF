@@ -23,7 +23,7 @@ class Report extends MainController
 	*/
 	public function show_report()
 	{
-		$this->load->model('M_ttp_report', 'pef');
+		$this->load->model('M_pef_report', 'pef');
 		$data['nominee'] = $this->pef->get_all_nominee()->result();
 		$this->output('consent/v_report', $data);
 	}
@@ -41,7 +41,7 @@ class Report extends MainController
 	{
 		$Start_date = $this->input->post('Start_date');
 		$End_date = $this->input->post('End_date');
-		$this->load->model('M_ttp_report', 'ttp');
+		$this->load->model('M_pef_report', 'ttp');
 		$data = $this->ttp->get_department_to_chart($Start_date, $End_date)->result();
 		echo json_encode($data);
 	}
