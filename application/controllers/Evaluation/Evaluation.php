@@ -65,24 +65,26 @@ class Evaluation extends MainController
     * @author   Pontakon Mujit
     * @Update Date 25/7/2564
 	*/
-    function show_evaluation_mts()
+    function show_evaluation_T6()
     {
         $id_ss = '00279';
-        $position="T4";
-        $data['arr_dis'] = $this->pef->get_all_dis_maneger($position)->result();
+        $position="T6";
         $this->load->model('M_pef_evaluation', 'pef');
+        $data['arr_dis'] = $this->pef->get_all_form_T6($position)->result();
         $data['ev_ass'] = $this->pef->get_assessor($id_ss)->result();
-        $this->output('consent/v_evaluation_mts');
-    }// function show_evaluation_mts
+        $data['pos_pos'] = $this->pef->get_position($position)->row();
+        $this->output('consent/v_evaluation_T6', $data);
+    }// function show_evaluation_T6
 
-    function show_evaluation_test()
+    function show_evaluation_T5()
     {
         $id_ss = '00279';
-        $position="T4";
+        $position="T5";
         $this->load->model('M_pef_evaluation', 'pef');
         // $data['ev_ass'] = $this->pef->get_assessor($id_ss)->result();
-        $data['arr_dis'] = $this->pef->get_all_dis_maneger($position)->result();
-        $this->output('consent/v_evaluation_test', $data);
-    }// function show_evaluation_mts
+        $data['arr_dis'] = $this->pef->get_all_form_T5($position)->result();
+        $data['pos_pos'] = $this->pef->get_position($position)->row();
+        $this->output('consent/v_evaluation_T5', $data);
+    }// function show_evaluation_T5
 
 }

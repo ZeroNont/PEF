@@ -103,7 +103,8 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @author   Pontakon
 	* @Update   Date 26/7/2564
 	*/
-    public function get_all_dis_maneger($position)
+
+    public function get_all_form_T6($position)
     {
         $sql = "SELECT *
         FROM  pefs_database.pef_format_form
@@ -116,4 +117,34 @@ class M_pef_evaluation extends Da_pef_evaluation
         return $query;
     }
    
+    public function get_all_form_T5($position)
+    {
+        $sql = "SELECT *
+        FROM  pefs_database.pef_format_form
+        INNER JOIN pefs_database.pef_description_form
+        ON pef_description_form.des_id=pef_format_form.for_des_id
+        INNER JOIN pefs_database.pef_item_form
+        ON pef_description_form.des_itm_id= pef_item_form.itm_id
+        WHERE pef_format_form.for_pos_level= '$position';";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    /*
+    * get_position
+    * คืนค่าตารางตำแหน่งที่มีตำแหน่งตรงกัน
+    * @input     ตำแหน่ง
+    * @output     ตารางตำแหน่ง
+    * @author     Pontakon
+    * @Create   Date 17/8/2564
+    */
+    public function get_position($position)
+    {
+        $sql = "SELECT *
+        FROM  pefs_database.pef_section
+        WHERE pef_section.sec_level = '$position'";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }
