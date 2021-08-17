@@ -16,180 +16,104 @@ class M_pef_evaluation extends Da_pef_evaluation
     }
     /*
 	* get_all
-	* คืนค่าใบคำขอทั้งหมด
+	* 
 	* @input 	-
-	* @output 	ข้อมูลตารางใบคำขอ
+	* @output 	
 	* @author 	Phatchara  
 	* @Create   Date 18/7/2564   
 	* @author   Pontakon
 	* @Update   Date 26/7/2564
 	*/
-    public function get_all()
+    public function get_nominee($id)
     {
-        $sql = "SELECT * FROM pefs_database.pef_assessor AS ass
-                INNER JOIN pefs_database.pef_performance_form AS perform
-                ON ass.ase_id = ";
+        $sql = "SELECT employee.Emp_ID,employee.Empname_eng,employee.Empsurname_eng,position.Pos_shortName,sectioncode.Department 
+        FROM dbmc.employee 
+        INNER JOIN pefs_database.pef_group_nominee AS nominee 
+        ON nominee.grn_emp_id = employee.Emp_ID 
+        INNER JOIN dbmc.position 
+        ON position.Position_ID = employee.Position_ID 
+        INNER JOIN dbmc.sectioncode 
+        ON sectioncode.Sectioncode = employee.Sectioncode_ID 
+        WHERE Emp_ID = nominee.grn_emp_id AND nominee.grn_grp_id = $id";
 
         $query = $this->db->query($sql);
         return $query;
-    }
-    
+    }//คืนค่า Nominee
+
+    /*
+	* get_all
+	* 
+	* @input 	-
+	* @output 	
+	* @author 	Phatchara  
+	* @Create   Date 18/7/2564   
+	* @author   Pontakon
+	* @Update   Date 26/7/2564
+	*/
+    public function get_assessor($id_ss)
+    {
+        $sql = "SELECT *
+                FROM pefs_database.pef_assessor AS ass
+                INNER JOIN pefs_database.pef_group_assessor AS groupass
+                ON ass.ase_id = groupass.gro_ase_id
+                INNER JOIN pefs_database.pef_group AS gr
+                ON gr.grp_id = groupass.gro_grp_id
+                INNER JOIN pefs_database.pef_group_nominee AS groupno
+                ON gr.grp_id = groupno.grn_grp_id
+                INNER JOIN dbmc.employee
+                ON groupno.grn_emp_id = employee.Emp_ID 
+                INNER JOIN dbmc.position 
+                ON position.Position_ID = employee.Position_ID 
+                INNER JOIN dbmc.sectioncode 
+                ON sectioncode.Sectioncode = employee.Sectioncode_ID 
+                WHERE ass.ase_emp_id = $id_ss";
+                
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่ากลุ่ม Assessor
+
+    public function get_group($id){
+        $sql = "SELECT * FROM pefs_database.pef_group AS gr
+                INNER JOIN pefs_database.pef_group_assessor AS groupass
+                ON gr.grp_id = groupass.gro_grp_id
+                WHERE gr.grp_id = $id";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่ากลุ่มประเมิน
+
+    function get_group_nominee($id)
+    {
+        $sql = "SELECT *
+                FROM pefs_database.pef_group_nominee AS groupno
+                INNER JOIN pefs_database.pef_group AS gr
+                WHERE groupno.grn_grp_id = $id";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่ากลุ่ม Nominee
+
     /*
 	* get_by_id
-	* คืนค่าใบคำขอที่ตรงกับ $id(เลขใบคำขอ)
-	* @input 	เลขใบคำขอ
+	* คืนค่าใบคำขอที่ตรงกับ $id(เลขพนักงาน)
+	* @input 	เลขพนักงาน
 	* @output 	ข้อมูลตารางใบคำขอ
 	* @author 	Phatchara  
 	* @Create   Date 18/7/2564   
 	* @author   Pontakon
 	* @Update   Date 26/7/2564
 	*/
-
-    public function get_employee($id)
+    public function get_all_dis_maneger($position)
     {
         $sql = "SELECT *
-        FROM dbmc.employee
-        WHERE $id = employee.Emp_ID";
-
+        FROM  pefs_database.pef_format_form
+        INNER JOIN pefs_database.pef_description_form
+        ON pef_description_form.des_id=pef_format_form.for_des_id
+        INNER JOIN pefs_database.pef_item_form
+        ON pef_description_form.des_itm_id= pef_item_form.itm_id
+        WHERE pef_format_form.for_pos_level= '$position';";
         $query = $this->db->query($sql);
         return $query;
     }
-
-/*
-	* get_by_id
-	* คืนค่าใบคำขอที่ตรงกับ $id(เลขพนักงาน)
-	* @input 	เลขพนักงาน
-	* @output 	ข้อมูลตารางใบคำขอ
-	* @author 	Phatchara  
-	* @Create   Date 18/7/2564   
-	* @author   Pontakon
-	* @Update   Date 26/7/2564
-	*/
-    public function get_by_id($id)
-    {
-            $sql = "SELECT *
-                    FROM ttps_database.requested_form AS requested
-                    WHERE requested.req_form_ID = $id";
-            $query = $this->db->query($sql);
-            return $query;
-
-    }
-/*
-	* get_history_em
-	* คืนค่าใบคำขอที่ตรงกับ $id(เลขพนักงาน)
-	* @input 	เลขพนักงาน
-	* @output 	ข้อมูลตารางใบคำขอ
-	* @author 	Phatchara  
-	* @Create   Date 18/7/2564   
-	* @author   Pontakon
-	* @Update   Date 26/7/2564
-	*/
-    public function get_history_em($id)
-    {
-            $sql = "SELECT * 
-                    FROM ttps_database.requested_form AS requested
-                    WHERE requested.req_emp_id = $id";
-            $query = $this->db->query($sql);
-            return $query;
-    }
-/*
-	* get_history_approve
-	* คืนค่าใบคำขอที่ตรงกับ $id(เลขพนักงาน)
-	* @input 	เลขพนักงาน
-	* @output 	ข้อมูลตารางใบคำขอ
-	* @author 	Phatchara  
-	* @Create   Date 18/7/2564   
-	* @author   Pontakon
-	* @Update   Date 26/7/2564
-	*/
-    function get_history_approve($id)
-    {
-        $sql = "SELECT *
-                FROM ttps_database.approval AS app
-                INNER JOIN dbmc.employee AS emp
-                ON  app.app_supervisor_id = emp.Emp_ID
-                WHERE app.app_form_ID = $id";
-        $query = $this->db->query($sql);
-        return $query;
-    }
-/*
-	* get_history_approve_hr
-	* คืนค่าใบคำขอที่ตรงกับ $id(เลขพนักงาน)
-	* @input 	เลขพนักงาน
-	* @output 	ข้อมูลตารางใบคำขอ
-	* @author 	Phatchara  
-	* @Create   Date 18/7/2564   
-	* @author   Pontakon
-	* @Update   Date 26/7/2564
-	*/
-    function get_history_approve_hr($id)
-    {
-        $sql = "SELECT *
-                FROM ttps_database.approval AS app
-                INNER JOIN dbmc.employee AS emp
-                ON  app.app_hr_ID = emp.Emp_ID
-                WHERE app.app_form_ID = $id";
-        $query = $this->db->query($sql);
-        return $query;
-    }
-/*
-	* get_history_approve_plant
-	* คืนค่าใบคำขอที่ตรงกับ $id(เลขพนักงาน)
-	* @input 	เลขพนักงาน
-	* @output 	ข้อมูลตารางใบคำขอ
-	* @author 	Phatchara  
-	* @Create   Date 18/7/2564   
-	* @author   Pontakon
-	* @Update   Date 26/7/2564
-	*/
-    function get_history_approve_plant($id)
-    {
-        $sql = "SELECT *
-                FROM ttps_database.approval AS app
-                INNER JOIN dbmc.employee AS emp
-                ON  app.app_approve_plant_ID = emp.Emp_ID
-                WHERE app.app_form_ID = $id";
-        $query = $this->db->query($sql);
-        return $query;
-    }
-/*
-	* get_form_list
-	* คืนค่าใบคำขอ
-	* @input 	-
-	* @output 	ข้อมูลตารางใบคำขอ
-	* @author 	Phatchara  
-	* @Create   Date 18/7/2564   
-	* @author   Pontakon
-	* @Update   Date 26/7/2564
-	*/
-    public function get_form_list()
-    {
-        $sql = "SELECT * 
-        FROM ttps_database.requested_form AS req
-        INNER JOIN dbmc.employee AS emp
-        ON  req.req_emp_id = emp.Emp_ID 
-        INNER JOIN ttps_database.approval 
-        ON  req.req_form_id = approval.app_form_id ";
-        $query = $this->db->query($sql);
-        return $query;
-    }
-/*
-	* get_form_file
-	* คืนค่าตาราง ไฟล์
-	* @input 	เลขใบคำขอ
-	* @output 	ข้อมูลตาราง ไฟล์
-	* @author 	Phatchara  
-	* @Create   Date 18/7/2564   
-	* @author   Pontakon
-	* @Update   Date 26/7/2564
-	*/
-    public function get_form_file($id)
-    {
-        $sql = "SELECT * 
-                FROM ttps_database.form_file
-                where $id = form_file.fil_form_id ";
-        $query = $this->db->query($sql);
-        return $query;
-    }
-
+   
 }

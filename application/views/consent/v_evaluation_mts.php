@@ -1,14 +1,13 @@
 <!--
-    v_check_schedule
-    display for schedule
+    v_evaluation_mts
+    display for Evaluation Form Promote to Master, Master-Interpreting, Senior Specialist, Senior Specialist-Interpreting
     @author Phatchara and Pontakon
-    Create date 22/7/2564   
-    Update date 25/7/2564
-    Update date 26/7/2564
-    Update date 27/7/2564
-    Update date 28/7/2564
-    Update date 29/7/2564
-    Update date 30/7/2564
+    Create date 2564-08-14   
+    Update date 2564-08-15
+    Update date 2564-08-16
+    Update date 2564-08-17
+    Update date 2564-08-18
+    Update date 2564-08-19
 -->
 <!-- CSS -->
 <style>
@@ -44,6 +43,16 @@
     {
         width: 10px;
     }
+    .table-bor th
+    .table-bor td 
+    {
+        border: 1.5px solid #000000;
+    }
+    #set_button
+    {
+        /* margin-left: 830px; */
+        font-size: 16px;
+    }
 </style>
 
 <!-- Evaluation form -->
@@ -62,10 +71,16 @@
                 <div class="row">
                     <div class="col-sm-6"><h3>Assessor Name :</h3></div>
                     <div class="col-sm-3"><h3>Date :</h3></div>
-                </div>      
+                    <div class="col-sm-3">
+                        <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
+                            <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
+                        </button>
+                    </div>
+                </div>         
+                <br>
             <div class="table-responsive">
-            <form action="<?php echo site_url() ?>Evaluation/Evaluation/insert_performance_form" method="post" enctype="multipart/form-data" name="evaluation">
-                <table class="table table-bordered table-sm">
+            <form action="<?php echo site_url() ?>Evaluation/Evaluation_input/insert_performance_form" method="post" enctype="multipart/form-data" name="evaluation">
+                <table class="table table-bor table-sm">
                     <tr id="Manage">
                         <th colspan="5"><center><b>Performance Factor Evaluation <br> (Promote to Master, Master-Interpreting, Senior Specialist, Senior Specialist-Interpreting)</b>
                         </center></th>
@@ -73,6 +88,7 @@
                         <tbody>
                         <tr id="Manage">
                             <th width="40px">Name - Surname</th>
+                            
                             <td colspan="2"></td>
                             <th width="40px">Position</th>
                             <td></td>
@@ -103,10 +119,10 @@
                                 <td>(AxB)</td>
                             </tr>
                             <tr>
-                                <td align='center'>Awareness of the issue <br>
-                                       ตระหนักในปัญหา</td>
+                                <td align='center'>
                                 <td id="set_id">
-                                    Is aware of the issues of the business in their area of responsibility;understands the environment or issues of their department.<br>
+                                    Is aware of the issues of the business in their area of responsibility;<br>
+                                    understands the environment or issues of their department.<br>
                                     ตระหนักในปัญหาของงานที่รับผิดชอบ เข้าใจสิ่งแวดล้อมหรือสภาพปัญหา <br>
                                     ของแผนกตนเอง
                                 </td>
@@ -357,9 +373,9 @@
                     <h1> <b>Success</b> </h1>
                 </div>
                 <div class="modal-footer">
-                    <!-- <a href=""> -->
-                    <button type="button" class="btn btn-success btn-lg float-right">OK</button>
-                    <!-- </a> -->
+                    <a href="<?php echo site_url() . 'Evaluation/Evaluation_input/update_approve_form_plant/'. $arr_req->req_form_id ; ?>">
+                        <button type="button" class="btn btn-success btn-lg float-right">OK</button>
+                    </a>
                 </div>
         </div>
     </div>

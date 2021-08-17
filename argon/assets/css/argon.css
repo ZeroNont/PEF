@@ -1694,7 +1694,7 @@ pre code {
 }
 
 .table tbody+tbody {
-    border-top: 2px solid #e9ecef;
+    border-top: 2px solid #000000;
 }
 
 .table-sm th,
@@ -1703,12 +1703,12 @@ pre code {
 }
 
 .table-bordered {
-    border: 1px solid #e9ecef;
+    border: 1.5px solid #000000;
 }
 
 .table-bordered th,
 .table-bordered td {
-    border: 1px solid #e9ecef;
+    border: 1.5px solid #000000;
 }
 
 .table-bordered thead th,
@@ -2024,8 +2024,8 @@ pre code {
 }
 
 .table-dark {
-    color: #f8f9fe;
-    background-color: #172b4d;
+    color: #000000;
+    background-color: #ffffff;
 }
 
 .table-dark th,
@@ -19438,20 +19438,16 @@ textarea[resize='horizontal'] {
     border-bottom: 1px solid #e9ecef;
 }
 
-.table th {
+.table th,
+.table td {
     font-weight: 600;
+    font-size: .8125rem;
 }
 
 .table td .progress {
     width: 120px;
     height: 3px;
     margin: 0;
-}
-
-.table td,
-.table th {
-    font-size: .8125rem;
-    white-space: nowrap;
 }
 
 .table.align-items-center td,
