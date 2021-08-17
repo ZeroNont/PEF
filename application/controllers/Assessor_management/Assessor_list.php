@@ -49,4 +49,11 @@ class Assessor_list extends MainController
         $data = $this->pef->get_addassessor($Ase_id)->result();
         echo json_encode($data);
     }
+    public function delete_assessor($emp_id,$sec_id)
+	{
+        $this->load->model('Da_pef_assessor_list', 'pef');
+        $this->pef->ase_emp_id = $emp_id;
+        $this->pef->delete();
+        redirect('Assessor_management/Assessor_list/show_assessor/'.$sec_id);
+    }
 }
