@@ -40,10 +40,19 @@ class Evaluation extends MainController
     * @author   Pontakon Mujit
     * @Update Date 25/7/2564
 	*/
+    public function __construct(){
+        parent::__construct();
+    }
+
     function show_evaluation()
     {
-        
-        $this->output('consent/v_evaluation');
+        $id_ss = '00279';
+        $this->load->model('M_pef_evaluation', 'pef');
+        $data['ev_ass'] = $this->pef->get_assessor($id_ss)->result(); //คืนค่าชื่อกรรมการ ชื่อกลุ่ม วันที่ประเมิน จำนวนNominee ชื่อ Nominee ตำแหน่ง แผนก Promote to
+        // $data['ev_group'] = $this->pef->get_group($id)->result(); //คืนค่าชื่อกลุ่ม วันที่ประเมิน
+        // $data['ev_groupno'] = $this->pef->get_group_nominee($id)->result();//คืนค่าชื่อกลุ่ม วันที่ประเมิน
+        // $data['emp'] = $this->pef->get_nominee($id = 1)->result();//คืนค่าชื่อ Nominee ชื่อกลุ่ม ตำแหน่ง แผนก
+        $this->output('consent/v_evaluation', $data);
     }// function show_evaluation
 
     /*
@@ -58,26 +67,22 @@ class Evaluation extends MainController
 	*/
     function show_evaluation_mts()
     {
-        
+        $id_ss = '00279';
+        $position="T4";
+        $data['arr_dis'] = $this->pef->get_all_dis_maneger($position)->result();
+        $this->load->model('M_pef_evaluation', 'pef');
+        $data['ev_ass'] = $this->pef->get_assessor($id_ss)->result();
         $this->output('consent/v_evaluation_mts');
     }// function show_evaluation_mts
 
-    function insert_performance_form()
+    function show_evaluation_test()
     {
-        $date = date("Y-m-d");
-        $id = $_SESSION['UsEmp_ID'];
-        $this->load->model('Da_pef_evaluation', 'per');
-        $this->per->per_q_and_a = $this->input->post('QnA');
-        $this->per->per_comment = $this->input->post('comment');
-        $this->per->per_date = $date;
-        $this->per->per_emp_id = $id;
-        // $this->per->per_ase_id = $this->input->post('Officer');
-        $this->point->ptf_point = $this->input->post('point');
-        $this->point->pef_row = $this->input->post('row');
-        $this->point->ptf_for_id = 1;
-        $this->ttp->insert_performance_form();
-
-        redirect('Evaluation/Evaluation/show_evaluation');
-    }
+        $id_ss = '00279';
+        $position="T4";
+        $this->load->model('M_pef_evaluation', 'pef');
+        // $data['ev_ass'] = $this->pef->get_assessor($id_ss)->result();
+        $data['arr_dis'] = $this->pef->get_all_dis_maneger($position)->result();
+        $this->output('consent/v_evaluation_test', $data);
+    }// function show_evaluation_mts
 
 }

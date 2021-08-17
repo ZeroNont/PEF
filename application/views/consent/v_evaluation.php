@@ -1,13 +1,11 @@
 <!--
-    v_history_user
-    display history list
+    v_evaluation
+    display Evaluation list
     @author Phatchara and Pontakon
-    Create date 22/7/2564   
-    Update date 25/7/2564
-    Update date 26/7/2564
-    Update date 27/7/2564
-    Update date 28/7/2564
-    Update date 30/7/2564
+    Create date 2564-08-15   
+    Update date 2564-08-16
+    Update date 2564-08-17
+    Update date 2564-08-18
 -->
 
 <!-- CSS -->
@@ -41,7 +39,8 @@
 }
 </style>
 <h1>Evaluation</h1>
-<!-- Table Requestd form -->
+<!-- Table Evaluation List-->
+<!-- ตารางแสดงรายชื่อผู้ที่ถูกประเมิน -->
 <div class="card-header" id="card_radius">
     <div class="table-responsive">
         <table class="table align-items-center" id="history_table">
@@ -49,7 +48,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Employee ID</th>
-                    <th scope="col">List of Assessor</th>
+                    <th scope="col">List of Nominee</th>
                     <th scope="col">Group</th>
                     <th scope="col">Date</th>
                     <th scope="col">Position</th>
@@ -57,7 +56,54 @@
                 </tr>
             </thead>
             <tbody class="list">
-               
+                <?php for ($i = 0; $i < count($ev_ass); $i++) { ?>
+                    <tr>
+                        <!-- column แสดง ลำดับ -->
+                        <td>
+                            <?php echo $i + 1 ?>
+                        </td>
+                        <!-- column แสดง รหัสผู้ที่ถูกประเมิน หรือ Nominee -->
+                        <td>
+                            <?php echo $ev_ass[$i]->Emp_ID ?>
+                        </td>
+                        <!-- column แสดง ลำดับ ชื่อ-นามสกุล ผู้ที่ถูกประเมิน หรือ Nominee-->
+                        <td>
+                            <?php echo $ev_ass[$i]->Empname_eng . ' ' . $ev_ass[$i]->Empsurname_eng?>
+                        </td>
+                        <!-- column แสดงชื่อกลุ่มผู้ที่ถูกประเมิน หรือ Nominee -->
+                        <td>
+                            <?php echo $ev_ass[$i]->grp_name ?>
+                        </td>
+                        <!-- column แสดงวันที่ต้องทำการประเมิน -->
+                        <td>
+                            <?php $newDate = date("d/m/Y", strtotime($ev_ass[$i]->grp_date)); ?>
+                            <?php echo $newDate ?>
+                        </td>
+                        <!-- column แสดงตำแหน่งที่จะ promote -->
+                        <td>
+                            <?php echo $ev_ass[$i]->grn_promote_to ?>
+                        </td>
+                            <!-- column ดำเนินการ -->
+                        <td style='text-align: center;'>
+                            <!-- ปุ่มดำเนินการ -->
+                            <?php if($ev_ass[$i]->grn_promote_to == "T5" || $ev_ass[$i]->grn_promote_to == "T6"){ ?>
+                                <a 
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_mts/'.$ev_ass->ase_id; ?>" >
+                                    <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                        <i class="fas fa-edit text-white"></i>
+                                    </button>
+                                </a>
+                            <?php } else{ ?>
+                                    <a 
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_test/'; ?>" >
+                                    <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                        <i class="fas fa-edit text-white"></i>
+                                    </button>
+                                </a>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>
