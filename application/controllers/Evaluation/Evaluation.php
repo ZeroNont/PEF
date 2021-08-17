@@ -1,11 +1,12 @@
 <!--
-    Check_schedule
-    Controller for check schedule module
+    Evaluation
+    Controller for Evaluation module
     @input -
     @output -
     @author Phatchara and Pontakon 
-    Create date 18/7/2564 
-    Update date 25/7/2564
+    Create date 2564-08-14
+    Update date 2564-08-15
+    Update date 2564-08-17
 -->
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -46,7 +47,7 @@ class Evaluation extends MainController
 
     function show_evaluation()
     {
-        $id_ss = '00279';
+        $id_ss = '00066';
         $this->load->model('M_pef_evaluation', 'pef');
         $data['ev_ass'] = $this->pef->get_assessor($id_ss)->result(); //คืนค่าชื่อกรรมการ ชื่อกลุ่ม วันที่ประเมิน จำนวนNominee ชื่อ Nominee ตำแหน่ง แผนก Promote to
         // $data['ev_group'] = $this->pef->get_group($id)->result(); //คืนค่าชื่อกลุ่ม วันที่ประเมิน
@@ -56,18 +57,19 @@ class Evaluation extends MainController
     }// function show_evaluation
 
     /*
-	* show_evaluation_mts
-	* แสดงหน้าจอ v_evaluation_mts
+	* show_evaluation_T6
+	* แสดงหน้าจอ Evaluation Form Promote to AM,Senior Staff,Supervisor
 	* @input  -
 	* @output   
-	* @author 	Phatchara Khongthandee   
-	* @Create Date 13/08/2564 
-    * @author   Pontakon Mujit
-    * @Update Date 25/7/2564
+	* @author 	Phatchara Khongthandee and Pontakon Mujit
+	* @Create Date 2564-08-14
+    * @Update Date 2564-08-15
+    * @Update Date 2564-08-16
+    * @Update Date 2564-08-17
 	*/
     function show_evaluation_T6()
     {
-        $id_ss = '00279';
+        $id_ss = '00066';
         $position="T6";
         $this->load->model('M_pef_evaluation', 'pef');
         $data['arr_dis'] = $this->pef->get_all_form_T6($position)->result();
@@ -76,12 +78,25 @@ class Evaluation extends MainController
         $this->output('consent/v_evaluation_T6', $data);
     }// function show_evaluation_T6
 
-    function show_evaluation_T5()
+    /*
+	* show_evaluation_T5
+	* แสดงหน้าจอ Evaluation Form Promote to AM,Senior Staff,Supervisor
+	* @input  -
+	* @output   
+	* @author 	Phatchara Khongthandee and Pontakon Mujit
+	* @Create Date 2564-08-14
+    * @Update Date 2564-08-15
+    * @Update Date 2564-08-16
+    * @Update Date 2564-08-17
+	*/
+    function show_evaluation_T5($id, $emp_id)
     {
-        $id_ss = '00279';
-        $position="T5";
+        $position = "T5";
         $this->load->model('M_pef_evaluation', 'pef');
-        // $data['ev_ass'] = $this->pef->get_assessor($id_ss)->result();
+        $data['ev_ass'] = $this->pef->get_group_assessor($id)->result();
+        $data['ev_gno'] = $this->pef->get_group_nominee($emp_id)->result();
+        $data['ev_no'] = $this->pef->get_nomonee($emp_id)->result();
+        $data['ev_file'] = $this->get_file_presant_nomonee()->result();
         $data['arr_dis'] = $this->pef->get_all_form_T5($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
         $this->output('consent/v_evaluation_T5', $data);
