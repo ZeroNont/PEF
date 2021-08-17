@@ -10,7 +10,7 @@
 include_once("pefs_model.php");
 
 
-class Da_ttp_report extends pefs_model
+class Da_pef_report extends pefs_model
 {
 
     function construct()

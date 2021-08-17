@@ -8,7 +8,7 @@
 
 include_once("Da_ttp_report.php");
 
-class M_ttp_report extends Da_ttp_report
+class M_pef_report extends Da_ttp_report
 {
     
     /*
