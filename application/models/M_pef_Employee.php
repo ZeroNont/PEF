@@ -100,10 +100,13 @@ class M_pef_Employee extends Da_pef_Employee
     public function get_position()
     {
         $sql =
-            "SELECT *
-        FROM dbmc.position WHERE Position_Level=?
+        "SELECT *
+        FROM pefs_database.pef_section AS sec 
+        INNER JOIN dbmc.position AS pos
+        ON pos.Position_Level=sec.sec_level
+        WHERE sec.sec_id=?
        ";
-        $query = $this->db->query($sql, array($this->Position_Level));
+        $query = $this->db->query($sql, array($this->sec_id));
         return $query;
     }
 }//end class M_pef_group 

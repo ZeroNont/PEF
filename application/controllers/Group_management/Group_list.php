@@ -45,5 +45,18 @@ class Group_list extends MainController
         $data['obj_group'] = $this->pef->get_group()->result();
         $this->output('consent/v_group_list', $data);
     }
+    function delete_group($id)
+    {
+        $this->load->model('Da_pef_group', 'pefd');
+        $this->pefd->grn_grp_id = $id;
+        $this->pefd->grp_id = $id;
+        $this->pefd->gro_grp_id = $id;
+        $this->pefd->delete_group();
+        $this->pefd->delete_group_assessor();
+        $this->pefd->delete_group_nominee();
+        $this->load->model('M_pef_group', 'pef');
+        $data['obj_group'] = $this->pef->get_group()->result();
+        $this->output('consent/v_group_list', $data);
+    }
 }
 // 

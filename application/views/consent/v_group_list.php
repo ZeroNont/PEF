@@ -59,7 +59,7 @@ function getEmp_edit(i) {
 }
 </script>
 <h1>
-    Group Management (การจัดการข้อมูลกลุ่ม)<a href="../../Group_insert/index">
+    Group Management (การจัดการข้อมูลกลุ่ม)<a href="<?php echo site_url() . 'Group_management/Group_insert/index' ?>">
         <button class="btn btn-primary float-right" value="Add group"> Add group</button></a>
 </h1>
 <div id="Add" class="modal fade" role="dialog">
@@ -112,7 +112,7 @@ function getEmp_edit(i) {
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
-                    <th>Group name</th>
+                    <th>Group ID</th>
                     <th>Position</th>
                     <th>Date</th>
                     <th>Action</th>
@@ -125,7 +125,7 @@ function getEmp_edit(i) {
                         <?php echo $i + 1 ?>
                     </td>
                     <td>
-                        <?php echo $obj_group[$i]->grp_name ?>
+                        <?php echo $obj_group[$i]->grp_id ?>
                     </td>
                     <td>
                         <?php echo $obj_group[$i]->grp_position_group ?>
@@ -134,20 +134,21 @@ function getEmp_edit(i) {
                         <?php echo $obj_group[$i]->grp_date ?>
                     </td>
                     <td>
+                        <a
+                            href="<?php echo site_url() . 'Group_management/Group_edit/index/' . $obj_group[$i]->grp_id; ?>">
+                            <button class="btn btn-warning">Edit</button>
+                        </a>
+                        <a
+                            href="<?php echo site_url() . 'Group_management/Group_list/delete_group/' . $obj_group[$i]->grp_id; ?>">
+                            <button class="btn btn-danger">Delete</button>
+                        </a>
 
-
-                        <button class="btn btn-warning" data-toggle="modal"
-                            data-target="#exampleModal<?php echo $i; ?>"><i class="material-icons">Edit</i></button>
-                        <!-- Modal -->
-
-
-
+                    </td>
+                </tr>
+                <?php  } ?>
+            </tbody>
+        </table>
     </div>
-    </td>
-    </tr>
-    <?php  } ?>
-    </tbody>
-    </table>
     <div>
     </div>
 </div>

@@ -33,7 +33,7 @@
                                         <option value="0">--------------------------------------------Please
                                             select--------------------------------</option>
                                         <?php for ($i = 0; $i < count($obj_sec); $i++) { ?>
-                                        <option value="<?php echo $obj_sec[$i]->sec_level ?>">
+                                        <option value="<?php echo $obj_sec[$i]->sec_id ?>">
                                             <?php echo $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name;
                                         }
                                             ?>
@@ -45,8 +45,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="form-control-label" for="input-email">Date</label>
-                                    <input type="date" id="date" class="form-control" min="<?php echo date('Y-m-d'); ?>"
+                                    <label class="form-control-label">Date</label>
+                                    <input type="date" id="date" class="form-control" min="<?php echo date('Y-m-d') ?>"
                                         required>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                                     <th>#</th>
                                     <th>Employee ID</th>
                                     <th>Name</th>
-                                    <th>Position</th>
+                                    <!-- <th>Position</th> -->
                                     <th>Departmant</th>
                                     <th>Promote to Action</th>
                                     <th>Action</th>
@@ -191,20 +191,42 @@ var count = 0;
 var count_nominee = 0;
 var id = "Emp_id";
 var num = 1;
+var index_emp = [];
 $("#add").click(function() {
     empname = document.getElementById("showname_modal").value;
     empid = document.getElementById("Emp_id_modal").value;
     position = document.getElementById("position_modal").value;
     department = document.getElementById("department_modal").value;
     promote = document.getElementById("select2").value;
+    var data_row = "";
+    data_row += '<tr id="emp_' + num + '">';
+    data_row += '<td>' + num + '</td>';
+    data_row += '<td id="Emp_id_' + num + '">' + empid + '</td>';
+    data_row += '<td >' + empname + '</td>';
+    data_row += '<td >' + department + '</td>';
+    data_row += '<td id="Promote_' + num + '">' + promote + '</td>';
+    data_row += '<td> ' + '<button class="btn btn-danger" onclick = "remove_row(' + num +
+        ') " >delete</button></td>';
+    index_emp.push(num);
+    console.log(index_emp);
+    num++
+
     $("#nominee_data").append(
-        "<tr><td>" + num++ + "</td><td id=" + 'Emp_id_' + count_nominee +
-        ">" + empid + "</td><td>" + empname + "</td><td>" +
-        position + "</td><td>" + department + "</td><td id=" + 'Promote_' + count_nominee +
-        ">" + promote + "</td><td><button" + "class=" + "btn btn - danger float - right " +
-        " > < /button></td > < /tr >  ");
+        data_row
+    );
     count_nominee++;
+    console.log(count_nominee);
 });
+
+function remove_row(num) {
+    $("#emp_" + num).remove();
+    var index = index_emp.indexOf(num);
+    if (index > -1) {
+        index_emp.splice(index, 1);
+    }
+    count_nominee--;
+    console.log(index_emp)
+}
 
 function get_Emp() {
     Emp_id = document.getElementById('Emp_id_modal').value;
@@ -246,45 +268,53 @@ function save_data() {
     var emp = []
     var emp_nominee = []
     var promote = []
-    var date = document.getElementById("date");
+    var element = []
+    var pos_id = []
+    var sum;
+    var T = document.getElementById('select').value;
+    element = document.getElementsByName("pos");
+    var date = document.getElementById('date').value;
+
+    console.log(count_nominee);
 
     console.log(15)
     for (var i = 0; i < count; i++) {
         if (document.getElementById('check_box' + i).checked) {
             emp.push(document.getElementById('gro_ase_id_' + i).innerHTML)
-            console.log(555)
+            console.log(emp + "55")
         }
     }
     for (var i = 0; i < count_nominee; i++) {
-
-        emp_nominee.push(document.getElementById('Emp_id_' + i).innerHTML)
+        console.log(index_emp[i]);
+        emp_nominee.push(document.getElementById('Emp_id_' + index_emp[i]).innerHTML)
+        promote.push(document.getElementById('Promote_' + index_emp[i]).innerHTML)
+        pos_id[i] = element[i].getAttribute('id');
         console.log(444)
+    }
 
-    }
-    for (var i = 0; i < count_nominee; i++) {
-        promote.push(document.getElementById('Promote_' + i).innerHTML)
-    }
+    console.log(date)
     console.log(emp)
+    console.log(T)
     console.log(emp_nominee)
     console.log(promote)
+    console.log(pos_id)
     console.log(11)
     //ใช้ ajax 
     $.ajax({
         type: "POST",
-        url: "<?php echo base_url() ?>Group_management/Group_insert/insert",
+        url: "<?php echo base_url(); ?>Group_management/Group_insert/insert",
         data: {
             "emp": emp,
             "emp_nominee": emp_nominee,
             "promote": promote,
-            "date": date
-
+            "pos_id": pos_id,
+            "date": date,
+            "position_group": T
         },
-        dataType: "JSON",
-
-        success: function(data, status) {
-            console.log(11)
+        success: function(data) {
+            console.log(data);
+            window.location.href = "<?php echo base_url(); ?>Group_management/Group_list/index";
         }
-
     })
 
 }
@@ -317,13 +347,13 @@ function get_position() {
             for (i = length - 1; i >= 0; i--) {
                 select.options[i] = null;
             }
-            console.log(999);
+            console.log(data);
             data.forEach((row, index) => {
                 var x = document.getElementById("select2");
                 var option = document.createElement("option");
                 option.setAttribute("id", row.Position_ID);
                 option.setAttribute("name", "pos");
-                option.text = position_level + " " + row.Position_name;
+                option.text = row.sec_level + " " + row.Position_name;
                 x.add(option);
             })
 
@@ -371,6 +401,7 @@ function get_assessor() {
                 data_row += '<td>'
                 data_row += row.Department
                 data_row += '</td>'
+
                 data_row += '</tr>'
                 count_index++
             })
