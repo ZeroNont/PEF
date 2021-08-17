@@ -1,12 +1,12 @@
 <?php
 /*
-* v_request_form
-* View Request Form
+* v_result
+* View Result
 * @input  -
-* @output - 
+* @output History and Score of Evaluation
 * @author Apinya Phadungkit
-* @Create Date 2564-7-18
-* @Update Date 2564-7-28
+* @Create Date 2564-8-15
+* @Update Date 2564-8-16
 */
 ?>
 
@@ -30,12 +30,12 @@
 </style>
 
 <h1>
-    Request (อนุมัติคำร้องขออนุญาต)
+    Result
 </h1>
 
 <body>
-    <!-- ตารางรายการคำขอ -->
-    <!-- Table Requestd form -->
+    <!-- ตารางรายการผู้ที่ถูกประเมินแล้ว -->
+    <!-- Table Result -->
     <div class="card">
         <div class="card-header">
             <div class="table-responsive">
@@ -43,17 +43,18 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">#</th>
-
-                            <th scope="col">Item</th>
-                            <th scope="col">Schedule</th>
-                            <th scope="col">OFFICER IN CHARGE</th>
-                            <th scope="col">ACTION</th>
+                            <th scope="col">Employee ID</th>
+                            <th scope="col">List of nominee</th>
+                            <th scope="col">Group</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
 
                     <tbody align="center">
                         <?php
-                                            foreach($arr_req as $index => $row ){ ?>
+                            foreach($arr_gro as $index => $row ){ ?>
                         <tr>
 
                             <!-- column ลำดับ # -->
@@ -61,20 +62,30 @@
                                 <?php echo ($index+1);?>
                             </td>
 
-                            <!-- column สิง่ของ -->
+                            <!-- column รหัสผู้ถูกประเมิน -->
                             <td>
-                                <?php echo $row->req_item;?>
+                                <?php echo $row->grn_emp_id;?>
                             </td>
 
-                            <!-- column ช่วงเวลาร้องขอ -->
-                            <td>
-
-                                <?php echo date("d-m-Y",strtotime($row->req_start_date)).' - '.date("d-m-Y",strtotime($row->req_end_date));?>
-                            </td>
-
-                            <!-- column ผู้รับผิดชอบ -->
+                            <!-- column ชื่อผู้ถูกประเมิน -->
                             <td>
                                 <?php echo $row->Empname_eng.' '.$row->Empsurname_eng;?>
+                            </td>
+
+                            <!-- column กลุ่มของผู้ถูกประเมิน -->
+                            <td>
+                                <?php echo $row->grn_grp_id;?>
+                            </td>
+
+                            <!-- column วันที่ทำการประเมิน -->
+                            <td>
+
+                                <?php echo date("d-m-Y",strtotime($row->grp_date));?>
+                            </td>
+
+                            <!-- column ตำแหน่ง -->
+                            <td>
+                                <?php echo $row->Position_ID;?>
                             </td>
 
                             <!-- column ดำเนินการ -->
@@ -82,7 +93,7 @@
 
                                 <!-- ปุ่มดำเนินการ -->
                                 <a
-                                    href=" <?php echo site_url() . 'request/Request_form/show_request_form_detail/' . $row->req_form_id; ?>">
+                                    href=" <?php echo site_url() . 'Request/Result/show_result_detail/' . $row->grn_emp_id; ?>">
                                     <button class="btn btn-primary"> <i class="fa fa-info-circle"></i> </button>
                                 </a>
 

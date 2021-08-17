@@ -18,16 +18,14 @@ class Report extends MainController
 	* @input    -
 	* @output   -
 	* @author   Chakrit
-	* @Create Date 2564-07-24
-	* @Update Date 2564-07-27
+	* @Create Date 2564-08-13
+	* @Update Date 2564-08-
 	*/
 	public function show_report()
 	{
-		// $this->load->model('M_ttp_report', 'ttp');
-		// $data['requested'] = $this->ttp->get_all_requested_form()->result();
-		// $this->output('consent/v_report', $data);
-		$this->output('consent/v_report');
-
+		$this->load->model('M_ttp_report', 'pef');
+		$data['nominee'] = $this->pef->get_all_nominee()->result();
+		$this->output('consent/v_report', $data);
 	}
 
 	/*
@@ -54,16 +52,16 @@ class Report extends MainController
 	* @input    Form_ID
 	* @output   -
 	* @author   Chakrit
-	* @Create Date 2564-07-26
-	* @Update Date 2564-07-27
+	* @Create Date 2564-08-15
+	* @Update Date 2564-08-
 	*/
 	public function show_report_detail()
 	{
-		$req_form_id = $this->input->get('req_form_id');
-		$this->load->model('M_ttp_report', 'ttp');
-		$this->ttp->req_form_id = $req_form_id;
-		$data['Form_data'] = $this->ttp->get_form_by_id()->row();
-		$this->output('consent/v_report_detail', $data);
+		// $promote_to = $this->input->get('promote_to');
+		// $this->load->model('M_ttp_report', 'ttp');
+		// $this->ttp->req_form_id = $req_form_id;
+		// $data['Form_data'] = $this->ttp->get_form_by_id()->row();
+		$this->output('consent/v_report_detail');
 	}
 
 	/*
@@ -74,10 +72,10 @@ class Report extends MainController
 	* @author   Chakrit
 	* @Create Date 2564-07-28
 	*/
-	public function show_report_export_excel()
+	public function show_report_detail_assessor()
 	{
-		$this->load->model('M_ttp_report', 'ttp');
-		$data['Form_data'] = $this->ttp->get_form_to_excel()->result();
-		$this->output('consent/v_report_export_excel', $data);
+	// 	$this->load->model('M_ttp_report', 'ttp');
+	// 	$data['Form_data'] = $this->ttp->get_form_to_excel()->result();
+		$this->output('consent/v_report_detail_assessor');
 	}
 }

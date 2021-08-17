@@ -1,21 +1,21 @@
 <?php
 /*
-* M_ttp_request
-* Model Request Form
-* @input  id
+* M_pef_result
+* Model Result
+* @input  -
 * @output - 
 * @author Apinya Phadungkit
-* @Create Date 2564-7-18
-* @Update Date 2564-7-28
+* @Create Date 2564-8-15
+* @Update Date 2564-8-16
 */
 ?>
 
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-include_once ('Da_ttp_request.php');
+include_once ('Da_pef_result.php');
 
-class M_ttp_request extends Da_ttp_request
+class M_pef_result extends Da_pef_result
 {
 
     /*
@@ -23,13 +23,39 @@ class M_ttp_request extends Da_ttp_request
     * @input  -   
     * @output -
     * @author Apinya Phadungkit
-    * @Create Date 2564-7-18
-    * @Update Date 2564-7-28
+    * @Create Date 2564-8-15
+    * @Update Date 2564-8-16
     */
     function __construct()
     {
         parent::__construct();
     }
+
+    /*
+    * Function get_group
+    * @input  -   
+    * @output -
+    * @author Apinya Phadungkit
+    * @Create Date 2564-7-18
+    * @Update Date 2564-7-28
+    */
+    function get_group()
+    {
+        $sql = "SELECT *
+                FROM pefs_database.pef_group AS gro
+                INNER JOIN pefs_database.pef_group_assessor AS gass
+                ON gro.grp_id = gass.gro_grp_id
+                INNER JOIN pefs_database.pef_assessor AS ass
+                ON gass.gro_ase_id = ass.ase_id
+                INNER JOIN pefs_database.pef_group_nominee AS gnor
+                ON gass.gro_grp_id = gnor.grn_grp_id
+                INNER JOIN dbmc.employee AS emp
+                ON gnor.grn_emp_id = emp.Emp_ID 
+                WHERE gnor.grn_status = ?";
+
+        $query = $this->db->query($sql,array($this->grn_status));
+        return $query;
+    }//get_all_sup ดึงข้อมูลที่อยู่ในตาราง requested_form ที่join กับตาราง approval และตาราง employee
 
     /*
     * Function get_all
