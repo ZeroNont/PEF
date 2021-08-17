@@ -117,6 +117,7 @@
                                     <th>Position</th>
                                     <th>Departmant</th>
                                     <th>Promote to Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="nominee_data"></tbody>
@@ -153,7 +154,7 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="focusedinput" class="form-label">Employee ID</label>
-                    <input type="text" class="form-control" name="Emp_ID" id="Emp_id_modal" placeholder="JS000xxx"
+                    <input type="text" class="form-control" name="Emp_ID[]" id="Emp_id_modal" placeholder="JS000xxx"
                         onkeyup="get_Emp()" required>
                 </div>
                 <div class="mb-3">
@@ -187,7 +188,9 @@
 
 <script>
 var count = 0;
-var count_nominee = 1;
+var count_nominee = 0;
+var id = "Emp_id";
+var num = 1;
 $("#add").click(function() {
     empname = document.getElementById("showname_modal").value;
     empid = document.getElementById("Emp_id_modal").value;
@@ -195,8 +198,12 @@ $("#add").click(function() {
     department = document.getElementById("department_modal").value;
     promote = document.getElementById("select2").value;
     $("#nominee_data").append(
-        "<tr><td>" + count_nominee++ + "</td><td>" + empid + "</td><td>" + empname + "</td><td>" +
-        position + "</td><td>" + department + "</td><td>" + promote + "</td></tr> ");
+        "<tr><td>" + num++ + "</td><td id=" + 'Emp_id_' + count_nominee +
+        ">" + empid + "</td><td>" + empname + "</td><td>" +
+        position + "</td><td>" + department + "</td><td id=" + 'Promote_' + count_nominee +
+        ">" + promote + "</td><td><button" + "class=" + "btn btn - danger float - right " +
+        " > < /button></td > < /tr >  ");
+    count_nominee++;
 });
 
 function get_Emp() {
@@ -239,23 +246,47 @@ function save_data() {
     var emp = []
     var emp_nominee = []
     var promote = []
+    var date = document.getElementById("date");
+
+    console.log(15)
     for (var i = 0; i < count; i++) {
         if (document.getElementById('check_box' + i).checked) {
             emp.push(document.getElementById('gro_ase_id_' + i).innerHTML)
+            console.log(555)
         }
     }
     for (var i = 0; i < count_nominee; i++) {
-        if (document.getElementById('check_box2' + i).checked) {
-            emp.push(document.getElementById('Emp_ID_' + i).innerHTML)
-        }
+
+        emp_nominee.push(document.getElementById('Emp_id_' + i).innerHTML)
+        console.log(444)
+
     }
-    for (var i = 0; i < promote.length; i++) {
-        if (document.getElementById('check_box2' + i).checked) {
-            emp.push(document.getElementById('Emp_ID_' + i).innerHTML)
-        }
+    for (var i = 0; i < count_nominee; i++) {
+        promote.push(document.getElementById('Promote_' + i).innerHTML)
     }
     console.log(emp)
+    console.log(emp_nominee)
+    console.log(promote)
+    console.log(11)
     //ใช้ ajax 
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url() ?>Group_management/Group_insert/insert",
+        data: {
+            "emp": emp,
+            "emp_nominee": emp_nominee,
+            "promote": promote,
+            "date": date
+
+        },
+        dataType: "JSON",
+
+        success: function(data, status) {
+            console.log(11)
+        }
+
+    })
+
 }
 
 
@@ -291,6 +322,7 @@ function get_position() {
                 var x = document.getElementById("select2");
                 var option = document.createElement("option");
                 option.setAttribute("id", row.Position_ID);
+                option.setAttribute("name", "pos");
                 option.text = position_level + " " + row.Position_name;
                 x.add(option);
             })
