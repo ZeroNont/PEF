@@ -4,6 +4,6 @@ class Da_pef_promote_list extends pefs_model
 {
     function construct()
     {
-        parent::construct();
+        parent::__construct();
     }
 }
