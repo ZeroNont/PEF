@@ -45,5 +45,12 @@ class Group_insert extends MainController
         $data['obj_sec'] = $this->pef->get_section()->result();
         $this->output('consent/v_group_manage', $data);
     }
+    function insert()
+    {
+        $date = $this->input->post('date');
+        echo $date;
+        // $this->load->model('Da_pef_group', 'pef');
+
+    }
 }
 // 

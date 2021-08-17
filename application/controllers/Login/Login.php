@@ -42,7 +42,7 @@ class Login extends MainController
 */	
 	public function show_user_home($Enp_ID)
 	{//show home
-		$this->load->model('M_ttp_Employee','meng');
+		$this->load->model('M_pef_Employee','meng');
 		$this->meng->Emp_ID = $Enp_ID;
 		$data['Emp_ID'] = $this->meng->get_emp()->row();
 		

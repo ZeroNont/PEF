@@ -54,7 +54,7 @@ function get_ase_id() {
         <div class="modal-content">
             <div class="modal-header ">
 
-            <!--   <h4 align='center' class="modal-title" id="exampleModalLabel">
+                <!--   <h4 align='center' class="modal-title" id="exampleModalLabel">
 
                     Add Detail
                 </h4> -->
@@ -69,8 +69,8 @@ function get_ase_id() {
                     enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="focusedinput" class="form-label">Enter ID Assessor</label>
-                        <input type="text" class="form-control" name="ase_id" id="ase_id_modal" placeholder="ID Assessor"
-                            onkeyup="get_ase_id()" required>
+                        <input type="text" class="form-control" name="ase_id" id="ase_id_modal"
+                            placeholder="ID Assessor" onkeyup="get_ase_id()" required>
                     </div>
                     <div class="mb-3">
                         <label for="focusedinput" class="form-label">Name</label>
@@ -85,19 +85,19 @@ function get_ase_id() {
     </div>
 </div>
 <h1>
-    Assessor Management 
+    Assessor Management
 </h1>
 
 <div class="card-header" id="card_radius">
-    
 
 
 
-<div>
-    <br>
+
+    <div>
+        <br>
         <div>
             <h1>Promote To <?php echo $obj_assessor->sec_level?></h1>
-            <button class="btn btn-success" data-toggle="modal" data-target="#Add" style = "margin-left : 84%"> 
+            <button class="btn btn-success" data-toggle="modal" data-target="#Add" style="margin-left : 84%">
                 <i class="fa fa-plus-square-o" style="font-size:20px;"></i>&nbsp;Add Assessor
             </button>
         </div>
@@ -133,18 +133,16 @@ function get_ase_id() {
             </tbody>
         </table>
         </div>
-    <div>
-</div> 
-    <script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-    </script>
-    <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
-    <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-    <!-- Argon JS -->
-    <script src="../../assets/js/argon.js?v=1.2.0"></script>
-    <script type="text/javascript">
+        <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+        </script>
+        <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
+        <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+        <!-- Argon JS -->
+        <script src="../../assets/js/argon.js?v=1.2.0"></script>
+        <script type="text/javascript">

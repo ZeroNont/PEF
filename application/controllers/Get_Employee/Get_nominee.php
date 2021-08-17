@@ -1,18 +1,18 @@
 <?php
 /*
-* Get_assessor
-* Get_assessor detail
+* Employee
+* Employee detail
 * @input  -   
-* @output Get_assessor detail
+* @output Employee detail
 * @author Jirayut Saifah
-* @Create Date 2564-8-13
+* @Create Date 2564-7-23
 */
 ?>
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
 
-class Get_assessor extends MainController
+class Get_nominee extends MainController
 {
 
     /**
@@ -39,15 +39,31 @@ class Get_assessor extends MainController
 	* @author Jirayut Saifah
 	* @Create Date 2564-7-23
 	*/
-    function get_assessor_by_sec()
+    function search_by_employee_id()
     {
 
-        $level = $this->input->post('pos');
+        $Emp_id = $this->input->post('Emp_id');
+        $pos = $this->input->post('pos');
         $this->load->model('M_pef_Employee', 'emp');
-        $this->emp->position_level =  $level;
-
-        $data = $this->emp->get_assessor()->result();
-        // echo $data['assessor'];
+        $this->emp->Emp_ID = $Emp_id;
+        $this->emp->Position_Level = $pos;
+        $data = $this->emp->get_name_emp()->result();
+        echo json_encode($data);
+    }
+    /*
+	* search_by_employee_idindex
+	* search employee detail by emp_id
+	* @input emp_id
+	* @output employee detail
+	* @author Jirayut Saifah
+	* @Create Date 2564-7-23
+	*/
+    function get_position_by_sec()
+    {
+        $pos = $this->input->post('pos');
+        $this->load->model('M_pef_Employee', 'emp');
+        $this->emp->Position_Level = $pos;
+        $data = $this->emp->get_position()->result();
         echo json_encode($data);
     }
 }

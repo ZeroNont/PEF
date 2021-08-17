@@ -3,12 +3,12 @@
 * ttps_database.requested_form, ttps_database.approval, dbmc.department, ttps_database.plant, dbmc.company, dbmc.employee, dbmc.sectioncode
 * get data of report
 * @author   Chakrit
-* @Create Date 2564-07-25
+* @Create Date 2564-08-16
 */ 
 
-include_once("Da_ttp_report.php");
+include_once("Da_pef_report.php");
 
-class M_ttp_report extends Da_ttp_report
+class M_pef_report extends Da_pef_report
 {
     
     /*
@@ -19,26 +19,10 @@ class M_ttp_report extends Da_ttp_report
     * @author   Chakrit
     * @Create Date 2564-07-25
     */
-    public function get_department()
+    public function get_all_nominee()
     {
         $sql = "SELECT *
-                FROM dbmc.department";
-        $query = $this->db->query($sql);
-        return $query;
-    }
-
-    /*
-    * get_all_requested_form
-    * get data requested form
-    * @input    -
-    * @output   data of requested_form
-    * @author   Chakrit
-    * @Create Date 2564-07-25
-    */
-    public function get_all_requested_form()
-    {
-        $sql = "SELECT * 
-                FROM ttps_database.requested_form ";
+                FROM pefs_database.pef_group_nominee";
         $query = $this->db->query($sql);
         return $query;
     }

@@ -106,22 +106,29 @@ class File_present_management extends MainController
         $this->show_list_nominee();
     }
 
-    function show_file_pdf($id_nominee)
+    // function show_file_pdf($id_nominee)
+    // {
+    //             // $id_nominee = "00009";
+    //             // $file_name = '';
+    //             // $this->load->model('M_pef_file_present', 'pef');
+    //             // $data['file_emp'] = $this->pef->get_by_id($id_nominee)->result();
+    //             // $file_name = $this->pef->$fil_location;
+
+
+    //     // $filename = "upload/$file_name";
+    //     // $len = filesize($filename);
+    //     // header("Content-type: application/pdf");
+    //     // header("Content-Length: $len");
+    //     // header("Content-Disposition: inline; filename=foo.pdf");
+    //     // readfile($filename);
+
+    //     $this->output('consent/v_test_read_file', $data);
+    // }
+    function show_file_pdf($id_nominee = "00009")
     {
-        $id_nominee = "00009";
         $file_name = '';
-        $this->load->model('M_pef_file_present', 'pef');
-        $data['file_emp'] = $this->pef->get_by_id($id_nominee)->result();
-        $file_name = $this->pef->$fil_location;
-
-
-        // $filename = "upload/$file_name";
-        // $len = filesize($filename);
-        // header("Content-type: application/pdf");
-        // header("Content-Length: $len");
-        // header("Content-Disposition: inline; filename=foo.pdf");
-        // readfile($filename);
-
+        $data['file_emp'] = "http://localhost/PEF/upload/00009_เธฃเธฒเธขเธเธฒเธฃเธ•เธฃเธงเธเธชเธญเธเธเธ—เธ—เธตเน 7.pdf";
+     
         $this->output('consent/v_test_read_file', $data);
     }
 }

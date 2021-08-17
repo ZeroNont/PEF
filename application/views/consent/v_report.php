@@ -5,16 +5,22 @@
     * @input    -
     * @output   -
     * @author   Chakrit
-    * @Create Date 2564-07-24
-    * @Update Date 2564-07-28
+    * @Create Date 2564-08-13
+    * @Update Date 2564-08-
     */ -->
 
 <h1>
     Report (รายงานข้อมูล)
-    <a href='<?php echo site_url() . 'Report/Report/show_report_export_excel'; ?>' class="btn btn-secondary btn-lg canter float-right" id="count_export"><i class="fa fa-download"></i> Export Excel</a>
+    <!-- <a href='<?php echo site_url() . 'Report/Report/show_report_export_excel'; ?>' class="btn btn-secondary btn-lg canter float-right" id="count_export"><i class="fa fa-download"></i> Export Excel</a> -->
     <!-- <a href='#' id='download_link' onClick='javascript:ExcelReport();' class="btn btn-primary float-right"><i class="fa fa-download"></i> Export Excel</a> -->
 </h1>
 <br>
+จำนวนคนทั้งหมดที่ต้องประเมิน
+จำนวนผู้เข้ารับการประเมิน
+จำนวนคนที่ยังไม่ได้รับการประเมิน
+จำนวนผู้ที่ผ่านการประเมิน
+จำนวนคนที่ล้มเหลวในการประเมิน
+จำนวนคน (ประเมิน / รายปี)
 <div class="card-header" id="card_radius">
     <h1 style="text-align:center">
         Performance Evaluation Factor System
@@ -44,22 +50,22 @@
     </div>
 
 
-    <div class="row" id="count_requested">
+    <div class="row" id="count_assessed">
         <!-- <div class="col-xl-1"></div> -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Number of people all that must assess</h5>
-                            <span class="h2 font-weight-bold mb-0" id="total_request">
+                            <span class="h2 font-weight-bold mb-0" id="total_nominee">
 
                             </span>
                         </div>
                         <div class="col-auto">
-                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                            <div class="icon icon-shape bg-gradient-blue text-white rounded-circle shadow">
                                 <i class="ni ni-single-copy-04"></i>
                             </div>
                         </div>
@@ -71,9 +77,9 @@
                 </div>
             </div>
         </div>
-        <!-- All Requests  -->
+        <!-- Number of people all that must assess  -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
@@ -86,7 +92,7 @@
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
-                                <i class="ni ni-check-bold"></i>
+                                <i class="fas fa-user-alt"></i>
                             </div>
                         </div>
                     </div>
@@ -97,9 +103,9 @@
                 </div>
             </div>
         </div>
-        <!-- Approved -->
+        <!-- Number of people assessed -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
@@ -111,8 +117,8 @@
                             </span>
                         </div>
                         <div class="col-auto">
-                            <div class="icon icon-shape bg-gradient-yellow text-white rounded-circle shadow">
-                                <i class="ni ni-time-alarm"></i>
+                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <i class="fas fa-user-alt-slash"></i>
                             </div>
                         </div>
                     </div>
@@ -123,9 +129,9 @@
                 </div>
             </div>
         </div>
-        <!-- Pending Approval  -->
+        <!-- The number of people who have not been assessed  -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
@@ -133,32 +139,6 @@
                         <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Number of people who passed the assessment</h5>
                             <span class="h2 font-weight-bold mb-0" id="total_request">
-
-                            </span>
-                        </div>
-                        <div class="col-auto">
-                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                <i class="ni ni-single-copy-04"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="mt-3 mb-0 text-sm">
-                        <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span> -->
-                        <span class="text-nowrap">People</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <!-- All Requests  -->
-
-        <div class="col-xl-2 col-md-6">
-            <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Number of people who fail in the assessment</h5>
-                            <span class="h2 font-weight-bold mb-0" id="total_approval">
 
                             </span>
                         </div>
@@ -175,9 +155,35 @@
                 </div>
             </div>
         </div>
-        <!-- Approved -->
+        <!-- Number of people who passed the assessment  -->
 
-        <div class="col-xl-2 col-md-6">
+        <div class="col-xl-4 col-md-6">
+            <div class="card card-stats">
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Number of people who fail in the assessment</h5>
+                            <span class="h2 font-weight-bold mb-0" id="total_approval">
+
+                            </span>
+                        </div>
+                        <div class="col-auto">
+                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-sm">
+                        <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span> -->
+                        <span class="text-nowrap">People</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Number of people who fail in the assessment -->
+
+        <div class="col-xl-4 col-md-6">
             <div class="card card-stats">
                 <!-- Card body -->
                 <div class="card-body">
@@ -190,7 +196,7 @@
                         </div>
                         <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-yellow text-white rounded-circle shadow">
-                                <i class="ni ni-time-alarm"></i>
+                                <i class="fas fa-users"></i>
                             </div>
                         </div>
                     </div>
@@ -201,7 +207,7 @@
                 </div>
             </div>
         </div>
-        <!-- Pending Approval  -->
+        <!-- Number of people (assessed / yearly)  -->
     </div>
 
     <div class="row" id="count_graph">
@@ -222,6 +228,7 @@
             </div>
         </div>
     </div>
+    <!-- The graph shows the results of the assessment of each position -->
 
     <div class="row" id="count_table">
         <div class="col-xl-12">
@@ -252,9 +259,9 @@
                         </tbody>
                         <tfoot>
                             <td colspan="2" align="right">Total :</td>
-                            <td id='sum_total'>0</td>
-                            <td id='pass_total'>0</td>
-                            <td id='fail_total'>0</td>
+                            <td id='sum_total'></td>
+                            <td id='pass_total'></td>
+                            <td id='fail_total'></td>
                             <td></td>
 
                         </tfoot>
@@ -272,7 +279,7 @@
 
 <script>
     $(document).ready(function() {
-        // $("#count_requested").hide();
+        // $("#count_assessed").hide();
         // $("#count_graph").hide();
         // $("#count_table").hide();
         // $("#count_export").hide();
@@ -413,7 +420,7 @@
                     count = 0;
                 });
                 // forEach label
-                $("#count_requested").show();
+                $("#count_assessed").show();
                 $("#count_graph").show();
                 $("#count_table").show();
                 $("#count_export").show();
@@ -421,7 +428,7 @@
                 show_chart(label, data);
                 //show_label_select(label, Dep);
                 show_data_table(data_charts);
-                $('#total_request').text(approve + pending);
+                $('#total_nominee').text(approve + pending);
                 $('#total_approval').text(approve);
                 $('#pending_approval').text(pending);
 
@@ -454,7 +461,7 @@
             data_row += '<td id="sum_' + i + '">0</td>';
             data_row += '<td id="pass_' + i + '">0</td>';
             data_row += '<td id="fail_' + i + '">0</td>';
-            data_row += '<td><a href="">'
+            data_row += '<td><a href="<?php echo site_url() ?>Report/Report/show_report_detail?' + (i+2) + '">'
             data_row += '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
             data_row += '<i class="fas fa-search"></i></button></a></td>'
             data_row += '</tr>';

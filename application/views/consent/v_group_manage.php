@@ -1,28 +1,5 @@
 <?php ?>
-<script>
-function get_Emp() {
-    position_level = document.getElementById('position_level').value;
-    console.log(position_level)
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>ttp_Emp/Employee/search_by_employee_id",
-        data: {
-            "position_level": position_level
-        },
-        dataType: "JSON",
-        success: function(data, status) {
-            console.log(data);
-            if (data.length == 0) {
-                document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
-            } else {
-                empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
-                document.getElementById("showname_modal").value = empname;
-                console.log(999)
-            }
-        }
-    });
-}
-</script>
+
 <!-- Page content -->
 
 <h1>
@@ -51,12 +28,12 @@ function get_Emp() {
                                 <div class="form-group">
 
                                     <label class="form-control-label" for="input-city">Posotion to Promote</label>
-                                    <select name="position" id="position" class="form-select"
-                                        aria-label="Default select example" required>
+                                    <select name="position" id="select" class="form-select"
+                                        aria-label="Default select example" onchange="get_assessor()">
                                         <option value="0">--------------------------------------------Please
                                             select--------------------------------</option>
                                         <?php for ($i = 0; $i < count($obj_sec); $i++) { ?>
-                                        <option value="<?php echo $obj_sec[$i]->sec_id ?>">
+                                        <option value="<?php echo $obj_sec[$i]->sec_level ?>">
                                             <?php echo $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name;
                                         }
                                             ?>
@@ -69,8 +46,8 @@ function get_Emp() {
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-email">Date</label>
-                                    <input type="date" id="input-email" class="form-control"
-                                        min="<?php echo date('Y-m-d'); ?>" required>
+                                    <input type="date" id="date" class="form-control" min="<?php echo date('Y-m-d'); ?>"
+                                        required>
                                 </div>
                             </div>
                         </div>
@@ -87,47 +64,319 @@ function get_Emp() {
                             <thead class="thead-light">
                                 <tr>
                                     <th>#</th>
-                                    <th>List</th>
+                                    <th>
+                                        <input type="checkbox" onclick="select_all(this);">
+                                        Select
+                                    </th>
                                     <th>Employee ID</th>
                                     <th>Name</th>
                                     <th>Position</th>
                                     <th>Departmant</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php for ($i = 0; $i < 10; $i++) { ?>
-                                <tr>
-                                    <td>
-                                        <?php echo $i + 1 ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $i + 1  ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $i + 1  ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $i + 1  ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $i + 1  ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $i + 1  ?>
-                                    </td>
-
-
-
-
-
-
+                            <tbody id="select_data"></tbody>
+                        </table>
                     </div>
-                    </td>
-                    </tr>
-                    <?php  } ?>
-                    </tbody>
-                    </table>
+
+
+
                 </div>
+
             </div>
         </div>
     </div>
+</div>
+
+<div class="container-fluid mt--12">
+
+
+    <div class="col-xl-12 order-xl-1">
+        <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <h3 class="mb-0">Nominee </h3>
+                    </div>
+
+                </div>
+                <button class="btn btn-primary float-right" data-toggle="modal" data-target="#Add"
+                    onclick="get_position()"><i class="material-icons">Add Nominee</i></button>
+            </div>
+            <div class="card-body">
+
+
+                <div class="card-header" id="card_radius">
+                    <div class="table-responsive">
+
+                        <table class="table" id="example">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Departmant</th>
+                                    <th>Promote to Action</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="nominee_data"></tbody>
+                        </table>
+                    </div>
+                    <ol>
+
+                    </ol>
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <button class="btn btn-success float-right" onclick="save_data()">Save</button>
+    </div>
+</div>
+<div id="Add" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header ">
+
+                <h4 align='center' class="modal-title" id="exampleModalLabel">
+
+                    Add Nominee
+                </h4>
+
+                <button type=" button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="focusedinput" class="form-label">Employee ID</label>
+                    <input type="text" class="form-control" name="Emp_ID[]" id="Emp_id_modal" placeholder="JS000xxx"
+                        onkeyup="get_Emp()" required>
+                </div>
+                <div class="mb-3">
+                    <label for="focusedinput" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="showname_modal" disabled name="Plant_name">
+                </div>
+                <div class="mb-3">
+                    <label for="focusedinput" class="form-label">Position</label>
+                    <input type="text" class="form-control" id="position_modal" disabled name="Plant_name">
+                </div>
+                <div class="mb-3">
+                    <label for="focusedinput" class="form-label">Department</label>
+                    <input type="text" class="form-control" id="department_modal" disabled name="Plant_name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-control-label" for="input-city">Posotion to Promote</label>
+                    <select name="promote" id="select2" class="form-select" aria-label="Default select example">
+                        <option value="0">----------------------Please select------------------</option>
+
+
+                    </select>
+                </div>
+                <button class="btn btn-success float-right" id="add">Save</button>
+                <button class="btn btn-danger float-right" data-dismiss="modal" aria-label="Close">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+var count = 0;
+var count_nominee = 0;
+var id = "Emp_id";
+var num = 1;
+$("#add").click(function() {
+    empname = document.getElementById("showname_modal").value;
+    empid = document.getElementById("Emp_id_modal").value;
+    position = document.getElementById("position_modal").value;
+    department = document.getElementById("department_modal").value;
+    promote = document.getElementById("select2").value;
+    $("#nominee_data").append(
+        "<tr><td>" + num++ + "</td><td id=" + 'Emp_id_' + count_nominee +
+        ">" + empid + "</td><td>" + empname + "</td><td>" +
+        position + "</td><td>" + department + "</td><td id=" + 'Promote_' + count_nominee +
+        ">" + promote + "</td><td><button" + "class=" + "btn btn - danger float - right " +
+        " > < /button></td > < /tr >  ");
+    count_nominee++;
+});
+
+function get_Emp() {
+    Emp_id = document.getElementById('Emp_id_modal').value;
+    pos = document.getElementById('select').value;
+    var empname = "";
+    console.log(Emp_id)
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>Get_Employee/Get_nominee/search_by_employee_id",
+        data: {
+            "Emp_id": Emp_id,
+            "Position_level": pos
+        },
+        dataType: "JSON",
+        success: function(data, status) {
+            console.log(data);
+            if (data.length == 0) {
+                document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
+                document.getElementById("position_modal").value = "ไม่มีข้อมูล";
+                document.getElementById("department_modal").value = "ไม่มีข้อมูล";
+            } else {
+                department = data[0].Department;
+                // empname = data[0].Position_name;
+                empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
+                position = data[0].Position_name;
+                document.getElementById("showname_modal").value = empname;
+                document.getElementById("position_modal").value = position;
+                document.getElementById("department_modal").value = department;
+                console.log(999)
+                console.log(empname)
+                console.log(position)
+                console.log(department)
+            }
+        }
+    });
+}
+
+function save_data() {
+    var emp = []
+    var emp_nominee = []
+    var promote = []
+    var date = document.getElementById("date");
+
+    console.log(15)
+    for (var i = 0; i < count; i++) {
+        if (document.getElementById('check_box' + i).checked) {
+            emp.push(document.getElementById('gro_ase_id_' + i).innerHTML)
+            console.log(555)
+        }
+    }
+    for (var i = 0; i < count_nominee; i++) {
+
+        emp_nominee.push(document.getElementById('Emp_id_' + i).innerHTML)
+        console.log(444)
+
+    }
+    for (var i = 0; i < count_nominee; i++) {
+        promote.push(document.getElementById('Promote_' + i).innerHTML)
+    }
+    console.log(emp)
+    console.log(emp_nominee)
+    console.log(promote)
+    console.log(11)
+    //ใช้ ajax 
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url() ?>Group_management/Group_insert/insert",
+        data: {
+            "emp": emp,
+            "emp_nominee": emp_nominee,
+            "promote": promote,
+            "date": date
+
+        },
+        dataType: "JSON",
+
+        success: function(data, status) {
+            console.log(11)
+        }
+
+    })
+
+}
+
+
+
+function select_all(source) {
+    var check = document.querySelectorAll('input[name="checkbox1"]');
+    for (var i = 0; i < check.length; i++) {
+        if (check[i] != source) {
+            check[i].checked = source.checked
+        }
+    }
+}
+
+function get_position() {
+    position_level = document.getElementById('select').value;
+    // console.log(position_level)
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url() ?>Get_Employee/Get_nominee/get_position_by_sec",
+        data: {
+            "pos": position_level
+        },
+        dataType: "JSON",
+
+        success: function(data, status) {
+            var select = document.getElementById("select2");
+            var length = select.options.length;
+            for (i = length - 1; i >= 0; i--) {
+                select.options[i] = null;
+            }
+            console.log(999);
+            data.forEach((row, index) => {
+                var x = document.getElementById("select2");
+                var option = document.createElement("option");
+                option.setAttribute("id", row.Position_ID);
+                option.setAttribute("name", "pos");
+                option.text = position_level + " " + row.Position_name;
+                x.add(option);
+            })
+
+
+
+        }
+
+    })
+
+}
+
+function get_assessor() {
+    var position_level = document.getElementById('select').value;
+
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url() ?>Get_Employee/Get_assessor/get_assessor_by_sec",
+        data: {
+            "pos": position_level
+        },
+        dataType: "JSON",
+        success: function(data, status) {
+            // console.log(data);
+            var count_index = 0;
+            var i = 1;
+            var data_row = '';
+            data.forEach((row, index) => {
+                data_row += '<tr>'
+                data_row += '<td>'
+                data_row += i++;
+                data_row += '</td>'
+                data_row += '<td>'
+                data_row += '<input type="checkbox" id="check_box' + index +
+                    '" name="checkbox1">'
+                data_row += '</td>'
+                data_row += '<td id="gro_ase_id_' + index + '">'
+                data_row += row.ase_emp_id
+                data_row += '</td>'
+                data_row += '<td>'
+                data_row += row.ase_name_eng + "          " + row.ase_surename_eng
+                data_row += '</td>'
+                data_row += '<td>'
+                data_row += row.position_level
+                data_row += '</td>'
+                data_row += '<td>'
+                data_row += row.Department
+                data_row += '</td>'
+                data_row += '</tr>'
+                count_index++
+            })
+            $("#select_data").html(data_row)
+            count = count_index;
+        }
+    })
+}
+</script>

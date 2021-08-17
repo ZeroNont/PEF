@@ -1,20 +1,20 @@
 <?php
 /*
-* request_form
-* Controller Request Form
-* @input  - Form_ID   
-* @output - Show Request Form List
-          - Show Request Form Detail
+* Result
+* Controller Result
+* @input  - 
+* @output - Show Result List
+          - Show Result Detail
 * @author Apinya Phadungkit
-* @Create Date 2564-7-18
-* @Update Date 2564-7-28
+* @Create Date 2564-8-15
+* @Update Date 2564-8-16
 */
 ?>
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
 
-class Request_form extends MainController
+class Result extends MainController
 {
 
     /**
@@ -43,7 +43,7 @@ class Request_form extends MainController
     */
     function index()
     {
-        $this->output('consent/v_request_form');
+        $this->output('consent/v_result');
     } // function index()
 
     /*
@@ -54,13 +54,13 @@ class Request_form extends MainController
     * @Create Date 2564-7-18
     * @Update Date 2564-7-28
     */
-    function show_request_form_list() 
+    function show_result_list() 
     {
-        $this->load->model('M_ttp_request', 'mreq');
-        $this->mreq->app_supervisor_id = $_SESSION["UsEmp_ID"];
-        $this->mreq->req_status = 1;
-        $data['arr_req'] = $this->mreq->get_all_sup()->result();
-        $this->output('consent/v_request_form', $data);
+        $this->load->model('M_pef_result', 'mpef');
+        // $this->mreq->ase_emp_id = $_SESSION["UsEmp_ID"];
+        $this->mpef->grn_status = 1;
+        $data['arr_gro'] = $this->mpef->get_group()->result();
+        $this->output('consent/v_result', $data);
     } //show request list แสดงายการคำขอทั้งหมด สำหรับหัวหน้างานคนนั้นๆ
 
     /*
@@ -71,13 +71,13 @@ class Request_form extends MainController
     * @Create Date 2564-7-18
     * @Update Date 2564-7-28
     */
-    function show_request_form_detail($id)
+    function show_result_detail($id)
 	{
-        $this->load->model('M_ttp_request', 'mreq');
-        $data['arr_req'] = $this->mreq->get_by_id($id)->row();
-        $data['arr_emp'] = $this->mreq->get_all()->row();
-        $data['arr_user'] = $this->mreq->get_history_user($id)->row();
-        $this->output('consent/v_request_form_detail',$data);
+        // $this->load->model('M_ttp_request', 'mreq');
+        // $data['arr_req'] = $this->mreq->get_by_id($id)->row();
+        // $data['arr_emp'] = $this->mreq->get_all()->row();
+        // $data['arr_user'] = $this->mreq->get_history_user($id)->row();
+        // $this->output('consent/v_request_form_detail',$data);
 	} //show request detail แสดงรายละเอียดเพิ่มเติมของรายการคำขอ
 
     /*
