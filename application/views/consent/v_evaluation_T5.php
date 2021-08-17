@@ -1,6 +1,6 @@
 <!--
     v_evaluation_mts
-    display for Evaluation Form Promote to AM,Senior Staff,Supervisor
+    display for Evaluation Form Promote to Master Senior Specialist T5
     @author Phatchara and Pontakon
     Create date 2564-08-14   
     Update date 2564-08-15
@@ -43,7 +43,6 @@
     }
     #set_button
     {
-        /* margin-left: 830px; */
         font-size: 16px;
     }
 </style>
@@ -58,16 +57,26 @@
                 <div class="col-sm-4">
                     <img src=<?php echo base_url()."argon/assets/img/brand/denso_1.png" ?> width="150" height="150">
                     </div>
-                <div class="col-sm-8 center_com"><h3>ชื่อบริษัท gggggggggggggggggggggggggg</h3></div>
+                <div class="col-sm-8 center_com">
+                    <h3><?php echo $ev_no[0]->Company_name?></h3>
+                </div>
             </div>  
                 <!-- ชื่อกรรมการ และวันประเมิน -->
                 <div class="row">
-                    <div class="col-sm-6"><h3>Assessor Name :</h3></div>
-                    <div class="col-sm-3"><h3>Date :</h3></div>
+                    <div class="col-sm-6">
+                        <h3>Assessor Name :&nbsp; <?php echo $ev_ass[0]->ase_name_eng . ' ' . $ev_ass[0]->ase_surename_eng ?></h3>
+                    </div>
                     <div class="col-sm-3">
-                        <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
-                            <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
-                        </button>
+                        <?php $newDate = date("d/m/Y", strtotime($ev_ass[0]->grp_date)); ?>
+                        <h3>Date : <?php echo $newDate ?></h3>
+                    </div>
+                    <div class="col-sm-3">
+                        <a
+                            href="<?php echo base_url()?>assets/file/Plan/<?php echo $arr_file[0]->fil_plan_location ?>" download>
+                            <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
+                                <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
+                            </button>
+                        </a>    
                     </div>
                 </div>         
                 <br>
@@ -79,17 +88,22 @@
                     </tr>
                         <tbody>
                         <tr id="Manage">
-                            <th width="40px" id="gray">Name - Surname</th>
-                            
-                            <td colspan="2"></td>
+                            <th width="50px" id="gray">Name - Surname</th>
+                            <td colspan="2">
+                                <?php echo $ev_no[0]->Empname_eng . ' ' . $ev_no[0]->Empsurname_eng ?>
+                            </td>
                             <th width="40px" id="gray">Position</th>
-                            <td></td>
+                            <td>
+                                <?php echo $ev_no[0]->Position_name?>
+                            </td>
                         </tr>
                         <tr id="Manage">
                             <th width="40px" id="gray">Promote to</th>
-                            <td colspan="2"></td>
+                            <td colspan="2"><?php echo $pos_pos->sec_name;?></td>
                             <th width="40px" id="gray">Department/Section</th>
-                            <td></td>
+                            <td>
+                                <?php echo $ev_no[0]->Department?>
+                            </td>
                         </tr>
                         </tbody>
                 </table>

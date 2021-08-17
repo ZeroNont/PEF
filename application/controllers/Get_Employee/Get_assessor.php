@@ -50,5 +50,14 @@ class Get_assessor extends MainController
         // echo $data['assessor'];
         echo json_encode($data);
     }
+    function get_assessor_by_id()
+    {
+        $group = $this->input->post('group_id');
+        $this->load->model('M_pef_group', 'emp');
+        $this->emp->gro_grp_id = $group;
+        $data = $this->emp->get_assessor_by_group()->result();
+        // echo $data['assessor'];
+        echo json_encode($data);
+    }
 }
 // 

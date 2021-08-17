@@ -62,8 +62,19 @@ class Get_nominee extends MainController
     {
         $pos = $this->input->post('pos');
         $this->load->model('M_pef_Employee', 'emp');
-        $this->emp->Position_Level = $pos;
+        $this->emp->sec_id = $pos;
         $data = $this->emp->get_position()->result();
+        echo json_encode($data);
+    }
+    function get_nominee_by_id()
+    {
+
+        $group = $this->input->post('group_id');
+        $this->load->model('M_pef_group', 'emp');
+        $this->emp->grn_grp_id = $group;
+        $data = $this->emp->get_nominee_by_group()->result();
+        $pos = $this->emp->get_pos_nominee_by_group()->result();
+        // echo $data['assessor'];
         echo json_encode($data);
     }
 }

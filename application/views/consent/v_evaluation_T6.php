@@ -62,8 +62,13 @@
             </div>  
                 <!-- ชื่อกรรมการ และวันประเมิน -->
                 <div class="row">
-                    <div class="col-sm-6"><h3>Assessor Name :</h3></div>
-                    <div class="col-sm-3"><h3>Date :</h3></div>
+                    <div class="col-sm-6">
+                        <h3>Assessor Name :&nbsp; <?php echo $ev_ass[0]->ase_name_eng . ' ' . $ev_ass[0]->ase_surename_eng ?></h3>
+                    </div>
+                    <div class="col-sm-3">
+                        <?php $newDate = date("d/m/Y", strtotime($ev_ass[0]->grp_date)); ?>
+                        <h3>Date : <?php echo $newDate ?></h3>
+                    </div>
                     <div class="col-sm-3">
                         <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
                             <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
@@ -80,8 +85,9 @@
                         <tbody>
                         <tr id="Manage">
                             <th width="40px" id="gray">Name - Surname</th>
-                            
-                            <td colspan="2"></td>
+                            <td colspan="2">
+                                
+                            </td>
                             <th width="40px" id="gray">Position</th>
                             <td></td>
                         </tr>
