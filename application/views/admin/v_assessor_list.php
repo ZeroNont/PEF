@@ -123,9 +123,11 @@ function get_ase_id() {
                     <td><?php echo $arr_assessor[$i]->sec_name ?></td>
                     <td><?php echo $arr_assessor[$i]->Department?></td>
                     <td>
+                        <a href="<?php echo site_url().'Assessor_management/Assessor_list/delete_assessor/'.$arr_assessor[$i]->ase_emp_id.'/'.$obj_assessor->sec_id.'/';?>">
                         <button class="btn btn-sm btn-danger">
                             <i class="fa fa-pencil-square"></i>
                         </button>
+                    </a>
                     </td>
                 </tr>
                     <?php  } ?>   

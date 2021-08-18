@@ -22,7 +22,7 @@
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="<?php echo base_url() . 'Renewal/Renewal/show_renewal/' ?>">
+                          <a class="nav-link" href="<?php echo base_url() . 'Result/Result/show_result_list/' ?>">
                               <i class="fas fa-clipboard-list text-primary"></i>
                               <span class="nav-link-text">Result<span>
                           </a>

@@ -58,8 +58,9 @@ class Result extends MainController
     {
         $this->load->model('M_pef_result', 'mpef');
         // $this->mreq->ase_emp_id = $_SESSION["UsEmp_ID"];
-        $this->mpef->grn_status = 1;
+        $this->mpef->grn_status = 0;
         $data['arr_gro'] = $this->mpef->get_group()->result();
+        print_r($data);
         $this->output('consent/v_result', $data);
     } //show request list แสดงายการคำขอทั้งหมด สำหรับหัวหน้างานคนนั้นๆ
 

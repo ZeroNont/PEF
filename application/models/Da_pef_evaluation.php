@@ -23,7 +23,7 @@ class Da_pef_evaluation extends pefs_model
         $sql = "INSERT INTO pefs_database.pef_performance_form(per_q_and_a, per_comment, per_date, per_emp_id, per_ase_id) 
         VALUES (?,?,?,?,?)";
 
-        $this->db->query($sql, array($this->per_id, $this->per_q_and_a, $this->per_comment, $this->per_date, $this->per_emp_id, $this->per_ase_id));
+        $this->db->query($sql, array($this->per_q_and_a, $this->per_comment, $this->per_date, $this->per_emp_id, $this->per_ase_id));
     }//เพิ่มข้อมูล Q&A, Comment, Date(วันที่ประเมิน), รหัส Nominee, Assessor ที่ประเมิน
     
     function insert_point()
@@ -43,7 +43,7 @@ class Da_pef_evaluation extends pefs_model
             per_ase_id = ?
         WHERE per_emp_id = ?";
 
-        $this->db->query($sql, array($this->per_id, $this->per_q_and_a, $this->per_comment, $this->per_date, $this->per_emp_id, $this->per_ase_id));
+        $this->db->query($sql, array($this->per_q_and_a, $this->per_comment, $this->per_date, $this->per_emp_id, $this->per_ase_id));
     }//อัพเดทข้อมูล Q&A, Comment, Date(วันที่ประเมิน), รหัส Nominee, Assessor ที่ประเมิน
 
     function update_point()

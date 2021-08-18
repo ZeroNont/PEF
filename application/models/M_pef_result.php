@@ -46,7 +46,7 @@ class M_pef_result extends Da_pef_result
                 INNER JOIN pefs_database.pef_group_assessor AS gass
                 ON gro.grp_id = gass.gro_grp_id
                 INNER JOIN pefs_database.pef_assessor AS ass
-                ON gass.gro_ase_id = ass.ase_id
+                ON gass.gro_ase_id = ass.ase_emp_id
                 INNER JOIN pefs_database.pef_group_nominee AS gnor
                 ON gass.gro_grp_id = gnor.grn_grp_id
                 INNER JOIN dbmc.employee AS emp

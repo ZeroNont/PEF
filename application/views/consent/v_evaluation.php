@@ -86,16 +86,42 @@
                             <!-- column ดำเนินการ -->
                         <td style='text-align: center;'>
                             <!-- ปุ่มดำเนินการ -->
-                            <?php if($ev_ass[$i]->grn_promote_to == "T5" || $ev_ass[$i]->grn_promote_to == "T6"){ ?>
+                            <!-- แสดงฟอร์มประเมิน T6 AM,Senior Staff,Supervisor -->
+                            <?php if($ev_ass[$i]->grn_promote_to == "T6"){ ?>
                                 <a 
-                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_mts/'.$ev_ass->ase_id; ?>" >
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T6/'.$ev_ass[$i]->ase_id.'/'.$ev_ass[$i]->grn_emp_id;?>" >
                                     <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                         <i class="fas fa-edit text-white"></i>
                                     </button>
                                 </a>
-                            <?php } else{ ?>
+                            <!-- แสดงฟอร์มประเมิน T5 Master Senior Specialist -->
+                            <?php } else if($ev_ass[$i]->grn_promote_to == "T5"){ ?>
                                     <a 
-                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_test/'; ?>" >
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T5/'.$ev_ass[$i]->ase_id.'/'.$ev_ass[$i]->grn_emp_id;?>" >
+                                    <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                        <i class="fas fa-edit text-white"></i>
+                                    </button>
+                                </a>
+                            <!-- แสดงฟอร์มประเมิน T4 (AGM) -->
+                            <?php } else if($ev_ass[$i]->grn_promote_to == "T4"){?>
+                                <a 
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T4/'.$ev_ass[$i]->ase_id.'/'.$ev_ass[$i]->grn_emp_id;?>" >
+                                    <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                        <i class="fas fa-edit text-white"></i>
+                                    </button>
+                                </a>
+                            <!-- แสดงฟอร์มประเมิน T3 (Manager) -->
+                            <?php } else if($ev_ass[$i]->grn_promote_to == "T3"){ ?>
+                                <a 
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T3/'.$ev_ass[$i]->ase_id.'/'.$ev_ass[$i]->grn_emp_id;?>" >
+                                    <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                        <i class="fas fa-edit text-white"></i>
+                                    </button>
+                                </a>
+                            <!-- แสดงฟอร์มประเมิน T2 (GM) -->
+                            <?php } else if($ev_ass[$i]->grn_promote_to == "T2"){ ?>
+                                <a 
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T2/'.$ev_ass[$i]->ase_id.'/'.$ev_ass[$i]->grn_emp_id;?>" >
                                     <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                         <i class="fas fa-edit text-white"></i>
                                     </button>
