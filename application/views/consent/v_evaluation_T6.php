@@ -1,5 +1,5 @@
 <!--
-    v_evaluation_mts
+    v_evaluation_T6
     display for Evaluation Form Promote to AM,Senior Staff,Supervisor
     @author Phatchara and Pontakon
     Create date 2564-08-14   
@@ -53,26 +53,32 @@
 <div class="container"> 
     <div class="card" id="border-radius">  
         <div class="card-body">
-            <!-- Logo บริษัท และชื่อบริษัท -->
+            <!-- Logo บริษัท -->
             <div class="row">
                 <div class="col-sm-4">
                     <img src=<?php echo base_url()."argon/assets/img/brand/denso_1.png" ?> width="150" height="150">
                     </div>
-                <div class="col-sm-8 center_com"><h3>ชื่อบริษัท gggggggggggggggggggggggggg</h3></div>
+                <!-- ชื่อบริษัท -->
+                <div class="col-sm-8 center_com">
+                    <h3><?php echo $ev_no[0]->Company_name?></h3>
+                </div>
             </div>  
                 <!-- ชื่อกรรมการ และวันประเมิน -->
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>Assessor Name :&nbsp; <?php echo $ev_ass[0]->ase_name_eng . ' ' . $ev_ass[0]->ase_surename_eng ?></h3>
+                        <h3>Assessor Name :&nbsp; <?php echo $ev_ass[0]->Empname_eng . ' ' . $ev_ass[0]->Empsurname_eng ?></h3>
                     </div>
                     <div class="col-sm-3">
                         <?php $newDate = date("d/m/Y", strtotime($ev_ass[0]->grp_date)); ?>
                         <h3>Date : <?php echo $newDate ?></h3>
                     </div>
                     <div class="col-sm-3">
-                        <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
-                            <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
-                        </button>
+                        <a
+                            href="<?php echo base_url()?>upload/<?php echo $ev_file[0]->fil_location ?>" target="_blank">
+                            <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
+                                <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
+                            </button>
+                        </a>
                     </div>
                 </div>         
                 <br>
@@ -82,22 +88,27 @@
                     <tr id="Manage">
                         <th colspan="5" id="gray"><center><b>Stretch Assignment Evaluation Form (Promote to <?php echo $pos_pos->sec_name;?> [ <?php echo $pos_pos->sec_level;?> ]) </b>
                     </tr>
-                        <tbody>
+                    <tbody>
                         <tr id="Manage">
-                            <th width="40px" id="gray">Name - Surname</th>
+                            <!-- ชื่อ-นามสกุล Nominee -->
+                            <th width="50px" id="gray">Name - Surname</th>
                             <td colspan="2">
-                                
+                                <?php echo $ev_no[0]->Empname_eng . ' ' . $ev_no[0]->Empsurname_eng ?>
                             </td>
                             <th width="40px" id="gray">Position</th>
-                            <td></td>
+                            <td>
+                                <?php echo $ev_no[0]->Position_name?>
+                            </td>
                         </tr>
                         <tr id="Manage">
                             <th width="40px" id="gray">Promote to</th>
-                            <td colspan="2"></td>
+                            <td colspan="2"><?php echo $pos_pos->sec_name;?></td>
                             <th width="40px" id="gray">Department/Section</th>
-                            <td></td>
+                            <td>
+                                <?php echo $ev_no[0]->Department?>
+                            </td>
                         </tr>
-                        </tbody>
+                    </tbody>
                 </table>
                     <br>
                     <h2><b>< Assessor ></b></h2>

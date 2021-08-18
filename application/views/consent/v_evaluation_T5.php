@@ -1,5 +1,5 @@
 <!--
-    v_evaluation_mts
+    v_evaluation_T5
     display for Evaluation Form Promote to Master Senior Specialist T5
     @author Phatchara and Pontakon
     Create date 2564-08-14   
@@ -64,7 +64,7 @@
                 <!-- ชื่อกรรมการ และวันประเมิน -->
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3>Assessor Name :&nbsp; <?php echo $ev_ass[0]->ase_name_eng . ' ' . $ev_ass[0]->ase_surename_eng ?></h3>
+                        <h3>Assessor Name :&nbsp; <?php echo $ev_ass[0]->Empname_eng . ' ' . $ev_ass[0]->Empsurname_eng ?></h3>
                     </div>
                     <div class="col-sm-3">
                         <?php $newDate = date("d/m/Y", strtotime($ev_ass[0]->grp_date)); ?>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="col-sm-3">
                         <a
-                            href="<?php echo base_url()?>assets/file/Plan/<?php echo $arr_file[0]->fil_plan_location ?>" download>
+                            href="<?php echo base_url()?>upload/<?php echo $ev_file[0]->fil_location ?>" target="_blank">
                             <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
                                 <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
                             </button>
@@ -88,19 +88,23 @@
                     </tr>
                         <tbody>
                         <tr id="Manage">
+                            <!-- ชื่อ-นามสกุล Nominee -->
                             <th width="50px" id="gray">Name - Surname</th>
                             <td colspan="2">
                                 <?php echo $ev_no[0]->Empname_eng . ' ' . $ev_no[0]->Empsurname_eng ?>
                             </td>
+                            <!-- Position Nominee -->
                             <th width="40px" id="gray">Position</th>
                             <td>
                                 <?php echo $ev_no[0]->Position_name?>
                             </td>
                         </tr>
                         <tr id="Manage">
+                            <!-- Promote to -->
                             <th width="40px" id="gray">Promote to</th>
                             <td colspan="2"><?php echo $pos_pos->sec_name;?></td>
                             <th width="40px" id="gray">Department/Section</th>
+                            <!-- แผนกของ Nominee -->
                             <td>
                                 <?php echo $ev_no[0]->Department?>
                             </td>
@@ -109,7 +113,7 @@
                 </table>
                     <br>
                     <h2><b>< Assessor ></b></h2>
-                    <!-- Table Score -->
+                    <!-- Table Evaluation -->
                     <table class="table table-bordered table-sm">
                         <tbody>
                             <tr id="center_th">
