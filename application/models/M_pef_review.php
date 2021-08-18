@@ -1,13 +1,13 @@
-<!--
-    M_ttp_renewal
-    select to get data
-    @input -
-    @output -
-    @author Nattakorn
-    Create date 2564-07-19
-    Update date 2564-07-27
--->
 <?php
+
+// M_ttp_renewal
+// select to get data
+// @input -
+// @output -
+// @author Nattakorn
+// Create date 2564-07-19
+// Update date 2564-07-27
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 include_once('Da_pef_review.php');
@@ -19,14 +19,52 @@ class M_pef_review extends Da_pef_review
         parent::__construct();
     }
 
-
-
-    public function get_ass_group()
+    public function get_section()
     {
         $sql =
             "SELECT *
-            FROM pefs_database.pef_group_assessor";
+            FROM pefs_database.pef_section";
         $query = $this->db->query($sql);
+        return $query;
+    }
+
+
+    function get_group_by_T()
+    {
+        $sql =
+            "SELECT *
+            FROM pefs_database.pef_group as grp
+            INNER JOIN  pefs_database.pef_section as sec
+            ON sec.sec_id = grp.grp_position_group
+            WHERE grp.grp_position_group = ?
+            ";
+        $query = $this->db->query($sql, array($this->grp_position_group));
+        return $query;
+    }
+
+    function get_group_by_DATE()
+    {
+        $sql =
+            "SELECT *
+            FROM pefs_database.pef_group as grp
+            Inner JOIN  pefs_database.pef_section as sec
+            ON sec.sec_id = grp.grp_position_group
+            WHERE grp.grp_date = ?
+            ";
+        $query = $this->db->query($sql, array($this->grp_date));
+        return $query;
+    }
+
+    function get_group_by_T_DATE()
+    {
+        $sql =
+            "SELECT *
+            FROM pefs_database.pef_group as grp
+            Inner JOIN  pefs_database.pef_section as sec
+            ON sec.sec_id = grp.grp_position_group
+            WHERE grp.grp_date = ? AND grp.grp_position_group = ?
+            ";
+        $query = $this->db->query($sql, array($this->grp_date, $this->grp_position_group));
         return $query;
     }
 
@@ -42,14 +80,14 @@ class M_pef_review extends Da_pef_review
         return $query;
     }
 
-    public function get_nom_id($id)
+    public function get_nom_id()
     {
         $sql =
             "SELECT *
             FROM pefs_database.pef_group_nominee as nom
             LEFT JOIN   pefs_database.pef_group  as grp
              ON nom.grn_id = grp.grp_id
-            WHERE nom.grn_id = $id ";
+            WHERE nom.grn_id = ? ";
         $query = $this->db->query($sql);
         return $query;
     }

@@ -1,13 +1,13 @@
-<!--
-    Da_ttp_renewal
-    database for renewal
-    @input -
-    @output -
-    @author Nattakorn
-    Create date 2564-07-19
-    Update date 2564-07-27
--->
 <?php
+// <!--
+// Da_ttp_renewal
+// database for renewal
+// @input -
+// @output -
+// @author Nattakorn
+// Create date 2564-07-19
+// Update date 2564-07-27
+// -->
 include_once("pefs_model.php");
 
 
@@ -57,12 +57,20 @@ class Da_pef_review extends pefs_model
     * @author Nattkorn
     * @Create date 2564-07-19
     */
-    public function update_grn_status($grn_id)
+    public function update_grn_status()
     {
-        $sql = " UPDATE pefs_database.pef_group_nominee as up
-        SET up.grn_status = ?
-        WHERE grn_id = $grn_id";
-        $this->db->query($sql, array($this->grn_id, $this->grn_status));
+        $sql = " UPDATE pefs_database.pef_group as up
+        SET up.grp_date = ? , up.grp_status = ? 
+        WHERE up.grp_id = ? ";
+        $this->db->query($sql, array($this->grp_date, $this->grp_status, $this->grp_id));
+    }
+
+    public function update_nom_stat()
+    {
+        $sql = " UPDATE pefs_database.pef_group_nominee as nom
+        SET nom.grn_status = ? 
+        WHERE nom.grn_grp_id = ? ";
+        $this->db->query($sql, array($this->grn_status, $this->grn_grp_id));
     }
     /*
     * insert_schedule
@@ -72,10 +80,4 @@ class Da_pef_review extends pefs_model
     * @author Nattkorn
     * @Create date 2564-07-19
     */
-    public function insert_grp_date()
-    {
-        $sql = "INSERT INTO pefs_database.pef_group(grp_date,grp_position_group,grp_status) 
-                VALUES (?,?,?)";
-        $this->db->query($sql, array($this->grp_date, $this->grp_position_group, $this->grp_status));
-    }
 }
