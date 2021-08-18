@@ -29,9 +29,11 @@ class M_pef_Employee extends Da_pef_Employee
     function get_assessor()
     { //check User_login and Pass_login in database
         $sql =
-            "SELECT *
+        "SELECT *
 			FROM pefs_database.pef_assessor AS ass INNER JOIN dbmc.sectioncode AS sec
             ON ass.Sectioncode_ID = sec.Sectioncode
+            INNER JOIN pefs_database.pef_section AS section
+            ON ass.position_level=section.sec_id
 			WHERE ass.position_level =?";
         $query = $this->db->query($sql, array($this->position_level));
         return $query;

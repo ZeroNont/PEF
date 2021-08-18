@@ -46,8 +46,9 @@ class M_pef_group extends Da_pef_group
     function get_group()
     { //check User_login and Pass_login in database
         $sql = "SELECT *
-			FROM pefs_database.pef_group 
-			WHERE CURDATE() <= pef_group.grp_date
+			FROM pefs_database.pef_group AS grp INNER JOIN pefs_database.pef_section AS sec
+            ON grp.grp_position_group=sec.sec_id
+			WHERE CURDATE() <= grp.grp_date AND grp.grp_status=0
 			";
         $query = $this->db->query($sql);
         return $query;

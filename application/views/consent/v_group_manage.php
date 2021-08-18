@@ -364,9 +364,11 @@ function get_position() {
     })
 
 }
+ฌำะGEt
 
 function get_assessor() {
     var position_level = document.getElementById('select').value;
+    // position_level--;
 
     $.ajax({
         type: "POST",
@@ -396,7 +398,7 @@ function get_assessor() {
                 data_row += row.ase_name_eng + "          " + row.ase_surename_eng
                 data_row += '</td>'
                 data_row += '<td>'
-                data_row += row.position_level
+                data_row += row.sec_level
                 data_row += '</td>'
                 data_row += '<td>'
                 data_row += row.Department

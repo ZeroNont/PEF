@@ -128,7 +128,7 @@ function getEmp_edit(i) {
                         <?php echo $obj_group[$i]->grp_id ?>
                     </td>
                     <td>
-                        <?php echo $obj_group[$i]->grp_position_group ?>
+                        <?php echo $obj_group[$i]->sec_level . "  " . $obj_group[$i]->sec_name ?>
                     </td>
                     <td>
                         <?php echo $obj_group[$i]->grp_date ?>

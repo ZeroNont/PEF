@@ -60,7 +60,7 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-email">Date</label>
                                     <input type="date" id="date" class="form-control" min="<?php echo date('Y-m-d'); ?>"
-                                        required>
+                                        value="<?php echo $obj_group->grp_date ?>" required>
                                 </div>
                             </div>
                         </div>
@@ -205,26 +205,100 @@ var count_nominee = 0;
 var id = "Emp_id";
 var num = 1;
 var emp_as = [];
+var index_emp = [];
+
+$(document).ready(function() {
+    get_position();
+    var group_id = document.getElementById('group_id').value;
+
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url() ?>Get_Employee/Get_nominee/get_nominee_by_id",
+        data: {
+            "group_id": group_id
+        },
+        dataType: "JSON",
+        success: function(data, status) {
+            // console.log(data);
+            var i = 1;
+            var data_row = '';
+            var count_index = 0;
+            data.forEach((row, index) => {
+                data_row += '<tr id="emp_' + num + '">'
+                data_row += '<td>'
+                data_row += i++;
+                data_row += '</td>'
+                data_row += '<td id="grn_emp_id_' + num + '">'
+                data_row += row.grn_emp_id
+                data_row += '</td>'
+                data_row += '<td>'
+                data_row += row.Empname_eng + " " + row.Empsurname_eng
+                data_row += '<input name"pos" value=' + row.Position_ID + ' hidden >'
+                data_row += '</td>'
+                // data_row += '<td>'
+                // data_row += row.Position_ID
+                // data_row += '</td>'
+                data_row += '<td>'
+                data_row += row.Department
+                data_row += '</td>'
+                data_row += '<td id="Promote_' + num + '">'
+                data_row += row.Position_name
+                data_row += '</td>'
+                data_row += '<td>'
+                data_row +=
+                    '<button class="btn btn-danger" onclick = "remove_row(' + num +
+                    ') " >delete</button>'
+                data_row += '</td>'
+                data_row += '</tr>'
+                index_emp.push(num);
+                console.log(index_emp)
+                count_index++;
+                count_nominee++
+                num++;
+                console.log(count_nominee);
+                console.log(num);
+            })
+            $("#nominee_data").html(data_row)
+        }
+    })
+
+});
 $("#add").click(function() {
     empname = document.getElementById("showname_modal").value;
     empid = document.getElementById("Emp_id_modal").value;
     position = document.getElementById("position_modal").value;
     department = document.getElementById("department_modal").value;
     promote = document.getElementById("select2").value;
+    var data_row = "";
+    console.log(num);
+    data_row += '<tr id="emp_' + num + '">';
+    data_row += '<td>' + num + '</td>';
+    data_row += '<td id="grn_emp_id_' + num + '">' + empid + '</td>';
+    data_row += '<td >' + empname + '</td>';
+    data_row += '<td >' + department + '</td>';
+    data_row += '<td id="Promote_' + num + '">' + promote + '</td>';
+    data_row += '<td>';
+    data_row += '<button class="btn btn-danger" onclick = "remove_row(' + num + ') " >delete</button>';
+    data_row += '</td>';
+    index_emp.push(num);
+    console.log(index_emp);
+    num++
+
     $("#nominee_data").append(
-        "<tr id=" + num + "><td>" + num++ + "</td><td id=" + 'Emp_id_' + count_nominee +
-        ">" + empid + "</td><td>" + empname + "</td><td>" +
-        position + "</td><td>" + department + "</td><td id=" + 'Promote_' + count_nominee +
-        ">" + promote + "</td><td><button onclick = " + "remove_row(this) " + " >ลบ</button></td></tr>  "
+        data_row
     );
     count_nominee++;
+    console.log(count_nominee);
 });
 
-function remove_row(btn) {
-    var row = btn.parentNode.parentNode;
-    row.parentNode.removeChild(row);
+function remove_row(num) {
+    $("#emp_" + num).remove();
+    var index = index_emp.indexOf(num);
+    if (index > -1) {
+        index_emp.splice(index, 1);
+    }
     count_nominee--;
-    console.log(1234)
+    console.log(index_emp)
 }
 
 function get_Emp() {
@@ -234,7 +308,7 @@ function get_Emp() {
     console.log(Emp_id)
     $.ajax({
         type: "POST",
-        url: "<?php echo base_url(); ?>Get_Employee/Get_nominee/search_by_employee_id",
+        url: "<?php echo base_url(); ?>Get_Employee/Get_nominee/search_by_employee_id ",
         data: {
             "Emp_id": Emp_id,
             "Position_level": pos
@@ -245,7 +319,8 @@ function get_Emp() {
             if (data.length == 0) {
                 document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
                 document.getElementById("position_modal").value = "ไม่มีข้อมูล";
-                document.getElementById("department_modal").value = "ไม่มีข้อมูล";
+                document.getElementById("department_modal").value =
+                    "ไม่มีข้อมูล";
             } else {
                 department = data[0].Department;
                 // empname = data[0].Position_name;
@@ -273,50 +348,52 @@ function save_data() {
     var T = document.getElementById('select').value;
     element = document.getElementsByName("pos");
     var date = document.getElementById('date').value;
-    console.log(date);
+    var group = document.getElementById('group').value;
 
+    console.log(count_nominee);
 
-    console.log(15)
+    console.log(32)
     for (var i = 0; i < count; i++) {
         if (document.getElementById('check_box' + i).checked) {
             emp.push(document.getElementById('gro_ase_id_' + i).innerHTML)
-            console.log(555)
+            console.log(emp + "55")
         }
     }
     for (var i = 0; i < count_nominee; i++) {
-        if (typeof element !== "undefined" && element.value == '') {
-            emp_nominee.push(document.getElementById('Emp_id_' + i).innerHTML)
-            pos_id[i] = element[i].getAttribute('id');
-            console.log(444)
-
-        }
-
-
+        console.log(99);
+        console.log(index_emp[i]);
+        emp_nominee.push(document.getElementById('grn_emp_id_' + index_emp[i]).innerHTML)
+        promote.push(document.getElementById('Promote_' + index_emp[i]).innerHTML)
+        pos_id[i] = element[i].getAttribute('id');
+        console.log(444)
     }
-    for (var i = 0; i < count_nominee; i++) {
-        promote.push(document.getElementById('Promote_' + i).innerHTML)
-    }
+
     console.log(date)
     console.log(emp)
     console.log(T)
     console.log(emp_nominee)
     console.log(promote)
     console.log(pos_id)
+    console.log(group)
     console.log(11)
     //ใช้ ajax 
     $.ajax({
         type: "POST",
-        url: "<?php echo base_url(); ?>Group_management/Group_insert/insert",
+        url: "<?php echo base_url(); ?>Group_management/Group_edit/edit",
         data: {
             "emp": emp,
             "emp_nominee": emp_nominee,
             "promote": promote,
             "pos_id": pos_id,
             "date": date,
-            "position_group": T
+            "position_group": T,
+            "group": group
         },
+        success: function(data) {
+            console.log(data);
+            window.location.href = "<?php echo base_url(); ?>Group_management/Group_list/index";
+        }
     })
-
 }
 
 
@@ -353,7 +430,7 @@ function get_position() {
                 var option = document.createElement("option");
                 option.setAttribute("id", row.Position_ID);
                 option.setAttribute("name", "pos");
-                option.text = position_level + " " + row.Position_name;
+                option.text = row.Position_name;
                 x.add(option);
             })
 
@@ -397,10 +474,12 @@ function get_assessor() {
                 });
                 // forEach
                 if (check != 0) {
-                    data_row += '<input type="checkbox" id="check_box' + index +
+                    data_row += '<input type="checkbox" id="check_box' +
+                        index +
                         '" name="checkbox1" checked>'
                 } else {
-                    data_row += '<input type="checkbox" id="check_box' + index +
+                    data_row += '<input type="checkbox" id="check_box' +
+                        index +
                         '" name="checkbox1" >'
                 }
                 data_row += '</td>'
@@ -408,10 +487,11 @@ function get_assessor() {
                 data_row += row.ase_emp_id
                 data_row += '</td>'
                 data_row += '<td>'
-                data_row += row.ase_name_eng + "          " + row.ase_surename_eng
+                data_row += row.ase_name_eng + "          " + row
+                    .ase_surename_eng
                 data_row += '</td>'
                 data_row += '<td>'
-                data_row += row.position_level
+                data_row += row.sec_level
                 data_row += '</td>'
                 data_row += '<td>'
                 data_row += row.Department
@@ -425,54 +505,6 @@ function get_assessor() {
         }
     })
 }
-$(document).ready(function() {
-    var group_id = document.getElementById('group_id').value;
-
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url() ?>Get_Employee/Get_nominee/get_nominee_by_id",
-        data: {
-            "group_id": group_id
-        },
-        dataType: "JSON",
-        success: function(data, status) {
-            // console.log(data);
-            var count_nominee = 0;
-            var i = 1;
-            var data_row = '';
-            var count_index = 0;
-            data.forEach((row, index) => {
-                data_row += '<tr>'
-                data_row += '<td>'
-                data_row += i++;
-                data_row += '</td>'
-                data_row += '<td id="grn_emp_id_' + index + '">'
-                data_row += row.grn_emp_id
-                data_row += '</td>'
-                data_row += '<td id="gro_ase_id_' + index + '">'
-                data_row += row.Empname_eng + " " + row.Empsurname_eng
-                data_row += '</td>'
-                // data_row += '<td>'
-                // data_row += row.Position_ID
-                // data_row += '</td>'
-                data_row += '<td>'
-                data_row += row.Department
-                data_row += '</td>'
-                data_row += '<td>'
-                data_row += row.Position_name
-                data_row += '</td>'
-                data_row += '<td>'
-                data_row +=
-                    '<button class="btn btn-danger" onclick = "remove_row(this) " >delete</button>'
-                data_row += '</td>'
-                data_row += '</tr>'
-                count_index++
-            })
-            $("#nominee_data").html(data_row)
-        }
-    })
-
-});
 $(document).ready(function() {
 
     var group = document.getElementById('group').value;

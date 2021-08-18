@@ -45,7 +45,6 @@ class Get_assessor extends MainController
         $level = $this->input->post('pos');
         $this->load->model('M_pef_Employee', 'emp');
         $this->emp->position_level =  $level;
-
         $data = $this->emp->get_assessor()->result();
         // echo $data['assessor'];
         echo json_encode($data);
