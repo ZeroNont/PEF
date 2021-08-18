@@ -1,7 +1,7 @@
 <!--
     v_evaluation
     display Evaluation list
-    @author Phatchara and Pontakon
+    @author Phatchara Khongthandee and Pontakon Mujit 
     Create date 2564-08-15   
     Update date 2564-08-16
     Update date 2564-08-17
@@ -56,7 +56,7 @@
                 </tr>
             </thead>
             <tbody class="list">
-                <?php for ($i = 0; $i < count($ev_ass); $i++) { ?>
+                <?php for ($i = 0; $i < count($ev_no); $i++) { ?>
                     <tr>
                         <!-- column แสดง ลำดับ -->
                         <td>
@@ -64,64 +64,64 @@
                         </td>
                         <!-- column แสดง รหัสผู้ที่ถูกประเมิน หรือ Nominee -->
                         <td>
-                            <?php echo $ev_ass[$i]->Emp_ID ?>
+                            <?php echo $ev_no[$i]->Emp_ID ?>
                         </td>
                         <!-- column แสดง ลำดับ ชื่อ-นามสกุล ผู้ที่ถูกประเมิน หรือ Nominee-->
                         <td>
-                            <?php echo $ev_ass[$i]->Empname_eng . ' ' . $ev_ass[$i]->Empsurname_eng?>
+                            <?php echo $ev_no[$i]->Empname_eng . ' ' . $ev_no[$i]->Empsurname_eng?>
                         </td>
                         <!-- column แสดงชื่อกลุ่มผู้ที่ถูกประเมิน หรือ Nominee -->
                         <td>
-                            <?php echo $ev_ass[$i]->grp_name ?>
+                            <?php echo $ev_no[$i]->gro_grp_id ?>
                         </td>
                         <!-- column แสดงวันที่ต้องทำการประเมิน -->
                         <td>
-                            <?php $newDate = date("d/m/Y", strtotime($ev_ass[$i]->grp_date)); ?>
+                            <?php $newDate = date("d/m/Y", strtotime($ev_no[$i]->grp_date)); ?>
                             <?php echo $newDate ?>
                         </td>
                         <!-- column แสดงตำแหน่งที่จะ promote -->
                         <td>
-                            <?php echo $ev_ass[$i]->grn_promote_to ?>
+                            <?php echo $ev_no[$i]->grn_promote_to ?>
                         </td>
                             <!-- column ดำเนินการ -->
                         <td style='text-align: center;'>
                             <!-- ปุ่มดำเนินการ -->
                             <!-- แสดงฟอร์มประเมิน T6 AM,Senior Staff,Supervisor -->
-                            <?php if($ev_ass[$i]->grn_promote_to == "T6"){ ?>
+                            <?php if($ev_no[$i]->grn_promote_to == "P403" || $ev_no[$i]->grn_promote_to == "P411"){ ?>
                                 <a 
-                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T6/'.$ev_ass[$i]->ase_id.'/'.$ev_ass[$i]->grn_emp_id;?>" >
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T6/'.$ev_ass[$i]->ase_id.'/'.$ev_no[$i]->grn_emp_id;?>" >
                                     <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                         <i class="fas fa-edit text-white"></i>
                                     </button>
                                 </a>
                             <!-- แสดงฟอร์มประเมิน T5 Master Senior Specialist -->
-                            <?php } else if($ev_ass[$i]->grn_promote_to == "T5"){ ?>
+                            <?php } else if($ev_no[$i]->grn_promote_to == "P312" || $ev_no[$i]->grn_promote_to == "P313"){ ?>
                                     <a 
-                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T5/'.$ev_ass[$i]->ase_id.'/'.$ev_ass[$i]->grn_emp_id;?>" >
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T5/'.$ev_ass[$i]->ase_id.'/'.$ev_no[$i]->grn_emp_id;?>" >
                                     <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                         <i class="fas fa-edit text-white"></i>
                                     </button>
                                 </a>
                             <!-- แสดงฟอร์มประเมิน T4 (AGM) -->
-                            <?php } else if($ev_ass[$i]->grn_promote_to == "T4"){?>
+                            <?php } else if($ev_no[$i]->grn_promote_to == "P301" || $ev_no[$i]->grn_promote_to == "P311"){?>
                                 <a 
-                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T4/'.$ev_ass[$i]->ase_id.'/'.$ev_ass[$i]->grn_emp_id;?>" >
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T4/'.$ev_ass[$i]->ase_id.'/'.$ev_no[$i]->grn_emp_id;?>" >
                                     <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                         <i class="fas fa-edit text-white"></i>
                                     </button>
                                 </a>
                             <!-- แสดงฟอร์มประเมิน T3 (Manager) -->
-                            <?php } else if($ev_ass[$i]->grn_promote_to == "T3"){ ?>
+                            <?php } else if($ev_no[$i]->grn_promote_to == "P251" || $ev_no[$i]->grn_promote_to == "P241"){ ?>
                                 <a 
-                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T3/'.$ev_ass[$i]->ase_id.'/'.$ev_ass[$i]->grn_emp_id;?>" >
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T3/'.$ev_ass[$i]->ase_id.'/'.$ev_no[$i]->grn_emp_id;?>" >
                                     <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                         <i class="fas fa-edit text-white"></i>
                                     </button>
                                 </a>
                             <!-- แสดงฟอร์มประเมิน T2 (GM) -->
-                            <?php } else if($ev_ass[$i]->grn_promote_to == "T2"){ ?>
+                            <?php } else if($ev_no[$i]->grn_promote_to == "P231"){ ?>
                                 <a 
-                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T2/'.$ev_ass[$i]->ase_id.'/'.$ev_ass[$i]->grn_emp_id;?>" >
+                                    href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_T2/'.$ev_ass[$i]->ase_id.'/'.$ev_no[$i]->grn_emp_id;?>" >
                                     <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                         <i class="fas fa-edit text-white"></i>
                                     </button>

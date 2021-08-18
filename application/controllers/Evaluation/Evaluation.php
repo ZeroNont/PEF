@@ -7,6 +7,8 @@
     Create date 2564-08-14
     Update date 2564-08-15
     Update date 2564-08-17
+    Update date 2564-08-18
+    Update date 2564-08-19
 -->
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -47,12 +49,10 @@ class Evaluation extends MainController
 
     function show_evaluation()
     {
-        $id_ss = '00066';
+        $id_ass = '00066';
         $this->load->model('M_pef_evaluation', 'pef');
-        $data['ev_ass'] = $this->pef->get_assessor($id_ss)->result(); //คืนค่าชื่อกรรมการ ชื่อกลุ่ม วันที่ประเมิน จำนวนNominee ชื่อ Nominee ตำแหน่ง แผนก Promote to
-        // $data['ev_group'] = $this->pef->get_group($id)->result(); //คืนค่าชื่อกลุ่ม วันที่ประเมิน
-        // $data['ev_groupno'] = $this->pef->get_group_nominee($id)->result();//คืนค่าชื่อกลุ่ม วันที่ประเมิน
-        // $data['emp'] = $this->pef->get_nominee($id = 1)->result();//คืนค่าชื่อ Nominee ชื่อกลุ่ม ตำแหน่ง แผนก
+        $data['ev_ass'] = $this->pef->get_assessor($id_ass)->result(); //คืนค่าชื่อกรรมการ ชื่อกลุ่ม วันที่ประเมิน จำนวนNominee ชื่อ Nominee ตำแหน่ง แผนก Promote to
+        $data['ev_no'] = $this->pef->get_nominee_list($id_ass)->result();
         $this->output('consent/v_evaluation', $data);
     }// function show_evaluation
 
@@ -67,13 +67,15 @@ class Evaluation extends MainController
     * @Update Date 2564-08-16
     * @Update Date 2564-08-17
 	*/
-    function show_evaluation_T6()
+    function show_evaluation_T6($id, $emp_id)
     {
-        $id_ss = '00066';
         $position="T6";
         $this->load->model('M_pef_evaluation', 'pef');
-        $data['arr_dis'] = $this->pef->get_all_form_T6($position)->result();
-        $data['ev_ass'] = $this->pef->get_assessor($id_ss)->result();
+        $data['ev_ass'] = $this->pef->get_group_assessor($id)->result();
+        $data['ev_gno'] = $this->pef->get_group_nominee($emp_id)->result();
+        $data['ev_no'] = $this->pef->get_nominee($emp_id)->result();
+        $data['ev_file'] = $this->get_file_present_nominee($emp_id)->result();
+        $data['arr_dis'] = $this->pef->get_all_form_T5($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
         $this->output('consent/v_evaluation_T6', $data);
     }// function show_evaluation_T6
@@ -95,8 +97,8 @@ class Evaluation extends MainController
         $this->load->model('M_pef_evaluation', 'pef');
         $data['ev_ass'] = $this->pef->get_group_assessor($id)->result();
         $data['ev_gno'] = $this->pef->get_group_nominee($emp_id)->result();
-        $data['ev_no'] = $this->pef->get_nomonee($emp_id)->result();
-        $data['ev_file'] = $this->get_file_presant_nomonee()->result();
+        $data['ev_no'] = $this->pef->get_nominee($emp_id)->result();
+        $data['ev_file'] = $this->pef->get_file_present_nominee($emp_id)->result();
         $data['arr_dis'] = $this->pef->get_all_form_T5($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
         $this->output('consent/v_evaluation_T5', $data);
