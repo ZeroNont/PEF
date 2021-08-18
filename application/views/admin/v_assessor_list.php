@@ -23,41 +23,15 @@ function get_ase_id() {
         }
     });
 }
-
-// function getEmp_edit(i) {
-//     Emp_id = document.getElementById('Emp_id' + i).value;
-//     var empname = "";
-//     console.log(Emp_id)
-//     $.ajax({
-//         type: "POST",
-//         url: "<?php echo base_url(); ?>ttp_Emp/Employee/search_by_employee_id",
-//         data: {
-//             "Emp_id": Emp_id
-//         },
-//         dataType: "JSON",
-//         success: function(data, status) {
-//             console.log(data);
-//             if (data.length == 0) {
-//                 document.getElementById("Emp_name" + i).value = "ไม่มีข้อมูล";
-//             } else {
-//                 empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
-//                 document.getElementById("Emp_name" + i).value = empname;
-//                 console.log(999)
-//                 console.log(empname)
-//             }
-//         }
-//     });
-// }
 </script>
 <div id="Add" class="modal fade" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header ">
 
-                <!--   <h4 align='center' class="modal-title" id="exampleModalLabel">
-
-                    Add Detail
-                </h4> -->
+                <h1 align='center' class="modal-title" id="exampleModalLabel">
+                    Add Assessor
+                </h1> 
 
                 <button type=" button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -87,16 +61,31 @@ function get_ase_id() {
 <h1>
     Assessor Management
 </h1>
-
+        <div class="col-lg-3" style="margin: 0px 0px 0px 940px">
+                <label class="form-control-label" for="exampleInputEmail2"> Select Year </label>
+                <select name = "position" id = "year" class = "form-select" aria-label = "Default select example " onchange = "show_all_data()">
+                    <?php for($i = 0;$i < count($obj_year); $i++){
+                        if(date("Y",strtotime($obj_year[$i]->ase_date)) == date("Y")){ ?>
+                            <option selected value = "<?php echo date("Y",strtotime($obj_year[$i]->ase_date)) ?>">
+                                <?php echo date("Y",strtotime($obj_year[$i]->ase_date));?>
+                            </option>    
+                    <?php }
+                    else { ?> 
+                            <option value = "<?php echo date("Y",strtotime($obj_year[$i]->ase_date)) ?>">
+                                <?php echo date("Y",strtotime($obj_year[$i]->ase_date));?>
+                            </option> 
+                    <?php } 
+                    } ?>
+                </select>
+                    <input type="month" class="form-control" max="<?php echo date('Y-m'); ?>" name="End_date" id="End_date" width="270">
+                    <button onclick='show_all_data()' class="btn btn-primary btn-lg canter"><i class="fas fa-search"></i> Search</button>
+        </div>
 <div class="card-header" id="card_radius">
-
-
-
-
     <div>
         <br>
         <div>
-            <h1>Promote To <?php echo $obj_assessor->sec_level?></h1>
+
+        <h1>Promote To <?php echo $obj_assessor->sec_level?></h1>
             <button class="btn btn-success" data-toggle="modal" data-target="#Add" style="margin-left : 84%">
                 <i class="fa fa-plus-square-o" style="font-size:20px;"></i>&nbsp;Add Assessor
             </button>
@@ -120,10 +109,10 @@ function get_ase_id() {
                     <td><?php echo $i+1 ?></td>
                     <td><?php echo $arr_assessor[$i]->ase_emp_id ?></td>
                     <td><?php echo $arr_assessor[$i]->Empname_eng.' '.$arr_assessor[$i]->Empsurname_eng ?></td>
-                    <td><?php echo $arr_assessor[$i]->sec_name ?></td>
+                    <td><?php echo $arr_assessor[$i]->Position_name?></td>
                     <td><?php echo $arr_assessor[$i]->Department?></td>
                     <td>
-                        <a href="<?php echo site_url().'Assessor_management/Assessor_list/delete_assessor/'.$arr_assessor[$i]->ase_emp_id.'/'.$obj_assessor->sec_id.'/';?>">
+                        <a href="<?php echo site_url().'Assessor_management/Assessor_list/delete_assessor/'.$arr_assessor[$i]->ase_id.'/'.$obj_assessor->sec_id.'/';?>">
                         <button class="btn btn-sm btn-danger">
                             <i class="fa fa-pencil-square"></i>
                         </button>

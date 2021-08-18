@@ -39,6 +39,7 @@ class Assessor_list extends MainController
     {
         $this->load->model('M_pef_assessor_list', 'pef');
         $data['obj_assessor'] = $this->pef->get_sec_level($sec_id)->row();
+        $data['obj_year'] = $this->pef->get_assessor($sec_id)->result();
         $data['arr_assessor'] = $this->pef->get_assessor($sec_id)->result();
         $this->output('admin/v_assessor_list',$data);
     }
@@ -49,10 +50,10 @@ class Assessor_list extends MainController
         $data = $this->pef->get_addassessor($Ase_id)->result();
         echo json_encode($data);
     }
-    public function delete_assessor($emp_id,$sec_id)
+    public function delete_assessor($Ase_id,$sec_id)
 	{
         $this->load->model('Da_pef_assessor_list', 'pef');
-        $this->pef->ase_emp_id = $emp_id;
+        $this->pef->ase_id = $Ase_id;
         $this->pef->delete();
         redirect('Assessor_management/Assessor_list/show_assessor/'.$sec_id);
     }
