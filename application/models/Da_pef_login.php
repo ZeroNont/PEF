@@ -1,16 +1,16 @@
 <?php
 /*
-	* Da_ttp_login.php
-    * Da_ttp_login เข้าสู่ระบบ
+	* Da_pef_login.php
+    * Da_pef_login เข้าสู่ระบบ
     * @Niphat Kuhokciw
-    * @Create Date 2564-07-28
+    * @Create Date 2564-08-12
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 include_once('pefs_model.php');
 
 class Da_pef_login extends pefs_model 
-{//class Da_ttp_login
+{//class Da_pef_login
     
 
 	public function __construct()
@@ -19,4 +19,4 @@ class Da_pef_login extends pefs_model
 	}
 
 
-}//end class Da_ttp_login
+}//end class Da_pef_login

@@ -11,7 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
 
 class Assessor_input extends MainController
-{
+{//class Assessor_input
         /**
      * Index Page for this controller.
      *
@@ -30,19 +30,19 @@ class Assessor_input extends MainController
 /*
 * insert
 * insert assessor data into model
-* @input  
-* @output 
+* @input  sec_id
+* @output insert assessor to the database
 * @author 	Niphat Kuhoksiw
-* @Create Date 2564-8-12
+* @Create Date 2564-08-12
 */
     function insert($sec_id )
-    {
+    {//insert
         $this->load->model('Da_pef_assessor_list', 'pef');
         $this->pef->ase_emp_id = $this->input->post('ase_id');
         $this->pef->position_level = $sec_id ;
         $this->pef->ase_date = date('Y') ;
         $this->pef->insert();
         redirect('Assessor_management/Assessor_list/show_assessor/'.$sec_id);
-    }   
-}
+    }//end insert  
+}//end class Assessor_input
 

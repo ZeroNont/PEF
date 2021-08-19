@@ -11,7 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
 
 class Promote_list extends MainController
-{
+{//class promote_list
     /**
      * Index Page for this controller.
      *
@@ -29,16 +29,16 @@ class Promote_list extends MainController
      */
 /*
 * index
-* 
-* @input 
-* @output 
+* index
+* @input -
+* @output show promote list
 * @author Niphat Kuhoksiw
 * @Create Date 2564-8-12
 */
     function index()
-    {
+    {//index
         $this->load->model('M_pef_promote_list', 'pef');
         $data['obj_promote'] = $this->pef->get_group()->result();
         $this->output('admin/v_promote_list',$data);
-    }
-}
+    }//end index
+}//end class promote_list

@@ -1,9 +1,9 @@
 <?php
 /*
-	* M_ttp_login.php
-    * M_ttp_login เข้าสู่ระบบ
+	* M_pef_login.php
+    * M_pef_login เข้าสู่ระบบ
     * @Niphat Kuhokciw
-    * @Create Date 2564-04-27
+    * @Create Date 2564-08-12
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -11,7 +11,7 @@ include_once("Da_pef_login.php");
 
 
 class M_pef_login extends Da_pef_login 
-{//class M_ttp_login
+{//class M_pef_login
 
 	public function __construct()
 	{
@@ -24,7 +24,7 @@ class M_pef_login extends Da_pef_login
 * @input User_login and Pass_loginn
 * @output - 
 * @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+* @Create @Create Date 2564-08-12
 */
 	function check_login($User_login,$Pass_login)
 	{//check User_login and Pass_login in database
@@ -37,4 +37,4 @@ class M_pef_login extends Da_pef_login
         return $query;
 	}//end check_login
 
-}//end class M_ttp_login
+}//end class M_pef_login

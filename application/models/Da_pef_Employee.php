@@ -12,9 +12,9 @@ include_once('pefs_model.php');
 class Da_pef_Employee extends pefs_model
 { //class Da_pef_group
 
-
     public function __construct()
-    {
+    {//construct
         parent::__construct();
-    }
+    }//end construct
+
 }//end class Da_pef_group

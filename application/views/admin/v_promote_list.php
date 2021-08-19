@@ -1,60 +1,15 @@
- <!-- <script>
-function get_Emp() {
-    Emp_id = document.getElementById('Emp_id_modal').value;
-    var empname = "";
-    console.log(Emp_id)
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>ttp_Emp/Employee/search_by_employee_id",
-        data: {
-            "Emp_id": Emp_id
-        },
-        dataType: "JSON",
-        success: function(data, status) {
-            console.log(data);
-            if (data.length == 0) {
-                document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
-            } else {
-                empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
-                document.getElementById("showname_modal").value = empname;
-                console.log(999)
-                console.log(empname)
-            }
-        }
-    });
-}
-
-function getEmp_edit(i) {
-    Emp_id = document.getElementById('Emp_id' + i).value;
-    var empname = "";
-    console.log(Emp_id)
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>ttp_Emp/Employee/search_by_employee_id",
-        data: {
-            "Emp_id": Emp_id
-        },
-        dataType: "JSON",
-        success: function(data, status) {
-            console.log(data);
-            if (data.length == 0) {
-                document.getElementById("Emp_name" + i).value = "ไม่มีข้อมูล";
-            } else {
-                empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
-                document.getElementById("Emp_name" + i).value = empname;
-                console.log(999)
-                console.log(empname)
-            }
-        }
-    });
-}
-</script>  -->
+<!--v_promote_list
+* Display assessor management
+* @input -
+* @output  -
+* @author Niphat Kuhokciw
+* @Create Date 2564-08-12 -->
 <h1>
     Assessor Management 
 </h1>
 <div class="card-header" id="card_radius">
     <div class="table-responsive">
-
+        <!-- Table -->
         <table class="table" id="example">
             <thead class="thead-light">
                 <tr>
@@ -64,7 +19,8 @@ function getEmp_edit(i) {
                 </tr>
             </thead>
             <tbody>
-                <?php for ($i = 0; $i < count($obj_promote); $i++) { ?>
+                <!-- show promote -->
+                <?php for ($i = 0; $i < count($obj_promote); $i++) { ?> 
                 <tr>
                     <td>
                     <?php echo $i + 1 ?>
@@ -78,78 +34,11 @@ function getEmp_edit(i) {
                             data-target="#exampleModal<?php echo $i; ?>"><i class="fa fa-pencil-square-o"></i></button>
                 </a>
                 </td>
-                    <?php  } ?> 
-<!--
-                    <td>
-
-                        <button class="btn btn-warning" data-toggle="modal"
-                            data-target="#exampleModal<?php echo $i; ?>"><i class="material-icons">Edit</i></button>
-
-
-                        <div id="exampleModal<?php echo $i; ?>" class="modal fade" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header ">
-
-                                        <h4 class="modal-title" id="exampleModalLabel">
-
-                                            Edit Detail
-                                        </h4>
-
-                                        <button type=" button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <form
-                                            action="<?php echo site_url() . 'Plant_management/Plant_input/edit/' . $obj_promote[$i]->Emp_ID; ?>"
-                                            method="post" enctype="multipart/form-data">
-                                            <div class="mb-3">
-                                                <label for="exampleInputEmail1" class="form-label">Employee
-                                                    ID</label>
-                                                <input type="text" class="form-control"
-                                                    value="<?php echo $obj_promote[$i]->pla_emp_id ?>"
-                                                    id="Emp_id<?php echo $i; ?>"
-                                                    onkeyup="getEmp_edit(<?php echo $i; ?>)" name="Emp_ID" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">Name</label>
-                                                <input type="text" class="form-control"
-                                                    value="<?php echo $obj_promote[$i]->Empname_eng . '    ' . $obj_promote[$i]->Empsurname_eng ?>"
-                                                    disabled id="Emp_name<?php echo $i; ?>">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">Plant
-                                                    No.</label>
-                                                <input type="text" class="form-control"
-                                                    value="<?php echo $obj_promote[$i]->pla_plant_no ?>" name="Plant_No"
-                                                    required>
-                                                <input type="text" class="form-control"
-                                                    value="<?php echo $obj_promote[$i]->pla_plant_id ?>" name="Plant_ID"
-                                                    hidden>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">Plant
-                                                    Name</label>
-                                                <input type="text" class="form-control"
-                                                    value="<?php echo $obj_promote[$i]->pla_plant_name ?>"
-                                                    id="province_auto" name="Plant_name" required>
-                                            </div>
-                                            <button type="submit" class="btn btn-success float-right">Submit</button>
-                                            <button type="button" class="btn btn-danger float-right"
-                                                data-dismiss="modal">Cancle</button>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>-->
-                    
+                <?php  } ?> 
+                <!---------------->
             </tbody> 
         </table>
+        <!-------------------------------------------->
         <div>
         </div>
     </div>

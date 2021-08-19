@@ -3,7 +3,7 @@
 * Login.php
 * Login เข้าสู่ระบบ
 * @Niphat Kuhokciw
-* @Create Date 2564-07-28
+* @Create Date 2564-08-12
 */
 defined('BASEPATH') or exit('No direct script access allowed');
 
@@ -25,7 +25,7 @@ class Login extends MainController
 * @input -
 * @output show display login for user
 * @Niphat Kuhokciw
-* @Create Date 2564-07-28
+* @Create Date 2564-08-12
 */
     public function show_user_login()
     {//show login
@@ -38,7 +38,7 @@ class Login extends MainController
 * @input Enp_ID
 * @output show display home for user
 * @Niphat Kuhokciw
-* @Create Date 2564-07-28
+* @Create Date 2564-08-12
 */	
 	public function show_user_home($Enp_ID)
 	{//show home
@@ -61,7 +61,7 @@ class Login extends MainController
 * @input User_login and Pass_login
 * @output -
 * @Niphat Kuhokciw
-* @Create Date 2564-07-28
+* @Create Date 2564-08-12
 */	
     public function login()
 	{//login for user
@@ -86,13 +86,13 @@ class Login extends MainController
 * @input UsEmp_ID  and Usrole
 * @output show display home for role
 * @Niphat Kuhokciw
-* @Create Date 2564-07-28
+* @Create Date 2564-08-12
 */	
 	public function check_role()
     {// check role
         if (!empty($this->session->userdata('UsEmp_ID'))) {
 			if($_SESSION['Usrole']==1){
-            	redirect('Main/Main/show_main', 'refresh');
+            redirect('Main/Main/show_main', 'refresh');
 			}else if($_SESSION['Usrole']==2){
 				redirect('Main/Main/show_main', 'refresh');
 			}
@@ -110,7 +110,7 @@ class Login extends MainController
 * @input User_login and Pass_login
 * @output -
 * @Niphat Kuhokciw
-* @Create Date 2564-07-28
+* @Create Date 2564-08-12
 */	
     public function logout()
     {//logout to user login page

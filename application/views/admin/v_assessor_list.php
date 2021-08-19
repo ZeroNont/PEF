@@ -1,5 +1,11 @@
+<!--v_assessor_list
+* Display assessor management
+* @input -
+* @output  -
+* @author Niphat Kuhokciw
+* @Create Date 2564-08-12 -->
 <script>
-function get_ase_id() {
+function get_ase_id() {//get_ase_id
     Ase_id = document.getElementById('ase_id_modal').value;
     var empname = "";
     console.log(Ase_id)
@@ -20,10 +26,11 @@ function get_ase_id() {
                 console.log(999)
                 console.log(empname)
             }
-        }
+        }//end get_ase_id
     });
 }
 </script>
+<!----------------------- Add assessor ------------------>
 <div id="Add" class="modal fade" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -58,40 +65,45 @@ function get_ase_id() {
         </div>
     </div>
 </div>
+<!------------------------------------------------------------------------------->
 <h1>
     Assessor Management
 </h1>
-        <div class="col-lg-3" style="margin: 0px 0px 0px 940px">
-                <label class="form-control-label" for="exampleInputEmail2"> Select Year </label>
-                <select name = "position" id = "year" class = "form-select" aria-label = "Default select example " onchange = "show_all_data()">
-                    <?php for($i = 0;$i < count($obj_year); $i++){
-                        if(date("Y",strtotime($obj_year[$i]->ase_date)) == date("Y")){ ?>
-                            <option selected value = "<?php echo date("Y",strtotime($obj_year[$i]->ase_date)) ?>">
-                                <?php echo date("Y",strtotime($obj_year[$i]->ase_date));?>
-                            </option>    
-                    <?php }
-                    else { ?> 
-                            <option value = "<?php echo date("Y",strtotime($obj_year[$i]->ase_date)) ?>">
-                                <?php echo date("Y",strtotime($obj_year[$i]->ase_date));?>
-                            </option> 
-                    <?php } 
-                    } ?>
-                </select>
-                    <input type="month" class="form-control" max="<?php echo date('Y-m'); ?>" name="End_date" id="End_date" width="270">
-                    <button onclick='show_all_data()' class="btn btn-primary btn-lg canter"><i class="fas fa-search"></i> Search</button>
-        </div>
 <div class="card-header" id="card_radius">
     <div>
         <br>
         <div>
-
         <h1>Promote To <?php echo $obj_assessor->sec_level?></h1>
+        <!-------------------------------------  Select Year  --------------------------------------------------------------->
+        <form action="<?php echo site_url() . 'Assessor_management/Assessor_list/show_year/'.$sec_id.'/' ?>" method="post"
+                    enctype="multipart/form-data" name = "formyear">
+        <label class="form-control-label" for="input-city" style="margin-left : 84%">Select Year</label>            
+        <select name="year" id="year" class="form-select" aria-label="Default select example" onchange="formyear.submit()" >
+                <?php for ($i = 0; $i < count($obj_year); $i++) {
+                        if (date("Y", strtotime($obj_year[$i]->grp_date)) == $year_select) { ?>
+                        <option selected value="<?php echo date("Y", strtotime($obj_year[$i]->grp_date)) ?>">
+                        <?php echo date("Y", strtotime($obj_year[$i]->grp_date)); ?>
+                        </option>
+                        <?php } //if
+                        else { ?>
+                        <option value="<?php echo date("Y", strtotime($obj_year[$i]->grp_date)) ?>">
+                        <?php echo date("Y", strtotime($obj_year[$i]->grp_date)); ?>
+                        </option>
+                        <?php } //else
+                } //for ?>
+        </select>
+            </form>
+        <!----------------------------------------------------------------------------------------------------------------------->
+                    <br>
+        <!--------------------------------- Button Add Assessor    --------------------------------------------->
             <button class="btn btn-success" data-toggle="modal" data-target="#Add" style="margin-left : 84%">
                 <i class="fa fa-plus-square-o" style="font-size:20px;"></i>&nbsp;Add Assessor
             </button>
+        <!------------------------------------------------------------------------------------------------------->
         </div>
         <br>
         <div>
+        <!------------------------------------- Show assessor ------------------------------------------------>
         <table class="table" id="example">
             <thead class="thead-light">
                 <tr>
@@ -104,7 +116,10 @@ function get_ase_id() {
                 </tr>
             </thead>
         <tbody>
-                <?php for ($i = 0; $i < count($arr_assessor); $i++) { ?>
+        
+                <?php
+                $cheack = 0;
+                for ($i = 0; $i < count($arr_assessor); $i++) { ?>   
                 <tr>
                     <td><?php echo $i+1 ?></td>
                     <td><?php echo $arr_assessor[$i]->ase_emp_id ?></td>
@@ -112,17 +127,41 @@ function get_ase_id() {
                     <td><?php echo $arr_assessor[$i]->Position_name?></td>
                     <td><?php echo $arr_assessor[$i]->Department?></td>
                     <td>
+                        <?php if($arr_assessor[$i]->ase_date == date("Y")){
+                            foreach($arr_cheack as $row){
+                                if($arr_assessor[$i]->ase_emp_id == $row->gro_ase_id){
+                                $cheack++;
+                                }
+
+                            }
+                            if($cheack == 0){ ?>
                         <a href="<?php echo site_url().'Assessor_management/Assessor_list/delete_assessor/'.$arr_assessor[$i]->ase_id.'/'.$obj_assessor->sec_id.'/';?>">
                         <button class="btn btn-sm btn-danger">
                             <i class="fa fa-pencil-square"></i>
                         </button>
                     </a>
+                <?php }else{ ?>
+                    <button class="btn btn-sm btn-danger" disabled>
+                            <i class="fa fa-pencil-square"></i>
+                        </button>
+                <?php } 
+                $cheack = 0 ;
+                ?>
+                <?php }else if($arr_assessor[$i]->ase_date < date("Y") || $arr_assessor[$i]->ase_date > date("Y")){ ?> 
+                    <p>-</p>
+                <?php } ?>
                     </td>
-                </tr>
-                    <?php  } ?>   
-                
+                </tr> 
+                    <?php } ?>
             </tbody>
         </table>
+        <!------------------------------------------------------------------------------------------------------------------------->
+        <br>
+        <!--------------------------------------------Button Blace----------------------------------------------------------->
+        <a href="<?php echo base_url() . 'Assessor_management/Promote_list/index/' ?>">
+        <button class="btn btn-dark"  style="margin-left : 87%">Black</button>
+                    </a>
+        <!------------------------------------------------------------------------------------------------------------------------->
         </div>
         <script>
         $(document).ready(function() {
@@ -137,3 +176,4 @@ function get_ase_id() {
         <!-- Argon JS -->
         <script src="../../assets/js/argon.js?v=1.2.0"></script>
         <script type="text/javascript">
+        
