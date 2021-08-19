@@ -19,12 +19,12 @@ class M_pef_group extends Da_pef_group
     } //function construct
 
     /*
-*  get_group_by_id
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+* get_group_by_id
+* get group detail from database
+* @input grp_id
+* @output group detail 
+* @author Jirayut Saifah
+* @Create Date 2564-08-13
 */
     function get_group_by_id()
     { //check User_login and Pass_login in database
@@ -36,12 +36,12 @@ class M_pef_group extends Da_pef_group
         return $query;
     } //end  get_group
     /*
-*  get_group
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+* get_group
+* get group detail list from database
+* @input -
+* @output group detail list
+* @author Jirayut Saifah
+* @Create Date 2564-08-13
 */
     function get_group()
     { //check User_login and Pass_login in database
@@ -53,13 +53,13 @@ class M_pef_group extends Da_pef_group
         $query = $this->db->query($sql);
         return $query;
     } //end  get_group
-    /*
-*  get_group
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+/*
+*  get_section
+* get section detail from database
+* @input -
+* @output section detail
+* @author Jirayut Saifah
+* @Create Date 2564-08-13
 */
     function get_section()
     { //check User_login and Pass_login in database
@@ -71,11 +71,11 @@ class M_pef_group extends Da_pef_group
     } //end get_section
     /*
 *  get_group_id
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+* get group detail from database
+* @input -
+* @output last group in database 
+* @author Jirayut Saifah
+* @Create Date 2564-08-13
 */
     function get_group_id()
     { //check User_login and Pass_login in database
@@ -87,12 +87,12 @@ class M_pef_group extends Da_pef_group
         return $query;
     } //end  get_group
     /*
-*  get_group_id
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+*  get_nominee_by_group
+* get nominee detail from database
+* @input grn_grp_id
+* @output nominee detail 
+* @author Jirayut Saifah
+* @Create Date 2564-08-13
 */
     function get_nominee_by_group()
     { //check User_login and Pass_login in database
@@ -109,12 +109,12 @@ class M_pef_group extends Da_pef_group
         return $query;
     } //end  get_group
     /*
-*  get_group_id
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+*  get_pos_nominee_by_group
+* get nominee detail from database
+* @input grn_grp_id
+* @output nominee detail 
+* @author Jirayut Saifah
+* @Create Date 2564-08-13
 */
     function get_pos_nominee_by_group()
     { //check User_login and Pass_login in database
@@ -130,7 +130,14 @@ class M_pef_group extends Da_pef_group
         $query = $this->db->query($sql, array($this->grn_grp_id));
         return $query;
     } //end  get_group
-    
+     /*
+* get_assessor_by_group
+* get assessor detail from database
+* @input gro_grp_id
+* @output assessor detail 
+* @author Jirayut Saifah
+* @Create Date 2564-08-13
+*/
     function  get_assessor_by_group()
     { //check User_login and Pass_login in database
         $sql = "SELECT *
@@ -139,7 +146,7 @@ class M_pef_group extends Da_pef_group
 			";
         $query = $this->db->query($sql, array($this->gro_grp_id));
         return $query;
-    } //end  get_group
+    } //end  
 
 
    
