@@ -67,6 +67,8 @@ class Report extends MainController
 		$this->load->model('M_pef_report', 'pef');
 		$this->pef->sec_id = $sec_id;
 		$data['sec_data'] = $this->pef->get_data_by_id()->result();
+		$data['ass_data'] = $this->pef->get_ass_by_sec_id()->result();
+		$data['point_data'] = $this->pef->get_data_point()->result();
 		$this->output('consent/v_report_detail', $data);
 	}
 

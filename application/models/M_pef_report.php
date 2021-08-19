@@ -72,6 +72,38 @@ class M_pef_report extends Da_pef_report
                 ON emp.Emp_ID = grn.grn_emp_id
                 INNER JOIN dbmc.position AS pos
                 ON pos.Position_ID = emp.Position_ID
+                INNER JOIN dbmc.sectioncode AS scode
+                ON emp.Sectioncode_ID = scode.Sectioncode
+                INNER JOIN dbmc.company AS com
+                ON emp.Company_ID = com.Company_ID
+                WHERE sec.sec_id = ?";
+        $query = $this->db->query($sql, array($this->sec_id));
+        return $query;
+    }
+
+    public function get_ass_by_sec_id()
+    {
+        $sql = "SELECT * 
+                FROM pefs_database.pef_section AS sec
+                INNER JOIN pefs_database.pef_assessor AS ass
+                ON ass.position_level = sec.sec_id
+                INNER JOIN dbmc.employee AS emp
+                ON emp.Emp_ID = ass.ase_emp_id
+                WHERE sec.sec_id = ?";
+        $query = $this->db->query($sql, array($this->sec_id));
+        return $query;
+    }
+
+    public function get_data_point()
+    {
+        $sql = "SELECT * 
+                FROM pefs_database.pef_point_form AS poi
+                INNER JOIN pefs_database.pef_group_nominee AS grn
+                ON poi.ptf_emp_id = grn.grn_id
+                INNER JOIN pefs_database.pef_group AS grp
+                ON grp.grp_id = grn.grn_grp_id
+                INNER JOIN pefs_database.pef_section AS sec
+                ON sec.sec_id = grp.grp_position_group
                 WHERE sec.sec_id = ?";
         $query = $this->db->query($sql, array($this->sec_id));
         return $query;
@@ -105,9 +137,11 @@ class M_pef_report extends Da_pef_report
                 INNER JOIN pefs_database.pef_group_nominee AS grn
                 ON grn.grn_grp_id = grp.grp_id
                 INNER JOIN pefs_database.pef_point_form AS poi
-                ON poi.ptf_emp_id = grn.grn_emp_id
+                ON poi.ptf_emp_id = grn.grn_id
+                INNER JOIN pefs_database.pef_assessor AS ass
+                ON ass.ase_id = poi.ptf_ase_id
                 INNER JOIN dbmc.employee AS emp
-                ON emp.Emp_ID = poi.ptf_ase_id
+                ON emp.Emp_ID = ass.ase_emp_id
                 INNER JOIN pefs_database.pef_format_form AS form
                 ON form.for_id = poi.ptf_for_id
                 WHERE grn.grn_emp_id = ?";

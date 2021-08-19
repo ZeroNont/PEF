@@ -67,10 +67,9 @@
                             ?>
                                 <tr>
                                     <td><?php echo $num++; ?></td>
-                                    <td><?php echo $ass_data[$i]->ptf_ase_id; ?></td>
+                                    <td><?php echo $ass_data[$i]->ase_emp_id; ?></td>
                                     <td><?php echo $ass_data[$i]->Empname_eng . ' ' . $ass_data[$i]->Empsurname_eng; ?></td>
-                                    <?php $score = $ass_data[$i]->ptf_point * $ass_data[$i]->for_des_weight ?>
-                                    <td><?php echo $score; ?> points</td>
+                                    <td><?php echo $ass_data[$i]->ptf_point; ?> points</td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -83,18 +82,18 @@
 
     <h3 style="text-align:left">
         <?php
-        $Totally = 0;
+        $Totally = 1;
         $Get = 0;
         $percent = 0;
         for ($i = 0; $i < count($ass_data); $i++) {
-            $Totally_score = $ass_data[$i]->for_des_weight * 5;
-            $Totally += $Totally_score;
-            $Get_score = $ass_data[$i]->ptf_point * $ass_data[$i]->for_des_weight;
+            $Totally_score = $Totally++;
+            $Get_score = $ass_data[$i]->ptf_point;
             $Get += $Get_score;
-            $percent = $Get * 100 / $Totally;
         }
+        $Totally_score = $Totally_score*5;
+        $percent = $Get * 100 / $Totally_score;
         ?>
-        <b>Totally score : </b><?php echo $Totally; ?> points<br><br>
+        <b>Totally score : </b><?php echo $Totally_score; ?> points<br><br>
         <b>Get score : </b><?php echo $Get; ?> points<br><br>
         <b>Total score : </b><?php echo number_format($percent, 2, '.', ''); ?> %<br><br>
         <?php
