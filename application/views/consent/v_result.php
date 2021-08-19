@@ -7,6 +7,8 @@
 * @author Apinya Phadungkit
 * @Create Date 2564-8-15
 * @Update Date 2564-8-16
+* @Update Date 2564-8-17
+* @Update Date 2564-8-18
 */
 ?>
 
@@ -85,7 +87,7 @@
 
                             <!-- column ตำแหน่ง -->
                             <td>
-                                <?php echo $row->Position_ID;?>
+                                <?php echo $row->Position_name;?>
                             </td>
 
                             <!-- column ดำเนินการ -->
@@ -93,7 +95,7 @@
 
                                 <!-- ปุ่มดำเนินการ -->
                                 <a
-                                    href=" <?php echo site_url() . 'Request/Result/show_result_detail/' . $row->grn_emp_id; ?>">
+                                    href="<?php echo site_url() . 'Result/Result/show_result_detail/' . $row->grn_emp_id .'/'. $row->gro_ase_id.'/'. $row->grn_promote_to; ?>">
                                     <button class="btn btn-primary"> <i class="fa fa-info-circle"></i> </button>
                                 </a>
 
