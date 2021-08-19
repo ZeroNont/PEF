@@ -1,13 +1,6 @@
-<!--
-    Reviewer
-    controller of reviewer
-    @input -
-    @output -
-    @author Nattakorn
-    Create date 2564-08-13
-    Update date 2564-08-
--->
 <?php
+
+
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
 
@@ -25,14 +18,34 @@ class Reviewer extends MainController
 	function show_review()
 	{
 		$this->load->model('M_pef_review', 'pef');
-		//$id = $_SESSION["UsEmp_ID"];
-		// $this->ttp->Status = 4;
-		$data['arr_nom'] = $this->pef->get_nom_group()->result();
-		$data['arr_ass'] = $this->pef->get_ass_group()->result();
-		$data['nom_id'] = $this->pef->get_nom_id($id)->result();
-
+		$data['arr_sec'] = $this->pef->get_section()->result();
 		$this->output('consent/v_review', $data);
 	}
+
+	function get_show()
+	{
+		$date_search = $this->input->post('date_search');
+		$promote = $this->input->post('promote');
+
+		if ($promote != 0  && $date_search != "") {
+			$this->load->model('M_pef_review', 'pef');
+			$this->pef->grp_date = $date_search;
+			$this->pef->grp_position_group = $promote;
+			$data = $this->pef->get_group_by_T_DATE()->result();
+			echo json_encode($data);
+		} else if ($promote == 0  && $date_search != "") {
+			$this->load->model('M_pef_review', 'pef');
+			$this->pef->grp_date = $date_search;
+			$data = $this->pef->get_group_by_DATE()->result();
+			echo json_encode($data);
+		} else if ($promote != 0  && $date_search == "") {
+			$this->load->model('M_pef_review', 'pef');
+			$this->pef->grp_position_group = $promote;
+			$data = $this->pef->get_group_by_T()->result();
+			echo json_encode($data);
+		}
+	}
+
 
 	function get_data()
 	{
@@ -46,21 +59,17 @@ class Reviewer extends MainController
 
 	function add_data()
 	{
+		$grp_date = $this->input->post('date_review');
+		$grp_id = $this->input->post('grp_data');
 		$this->load->model('Da_pef_review', 'pef');
-
-
-		//$grp_id = $this->input->post('grp_id');
-		$grp_date = date("Y/m/d", strtotime('today'));
 		$this->pef->grp_date = $grp_date;
-
-
-		//$this->pef->grn_status = 0;
-		//$grn_id = $this->pef->grn_id;
-
-		$this->pef->grp_position_group = $this->pef->grn_grp_id;
+		$this->pef->grp_id = $grp_id;
 		$this->pef->grp_status = 0;
-		$this->pef->insert_grp_date();
-		$this->pef->update_grn_status($grn_id);
+		$this->pef->update_grn_status();
+		$this->load->model('Da_pef_review', 'ped');
+		$this->ped->grn_status = -1;
+		$this->ped->grn_grp_id = $grp_id;
+		$this->ped->update_nom_stat();
 		redirect('/Reviewer/Reviewer/show_review');
 	}
 }

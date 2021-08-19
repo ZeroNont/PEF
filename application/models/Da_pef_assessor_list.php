@@ -14,7 +14,7 @@ class Da_pef_assessor_list extends pefs_model
 }
 public function delete()
 {
-    $sql = "DELETE FROM pefs_database.pef_assessor WHERE ase_emp_id = ?";
-    $this->db->query($sql,array($this->ase_emp_id));        
+    $sql = "DELETE FROM pefs_database.pef_assessor WHERE ase_id = ?";
+    $this->db->query($sql,array($this->ase_id));  
 }
 }

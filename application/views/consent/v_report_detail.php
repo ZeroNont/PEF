@@ -16,7 +16,7 @@
 <br>
 <div class="card-header">
     <h2>
-        Promote to T
+            Promote to <?php echo $sec_data[0]->sec_level ?>
     </h2>
     <br>
     <div class="row" id="count_table">
@@ -36,20 +36,36 @@
                             </tr>
                         </thead>
                         <tbody id="data_table">
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><a href="<?php echo site_url() ?>Report/Report/show_report_detail_assessor? . (i+2)">
-                                        <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                    </a>
-                                </td>
-                            </tr>
+                            <?php
+                            $num = 1;
+                            for ($i = 0; $i < count($sec_data); $i++) {
+                            ?>
+                                <?php
+                                if ($sec_data[$i]->grn_status == '1' || $sec_data[$i]->grn_status == '2') {
+                                ?>
+                                    <tr>
+                                        <td><?php echo $num++; ?></td>
+                                        <td><?php echo $sec_data[$i]->grn_emp_id; ?></td>
+                                        <td><?php echo $sec_data[$i]->Empname_eng . ' ' . $sec_data[$i]->Empsurname_eng; ?></td>
+                                        <td><?php echo $sec_data[$i]->grp_id; ?></td>
+                                        <td><?php echo $sec_data[$i]->Position_name; ?></td>
+                                        <?php
+                                        if ($sec_data[$i]->grn_status == '1') {
+                                            $Status = 'Pass'; ?>
+                                            <td><span style="color:green;"><?php echo $Status; ?></span></td>
+                                        <?php } else if ($sec_data[$i]->grn_status == '2') {
+                                            $Status = 'Fail'; ?>
+                                            <td><span style="color:red;"><?php echo $Status; ?></span></td>
+                                        <?php } ?>
+                                        <td><a href="<?php echo site_url() . 'Report/Report/show_report_detail_assessor/' . $sec_data[$i]->grn_emp_id; ?>">
+                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    <?php } ?>
+                                    </tr>
+                                <?php } ?>
                         </tbody>
                     </table>
                 </div>

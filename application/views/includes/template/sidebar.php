@@ -49,8 +49,7 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link"
-                                      href="<?php echo base_url() . 'check_schedule/Check_schedule/show_check_schedule/' ?>">
+                                  <a class="nav-link" href="<?php echo base_url() . 'Reviewer/Reviewer/show_review' ?>">
                                       <i class="ni ni-calendar-grid-58 text-yellow"></i>
                                       <span class="nav-link-text">Reviewer</span>
                                   </a>
