@@ -19,6 +19,14 @@ class Da_pef_file_present extends pefs_model
         parent::__construct();
     }
 
+    /*
+	* insert_file
+	* insert file location, Employee id in database
+	* @input    fil_name and Emp_ID
+	* @output   fil_id
+	* @author   Ponprapai and Thitima
+	* @Create Date 2564-08-13
+	*/
     function insert_file()
     {
         $sql = "INSERT INTO pefs_database.pef_file(fil_location,fil_emp_id) 
@@ -27,6 +35,14 @@ class Da_pef_file_present extends pefs_model
         $this->db->query($sql, array($this->fil_location, $this->fil_emp_id));
     }
 
+    /*
+	* update_file
+	* update file location
+	* @input    fil_name and Emp_ID
+	* @output   New fil_name and Emp_ID
+	* @author   Ponprapai and Thitima
+	* @Create Date 2564-08-14 
+	*/
     function update_file()
     {
         $sql = "UPDATE pefs_database.pef_file

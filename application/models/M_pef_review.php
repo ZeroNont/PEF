@@ -1,12 +1,12 @@
 <?php
 
-// M_ttp_renewal
-// select to get data
+// M_pef_review
+// model for reviewer
 // @input -
 // @output -
 // @author Nattakorn
-// Create date 2564-07-19
-// Update date 2564-07-27
+// Create date 2564-08-13
+// Update date 2564-08-19
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
@@ -18,7 +18,14 @@ class M_pef_review extends Da_pef_review
     {
         parent::__construct();
     }
-
+    /*
+    * get_section
+    * get section from database
+    * @input -
+    * @output -
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */
     public function get_section()
     {
         $sql =
@@ -28,7 +35,14 @@ class M_pef_review extends Da_pef_review
         return $query;
     }
 
-
+    /*
+    * get_group_by_T
+    * get position from database
+    * @input -
+    * @output -
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */
     function get_group_by_T()
     {
         $sql =
@@ -42,6 +56,13 @@ class M_pef_review extends Da_pef_review
         return $query;
     }
 
+    /* get_group_by_DATE
+    * get date from database
+    * @input -
+    * @output -
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */
     function get_group_by_DATE()
     {
         $sql =
@@ -55,6 +76,15 @@ class M_pef_review extends Da_pef_review
         return $query;
     }
 
+
+    /*
+    * get_group_by_T_DATE
+    * get position and date from database
+    * @input -
+    * @output -
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */
     function get_group_by_T_DATE()
     {
         $sql =
@@ -68,6 +98,14 @@ class M_pef_review extends Da_pef_review
         return $query;
     }
 
+    /*
+    * get_nom_group
+    * select all from nominee group
+    * @input -
+    * @output -
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */
     public function get_nom_group()
     {
         $sql =
@@ -80,6 +118,14 @@ class M_pef_review extends Da_pef_review
         return $query;
     }
 
+    /*
+    * get_nom_id
+    * get nom_id from database
+    * @input -
+    * @output -
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */
     public function get_nom_id()
     {
         $sql =
@@ -92,6 +138,14 @@ class M_pef_review extends Da_pef_review
         return $query;
     }
 
+    /*
+    * get_search_data
+    * get data from database for search
+    * @input -
+    * @output -
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */
     public function get_search_data($date, $grp_id, $promote_to)
     {
         $sql =

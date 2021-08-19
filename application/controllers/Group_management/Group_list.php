@@ -1,11 +1,11 @@
 <?php
 /*
-* Plant_list
-* show plant detail to list
+* Group_list
+* Group detail to list
 * @input  
-* @output Plant detail
+* @output group detail
 * @author Jirayut Saifah
-* @Create Date 2564-7-22
+* @Create Date 2564-8-13
 */
 ?>
 <?php
@@ -33,11 +33,8 @@ class Group_list extends MainController
 
     /*
 	* index
-	* 
-	* @input 
-	* @output 
 	* @author 	Jirayut Saifah
-	* @Create Date 2564-7-21
+	* @Create Date 2564-8-13
 	*/
     function index()
     {
@@ -45,6 +42,12 @@ class Group_list extends MainController
         $data['obj_group'] = $this->pef->get_group()->result();
         $this->output('consent/v_group_list', $data);
     }
+     /*
+	* delete_group
+	* felete group from database
+	* @author Jirayut Saifah
+	* @Create Date 2564-8-16
+	*/
     function delete_group($id)
     {
         $this->load->model('Da_pef_group', 'pefd');

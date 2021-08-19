@@ -4,13 +4,13 @@
 * get data of report
 * @author   Chakrit
 * @Create Date 2564-08-16
-*/ 
+*/
 
 include_once("Da_pef_report.php");
 
 class M_pef_report extends Da_pef_report
 {
-    
+
     /*
     * get_department
     * get data department
@@ -26,7 +26,7 @@ class M_pef_report extends Da_pef_report
         $query = $this->db->query($sql);
         return $query;
     }
-    
+
     public function get_year()
     {
         $sql = "SELECT *
@@ -59,7 +59,7 @@ class M_pef_report extends Da_pef_report
         $query = $this->db->query($sql);
         return $query;
     }
-   
+
     public function get_data_by_id()
     {
         $sql = "SELECT * 
@@ -76,7 +76,7 @@ class M_pef_report extends Da_pef_report
         $query = $this->db->query($sql, array($this->sec_id));
         return $query;
     }
-    
+
     public function get_emp_by_id()
     {
         $sql = "SELECT * 
@@ -97,6 +97,24 @@ class M_pef_report extends Da_pef_report
         $query = $this->db->query($sql, array($this->grn_emp_id));
         return $query;
     }
+
+    public function get_ass_by_id()
+    {
+        $sql = "SELECT * 
+                FROM pefs_database.pef_group AS grp
+                INNER JOIN pefs_database.pef_group_nominee AS grn
+                ON grn.grn_grp_id = grp.grp_id
+                INNER JOIN pefs_database.pef_point_form AS poi
+                ON poi.ptf_emp_id = grn.grn_emp_id
+                INNER JOIN dbmc.employee AS emp
+                ON emp.Emp_ID = poi.ptf_ase_id
+                INNER JOIN pefs_database.pef_format_form AS form
+                ON form.for_id = poi.ptf_for_id
+                WHERE grn.grn_emp_id = ?";
+        $query = $this->db->query($sql, array($this->grn_emp_id));
+        return $query;
+    }
+
     /*
     * get_form_to_excel
     * get data requested form to excel

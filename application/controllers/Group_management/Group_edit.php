@@ -1,11 +1,9 @@
 <?php
 /*
 * Group_edit
-* show plant detail to list
-* @input  
-* @output Plant detail
+* Edit group
 * @author Jirayut Saifah
-* @Create Date 2564-7-22
+* @Create Date 2564-8-16
 */
 ?>
 <?php
@@ -33,9 +31,6 @@ class Group_edit extends MainController
 
     /*
 	* index
-	* 
-	* @input 
-	* @output 
 	* @author 	Jirayut Saifah
 	* @Create Date 2564-7-21
 	*/
@@ -49,6 +44,12 @@ class Group_edit extends MainController
         $data['obj_group'] = $this->pef->get_group_by_id()->row();
         $this->output('consent/v_group_edit', $data);
     }
+     /*
+	* get_assessor
+	* get assessor detail by emp_id
+	* @author Jirayut Saifah
+	* @Create Date 2564-8-13
+	*/
     function get_assessor()
     {
         // echo $_GET['group'];
@@ -57,6 +58,12 @@ class Group_edit extends MainController
         $data = $this->pef->get_assessor_by_group()->result();
         echo json_encode($data);
     }
+     /*
+	* edit
+	* edit group detail
+	* @author Jirayut Saifah
+	* @Create Date 2564-8-15
+	*/
     function edit()
     {
         $date = $this->input->post('date');

@@ -1,5 +1,13 @@
 <?php
 
+// Reviewer 
+// Reviewer module controller
+// @input -
+// @output -
+// @author Nattakorn
+// Create date 2564-08-13
+// Update date 2564-08-19
+
 
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
@@ -8,12 +16,12 @@ class Reviewer extends MainController
 {
 
 	/*
-	* show_renewal
-	* show list of request form
+	* show_review
+	* show reviewer page
 	* @input -
-	* @output list of request form
+	* @output reviewer page
 	* @author 	Nattakorn
-	* @Create Date 2564-7-19
+	* @Create Date 2564-8-13
 	*/
 	function show_review()
 	{
@@ -22,6 +30,14 @@ class Reviewer extends MainController
 		$this->output('consent/v_review', $data);
 	}
 
+	/*
+	* get_show
+	* get data for show in table
+	* @input -
+	* @output data of table
+	* @author 	Nattakorn
+	* @Create Date 2564-8-13
+	*/
 	function get_show()
 	{
 		$date_search = $this->input->post('date_search');
@@ -46,7 +62,14 @@ class Reviewer extends MainController
 		}
 	}
 
-
+	/*
+	* get_data
+	* get id data
+	* @input -
+	* @output important data
+	* @author 	Nattakorn
+	* @Create Date 2564-8-13
+	*/
 	function get_data()
 	{
 		$date = $this->input->post('grp_date');
@@ -57,6 +80,14 @@ class Reviewer extends MainController
 		echo json_encode($data);
 	}
 
+	/*
+	* add_data
+	* add data in table
+	* @input -
+	* @output change data in database
+	* @author 	Nattakorn
+	* @Create Date 2564-8-13
+	*/
 	function add_data()
 	{
 		$grp_date = $this->input->post('date_review');

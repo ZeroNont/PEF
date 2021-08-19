@@ -83,6 +83,7 @@ class Report extends MainController
 		$this->load->model('M_pef_report', 'pef');
 		$this->pef->grn_emp_id = $grn_emp_id;
 		$data['emp_data'] = $this->pef->get_emp_by_id()->row();
+		$data['ass_data'] = $this->pef->get_ass_by_id()->result();
 		$this->output('consent/v_report_detail_assessor', $data);
 	}
 }

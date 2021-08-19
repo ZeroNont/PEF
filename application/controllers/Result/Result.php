@@ -8,6 +8,7 @@
 * @author Apinya Phadungkit
 * @Create Date 2564-8-15
 * @Update Date 2564-8-16
+* @Update Date 2564-8-18
 */
 ?>
 <?php
@@ -47,21 +48,22 @@ class Result extends MainController
     } // function index()
 
     /*
-    * Function show_request_list
+    * Function show_result_list
     * @input  -   
     * @output show v_request_form.php
     * @author Apinya Phadungkit
     * @Create Date 2564-7-18
     * @Update Date 2564-7-28
+    * @Update Date 2564-8-18
     */
     function show_result_list() 
     {
         $this->load->model('M_pef_result', 'mpef');
-        // $this->mreq->ase_emp_id = $_SESSION["UsEmp_ID"];
+        $this->mpef->ase_emp_id = $_SESSION["UsEmp_ID"];
         $this->mpef->grn_status = 0;
         $data['arr_gro'] = $this->mpef->get_group()->result();
-        print_r($data);
         $this->output('consent/v_result', $data);
+
     } //show request list แสดงายการคำขอทั้งหมด สำหรับหัวหน้างานคนนั้นๆ
 
     /*
@@ -72,13 +74,25 @@ class Result extends MainController
     * @Create Date 2564-7-18
     * @Update Date 2564-7-28
     */
-    function show_result_detail($id)
+    function show_result_detail($nor_id,$ass_id,$promote)
 	{
-        // $this->load->model('M_ttp_request', 'mreq');
-        // $data['arr_req'] = $this->mreq->get_by_id($id)->row();
-        // $data['arr_emp'] = $this->mreq->get_all()->row();
-        // $data['arr_user'] = $this->mreq->get_history_user($id)->row();
-        // $this->output('consent/v_request_form_detail',$data);
+        $this->load->model('M_pef_result', 'mpef');
+        $this->mpef->ptf_emp_id = $nor_id;
+        $data['ev_no'] = $this->mpef->get_nomonee($nor_id)->result();
+        $data['arr_his'] = $this->mpef->get_by_id($nor_id)->row();
+        $data['ev_ass'] = $this->mpef->get_group_assessor($ass_id)->result();
+        $data['pos_pos'] = $this->mpef->get_position($promote[1])->row();
+        $data['arr_dis'] = $this->mpef->get_all_form($promote,$nor_id)->result();
+        $data['arr_com'] = $this->mpef->get_comment($nor_id)->row();
+        
+        if($promote=='T5' || $promote=='T6'){
+            $this->output('consent/v_history_T5',$data);
+        }else if($promote=='T2'){
+            $this->output('consent/v_history_T6',$data);
+        }
+
+        
+
 	} //show request detail แสดงรายละเอียดเพิ่มเติมของรายการคำขอ
 
     /*
