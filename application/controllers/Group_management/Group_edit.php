@@ -31,6 +31,9 @@ class Group_edit extends MainController
 
     /*
 	* index
+    *
+    * Input
+    * Output
 	* @author 	Jirayut Saifah
 	* @Create Date 2564-7-21
 	*/
@@ -47,6 +50,8 @@ class Group_edit extends MainController
      /*
 	* get_assessor
 	* get assessor detail by emp_id
+    * @input 
+	* @output 
 	* @author Jirayut Saifah
 	* @Create Date 2564-8-13
 	*/
@@ -61,6 +66,8 @@ class Group_edit extends MainController
      /*
 	* edit
 	* edit group detail
+    * @input 
+	* @output 
 	* @author Jirayut Saifah
 	* @Create Date 2564-8-15
 	*/

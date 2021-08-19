@@ -2,8 +2,6 @@
 /*
 * Group insert
 * insert group to database
-* @input  
-* @output 
 * @author Jirayut Saifah
 * @Create Date 2564-8-13
 */
@@ -48,6 +46,8 @@ class Group_insert extends MainController
       /*
 	* insert
 	* insert group to database
+    * @input 
+	* @output 
 	* @author Jirayut Saifah
 	* @Create Date 2564-8-13
 	*/

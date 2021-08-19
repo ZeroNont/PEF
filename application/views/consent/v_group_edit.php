@@ -1,9 +1,10 @@
 <!--
-    v_group_edit
-    display group edit
-    in: Group detail
-    @author Jirayut Saifah
-    Create date 2564-08-15   
+    * v_group_edit
+    * display group edit
+    * @input Group detail
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 2564-08-15   
 -->
 
 <?php ?>
@@ -210,14 +211,14 @@
     var num = 1;
     var emp_as = [];
     var index_emp = [];
-
-    // get nominee list
-    // display nominee list
-    // in: Group id
-    // out:nominee list
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * get nominee list
+    * display nominee list
+    * @input Group id
+    * @output nominee list
+    * @author Jirayut Saifah
+    * @Create date 2564 - 08 - 15
+    */
     $(document).ready(function() {
         get_position();
         var group_id = document.getElementById('group_id').value;
@@ -274,11 +275,14 @@
         })
 
     });
-    // add
-    // add nominee to list
-    // in: nominee detail
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
+    /*
+    * add
+    * add nominee to list
+    * @input nominee detail
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 2564 - 08 - 15
+    */
 
     $("#add").click(function() {
         empname = document.getElementById("showname_modal").value;
@@ -308,12 +312,14 @@
         console.log(count_nominee);
     });
 
-    // remove_row
-    // remove nominee from list
-    // in: row_id
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * remove_row
+    * remove nominee from list
+    * @input row_id
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 2564 - 08 - 15
+    */
     function remove_row(num) {
         $("#emp_" + num).remove();
         var index = index_emp.indexOf(num);
@@ -323,12 +329,14 @@
         count_nominee--;
         console.log(index_emp)
     }
-    // get_Emp
-    // display employee detail
-    // in: emp_id
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * get_Emp
+    * display employee detail
+    * @input emp_id
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 2564 - 08 - 15
+    */
     function get_Emp() {
         Emp_id = document.getElementById('Emp_id_modal').value;
         pos = document.getElementById('select').value;
@@ -365,12 +373,14 @@
             }
         });
     }
-    // save_data
-    // save data group
-    // in: group detail
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * save_data
+    * save data group
+    * @input group detail
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 2564 - 08 - 15
+    */
     function save_data() {
         var emp = []
         var emp_nominee = []
@@ -429,13 +439,14 @@
         })
     }
 
-
-    // select_all
-    // check box
-    // in: check id
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * select_all
+    * check box
+    * @input check id
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 2564 - 08 - 15
+    */
     function select_all(source) {
         var check = document.querySelectorAll('input[name="checkbox1"]');
         for (var i = 0; i < check.length; i++) {
@@ -444,13 +455,14 @@
             }
         }
     }
-    // get_position
-    // get position detail
-    // in: position level
-    // out:position detail
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * get_position
+    * get position detail
+    * @input position level
+    * @output position detail
+    * @author Jirayut Saifah
+    * @Create date 2564 - 08 - 15
+    */
     function get_position() {
         position_level = document.getElementById('select').value;
         // console.log(position_level)
@@ -485,13 +497,14 @@
         })
 
     }
-    // get_assessor
-    // display assessor list
-    // in: Group id
-    // out:assessor list
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * get_assessor
+    * display assessor list
+    * @input Group id
+    * @output assessor list
+    * @author Jirayut Saifah
+    * @Create date 2564 - 08 - 15
+    */
     function get_assessor() {
         var position_level = document.getElementById('select').value;
 
@@ -554,13 +567,6 @@
             }
         })
     }
-    // get assessor
-    // display assessor list
-    // in: Group id
-    // out:assessor list
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
     $(document).ready(function() {
 
         var group = document.getElementById('group').value;
