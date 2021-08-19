@@ -1,11 +1,11 @@
 <?php
 /*
-* Plant_list
-* show plant detail to list
+* Group insert
+* insert group to database
 * @input  
-* @output Plant detail
+* @output 
 * @author Jirayut Saifah
-* @Create Date 2564-7-22
+* @Create Date 2564-8-13
 */
 ?>
 <?php
@@ -45,6 +45,14 @@ class Group_insert extends MainController
         $data['obj_sec'] = $this->pef->get_section()->result();
         $this->output('consent/v_group_manage', $data);
     }
+      /*
+	* insert
+	* insert group to database
+	* @input 
+	* @output 
+	* @author Jirayut Saifah
+	* @Create Date 2564-8-13
+	*/
     function insert()
     {
         $date = $this->input->post('date');

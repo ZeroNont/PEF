@@ -32,12 +32,12 @@ class Get_assessor extends MainController
      */
 
     /*
-	* search_by_employee_idindex
-	* search employee detail by emp_id
-	* @input emp_id
+	* get_assessor_by_sec
+	* get_assessor_by_sec by emp_id
+	* @input position level
 	* @output employee detail
 	* @author Jirayut Saifah
-	* @Create Date 2564-7-23
+	* @Create Date 2564-8-13
 	*/
     function get_assessor_by_sec()
     {
@@ -49,6 +49,14 @@ class Get_assessor extends MainController
         // echo $data['assessor'];
         echo json_encode($data);
     }
+     /*
+	* get_assessor_by_id
+	* get_assessor_by_id by emp_id
+	* @input emp_id
+	* @output employee detail
+	* @author Jirayut Saifah
+	* @Create Date 2564-8-13
+	*/
     function get_assessor_by_id()
     {
         $group = $this->input->post('group_id');
