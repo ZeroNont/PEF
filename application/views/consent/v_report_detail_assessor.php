@@ -44,7 +44,7 @@
     <hr class="my-4" color="gray">
 
     <h3 style="text-align:left">
-        <b>Assessors : person</b>
+        <b>Assessors : </b><?php echo $i = count($ass_data); ?> person
     </h3>
     <br>
     <div class="row" id="count_table">
@@ -61,30 +61,18 @@
                             </tr>
                         </thead>
                         <tbody id="data_table">
-                            <tr>
-                                <!-- <td><?php echo $Form_data->HR_No; ?></td>
-                                <td><?php echo $Form_data->Company_name . ' ' . "(" .  $Form_data->Company_name_th . ")" ?></td>
-                                <td><?php echo $Form_data->Officer; ?></td>
-                                <td><?php echo $Form_data->Plant_No; ?></td>
-                                <td><?php echo $Form_data->Plant_name; ?></td>
-                                <td><?php echo $Form_data->Reason; ?></td>
-                                <td><?php echo date("d-m-Y", strtotime($Form_data->Requested_date)); ?></td>
-                                <td><?php echo date("d-m-Y", strtotime($Form_data->Approve_date)) ?></td>
-                                <td><?php echo date("d-m-Y", strtotime($Form_data->Start_date)) ?></td>
-                                <td><?php echo date("d-m-Y", strtotime($Form_data->End_date)) ?></td>
-                                <td><?php echo $Form_data->Empname_engTitle . ' ' . $Form_data->Empname_eng . ' ' . $Form_data->Empsurname_eng; ?></td>
-                                <?php
-                                if ($Form_data->Status == '4') {
-                                    $Status = 'ยังอยู่ในคลัง';
-                                } else if ($Form_data->Status > '4') {
-                                    $Status = 'สิ้นสุดการวาง';
-                                } else if ($Form_data->Status < '4') {
-                                    $Status = 'รอการอนุมัติ';
-                                }
-                                ?>
-                                <td><?php echo $Status; ?></td> -->
-
-                            </tr>
+                            <?php
+                            $num = 1;
+                            for ($i = 0; $i < count($ass_data); $i++) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $num++; ?></td>
+                                    <td><?php echo $ass_data[$i]->ptf_ase_id; ?></td>
+                                    <td><?php echo $ass_data[$i]->Empname_eng . ' ' . $ass_data[$i]->Empsurname_eng; ?></td>
+                                    <?php $score = $ass_data[$i]->ptf_point * $ass_data[$i]->for_des_weight ?>
+                                    <td><?php echo $score; ?> points</td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -94,13 +82,32 @@
     <br>
 
     <h3 style="text-align:left">
-        <b>Totally score : </b><br><br>
-        <b>Get score : </b><br><br>
-        <b>Total score : </b><br><br>
-        <b>Judgement : </b>
+        <?php
+        $Totally = 0;
+        $Get = 0;
+        $percent = 0;
+        for ($i = 0; $i < count($ass_data); $i++) {
+            $Totally_score = $ass_data[$i]->for_des_weight * 5;
+            $Totally += $Totally_score;
+            $Get_score = $ass_data[$i]->ptf_point * $ass_data[$i]->for_des_weight;
+            $Get += $Get_score;
+            $percent = $Get * 100 / $Totally;
+        }
+        ?>
+        <b>Totally score : </b><?php echo $Totally; ?> points<br><br>
+        <b>Get score : </b><?php echo $Get; ?> points<br><br>
+        <b>Total score : </b><?php echo number_format($percent, 2, '.', ''); ?> %<br><br>
+        <?php
+        if ($percent >= 55) {
+            $Judgement = 'Pass'; ?>
+            <b>Judgement : </b><span style="color:green;"><?php echo $Judgement; ?></span>
+        <?php } else {
+            $Judgement = 'Fail'; ?>
+            <b>Judgement : </b><span style="color:red;"><?php echo $Judgement; ?></span>
+        <?php } ?>
     </h3>
 
     <br>
-    <center><a href="<?php echo site_url() . 'Report/Report/show_report_detail/'.$emp_data->sec_id; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
+    <center><a href="<?php echo site_url() . 'Report/Report/show_report_detail/' . $emp_data->sec_id; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
 
 </div>
