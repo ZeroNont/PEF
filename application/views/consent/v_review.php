@@ -119,6 +119,35 @@ table {
         </div>
     </div>
 
+
+    <div id="success" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header ">
+
+                    <!--   <h4 align='center' class="modal-title" id="exampleModalLabel">
+
+                    Add Detail
+                </h4> -->
+
+                    <button type=" button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div align="center">
+                        </h1><i class='fa fa-check-square'></i></h1>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
     <div id="save_data" class="modal fade" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -131,7 +160,7 @@ table {
 
                 <div class="modal-body">
                     <form action="<?php echo site_url() . 'Reviewer/Reviewer/add_data'   ?>" method="post"
-                        enctype="multipart/form-data">
+                        enctype="multipart/form-data" onsubmit="return show_success()" id="save">
                         <div class="mb-3">
                             <label for="focusedinput" class="form-label">Please select review date</label>
                             <input type="date" min="<?php echo date('Y-m-d') ?>" class="form-control" name="date_review"
@@ -216,6 +245,16 @@ table {
             $("#warning").modal("show")
         }
 
+
+    }
+
+
+    function show_success() {
+        $("#success").modal("show")
+        $("#save_data").modal("hide")
+        setTimeout(function() {
+            return true;
+        }, 5000);
 
     }
 
