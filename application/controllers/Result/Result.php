@@ -59,7 +59,7 @@ class Result extends MainController
     function show_result_list() 
     {
         $this->load->model('M_pef_result', 'mpef');
-        $this->mpef->ase_emp_id = $_SESSION["UsEmp_ID"];
+        $this->mpef->gro_ase_id = $_SESSION["UsEmp_ID"];
         $this->mpef->grn_status = 0;
         $data['arr_gro'] = $this->mpef->get_group()->result();
         $this->output('consent/v_result', $data);
@@ -81,14 +81,15 @@ class Result extends MainController
         $data['ev_no'] = $this->mpef->get_nomonee($nor_id)->result();
         $data['arr_his'] = $this->mpef->get_by_id($nor_id)->row();
         $data['ev_ass'] = $this->mpef->get_group_assessor($ass_id)->result();
-        $data['pos_pos'] = $this->mpef->get_position($promote[1])->row();
-        $data['arr_dis'] = $this->mpef->get_all_form($promote,$nor_id)->result();
+        $data['pos_pos'] = $this->mpef->get_position($promote)->row();
+        // $data['arr_dis'] = $this->mpef->get_all_form($nor_id)->result();
         $data['arr_com'] = $this->mpef->get_comment($nor_id)->row();
         
-        if($promote=='T5' || $promote=='T6'){
+        if($promote=='P401' || $promote=='P231'){
+            $data['arr_dis'] = $this->mpef->get_all_form($nor_id)->result();
             $this->output('consent/v_history_T5',$data);
-        }else if($promote=='T2'){
-            $this->output('consent/v_history_T6',$data);
+        }else if($promote=='P232'){
+            $this->output('consent/v_history_T5',$data);
         }
 
         

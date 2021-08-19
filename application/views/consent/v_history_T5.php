@@ -70,18 +70,11 @@
                         <?php $newDate = date("d/m/Y", strtotime($ev_ass[0]->grp_date)); ?>
                         <h3>Date : <?php echo $newDate ?></h3>
                     </div>
-                    <!-- <div class="col-sm-3">
-                        <a
-                            href="<?php echo base_url()?>assets/file/Plan/<?php echo $arr_file[0]->fil_plan_location ?>" download>
-                            <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
-                                <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
-                            </button>
-                        </a>    
-                    </div> -->
+                
                 </div>         
                 <br>
             <div class="table-responsive">
-            <form action="<?php echo site_url() ?>Evaluation/Evaluation_input/insert_performance_form" method="post" enctype="multipart/form-data" name="evaluation">
+            
                 <table class="table table-bordered table-sm">
                     <tr id="Manage">
                         <th colspan="5" id="gray"><center><b>Stretch Assignment Evaluation Form (Promote to <?php echo $pos_pos->sec_name;?> [ <?php echo $pos_pos->sec_level;?> ]) </b>
@@ -213,7 +206,7 @@
                             <textarea><?php echo $arr_com->per_q_and_a; ?></textarea>
                         </div>
                         <br>
-                        </form>
+                        
                     <!-- Back button -->
                     <a href="<?php echo base_url() . 'Result/Result/show_result_list/'; ?>">
                         <button type="submit" class="btn btn-secondary" data-toggle="modal">Back</button>

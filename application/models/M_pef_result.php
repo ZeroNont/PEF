@@ -53,9 +53,9 @@ class M_pef_result extends Da_pef_result
                 ON gnor.grn_emp_id = emp.Emp_ID 
                 INNER JOIN dbmc.position AS pos
                 ON emp.Position_ID = pos.Position_ID
-                WHERE gnor.grn_status = ?";
+                WHERE gnor.grn_status = ? AND gass.gro_ase_id = ?";
 
-        $query = $this->db->query($sql,array($this->grn_status));
+        $query = $this->db->query($sql,array($this->grn_status,$this->gro_ase_id));
         return $query;
     }//get_all_sup ดึงข้อมูลที่อยู่ในตาราง requested_form ที่join กับตาราง approval และตาราง employee
 
@@ -114,14 +114,18 @@ class M_pef_result extends Da_pef_result
     public function get_position($position)
     {
         $sql = "SELECT *
-        FROM  pefs_database.pef_section
-        WHERE pef_section.sec_level = '$position'";
+        FROM  pefs_database.pef_group_nominee AS gnor
+        INNER JOIN dbmc.position AS pos
+        ON gnor.grn_promote_to = pos.Position_ID
+        INNER JOIN pefs_database.pef_section AS sec
+        ON pos.position_level_id = sec.sec_id
+        WHERE pos.Position_ID = '$position'";
 
         $query = $this->db->query($sql);
         return $query;
     }
 
-    public function get_all_form($position,$id) //t5
+    public function get_all_form($id) //t5
     {
         $sql = "SELECT *
         FROM  pefs_database.pef_format_form
@@ -129,14 +133,10 @@ class M_pef_result extends Da_pef_result
         ON pef_description_form.des_id=pef_format_form.for_des_id
         INNER JOIN pefs_database.pef_item_form
         ON pef_description_form.des_itm_id= pef_item_form.itm_id
-
         INNER JOIN pefs_database.pef_point_form AS poi
         ON pef_item_form.itm_id = poi.ptf_row
 
-        INNER JOIN pefs_database.pef_performance_form AS per
-        ON poi.ptf_emp_id = per.per_emp_id
-
-        WHERE pef_format_form.for_pos_level= '$position' && poi.ptf_emp_id = $id";
+        WHERE pef_format_form.for_pos_level= 'T5' AND poi.ptf_emp_id = $id";
         $query = $this->db->query($sql);
         return $query;
     }
