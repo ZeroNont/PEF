@@ -1,62 +1,74 @@
 <!--
-    v_plant_list
+    v_group_list
     display all approve plant
     @input -
     @output -
     @author Jirayut Saifah
-    Create 25/7/2564 
-    Update date 
+    Create 13/8/2564 
 -->
 <script>
-function get_Emp() {
-    Emp_id = document.getElementById('Emp_id_modal').value;
-    var empname = "";
-    console.log(Emp_id)
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>ttp_Emp/Employee/search_by_employee_id",
-        data: {
-            "Emp_id": Emp_id
-        },
-        dataType: "JSON",
-        success: function(data, status) {
-            console.log(data);
-            if (data.length == 0) {
-                document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
-            } else {
-                empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
-                document.getElementById("showname_modal").value = empname;
-                console.log(999)
-                console.log(empname)
-            }
-        }
-    });
-}
+    // get_Emp
+    // display employee detail
+    // @input emp_id
+    // @output employee detail
+    // @author Jirayut Saifah
+    // Create 13 / 8 / 2564
 
-function getEmp_edit(i) {
-    Emp_id = document.getElementById('Emp_id' + i).value;
-    var empname = "";
-    console.log(Emp_id)
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>ttp_Emp/Employee/search_by_employee_id",
-        data: {
-            "Emp_id": Emp_id
-        },
-        dataType: "JSON",
-        success: function(data, status) {
-            console.log(data);
-            if (data.length == 0) {
-                document.getElementById("Emp_name" + i).value = "ไม่มีข้อมูล";
-            } else {
-                empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
-                document.getElementById("Emp_name" + i).value = empname;
-                console.log(999)
-                console.log(empname)
+    function get_Emp() {
+        Emp_id = document.getElementById('Emp_id_modal').value;
+        var empname = "";
+        console.log(Emp_id)
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>ttp_Emp/Employee/search_by_employee_id",
+            data: {
+                "Emp_id": Emp_id
+            },
+            dataType: "JSON",
+            success: function(data, status) {
+                console.log(data);
+                if (data.length == 0) {
+                    document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
+                } else {
+                    empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
+                    document.getElementById("showname_modal").value = empname;
+                    console.log(999)
+                    console.log(empname)
+                }
             }
-        }
-    });
-}
+        });
+    }
+    // get_Emp_edit
+    // display employee detail
+    // @input emp_id
+    // @output employee detail
+    // @author Jirayut Saifah
+    // Create 13 / 8 / 2564
+
+    function getEmp_edit(i) {
+        Emp_id = document.getElementById('Emp_id' + i).value;
+        var empname = "";
+        console.log(Emp_id)
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>ttp_Emp/Employee/search_by_employee_id",
+            data: {
+                "Emp_id": Emp_id
+            },
+            dataType: "JSON",
+            success: function(data, status) {
+                console.log(data);
+                if (data.length == 0) {
+                    document.getElementById("Emp_name" + i).value = "ไม่มีข้อมูล";
+                } else {
+                    empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
+                    document.getElementById("Emp_name" + i).value = empname;
+                    console.log(999)
+                    console.log(empname)
+                }
+            }
+        });
+    }
 </script>
 <h1>
     Group Management (การจัดการข้อมูลกลุ่ม)<a href="<?php echo site_url() . 'Group_management/Group_insert/index' ?>">
@@ -78,12 +90,10 @@ function getEmp_edit(i) {
             </div>
 
             <div class="modal-body">
-                <form action="<?php echo site_url() . 'Plant_management/Plant_input/insert'; ?>" method="post"
-                    enctype="multipart/form-data">
+                <form action="<?php echo site_url() . 'Plant_management/Plant_input/insert'; ?>" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="focusedinput" class="form-label">Employee ID</label>
-                        <input type="text" class="form-control" name="Emp_ID" id="Emp_id_modal" placeholder="JS000xxx"
-                            onkeyup="get_Emp()" required>
+                        <input type="text" class="form-control" name="Emp_ID" id="Emp_id_modal" placeholder="JS000xxx" onkeyup="get_Emp()" required>
                     </div>
                     <div class="mb-3">
                         <label for="focusedinput" class="form-label">Name</label>
@@ -120,31 +130,29 @@ function getEmp_edit(i) {
             </thead>
             <tbody>
                 <?php for ($i = 0; $i < count($obj_group); $i++) { ?>
-                <tr>
-                    <td>
-                        <?php echo $i + 1 ?>
-                    </td>
-                    <td>
-                        <?php echo $obj_group[$i]->grp_id ?>
-                    </td>
-                    <td>
-                        <?php echo $obj_group[$i]->sec_level . "  " . $obj_group[$i]->sec_name ?>
-                    </td>
-                    <td>
-                        <?php echo $obj_group[$i]->grp_date ?>
-                    </td>
-                    <td>
-                        <a
-                            href="<?php echo site_url() . 'Group_management/Group_edit/index/' . $obj_group[$i]->grp_id; ?>">
-                            <button class="btn btn-warning">Edit</button>
-                        </a>
-                        <a
-                            href="<?php echo site_url() . 'Group_management/Group_list/delete_group/' . $obj_group[$i]->grp_id; ?>">
-                            <button class="btn btn-danger">Delete</button>
-                        </a>
+                    <tr>
+                        <td>
+                            <?php echo $i + 1 ?>
+                        </td>
+                        <td>
+                            <?php echo $obj_group[$i]->grp_id ?>
+                        </td>
+                        <td>
+                            <?php echo $obj_group[$i]->sec_level . "  " . $obj_group[$i]->sec_name ?>
+                        </td>
+                        <td>
+                            <?php echo $obj_group[$i]->grp_date ?>
+                        </td>
+                        <td>
+                            <a href="<?php echo site_url() . 'Group_management/Group_edit/index/' . $obj_group[$i]->grp_id; ?>">
+                                <button class="btn btn-warning">Edit</button>
+                            </a>
+                            <a href="<?php echo site_url() . 'Group_management/Group_list/delete_group/' . $obj_group[$i]->grp_id; ?>">
+                                <button class="btn btn-danger">Delete</button>
+                            </a>
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 <?php  } ?>
             </tbody>
         </table>
@@ -153,9 +161,9 @@ function getEmp_edit(i) {
     </div>
 </div>
 <script>
-$(document).ready(function() {
-    $('#example').DataTable();
-});
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
 </script>
 </script>
 <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>

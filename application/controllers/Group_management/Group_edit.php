@@ -1,9 +1,7 @@
 <?php
 /*
 * Group_edit
-* show plant detail to list
-* @input  
-* @output Plant detail
+* Edit group
 * @author Jirayut Saifah
 * @Create Date 2564-8-16
 */
@@ -33,8 +31,6 @@ class Group_edit extends MainController
 
     /*
 	* index
-	* @input 
-	* @output 
 	* @author 	Jirayut Saifah
 	* @Create Date 2564-7-21
 	*/
@@ -51,8 +47,6 @@ class Group_edit extends MainController
      /*
 	* get_assessor
 	* get assessor detail by emp_id
-	* @input group id
-	* @output employee detail
 	* @author Jirayut Saifah
 	* @Create Date 2564-8-13
 	*/
@@ -67,8 +61,6 @@ class Group_edit extends MainController
      /*
 	* edit
 	* edit group detail
-	* @input group id
-	* @output 
 	* @author Jirayut Saifah
 	* @Create Date 2564-8-15
 	*/
