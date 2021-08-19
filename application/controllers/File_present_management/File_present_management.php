@@ -1,12 +1,10 @@
 <?php
 
 // File_present_management
-// Controller_for_add_file_present 
-// @input -
-// @output -
+// Controller of  management file present 
 // @author Ponprapai  and Thitima
-// Create date 13/8/2564 
-// Update date 14/8/2564
+// @Create date 1 :2564-08-13 
+// @Update date : 2564-08-14
 
 
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -32,6 +30,16 @@ class File_present_management extends MainController
      */
 
 
+    /*
+	* index
+	* display v_add_file_present
+    * input    -
+    * output    display view
+	* @author   Ponprapai and Thitima
+	* @Create Date 2564-08-13
+	* @Update Date 2564-08-13 
+	*/
+
     function index()
     {
         $this->output('consent/v_add_file_present');
@@ -39,12 +47,12 @@ class File_present_management extends MainController
 
     /*
 	* show_list_nominee
-	* เรียกหน้าจอ v_add_file_present
-	* @input 	-
-	* @output 	list_nominee
-	* @author 	Ponprapai  and Thitima
-	* @Create   Date 13/8/2564 
-	* @Update   Date 13/8/2564 
+	* show list nominee in group nominee
+	* @input    -
+	* @output   total list nominee in group nominee
+	* @author   Ponprapai and Thitima
+	* @Create Date 2564-08-13 
+	* @Update Date 2564-08-13
 	*/
 
     function show_list_nominee()
@@ -61,12 +69,12 @@ class File_present_management extends MainController
 
     /*
 	* insert_file_nominee
-	* แนบไฟล์นำเสนอผลงานของผู้ถูกประเมิน โดยการเพิ่มไฟล์
-	* @input : 	file type pdf
-	* @output :	status file
-	* @author : Ponprapai  and Thitima
-	* @Create Date : 2564-08-13 
-	* @Update Date : 2564-08-14 
+	* insert fil_location, fil_em_id to model and save file to folder upload
+	* @input    file name (fil_name) and Id nominee (Emp_ID) 
+	* @output   status upload file
+	* @author   Ponprapai  and Thitima
+	* @Create Date 2564-08-13 
+	* @Update Date 2564-08-14 
 	*/
     function insert_file_nominee()
     {
@@ -85,11 +93,11 @@ class File_present_management extends MainController
 
     /*
 	* edit_file_nominee
-	* แก้ไขการแนบไฟล์นำเสนอผลงานของผู้ถูกประเมิน
-	* @input : 	file type pdf
-	* @output :	status file
-	* @author : Ponprapai  and Thitima
-	* @Create Date : 2564-08-14 
+	* edit fil_name to model and save file in folder upload
+	* @input    file name (fil_name) and Id nominee (Emp_ID)
+	* @output   status file
+	* @author   Ponprapai and Thitima
+	* @Create Date 2564-08-14 
 	*/
     function edit_file_nominee()
     {
@@ -106,29 +114,29 @@ class File_present_management extends MainController
         $this->show_list_nominee();
     }
 
-    // function show_file_pdf($id_nominee)
+    // // function show_file_pdf($id_nominee)
+    // // {
+    // //             // $id_nominee = "00009";
+    // //             // $file_name = '';
+    // //             // $this->load->model('M_pef_file_present', 'pef');
+    // //             // $data['file_emp'] = $this->pef->get_by_id($id_nominee)->result();
+    // //             // $file_name = $this->pef->$fil_location;
+
+
+    // //     // $filename = "upload/$file_name";
+    // //     // $len = filesize($filename);
+    // //     // header("Content-type: application/pdf");
+    // //     // header("Content-Length: $len");
+    // //     // header("Content-Disposition: inline; filename=foo.pdf");
+    // //     // readfile($filename);
+
+    // //     $this->output('consent/v_test_read_file', $data);
+    // // }
+    // function show_file_pdf($id_nominee = "00009")
     // {
-    //             // $id_nominee = "00009";
-    //             // $file_name = '';
-    //             // $this->load->model('M_pef_file_present', 'pef');
-    //             // $data['file_emp'] = $this->pef->get_by_id($id_nominee)->result();
-    //             // $file_name = $this->pef->$fil_location;
-
-
-    //     // $filename = "upload/$file_name";
-    //     // $len = filesize($filename);
-    //     // header("Content-type: application/pdf");
-    //     // header("Content-Length: $len");
-    //     // header("Content-Disposition: inline; filename=foo.pdf");
-    //     // readfile($filename);
+    //     $file_name = '';
+    //     $data['file_emp'] = "http://localhost/PEF/upload/00009_เธฃเธฒเธขเธเธฒเธฃเธ•เธฃเธงเธเธชเธญเธเธเธ—เธ—เธตเน 7.pdf";
 
     //     $this->output('consent/v_test_read_file', $data);
     // }
-    function show_file_pdf($id_nominee = "00009")
-    {
-        $file_name = '';
-        $data['file_emp'] = "http://localhost/PEF/upload/00009_เธฃเธฒเธขเธเธฒเธฃเธ•เธฃเธงเธเธชเธญเธเธเธ—เธ—เธตเน 7.pdf";
-     
-        $this->output('consent/v_test_read_file', $data);
-    }
 }

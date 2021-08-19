@@ -2,7 +2,7 @@
 /*
 	* M_pef_file_present.php
     * M add file present nominee
-    * @Author : Ponprapai And Thitima
+    * author Ponprapai And Thitima
     * @Create Date : 2564-08-13
     * @Update Date : 2564-08-15 
 */
@@ -19,6 +19,14 @@ class M_pef_file_present extends Da_pef_file_present
         parent::__construct();
     } //function construct
 
+    /*
+	* get_nominee
+	* get data of nominee any column
+	* @input    -
+	* @output   -
+	* @author   Ponprapai and Thitima
+	* @Create Date 2564-08-13
+	*/
     function get_nominee()
     { //call data group nominee list
         $sql = "SELECT employee.Emp_ID,employee.Empname_eng,employee.Empsurname_eng,position.Pos_shortName,sectioncode.Department 
@@ -34,6 +42,14 @@ class M_pef_file_present extends Da_pef_file_present
         return $query;
     } //end get_all_nominee
 
+    /*
+	* get_nominee
+	* get data of nominee total
+	* @input    -
+	* @output   -
+	* @author   Ponprapai and Thitima
+	* @Create Date 2564-08-14
+	*/
     function get_all()
     { //call all nominee list 
         $sql = "SELECT * 
@@ -42,6 +58,14 @@ class M_pef_file_present extends Da_pef_file_present
         return $query;
     } //end get_all_nominee
 
+    /*
+	* get_nominee
+	* get data of nominee form id
+	* @input    id of nominee
+	* @output   fil_location
+	* @author   Thitima
+	* @Create Date 2564-08-15
+	*/
     function get_by_id($id)
     {
         $sql = "SELECT * 

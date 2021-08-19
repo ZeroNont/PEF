@@ -2,7 +2,9 @@
     /*
     * v_add_file_present
     * display Management file present of Nominee list
-    * @author : 1. Jaraspon and Natthanit
+    * @author Jaraspon and Natthanit
+    * input Array of nominee group (emp_nominee)
+    * output Input file of present to nominee
     * @Create date : 2564-08-13
     * @Update date : 2564-08-15
     */
