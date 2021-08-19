@@ -274,9 +274,7 @@ function save_data() {
     var T = document.getElementById('select').value;
     element = document.getElementsByName("pos");
     var date = document.getElementById('date').value;
-
     console.log(count_nominee);
-
     console.log(15)
     for (var i = 0; i < count; i++) {
         if (document.getElementById('check_box' + i).checked) {
@@ -291,7 +289,6 @@ function save_data() {
         pos_id[i] = element[i].getAttribute('id');
         console.log(444)
     }
-
     console.log(date)
     console.log(emp)
     console.log(T)
@@ -299,6 +296,7 @@ function save_data() {
     console.log(promote)
     console.log(pos_id)
     console.log(11)
+
     //ใช้ ajax 
     $.ajax({
         type: "POST",
