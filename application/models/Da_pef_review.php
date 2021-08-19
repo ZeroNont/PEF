@@ -1,12 +1,12 @@
 <?php
 // <!--
-// Da_ttp_renewal
-// database for renewal
+// Da_pef_review
+// database for reviewer
 // @input -
 // @output -
 // @author Nattakorn
-// Create date 2564-07-19
-// Update date 2564-07-27
+// Create date 2564-08-13
+// Update date 2564-08-19
 // -->
 include_once("pefs_model.php");
 
@@ -18,44 +18,13 @@ class Da_pef_review extends pefs_model
     {
         parent::construct();
     }
-
     /*
-    * update
-    * update end date to database
-    * @input End_date,Form_ID
-    * @output End_date update
-    * @author Nattkorn
-    * @Create date 2564-07-19
-    */
-    function update()
-    {
-        $sql = "UPDATE ttps_database.requested_form 
-        SET req_end_date = ?
-        WHERE req_form_id = ?";
-        $this->db->query($sql, array($this->req_end_date, $this->req_form_id));
-    }
-    /*
-    * update_form
-    * update Form_count
+    * update_grn_status
+    * update group status
     * @input -
     * @output -
-    * @author Nattkorn
-    * @Create date 2564-07-19
-    */
-    /*public function update_form()
-    {
-        $sql = " UPDATE ttps_database.requested_form as up
-        SET up.req_form_count = ?
-        WHERE req_form_id = ?";
-        $this->db->query($sql, array($this->req_form_count, $this->req_form_id));
-    }
-    /*
-    * update_status
-    * update Status
-    * @input -
-    * @output -
-    * @author Nattkorn
-    * @Create date 2564-07-19
+    * @author Nattakorn
+    * @Create date 2564-08-13
     */
     public function update_grn_status()
     {
@@ -65,6 +34,15 @@ class Da_pef_review extends pefs_model
         $this->db->query($sql, array($this->grp_date, $this->grp_status, $this->grp_id));
     }
 
+
+    /*
+    * update_nom_stat
+    * update nominee status
+    * @input -
+    * @output -
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */
     public function update_nom_stat()
     {
         $sql = " UPDATE pefs_database.pef_group_nominee as nom
@@ -72,12 +50,4 @@ class Da_pef_review extends pefs_model
         WHERE nom.grn_grp_id = ? ";
         $this->db->query($sql, array($this->grn_status, $this->grn_grp_id));
     }
-    /*
-    * insert_schedule
-    * insert data to schedule table
-    * @input -
-    * @output -
-    * @author Nattkorn
-    * @Create date 2564-07-19
-    */
 }
