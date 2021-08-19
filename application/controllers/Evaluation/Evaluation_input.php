@@ -48,18 +48,27 @@ class Evaluation extends MainController
     {
         print_r($_POST);
         // $date = date("Y-m-d");
-        // $id = $_SESSION['UsEmp_ID'];
+        // // $id = $_SESSION['UsEmp_ID'];
+        // $id = "00279";
         // $this->load->model('Da_pef_evaluation', 'per');
         // $this->per->per_q_and_a = $this->input->post('QnA');
         // $this->per->per_comment = $this->input->post('comment');
         // $this->per->per_date = $date;
-        // // $this->per->per_emp_id = $id;
-        // // $this->per->per_ase_id = $this->input->post('Officer');
-        // $this->point->ptf_point = $this->input->post('point');
-        // $this->point->pef_row = $this->input->post('row');
-        // $this->point->ptf_for_id = 1;
-        // $this->ttp->insert_performance_form();
+        // $this->per->ptf_point = $this->input->post('point'); 
+        // $this->per->ptf_row = $this->input->post('row');
+        // $this->per->ptf_ase_id = $this->input->post('comment');
+        // $this->per->ptf_for_id = $this->input->post('comment');
+        // $this->per->ptf_emp_id = $this->input->post('comment');
+        // $this->per->ptf_per_id = $this->input->post('comment');
+        // $this->per->insert_performance_form();
 
+        // $this->per->insert_point();
         redirect('Evaluation/Evaluation/show_evaluation');
     }
+
+    function insert(){
+        redirect('Evaluation/Evaluation/show_evaluation');
+    }
+
+
 }

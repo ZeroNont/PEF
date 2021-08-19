@@ -1,7 +1,7 @@
 <!--
-    v_evaluation_T5
-    display for Evaluation Form Promote to Master Senior Specialist T5
-    @author Phatchara and Pontakon
+    v_evaluation_AMSSSV_MTSSP
+    display for Evaluation Form Promote to T5 & T6
+    @author Phatchara Khongthandee and Pontakon Mujit
     Create date 2564-08-14   
     Update date 2564-08-15
     Update date 2564-08-16
@@ -11,40 +11,39 @@
 -->
 <!-- CSS -->
 <style>
- table {
+table {
   width: 100%;
 }
-    #card_radius
-    {
-        border-radius: 20px;
-    }
-    #center_th td
-    {
-        text-align: center;
-        font-weight: bold;
-    }
-    #gray 
-    {
-        background-color: #E3E3E3;
-    }
-    #img 
-    {
-        display: block;
-        margin-left: 150px;
-    }
-    
-    /* จัดตำแหน่งชื่อบริษัท */
-    .center_com  {
-        padding: 70px;
-    }
-    #set_id
-    {
-        width: 10px;
-    }
-    #set_button
-    {
-        font-size: 16px;
-    }
+#card_radius
+{
+    border-radius: 20px;
+}
+#center_th td
+{
+    text-align: center;
+    font-weight: bold;
+}
+#gray 
+{
+    background-color: #E3E3E3;
+}
+#img 
+{
+    display: block;
+    margin-left: 150px;
+}   
+/* จัดตำแหน่งชื่อบริษัท */
+.center_com  {
+    padding: 70px;
+}
+#set_id
+{
+    width: 10px;
+}
+#set_button
+{
+    font-size: 16px;
+}
 </style>
 
 <!-- Evaluation form -->
@@ -52,16 +51,17 @@
 <div class="container"> 
     <div class="card" id="border-radius">  
         <div class="card-body">
-            <!-- Logo บริษัท และชื่อบริษัท -->
+            <!-- Logo บริษัท -->
             <div class="row">
                 <div class="col-sm-4">
                     <img src=<?php echo base_url()."argon/assets/img/brand/denso_1.png" ?> width="150" height="150">
                     </div>
+                <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
-                    <h3><?php echo $ev_no[0]->Company_name?></h3>
+                    <h1><?php echo $ev_no[0]->Company_name?></h1>
                 </div>
             </div>  
-                <!-- ชื่อกรรมการ และวันประเมิน -->
+            <!-- ชื่อกรรมการ และวันประเมิน -->
                 <div class="row">
                     <div class="col-sm-6">
                         <h3>Assessor Name :&nbsp; <?php echo $ev_ass[0]->Empname_eng . ' ' . $ev_ass[0]->Empsurname_eng ?></h3>
@@ -76,44 +76,43 @@
                             <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
                                 <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
                             </button>
-                        </a>    
+                        </a>
                     </div>
                 </div>         
                 <br>
             <div class="table-responsive">
-            <form action="<?php echo site_url() ?>Evaluation/Evaluation_input/insert_performance_form" method="post" enctype="multipart/form-data" name="evaluation">
+            <form action="<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post" enctype="multipart/form-data" name="evaluation">
                 <table class="table table-bordered table-sm">
                     <tr id="Manage">
                         <th colspan="5" id="gray"><center><b>Stretch Assignment Evaluation Form (Promote to <?php echo $pos_pos->sec_name;?> [ <?php echo $pos_pos->sec_level;?> ]) </b>
                     </tr>
-                        <tbody>
+                    <tbody>
                         <tr id="Manage">
                             <!-- ชื่อ-นามสกุล Nominee -->
                             <th width="50px" id="gray">Name - Surname</th>
-                            <td colspan="2">
-                                <?php echo $ev_no[0]->Empname_eng . ' ' . $ev_no[0]->Empsurname_eng ?>
-                            </td>
-                            <!-- Position Nominee -->
+                                <td colspan="2">
+                                    <?php echo $ev_no[0]->Empname_eng . ' ' . $ev_no[0]->Empsurname_eng ?>
+                                </td>
+                            <!-- ตำแหน่ง Nominee -->
                             <th width="40px" id="gray">Position</th>
-                            <td>
-                                <?php echo $ev_no[0]->Position_name?>
-                            </td>
+                                <td>
+                                    <?php echo $ev_no[0]->Position_name?>
+                                </td>
                         </tr>
+                        <!-- แผนก Nominee -->
                         <tr id="Manage">
-                            <!-- Promote to -->
                             <th width="40px" id="gray">Promote to</th>
                             <td colspan="2"><?php echo $pos_pos->sec_name;?></td>
                             <th width="40px" id="gray">Department/Section</th>
-                            <!-- แผนกของ Nominee -->
                             <td>
                                 <?php echo $ev_no[0]->Department?>
                             </td>
                         </tr>
-                        </tbody>
+                    </tbody>
                 </table>
                     <br>
                     <h2><b>< Assessor ></b></h2>
-                    <!-- Table Evaluation -->
+                    <!-- Table Score -->
                     <table class="table table-bordered table-sm">
                         <tbody>
                             <tr id="center_th">
@@ -132,12 +131,14 @@
                                 <!--เริ่ม ตารางหัวข้อลงคะแนน-->
                                 <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
                                     $count_itm=1; //จำนวนหัวข้อหลัก
+                                    $weight=0;
                                     for($i=0;$i<count($arr_dis);$i++){
                                         if($i!=0){
                                             if($arr_dis[$i]->itm_id !=$arr_dis[$i-1]->itm_id){
                                                 $count_itm++;
                                             }
                                         }
+                                        $weight =  $weight+$arr_dis[$i]->for_des_weight;
                                     }//นับหัวข้อหลัก
 
                                     for($i=0;$i< $count_itm;$i++) {   //ลูปตามหัวข้อหลัก?>
@@ -176,12 +177,12 @@
                                                     <td>
                                                         <div class="form-group">
                                                             <label for="sel"></label>
-                                                                <select class="form-control"  id="sel<?php echo $count_discription  ?>">
-                                                                    <option value=1>1</option>
-                                                                    <option value=2>2</option>
-                                                                    <option value=3>3</option>
-                                                                    <option value=4>4</option>
-                                                                    <option value=5>5</option>
+                                                                <select class="form-control" name="form[]" id="form" >
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
                                                                 </select>
                                                         </div> 
                                                     </td>
@@ -191,13 +192,18 @@
                                                     </td>
                                                     <?php  $count_discription++; ?>
                                             <?php $loop_dis++;} ?>
+                                            <input type="hidden" value="<?php echo 	$arr_dis[$i]->for_id ?>" name="for_id[]">
+                                            
                             </tr>
                             <?php } ?>
+                            <!-- แสดง Score -->              
+                            <input type="text" name="weight"  ID="weight" value=<?php echo $weight ; ?> hidden>
+                            <input type="text" name="weight-per"  ID="weight-per" value=<?php echo $weight * 5 ; ?> hidden>
                             <tr>
                                 <td colspan="2" align='right'><b>Total</b></td>
                                 <td align='center'>100</td>
-                                <td align='center'>0</td>
-                                <td align='center'>0.0%</td>
+                                <td><input type="text" name="total" size='1' disabled  style='border: none'> </td>
+                                <td><input type="text" name="total_weight" size='1' disabled  style='border: none';></td>
                             </tr>
                     </table>
                     <br>
@@ -213,9 +219,11 @@
                             <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"></textarea>
                         </div>
                         <br>
-                        </form>
+                        <input type="hidden" value="<?php echo $ev_ass[0]->ase_id ?>" name="ase_id">
+                        <input type="hidden" value="<?php echo $ev_no[0]->grn_emp_id ?>" name="emp_id">
+                        
                     <!-- Confirm -->
-                    <button type="submit" class="btn btn-success float-right" data-toggle="modal" data-target="#Modal_confirm">Confirm</button>
+                    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#Modal_confirm">Confirm</button>
             </div>
         </div>
     </div>
@@ -268,13 +276,12 @@
                     <h1> <b>Success</b> </h1>
                 </div>
                 <div class="modal-footer">
-                    <a href="<?php echo site_url() . 'Evaluation/Evaluation_input/update_approve_form_plant/'. $arr_req->req_form_id ; ?>">
-                        <button type="button" class="btn btn-success btn-lg float-right">OK</button>
-                    </a>
+                        <button type="submit" class="btn btn-success btn-lg float-right">OK</button>
                 </div>
         </div>
     </div>
 </div>
+</form>
 <!-- end modal success -->
 
 <!--ซ่อน Modal ยืนยันการประเมิน-->
@@ -282,6 +289,26 @@
 $(document).ready(function() {
     $("#btn_success").click(function() {
         $("#Modal_confirm").hide()
+    });
+
+//เก็บคะแนน
+    $("select").change(function(){
+        var toplem=0;
+        $("select[name=form]").each(function(){
+            toplem = toplem + parseInt($(this).val());
+        })
+        $("input[name=total]").val(toplem);
+        });
+
+    $("select").change(function(){
+        var toplem=0;
+        var weight = $("#weight-per").val();
+        $("select[name=form]").each(function(){
+            toplem = toplem + parseInt($(this).val());
+        }) 
+            toplem = Math.round(toplem / weight*100);
+            var a = '%'
+        $("input[name=total_weight]").val(toplem + a);
     });
 });
 </script>
