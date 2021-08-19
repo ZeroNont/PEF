@@ -30,8 +30,11 @@ class M_pef_Employee extends Da_pef_Employee
     { //check User_login and Pass_login in database
         $sql =
         "SELECT *
-			FROM pefs_database.pef_assessor AS ass INNER JOIN dbmc.sectioncode AS sec
-            ON ass.Sectioncode_ID = sec.Sectioncode
+			FROM pefs_database.pef_assessor AS ass 
+            INNER JOIN dbmc.employee AS emp
+            ON ass.ase_emp_id=emp.Emp_ID
+            INNER JOIN dbmc.sectioncode AS sec
+            ON emp.Sectioncode_ID=sec.Sectioncode
             INNER JOIN pefs_database.pef_section AS section
             ON ass.position_level=section.sec_id
 			WHERE ass.position_level =?";
@@ -65,11 +68,11 @@ class M_pef_Employee extends Da_pef_Employee
     public function get_name_emp()
     {
         $sql =
-            "SELECT *
-        FROM dbmc.employee INNER JOIN dbmc.sectioncode 
-        ON (dbmc.employee.Sectioncode_ID=dbmc.sectioncode.Sectioncode) 
-        INNER JOIN dbmc.position 
-        ON (dbmc.employee.Position_ID=dbmc.position.Position_ID) 
+        "SELECT *
+        FROM dbmc.employee AS emp INNER JOIN dbmc.sectioncode AS sec
+        ON emp.Sectioncode_ID=sec.Sectioncode
+        INNER JOIN dbmc.position AS pos
+        ON emp.Position_ID=pos.Position_ID
         WHERE Emp_ID = ? ";
         $query = $this->db->query($sql, array($this->Emp_ID));
         return $query;

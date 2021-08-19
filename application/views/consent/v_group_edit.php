@@ -487,8 +487,7 @@ function get_assessor() {
                 data_row += row.ase_emp_id
                 data_row += '</td>'
                 data_row += '<td>'
-                data_row += row.ase_name_eng + "          " + row
-                    .ase_surename_eng
+                data_row += row.Empname_eng + "  " + row.Empsurname_eng
                 data_row += '</td>'
                 data_row += '<td>'
                 data_row += row.sec_level
