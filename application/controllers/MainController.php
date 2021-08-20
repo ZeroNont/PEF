@@ -1,8 +1,6 @@
 <?php
 /*
 * MainCcontroller
-* @input  -
-* @output -
 * @author Jiratyut Saifah
 * @Update Date 2563-09-1
 */

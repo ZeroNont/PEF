@@ -1,11 +1,11 @@
 <!--
-    Main
-    controller of main page
-    @input -
-    @output -
-    @author Nattakorn
-    Create date 2564-07-16
-    Update date 2564-07-18
+    /*
+    *Main
+    *controller of main page
+    *@author Nattakorn
+    *@Create date 2564-07-16
+    *@Update date 2564-07-18
+    */
 -->
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
