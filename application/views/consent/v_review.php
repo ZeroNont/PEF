@@ -137,7 +137,7 @@ table {
 
                 <div class="modal-body">
                     <div align="center">
-                        </h1><i class='fa fa-check-square'></i></h1>
+                        </h1>Success</i></h1>
                     </div>
 
 
@@ -254,7 +254,7 @@ table {
         $("#save_data").modal("hide")
         setTimeout(function() {
             return true;
-        }, 5000);
+        }, 25000);
 
     }
 
