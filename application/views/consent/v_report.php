@@ -279,7 +279,6 @@
 <script src="https://unpkg.com/file-saver@1.3.3/FileSaver.js"></script>
 
 <script>
-    
     var section = [];
     $(document).ready(function() {
         // $("#count_assessed").hide();
@@ -292,68 +291,79 @@
     });
 
     /*
-    * show_chart
-    * display chart with data
-    * @input    -
-    * @output   -
-    * @author   Chakrit
-    * @Create Date 2564-08-20
-    */
-    function show_chart(label, data) {
-        // var bar_charts = document.getElementById("myChart");
+     * show_chart
+     * display chart with data
+     * @input    -
+     * @output   -
+     * @author   Chakrit
+     * @Create Date 2564-08-20
+     */
 
-
-        // var myChart = new Chart(bar_charts, {
-        //     type: 'bar',
-        //     DATA_COUNT = 7,
-        //     NUMBER_CFG = {
-        //         count: DATA_COUNT,
-        //         min: -100,
-        //         max: 100
-        //     },
-        //     labels = Utils.months({
-        //         count: 7
-        //     }),
-        //     data: {
-        //         labels: label,
-        //         datasets: [{
-        //                 label: 'NOT PASS',
-        //                 data: Utils.numbers(NUMBER_CFG),
-        //                 borderColor: Utils.CHART_COLORS.red,
-        //                 backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
-        //             },
-        //             {
-        //                 label: 'PASS',
-        //                 data: Utils.numbers(NUMBER_CFG),
-        //                 borderColor: Utils.CHART_COLORS.green,
-        //                 backgroundColor: Utils.transparentize(Utils.CHART_COLORS.green, 0.5),
-        //             }
-        //         ]
-        //     },
-        //     options: {
-        //         responsive: true,
-        //         plugins: {
-        //             legend: {
-        //                 position: 'top',
-        //             },
-        //             title: {
-        //                 display: true,
-        //                 text: 'Chart.js Bar Chart'
-        //             }
-        //         }
-        //     }
-        // });
-
+    function show_chart(label, data_pass, data_fail) {
+        var bar_charts = document.getElementById("myChart");
+        var myChart = new Chart(bar_charts, {
+            type: 'bar',
+            data: {
+                labels: label,
+                datasets: [{
+                    label: 'NOT PASS',
+                    data: data_fail,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 99, 132, 1)',
+                    ],
+                    borderWidth: 1
+                }, {
+                    label: 'PASS',
+                    data: data_pass,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(75, 192, 192, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
     }
 
     /*
-    * show_all_data
-    * display all data report
-    * @input    -
-    * @output   -
-    * @author   Chakrit
-    * @Create Date 2564-08-16
-    */
+     * show_all_data
+     * display all data report
+     * @input    -
+     * @output   -
+     * @author   Chakrit
+     * @Create Date 2564-08-16
+     */
     function show_all_data() {
         var year = document.getElementById('year').value;
         var have = 0;
@@ -363,9 +373,11 @@
 
         const label = [];
         var check = '';
-        const data = [];
-        var count = 0;
-        const Dep = [];
+        const data_pass = [];
+        const data_fail = [];
+        var count_pass = 0;
+        var count_fail = 0;
+        const label_sec = [];
         $.ajax({
             type: 'POST',
             url: "<?php echo base_url() ?>Report/Report/get_report",
@@ -375,15 +387,18 @@
             },
             success: function(data_charts) {
                 data_charts.forEach((row, index) => {
+                    row.sec_level = 'T' + row.sec_level;
+
                     if (index == 0) {
-                        label.push(row.Department);
-                        Dep.push(row.dep_id);
-                        check = row.Department;
-                    } else if (check != row.Department) {
-                        label.push(row.Department);
-                        Dep.push(row.dep_id);
-                        check = row.Department;
+                        label.push(row.sec_level);
+                        label_sec.push(row.sec_id);
+                        check = row.sec_level;
+                    } else if (check != row.sec_level) {
+                        label.push(row.sec_level);
+                        label_sec.push(row.sec_id);
+                        check = row.sec_level;
                     }
+
                     if (row.grn_status == '-1') {
                         have_not++;
                     } else if (row.grn_status == '0') {
@@ -395,21 +410,27 @@
                     }
                 });
                 // forEach data_charts
-                label.forEach((row_label, index) => {
+                label_sec.forEach((row_label, index) => {
                     data_charts.forEach((row, index) => {
-                        if (row_label == row.Department) {
-                            count++;
+                        if (row_label == row.sec_id) {
+                            if (row.grn_status == '1') {
+                                count_pass++;
+                            } else if (row.grn_status == '2') {
+                                count_fail++;
+                            }
                         }
                     });
-                    data.push(count);
-                    count = 0;
+                    data_pass.push(count_pass);
+                    data_fail.push(count_fail);
+                    count_pass = 0;
+                    count_fail = 0;
                 });
                 // forEach label
                 $("#count_assessed").show();
                 $("#count_graph").show();
                 $("#count_table").show();
 
-                // show_chart(label, data);
+                show_chart(label, data_pass, data_fail);
                 show_data_table(data_charts);
                 $('#total_nominee').text(have_not + have);
                 $('#total_have').text(have);
@@ -427,13 +448,13 @@
     }
 
     /*
-    * show_table
-    * display table report
-    * @input    -
-    * @output   -
-    * @author   Chakrit
-    * @Create Date 2564-08-28
-    */
+     * show_table
+     * display table report
+     * @input    -
+     * @output   -
+     * @author   Chakrit
+     * @Create Date 2564-08-28
+     */
     function show_table() {
         $.get("<?php echo base_url(); ?>Report/Report/get_section", function(data) {
             var obj = JSON.parse(data);
@@ -459,13 +480,13 @@
     }
 
     /*
-    * show_data_table
-    * display data in table report
-    * @input    -
-    * @output   -
-    * @author   Chakrit
-    * @Create Date 2564-08-18
-    */
+     * show_data_table
+     * display data in table report
+     * @input    -
+     * @output   -
+     * @author   Chakrit
+     * @Create Date 2564-08-18
+     */
     function show_data_table() {
         var sum_total = 0;
         var assess_total = 0;

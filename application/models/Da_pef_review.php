@@ -1,13 +1,11 @@
 <?php
-// <!--
-// Da_pef_review
-// database for reviewer
-// @input -
-// @output -
-// @author Nattakorn
-// Create date 2564-08-13
-// Update date 2564-08-19
-// -->
+/*
+*Da_pef_review
+*database for reviewer
+*@author Nattakorn
+*@Create date 2564-08-13
+*@Update date 2564-08-19
+*/
 include_once("pefs_model.php");
 
 

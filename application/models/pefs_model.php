@@ -1,6 +1,6 @@
 <?php
 /*
-* ttp_model
+* pef_model
 * -
 * @author JIRAYUT SAIFAH
 * @Create Date 2564-7-15

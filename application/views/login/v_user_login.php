@@ -14,7 +14,7 @@
     #bg_login
     {/*blackguard login*/ 
         
-        background-image:url("<?php echo base_url()?>pic/bg-login.jpg") ;
+        background-image:url("<?php echo base_url()?>/pic/bg-login.jpg") ;
         background-attachment: fixed;
         background-position: top center;
         background-repeat: no-repeat;
