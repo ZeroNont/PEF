@@ -4,7 +4,7 @@
 * show and get data of report
 * @author   Chakrit
 * @Create Date 2564-08-13
-* @Update Date 
+* @Update Date 2564-08-20
 */
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");
@@ -19,7 +19,7 @@ class Report extends MainController
 	* @output   -
 	* @author   Chakrit
 	* @Create Date 2564-08-13
-	* @Update Date 2564-08-
+	* @Update Date 2564-08-19
 	*/
 	public function show_report()
 	{
@@ -31,12 +31,12 @@ class Report extends MainController
 
 	/*
 	* get_report
-	* get data between Start date and End date
-	* @input    Start date and End date
+	* get data report in year
+	* @input    year
 	* @output   data of report
 	* @author   Chakrit
-	* @Create Date 2564-07-26
-	* @Update Date 2564-07-28
+	* @Create Date 2564-08-13
+	* @Update Date 2564-08-18
 	*/
 	public function get_report()
 	{
@@ -46,6 +46,15 @@ class Report extends MainController
 		echo json_encode($data);
 	}
 
+	/*
+	* get_section
+	* get data report in section
+	* @input    -
+	* @output   data of report
+	* @author   Chakrit
+	* @Create Date 2564-08-13
+	* @Update Date 2564-08-18
+	*/
 	public function get_section()
 	{
 		$this->load->model('M_pef_report', 'pef');
@@ -56,11 +65,11 @@ class Report extends MainController
 	/*
 	* show_report_detail
 	* show view report detail
-	* @input    Form_ID
-	* @output   -
+	* @input    sec_id
+	* @output   data of report detail
 	* @author   Chakrit
 	* @Create Date 2564-08-15
-	* @Update Date 2564-08-
+	* @Update Date 2564-08-20
 	*/
 	public function show_report_detail($sec_id)
 	{
@@ -73,12 +82,13 @@ class Report extends MainController
 	}
 
 	/*
-	* show_report_export_excel
-	* show view export excel
-	* @input    -
-	* @output   -
+	* show_report_detail_assesor
+	* show view report detail assessor
+	* @input    grn_id
+	* @output   data of report detail assessor
 	* @author   Chakrit
-	* @Create Date 2564-07-28
+	* @Create Date 2564-08-15
+	* @Update Date 2564-08-20
 	*/
 	public function show_report_detail_assessor($grn_id)
 	{
