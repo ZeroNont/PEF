@@ -1,12 +1,12 @@
 <!-- 
     /*
     * v_report
-    * Display report of requests for permission 
+    * Display report of Performance Evaluation Factor System
     * @input    -
     * @output   -
     * @author   Chakrit
     * @Create Date 2564-08-13
-    * @Update Date 2564-08-
+    * @Update Date 2564-08-20
     */ -->
 <h1>
     Report (รายงานข้อมูล)
@@ -290,52 +290,51 @@
         show_all_data();
     });
 
-    function show_chart(label, data) {
-        var bar_charts = document.getElementById("myChart");
-        var myChart = new Chart(bar_charts, {
-            type: 'bar',
-            data: {
-                labels: label,
-                datasets: [{
-                    label: 'Number of requests',
-                    data: data,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(75, 192, 192, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
+    // function show_chart(label, data) {
+    function show_chart() {
+        // var bar_charts = document.getElementById("myChart");
+
+
+        // var myChart = new Chart(bar_charts, {
+        //     type: 'bar',
+        //     DATA_COUNT = 7,
+        //     NUMBER_CFG = {
+        //         count: DATA_COUNT,
+        //         min: -100,
+        //         max: 100
+        //     },
+        //     labels = Utils.months({
+        //         count: 7
+        //     }),
+        //     data: {
+        //         labels: label,
+        //         datasets: [{
+        //                 label: 'NOT PASS',
+        //                 data: Utils.numbers(NUMBER_CFG),
+        //                 borderColor: Utils.CHART_COLORS.red,
+        //                 backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+        //             },
+        //             {
+        //                 label: 'PASS',
+        //                 data: Utils.numbers(NUMBER_CFG),
+        //                 borderColor: Utils.CHART_COLORS.green,
+        //                 backgroundColor: Utils.transparentize(Utils.CHART_COLORS.green, 0.5),
+        //             }
+        //         ]
+        //     },
+        //     options: {
+        //         responsive: true,
+        //         plugins: {
+        //             legend: {
+        //                 position: 'top',
+        //             },
+        //             title: {
+        //                 display: true,
+        //                 text: 'Chart.js Bar Chart'
+        //             }
+        //         }
+        //     }
+        // });
 
     }
 
@@ -395,6 +394,7 @@
                 $("#count_table").show();
 
                 // show_chart(label, data);
+                show_chart();
                 show_data_table(data_charts);
                 $('#total_nominee').text(have_not + have);
                 $('#total_have').text(have);
