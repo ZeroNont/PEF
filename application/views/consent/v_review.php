@@ -30,7 +30,7 @@ table {
                     <option value="0"> Please Select</option>
                     <?php foreach ($arr_sec as $row) { ?>
 
-                    <option value="<?php echo $row->sec_id ?>"><?php echo $row->sec_level ?></option>
+                    <option value="<?php echo $row->sec_id ?>"><?php echo 'T'.$row->sec_level ?></option>
                     <?php } ?>
                 </select>
             </div>

@@ -26,7 +26,7 @@
                     <?php echo $i + 1 ?>
                     </td>
                     <td>
-                    Promote to <?php echo $obj_promote[$i]->sec_level?>
+                    Promote to <?php echo 'T'.$obj_promote[$i]->sec_level?>
                     </td>
                     <td>
                     <a href=" <?php echo site_url().'Assessor_management/Assessor_list/show_assessor/'.$obj_promote[$i]->sec_id?>">
