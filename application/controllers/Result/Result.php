@@ -64,11 +64,11 @@ class Result extends MainController
         $data['arr_gro'] = $this->mpef->get_group()->result();
         $this->output('consent/v_result', $data);
 
-    } //show request list แสดงายการคำขอทั้งหมด สำหรับหัวหน้างานคนนั้นๆ
+    } //show result list แสดงผลการประเมินของหัวหน้าคนนั้นๆประเมิน
 
     /*
     * Function show_request_detail
-    * @input  $id   
+    * @input  $nor_id,$ass_id,$promote  
     * @output show v_request_form_detail.php
     * @author Apinya Phadungkit
     * @Create Date 2564-7-18
@@ -98,53 +98,7 @@ class Result extends MainController
             $this->output('consent/v_history_M_AGM_GM',$data);
         }
 
-        
-
-	} //show request detail แสดงรายละเอียดเพิ่มเติมของรายการคำขอ
-
-    /*
-    * Function reject_form
-    * @input  $id   
-    * @output show_request_form_list.php
-    * @author Apinya Phadungkit
-    * @Create Date 2564-7-18
-    * @Update Date 2564-7-28
-    */
-    function reject_form($id)
-    {
-        $this->load->model('Da_ttp_request','dain');
-        $this->dain->app_reject_reason =  $this->input->post('app_reject_reason');  
-        $this->dain->app_form_id = $id; 
-        $this->dain->update_reject();
-
-        // ปฏิเสธแล้วให้ Status = 0
-        $this->dain->req_status = 0;
-        $this->dain->req_form_id = $id;   
-        $this->dain->update_form();
-
-        redirect('/request/Request_form/show_request_form_list');
-    } //reject form ใช้ในการปฏิเสธแบบฟอร์ม
-
-    /*
-    * Function update_request_form
-    * @input  $id   
-    * @output show_request_form_list.php
-    * @author Apinya Phadungkit
-    * @Create Date 2564-7-18
-    * @Update Date 2564-7-28
-    */
-    function update_request_form($id) 
-    {
-        $this->load->model('Da_ttp_request', 'dreq');
-        $this->dreq->req_status = 2;
-        $this->dreq->req_form_id = $id;   
-        $this->dreq->update_form();
-
-        $this->load->model('M_ttp_request', 'mreq');
-        $this->mreq->app_form_id = $id;   
-        $this->mreq->update_app();
-        redirect('/request/Request_form/show_request_form_list');
-    } //update request form เปลี่ยนสถานะของคำขอที่ถูกอนุมัติแล้ว ให้มี Status = 2
+	} //show result detail แสดงรายละเอียดเพิ่มเติมของผลการประเมิน
 
 }
 // 

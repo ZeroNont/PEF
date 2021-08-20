@@ -63,15 +63,16 @@ class M_pef_result extends Da_pef_result
 
         $query = $this->db->query($sql,array($this->grn_status,$this->gro_ase_id));
         return $query;
-    }//get_all_sup ดึงข้อมูลที่อยู่ในตาราง requested_form ที่join กับตาราง approval และตาราง employee
+    }//get_group ดึงข้อมูลที่ใช้แสดงใน Result list
 
     /*
     * Function get_by_id
     * @input  id  
     * @output -
     * @author Apinya Phadungkit
-    * @Create Date 2564-7-18
-    * @Update Date 2564-7-28
+    * @Create Date 2564-8-16
+    * @Update Date 2564-8-18
+    * @Update Date 2564-8-19
     */
     function get_by_id($id)
     {
@@ -82,8 +83,17 @@ class M_pef_result extends Da_pef_result
                 WHERE pform.ptf_emp_id = $id";
         $query = $this->db->query($sql);
         return $query;
-    }//get_by_id ดึงข้อมูลที่อยู่ในตาราง requested_form ที่join กับตาราง form_file โดยที่ Form_ID ต้องทีค่าเท่ากับค่าในตัวแปร id ที่ถูกส่งมา
+    }//get_by_id ดึงข้อมูลที่อยู่ในตาราง group_nominee ที่join กับตาราง point_form โดยที่ ptf_emp_id ต้องมีค่าเท่ากับค่าในตัวแปร id ที่ถูกส่งมา
 
+    /*
+    * Function get_nomonee
+    * @input  id  
+    * @output -
+    * @author Apinya Phadungkit
+    * @Create Date 2564-8-16
+    * @Update Date 2564-8-18
+    * @Update Date 2564-8-19
+    */
     public function get_nomonee($id)
     {
         $sql = "SELECT employee.Emp_ID,employee.Empname_eng,employee.Empsurname_eng,position.Position_name,position.Pos_shortName,sectioncode.Department,company.Company_name
@@ -100,23 +110,17 @@ class M_pef_result extends Da_pef_result
 
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//get_nomonee ดึงข้อมูล nominee
 
-    // public function get_group_assessor($id){
-    //     $sql = "SELECT *
-    //     FROM pefs_database.pef_assessor AS ass
-    //     INNER JOIN pefs_database.pef_group_assessor AS groupass
-    //     ON ass.ase_emp_id = groupass.gro_ase_id
-    //     INNER JOIN pefs_database.pef_group AS gr
-    //     ON gr.grp_id = groupass.gro_grp_id
-    //     INNER JOIN dbmc.employee AS emp
-    //     ON groupass.gro_ase_id = emp.Emp_ID 
-    //     WHERE ass.ase_emp_id = $id";
-
-    //     $query = $this->db->query($sql);
-    //     return $query;
-    // }//คืนค่ากลุ่ม Assessor
-
+    /*
+    * Function get_position
+    * @input  position  
+    * @output -
+    * @author Apinya Phadungkit
+    * @Create Date 2564-8-16
+    * @Update Date 2564-8-18
+    * @Update Date 2564-8-19
+    */
     public function get_position($position)
     {
         $sql = "SELECT *
@@ -129,14 +133,14 @@ class M_pef_result extends Da_pef_result
 
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//get_position ดึงข้อมูล position 
 
     /*
 	* get_group_assessor
 	* คืนค่ากลุ่มประเมินของ assessor
-	* @input 	$emp_id (รหัส Nominee)
-	* @output 	กลุ่มประเมินของ Nominee
-	* @author 	Phatchara Khongthandee
+	* @input 	$=id (รหัส assessor)
+	* @output 	กลุ่มประเมินของ assessor
+	* @author 	Apinya Phadungkit
     * @Update   Date 2564-08-16
 	* @Create   Date 2564-08-17 
 	* @Update   Date 2564-08-18
@@ -160,8 +164,18 @@ class M_pef_result extends Da_pef_result
 
         $query = $this->db->query($sql);
         return $query;
-    }//คืนค่ากลุ่ม Assessor
+    }//ดึงข้อมูลกลุ่ม Assessor
 
+    /*
+	* get_group_nominee
+	* คืนค่ากลุ่มประเมินของ nominee
+	* @input 	$emp_id (รหัส Nominee)
+	* @output 	กลุ่มประเมินของ Nominee
+	* @author 	Apinya Phadungkit
+    * @Update   Date 2564-08-16
+	* @Create   Date 2564-08-17 
+	* @Update   Date 2564-08-18
+	*/
     public function get_group_nominee($emp_id)
     {
         $sql = "SELECT *
@@ -178,8 +192,18 @@ class M_pef_result extends Da_pef_result
 
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//ดึงข้อมูลกลุ่ม nominee
 
+    /*
+	* get_all_form
+	* คืนค่ากลุ่มประเมินของ nominee
+	* @input 	$id (รหัส Nominee),$position
+	* @output 	ประเมินของ Nominee
+	* @author 	Apinya Phadungkit
+    * @Update   Date 2564-08-16
+	* @Create   Date 2564-08-17 
+	* @Update   Date 2564-08-18
+	*/
     public function get_all_form($id,$position) //t5-6
     {
         $sql = "SELECT *
@@ -194,8 +218,18 @@ class M_pef_result extends Da_pef_result
         WHERE pef_format_form.for_pos_level= '$position' AND poi.ptf_emp_id = $id";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//ประเมินของ Nominee T5,T6
 
+    /*
+	* get_all_M_AGM_GM
+	* คืนค่ากลุ่มประเมินของ nominee
+	* @input 	$position
+	* @output 	ประเมินของ Nominee
+	* @author 	Apinya Phadungkit
+    * @Update   Date 2564-08-16
+	* @Create   Date 2564-08-17 
+	* @Update   Date 2564-08-18
+	*/
     public function get_all_M_AGM_GM($position) //t2-4
     {
         $sql = "SELECT *
@@ -207,8 +241,18 @@ class M_pef_result extends Da_pef_result
         WHERE pef_format_form.for_pos_level= '$position';";
         $query = $this->db->query($sql);
         return $query;
-    }
+    }//ประเมินของ Nominee T2,T3,T4
 
+    /*
+	* get_comment
+	* คืนค่ากลุ่มประเมินของ nominee
+	* @input 	$id
+	* @output 	commentประเมินของ Nominee
+	* @author 	Apinya Phadungkit
+    * @Update   Date 2564-08-16
+	* @Create   Date 2564-08-17 
+	* @Update   Date 2564-08-18
+	*/
     public function get_comment($id){
         $sql = "SELECT *
         FROM pefs_database.pef_point_form AS poi
@@ -218,8 +262,18 @@ class M_pef_result extends Da_pef_result
 
         $query = $this->db->query($sql);
         return $query;
-    }//คืนค่ากลุ่ม Assessor
+    }//commentประเมินของ Nominee
 
+    /*
+	* get_score
+	* คืนค่ากลุ่มประเมินของ nominee
+	* @input 	$id
+	* @output 	คะแนนประเมินของ Nominee
+	* @author 	Apinya Phadungkit
+    * @Update   Date 2564-08-16
+	* @Create   Date 2564-08-17 
+	* @Update   Date 2564-08-18
+	*/
     public function get_score($id){
         $sql = "SELECT *
         FROM pefs_database.pef_point_form AS poi
@@ -227,13 +281,13 @@ class M_pef_result extends Da_pef_result
 
         $query = $this->db->query($sql);
         return $query;
-    }//คืนค่ากลุ่ม Assessor
+    }//คะแนนประเมินของ Nominee
 
     /*
-	* get_all_form_T6
-	* คืนค่าแบบฟอร์มการประเมิน T6
+	* get_all_form_M_AGM_GM
+	* คืนค่าแบบฟอร์มการประเมิน T2-4
 	* @input 	$position
-	* @output 	ข้อมูลแบบฟอร์มการประเมิน T6
+	* @output 	ข้อมูลแบบฟอร์มการประเมิน T2-4
 	* @author 	Phatchara Khongthandee
 	* @Create   Date 2564-08-15 
 	* @Update   Date 2564-08-16
@@ -249,59 +303,6 @@ class M_pef_result extends Da_pef_result
         WHERE pef_format_form.for_pos_level= '$position';";
         $query = $this->db->query($sql);
         return $query;
-    }
-
-    /*
-    * Function get_hr_no
-    * @input  - 
-    * @output -
-    * @author Apinya Phadungkit
-    * @Create Date 2564-7-18
-    * @Update Date 2564-7-28
-    */
-    function get_hr_no()
-    {
-        $sql = "SELECT *
-                FROM ttps_database.requested_form AS req
-                WHERE req.req_hr_no LIKE 'HR%'
-                ORDER BY req.req_hr_no DESC LIMIT 1";
-        $query = $this->db->query($sql);
-        return $query;
-    }//get_hr_no ดึงข้อมูล HR_No ที่อยู่ในตาราง requested_form
-
-    /*
-    * Function update_app
-    * @input  - 
-    * @output -
-    * @author Apinya Phadungkit
-    * @Create Date 2564-7-18
-    * @Update Date 2564-7-28
-    */
-    function update_app()
-    {
-        $sql = "UPDATE ttps_database.approval AS app
-                SET app.app_supervisor_date = CURRENT_TIMESTAMP()
-                WHERE app.app_form_id = ? "; 
-        $this->db->query($sql, array($this->app_form_id));
-    } //update_app อัพเดทข้อมูลในตาราง approval
-
-    /*
-    * Function get_history_user
-    * @input  $id
-    * @output -
-    * @author Apinya Phadungkit
-    * @Create Date 2564-7-18
-    * @Update Date 2564-7-28
-    */
-    function get_history_user($id)
-    {
-        $sql = "SELECT *
-                FROM ttps_database.requested_form AS req
-                INNER JOIN dbmc.employee AS emp
-                ON  req.req_emp_id = emp.Emp_ID
-                WHERE req.req_form_id = $id";
-        $query = $this->db->query($sql);
-        return $query;
-    } //get_history_user ใช้ดูประวัติว่าผู้ใช้งานคนไหนเป็นผู้ร้องขอแบบฟอร์ม
+    }//ข้อมูลแบบฟอร์มการประเมิน T2-4
     
 }
