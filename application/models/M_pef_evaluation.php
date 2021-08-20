@@ -1,13 +1,17 @@
 <!--
-    M_pef_evaluation
-    Model for evaluation module
-    @author Phatchara Khongthandee and Pontakon Mujit 
-    Create date 2564-08-14  
-    Update date 2564-08-15
-    Update date 2564-08-16
-    Update date 2564-08-17
-    Update date 2564-08-18
-    Update date 2564-08-19
+    /* 
+    * M_pef_evaluation
+    * Model for evaluation module
+    * @input  -
+    * @output -
+    * @author Phatchara Khongthandee and Pontakon Mujit 
+    * @Create date 2564-08-14  
+    * @Update date 2564-08-15
+    * @Update date 2564-08-16
+    * @Update date 2564-08-17
+    * @Update date 2564-08-18
+    * @Update date 2564-08-19
+    */
 -->
 <?php
 include_once("Da_pef_evaluation.php");
@@ -22,12 +26,12 @@ class M_pef_evaluation extends Da_pef_evaluation
      /*
 	* get_all_list
 	* คืนค่าชื่อกรรมการ, ชื่อกลุ่ม, วันที่ประเมิน, จำนวน Nominee ที่ต้องประเมิน, ชื่อ Nominee, ตำแหน่ง, แผนก, Promote to
-	* @input 	$id_ass
-	* @output 	ชื่อกรรมการ, ชื่อกลุ่ม, วันที่ประเมิน, จำนวน Nominee ที่ต้องประเมิน, ชื่อ Nominee, ตำแหน่ง, แผนก, Promote to
-	* @author 	Phatchara Khongthandee and Pontakon Mujit 
-	* @Create   Date 2564-08-15   
-	* @Update   Date 2564-08-16
-    * @Update   Date 2564-08-17
+	* @input   id_ass
+	* @output  ชื่อกรรมการ, ชื่อกลุ่ม, วันที่ประเมิน, จำนวน Nominee ที่ต้องประเมิน, ชื่อ Nominee, ตำแหน่ง, แผนก, Promote to
+	* @author  Phatchara Khongthandee and Pontakon Mujit 
+	* @Create  Date 2564-08-15   
+	* @Update  Date 2564-08-16
+    * @Update  Date 2564-08-17
 	*/
     public function get_all_list($id_ass)
     {
@@ -56,12 +60,12 @@ class M_pef_evaluation extends Da_pef_evaluation
     /*
 	* get_group_assessor
 	* คืนค่ากลุ่มประเมินของ assessor
-	* @input 	$emp_id (รหัส Nominee)
-	* @output 	กลุ่มประเมินของ Nominee
-	* @author 	Phatchara Khongthandee
-    * @Update   Date 2564-08-16
-	* @Create   Date 2564-08-17 
-	* @Update   Date 2564-08-18
+	* @input   emp_id (รหัส Nominee)
+	* @output  กลุ่มประเมินของ Nominee
+	* @author  Phatchara Khongthandee
+    * @Update  Date 2564-08-16
+	* @Create  Date 2564-08-17 
+	* @Update  Date 2564-08-18
 	*/
     public function get_group_assessor($id){
         $sql = "SELECT *
@@ -87,13 +91,14 @@ class M_pef_evaluation extends Da_pef_evaluation
      /*
 	* get_group_nominee
 	* คืนค่ากลุ่มประเมินของ Nominee
-	* @input 	$emp_id (รหัส Nominee)
-	* @output 	กลุ่มประเมินของ Nominee
-	* @author 	Phatchara Khongthandee
-    * @Update   Date 2564-08-16
-	* @Create   Date 2564-08-17 
-	* @Update   Date 2564-08-18
+	* @input   emp_id (รหัส Nominee)
+	* @output  กลุ่มประเมินของ Nominee
+	* @author  Phatchara Khongthandee
+    * @Update  Date 2564-08-16
+	* @Create  Date 2564-08-17 
+	* @Update  Date 2564-08-18
 	*/
+
     function get_group_nominee($emp_id)
     {
         $sql = "SELECT *
@@ -178,15 +183,15 @@ class M_pef_evaluation extends Da_pef_evaluation
     }
 
     /*
-	* get_all_form_T6
-	* คืนค่าแบบฟอร์มการประเมิน T6
-	* @input 	$position
-	* @output 	ข้อมูลแบบฟอร์มการประเมิน T6
-	* @author 	Phatchara Khongthandee
+	* get_all_form_m_agm_gm
+	* คืนค่าแบบฟอร์มการประเมิน ของ Promote T2 T3 & T4
+	* @input 	position
+	* @output 	ข้อมูลแบบฟอร์มการประเมิน ของ Promote T2 T3 & T4
+	* @author 	Phatchara Khongthandee and Pontakon Mujit 
 	* @Create   Date 2564-08-15 
 	* @Update   Date 2564-08-16
 	*/
-    public function get_all_form_M_AGM_GM($position)
+    public function get_all_form_m_agm_gm($position)
     {
         $sql = "SELECT *
         FROM  pefs_database.pef_format_form
@@ -194,21 +199,21 @@ class M_pef_evaluation extends Da_pef_evaluation
         ON pef_description_form.des_id=pef_format_form.for_des_id
         INNER JOIN pefs_database.pef_item_form
         ON pef_description_form.des_itm_id= pef_item_form.itm_id
-        WHERE pef_format_form.for_pos_level= '$position';";
+        WHERE pef_format_form.for_pos_level= 'T$position';";
         $query = $this->db->query($sql);
         return $query;
     }
    
     /*
-	* get_all_form_T5
-	* คืนค่าแบบฟอร์มการประเมิน T5
-	* @input 	$position
-	* @output 	ข้อมูลแบบฟอร์มการประเมิน T5
-	* @author 	Phatchara Khongthandee
-	* @Create   Date 2564-08-15 
-	* @Update   Date 2564-08-16
+	* get_all_form_amsssv_mtssp
+	* คืนค่าแบบฟอร์มการประเมิน T5 & T6
+	* @input  position
+	* @output ข้อมูลแบบฟอร์มการประเมิน T5 & T6
+	* @author Phatchara Khongthandee and Pontakon Mujit 
+	* @Create Date 2564-08-15 
+	* @Update Date 2564-08-16
 	*/
-    public function get_all_form_AMSSSV_MTSSP($position)
+    public function get_all_form_amsssv_mtssp($position)
     {
         $sql = "SELECT *
         FROM  pefs_database.pef_format_form
@@ -221,13 +226,13 @@ class M_pef_evaluation extends Da_pef_evaluation
         return $query;
     }
     /*
-	* get_all_form_T5
-	* คืนค่าแบบฟอร์มการประเมิน T5
-	* @input 	$position
-	* @output 	ข้อมูลแบบฟอร์มการประเมิน T5
-	* @author 	Phatchara Khongthandee
-	* @Create   Date 2564-08-15 
-	* @Update   Date 2564-08-16
+	* get_point
+	* คืนค่าคะแนนของฟอร์ม
+	* @input   position
+	* @output  ข้อมูลคะแนนของฟอร์ม
+	* @author  Phatchara Khongthandee and Pontakon Mujit 
+	* @Create  Date 2564-08-18 
+	* @Update  Date 2564-08-19
 	*/
     function get_point(){
         $sql = "SELECT MAX(per_id) AS max_id
@@ -237,13 +242,13 @@ class M_pef_evaluation extends Da_pef_evaluation
         return $query;
     }
     /*
-	* get_all_form_T5
-	* คืนค่าแบบฟอร์มการประเมิน T5
-	* @input 	$position
-	* @output 	ข้อมูลแบบฟอร์มการประเมิน T5
-	* @author 	Phatchara Khongthandee
-	* @Create   Date 2564-08-15 
-	* @Update   Date 2564-08-16
+	* get_point_list
+	* คืนค่าคะแนนของแต่ละฟอร์ม
+	* @input 	position
+	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
+	* @author 	Phatchara Khongthandee and Pontakon Mujit 
+	* @Create   Date 2564-08-18 
+	* @Update   Date 2564-08-19
 	*/
     function get_point_list($id,$id_emp){
         $sql = "SELECT *
@@ -253,6 +258,16 @@ class M_pef_evaluation extends Da_pef_evaluation
         $query = $this->db->query($sql);
         return $query;
     }
+
+    /*
+	* get_ase_id
+	* คืนค่าคะแนนของแต่ละฟอร์ม
+	* @input 	position
+	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
+	* @author 	Phatchara Khongthandee and Pontakon Mujit 
+	* @Create   Date 2564-08-18 
+	* @Update   Date 2564-08-19
+    */
     function get_ase_id($id){
         $sql = "SELECT pef_assessor.ase_id 
         FROM pefs_database.pef_assessor 
@@ -261,6 +276,15 @@ class M_pef_evaluation extends Da_pef_evaluation
         return $query;
     }
 
+    /*
+	* get_performance
+	* คืนค่าคะแนนของแต่ละฟอร์ม
+	* @input 	position
+	* @output 	คืนค่าคะแนนของแต่ละฟอร์ม
+	* @author 	Phatchara Khongthandee and Pontakon Mujit 
+	* @Create   Date 2564-08-18 
+	* @Update   Date 2564-08-19
+    */
     function get_performance($id,$id_emp){
         $sql = "SELECT *
         FROM  pefs_database.pef_performance_form

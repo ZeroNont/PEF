@@ -1,14 +1,19 @@
 <!--
-    v_evaluation_AMSSSV_MTSSP
-    display for Evaluation Form Promote to T5 & T6
-    @author Phatchara Khongthandee and Pontakon Mujit
-    Create date 2564-08-14   
-    Update date 2564-08-15
-    Update date 2564-08-16
-    Update date 2564-08-17
-    Update date 2564-08-18
-    Update date 2564-08-19
+    /*
+    * v_evaluation_amsssv_mtssp
+    * display for Evaluation Form Promote to T5 & T6
+    * @author Phatchara Khongthandee and Pontakon Mujit
+    * @input id, emp_id, position
+    * @output -
+    * @Create date : 2564-08-14   
+    * @Update date : 2564-08-15
+    * @Update date : 2564-08-16
+    * @Update date : 2564-08-17
+    * @Update date : 2564-08-18
+    * @Update date : 2564-08-19
+    */
 -->
+
 <!-- CSS -->
 <style>
 table {
@@ -47,7 +52,7 @@ table {
 </style>
 
 <!-- Evaluation form -->
-<h1>Evaluation</h1>
+<h1>Evaluation (แบบฟอร์มการประเมิน)</h1>
 <div class="container"> 
     <div class="card" id="border-radius">  
         <div class="card-body">
@@ -291,6 +296,7 @@ table {
 
 <script>
 $( document ).ready(function() {
+    //คืนค่าคะแนนรวม
     $("select").change(function(){
         var toplem=0;
         var i =0;
@@ -301,8 +307,9 @@ $( document ).ready(function() {
             toplem = toplem+s;
             i = i+1;
         })
+        
         $("input[name=total]").val(toplem);
-    });  //คืนค่าคะแนนรวม
+    });  
     
     $("select").change(function(){
         var toplem=0;
@@ -315,12 +322,12 @@ $( document ).ready(function() {
             i = i+1;
 
         }) 
-        
+        //คืนค่าคะแนนรวมแบบเปอเซ็น
             toplem = Math.round(toplem / weight*100);
             var a = '%'
         $("input[name=total_weight]").val(toplem + a);
 
-    }); //คืนค่าคะแนนรวมแบบเปอเซ็น
+    }); 
 
 
     //คืนค่าคะแนนรวมแบบรายการ

@@ -1,14 +1,16 @@
 <!--
-    Evaluation
-    Controller for Evaluation module
-    @input -
-    @output -
-    @author Phatchara and Pontakon 
-    Create date 2564-08-14
-    Update date 2564-08-15
-    Update date 2564-08-17
-    Update date 2564-08-18
-    Update date 2564-08-19
+    /*
+    * Evaluation
+    * Controller for Evaluation module
+    * @input -
+    * @output -
+    * @author Phatchara Khongthandee and Pontakon Mujit 
+    * @Create date 2564-08-14
+    * @Update date 2564-08-15
+    * @Update date 2564-08-17
+    * @Update date 2564-08-18
+    * @Update date 2564-08-19
+    */
 -->
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -41,13 +43,13 @@ class Evaluation extends MainController
 	* show_evaluation
 	* แสดงหน้าจอ v_evaluation
 	* @input  -
-	* @output   
-	* @author 	Phatchara Khongthandee and Pontakon Mujit
-	* @Create Date 2564-08-14
-    * @Update Date 2564-08-15
-    * @Update Date 2564-08-16
-    * @Update Date 2564-08-17
-    * @Update Date 2564-08-19
+	* @output  Evaluation list
+	* @author  Phatchara Khongthandee and Pontakon Mujit
+	* @Create  Date 2564-08-14
+    * @Update  Date 2564-08-15
+    * @Update  Date 2564-08-16
+    * @Update  Date 2564-08-17
+    * @Update  Date 2564-08-19
 	*/
     function show_evaluation()
     {
@@ -58,59 +60,74 @@ class Evaluation extends MainController
     }// function show_evaluation
 
     /*
-	* show_evaluation_T6
+	* show_evaluation_amsssv_mtssp
 	* แสดงหน้าจอ Evaluation Form Promote to AM,Senior Staff,Supervisor
-	* @input  $id, $emp_id
-	* @output   Evaluation Form Promote to T6
-	* @author 	Phatchara Khongthandee and Pontakon Mujit
-	* @Create Date 2564-08-14
-    * @Update Date 2564-08-15
-    * @Update Date 2564-08-16
-    * @Update Date 2564-08-17
-    * @Update Date 2564-08-19
+	* @input   id, emp_id
+	* @output  แสดงหน้าจอ Evaluation Form Promote to AM,Senior Staff,Supervisor
+	* @author  Phatchara Khongthandee and Pontakon Mujit
+	* @Create  Date 2564-08-14
+    * @Update  Date 2564-08-15
+    * @Update  Date 2564-08-16
+    * @Update  Date 2564-08-17
+    * @Update  Date 2564-08-19
 	*/
-    function show_evaluation_AMSSSV_MTSSP($id, $emp_id, $position)
+
+    function show_evaluation_amsssv_mtssp($id, $emp_id, $position)
     {
         $this->load->model('M_pef_evaluation', 'pef');
         $data['ev_ass'] = $this->pef->get_group_assessor($id)->result();
         $data['ev_gno'] = $this->pef->get_group_nominee($emp_id)->result();
         $data['ev_no'] = $this->pef->get_nominee($emp_id)->result();
         $data['ev_file'] = $this->pef->get_file_present_nominee($emp_id)->result();
-        $data['arr_dis'] = $this->pef->get_all_form_AMSSSV_MTSSP($position)->result();
+        $data['arr_dis'] = $this->pef->get_all_form_amsssv_mtssp($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
-        $this->output('consent/v_evaluation_AMSSSV_MTSSP', $data);
-    }// function show_evaluation_T6
+        $this->output('consent/v_evaluation_amsssv_mtssp', $data);
+    }// function show_evaluation_amsssv_mtssp
 
     /*
-	* show_evaluation_T5
+	* show_evaluation_g_agm_gm
 	* แสดงหน้าจอ Evaluation Form Promote to AM,Senior Staff,Supervisor
-	* @input  -
-	* @output   
-	* @author 	Phatchara Khongthandee and Pontakon Mujit
+	* @input  id, emp_id, position, status
+	* @output แสดงหน้าจอ Evaluation Form Promote to T2 T3 & T4
+	* @author Phatchara Khongthandee and Pontakon Mujit
 	* @Create Date 2564-08-14
     * @Update Date 2564-08-15
     * @Update Date 2564-08-16
     * @Update Date 2564-08-17
     * @Update Date 2564-08-19
 	*/
-    function show_evaluation_M_AGM_GM($id, $emp_id, $position,$status)
+    function show_evaluation_g_agm_gm($id, $emp_id, $position,$status)
     {
         $this->load->model('M_pef_evaluation', 'pef');
         $id_r = $this->pef->get_ase_id($id)->row();
+        
         $id_ase = $id_r->ase_id;
         $data['ev_ass'] = $this->pef->get_group_assessor($id)->result();
         $data['ev_gno'] = $this->pef->get_group_nominee($emp_id)->result();
         $data['ev_no'] = $this->pef->get_nominee($emp_id)->result();
         $data['ev_file'] = $this->pef->get_file_present_nominee($emp_id)->result();
-        $data['arr_dis'] = $this->pef->get_all_form_M_AGM_GM($position)->result();
+        $data['arr_dis'] = $this->pef->get_all_form_m_agm_gm($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
         if($status==0){
          $data['arr_point'] = $this->pef->get_point_list($id_ase,$emp_id)->result();
          $data['arr_per'] = $this->pef->get_performance($id_ase,$emp_id)->result();
         }
-        $this->output('consent/v_evaluation_M_AGM_GM', $data);
-    }// function show_evaluation_T5
+        $this->output('consent/v_evaluation_m_agm_gm', $data);
+    }// function show_evaluation_m_agm_gm
 
+
+    /*
+	* insert_evaluation_form
+	* insert evaluation form to database
+	* @input  id, emp_id, position, status
+	* @output -
+	* @author Phatchara Khongthandee and Pontakon Mujit
+	* @Create Date 2564-08-14
+    * @Update Date 2564-08-15
+    * @Update Date 2564-08-16
+    * @Update Date 2564-08-17
+    * @Update Date 2564-08-19
+	*/
     function insert_evaluation_form()
     {
         echo "<pre>";

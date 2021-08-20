@@ -1,14 +1,19 @@
 <!--
-    v_evaluation_M_AGM_GM
-    display for Evaluation Form Promote to T4, T3, T2
-    @author Phatchara Khongthandee and Pontakon Mujit
-    Create date 2564-08-14   
-    Update date 2564-08-15
-    Update date 2564-08-16
-    Update date 2564-08-17
-    Update date 2564-08-18
-    Update date 2564-08-19
+    /*
+    * v_evaluation_m_agm_gm
+    * display for Evaluation Form Promote to T2 T3 & T4
+    * @author Phatchara Khongthandee and Pontakon Mujit
+    * @input id, emp_id, position, status
+    * @output -
+    * @Create date : 2564-08-14   
+    * @Update date : 2564-08-15
+    * @Update date : 2564-08-16
+    * @Update date : 2564-08-17
+    * @Update date : 2564-08-18
+    * @Update date : 2564-08-19
+    */
 -->
+
 <!-- CSS -->
 <style>
 table {
@@ -47,7 +52,7 @@ table {
 </style>
 
 <!-- Evaluation form -->
-<h1>Evaluation</h1>
+<h1>Evaluation (แบบฟอร์มการประเมิน)</h1>
 <div class="container"> 
     <div class="card" id="border-radius">  
         <div class="card-body">
@@ -78,7 +83,8 @@ table {
                             </button>
                         </a>
                     </div>
-                </div>       
+                </div>    
+                <br>   
                 <div class="table-responsive">
             <form action="<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post" enctype="multipart/form-data" name="evaluation">
                 <table class="table table-bordered table-sm">
@@ -339,9 +345,11 @@ table {
 </div>
 </form>
 <!-- end modal success -->
-                    
+
+
 <script>
 $( document ).ready(function() {
+    //คืนค่าคะแนนรวม
     $("select").change(function(){
         var toplem=0;
         $("select[name='form[]']").each(function(){
@@ -349,8 +357,8 @@ $( document ).ready(function() {
             toplem = toplem + parseInt($(this).val());
         })
         $("input[name=total]").val(toplem);
-    });  //คืนค่าคะแนนรวม
-    
+    });  
+    //คืนค่าคะแนนรวมแบบเปอเซ็นต์
     $("select").change(function(){
         var toplem=0;
         var weight = $("#weight").val();
@@ -358,15 +366,12 @@ $( document ).ready(function() {
             toplem = toplem + parseInt($(this).val());
 
         }) 
-        
+        //คืนค่าคะแนนรวมแบบรายการ
             toplem = Math.round(toplem / weight*100);
             var a = '%'
         $("input[name=total_weight]").val(toplem + a);
 
-    }); //คืนค่าคะแนนรวมแบบเปอเซ็น
-
-
-    //คืนค่าคะแนนรวมแบบรายการ
+    }); 
 
     // ซ่อน Modal ยืนยันการประเมิน
     $("#btn_success").click(function() {
