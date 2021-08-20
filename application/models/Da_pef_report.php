@@ -1,10 +1,10 @@
 <?php
-
-// Da_ttp_report
-// database for report
-// @author Chakrit
-// Create date 13/08/2564 
-
+/*
+*Da_ttp_report
+*database for report
+*@author Chakrit
+*@Create date 13/08/2564 
+*/
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 include_once("pefs_model.php");

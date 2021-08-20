@@ -141,7 +141,7 @@ class Evaluation extends MainController
         if($this->per->grn_status=="-1"){
             $this->per->grn_status = 0;
         }else if($this->per->grn_status=="0"){
-            $this->per->grn_status = 1;
+            $this->per->grn_status = 3;
         }
 
         $get_group=$this->pef->get_group_nominee($emp);

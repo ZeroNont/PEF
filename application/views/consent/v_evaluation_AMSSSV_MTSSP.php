@@ -153,7 +153,7 @@ table {
                                             while($loop_dis<=$count_rowspan) {?>
                                                 <tr>
                                                 <?php  if($loop_dis===1) {?> 
-                                                    <td rowspan="<?php echo $count_rowspan; ?>" align="center"> <b>
+                                                    <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center;"> <b>
                                                         <?php  echo $arr_dis[$count_discription]->itm_detail_eng ;?>
                                                         <br><?php  echo $arr_dis[$count_discription]->itm_detail_th; ?></b> 
                                                     </td> 
@@ -170,7 +170,7 @@ table {
                         
                                                     </td>
                                                     <!-- แสดง % Weight -->
-                                                    <td align="center">
+                                                    <td  style="vertical-align:middle;text-align: center;">
                                                         <?php  echo $arr_dis[$count_discription]->for_des_weight ;?>
                                                     </td>
                                                     <!-- แสดง point    -->
