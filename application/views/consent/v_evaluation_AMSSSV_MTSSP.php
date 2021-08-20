@@ -177,7 +177,7 @@ table {
                                                     <td>
                                                         <div class="form-group">
                                                             <label for="sel"></label>
-                                                            <select class="form-control" name="form" id="form_<?php echo $count_discription ;?>" onchange="calculate_weight()" >
+                                                            <select class="form-control" name="form[]" id="form_<?php echo $count_discription ;?>" onchange="calculate_weight()" >
                                                                     <option value="0">please selected</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -288,13 +288,13 @@ table {
 </form>
 <!-- end modal success -->
 
-<!--ซ่อน Modal ยืนยันการประเมิน-->
+
 <script>
 $( document ).ready(function() {
     $("select").change(function(){
         var toplem=0;
         var i =0;
-        $("select[name=form]").each(function(){
+        $("select[name='form[]']").each(function(){
             
             var w = document.getElementById("weight_list_"+i).value;
             var s = w*parseInt($(this).val());
@@ -308,7 +308,7 @@ $( document ).ready(function() {
         var toplem=0;
         var i =0;
         var weight = $("#weight-per").val();
-        $("select[name=form]").each(function(){
+        $("select[name='form[]']").each(function(){
             var w = document.getElementById("weight_list_"+i).value;
             var s = w*parseInt($(this).val());
             toplem = toplem+s;
@@ -325,6 +325,12 @@ $( document ).ready(function() {
 
     //คืนค่าคะแนนรวมแบบรายการ
     calculate_weight()
+
+    // ซ่อน Modal ยืนยันการประเมิน
+    $("#btn_success").click(function() {
+        $("#Modal_confirm").hide();
+
+    });
 })
         
         function calculate_weight(){
@@ -337,6 +343,8 @@ $( document ).ready(function() {
                 $("#point_list"+i).val(h*w );
             }
         }
+
+       
 </script>
 
  

@@ -105,7 +105,7 @@ table {
                                    
                                 }
                                 $weight =  $weight+$arr_dis[$i]->for_des_weight;
-                                echo $weight;
+                                
                             }//นับหัวข้อหลัก
                             $weight =  $weight*5;
                             for($i=0;$i< $count_itm;$i++) {   //ลูปตามหัวข้อหลัก?>
@@ -140,7 +140,7 @@ table {
                                 <!-- แสดง point    -->
                                     <?php if($ev_gno[0]->grn_status == 0){ ?>
                                         <td colspan ="2">
-                                                    <select class="form-control" name="form" id="form" >
+                                                    <select class="form-control" name="form[]" id="form" >
                                                     <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
@@ -151,7 +151,7 @@ table {
                                            
                                         </td>
                                         <td colspan ="2">
-                                                    <select class="form-control" name="form" id="form"hidden >
+                                                    <select class="form-control" name="form[]" id="form"hidden >
                                                     <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
@@ -163,7 +163,7 @@ table {
                                         </td>
                                     <?php }else if($ev_gno[0]->grn_status == 1) { ?>
                                         <td colspan ="2">
-                                                    <select class="form-control"name="form" id="form" hidden>
+                                                    <select class="form-control"name="form[]" id="form" hidden>
                                                     <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
@@ -175,7 +175,7 @@ table {
                                         </td>
                                         <td colspan ="2"><div class="form-group">
                                                 <label for="sel2"></label>
-                                                    <select class="form-control" name="form" id="form">
+                                                    <select class="form-control" name="form[]" id="form">
                                                     <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
@@ -304,7 +304,7 @@ table {
 $( document ).ready(function() {
     $("select").change(function(){
         var toplem=0;
-        $("select[name=form]").each(function(){
+        $("select[name='form[]']").each(function(){
 
             toplem = toplem + parseInt($(this).val());
         })
@@ -314,7 +314,7 @@ $( document ).ready(function() {
     $("select").change(function(){
         var toplem=0;
         var weight = $("#weight").val();
-        $("select[name=form]").each(function(){
+        $("select[name='form[]']").each(function(){
             toplem = toplem + parseInt($(this).val());
 
         }) 
@@ -327,6 +327,12 @@ $( document ).ready(function() {
 
 
     //คืนค่าคะแนนรวมแบบรายการ
+
+    // ซ่อน Modal ยืนยันการประเมิน
+    $("#btn_success").click(function() {
+        $("#Modal_confirm").hide();
+
+    });
     
 })
         
