@@ -52,7 +52,7 @@
                                         <?php     } //if
                                             else {
                                             ?>
-                                        <option value="<?php echo $obj_sec[$i]->sec_id ?>">
+                                        <option value="<?php echo $obj_sec[$i]->sec_level ?>">
 
                                             <?php echo $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name; ?>
                                         </option>
