@@ -155,9 +155,9 @@ class Evaluation extends MainController
         print_r( $this->per->ptf_per_id);
         $this->per->insert_point();
         $this->per->grn_emp_id = $emp;
-        if($this->per->grn_status=="-1"){
+        if($this->per->grn_status ==-1){
             $this->per->grn_status = 0;
-        }else if($this->per->grn_status=="0"){
+        }else if($this->per->grn_status==0){
             $this->per->grn_status = 3;
         }
 
