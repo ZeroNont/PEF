@@ -1,11 +1,11 @@
 <!-- /*
 * v_report_detail
-* Display detail of requests for permission
-* @input    Form_ID
+* Display report detail of Performance Evaluation Factor System
+* @input    sec_id
 * @output   -
 * @author   Chakrit
 * @Create Date 2564-08-16
-* @Update Date 2564-08-
+* @Update Date 2564-08-20
 */ -->
 
 <a href='#' id='download_link' onClick='javascript:ExcelReport();' class="btn btn-secondary btn-lg canter float-right"><i class="fa fa-download"></i> Export Excel</a>

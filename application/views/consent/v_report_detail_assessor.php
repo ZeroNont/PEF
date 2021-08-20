@@ -1,10 +1,11 @@
 <!-- /*
-* v_report_export_excel
-* Display detail of requests for permission to excel
-* @input    -
+* v_report_detail_assessor
+* Display report detail about assessor of Performance Evaluation Factor System
+* @input    grn_id
 * @output   -
 * @author   Chakrit
 * @Create Date 2564-08-16
+* @Update Date 2564-08-20
 */ -->
 
 <h1>
