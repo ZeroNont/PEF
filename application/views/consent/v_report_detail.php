@@ -1,11 +1,11 @@
 <!-- /*
 * v_report_detail
-* Display detail of requests for permission
-* @input    Form_ID
+* Display report detail of Performance Evaluation Factor System
+* @input    sec_id
 * @output   -
 * @author   Chakrit
 * @Create Date 2564-08-16
-* @Update Date 2564-08-
+* @Update Date 2564-08-20
 */ -->
 
 <a href='#' id='download_link' onClick='javascript:ExcelReport();' class="btn btn-secondary btn-lg canter float-right"><i class="fa fa-download"></i> Export Excel</a>
@@ -57,7 +57,7 @@
                                             $Status = 'Fail'; ?>
                                             <td><span style="color:red;"><?php echo $Status; ?></span></td>
                                         <?php } ?>
-                                        <td><a href="<?php echo site_url() . 'Report/Report/show_report_detail_assessor/' . $sec_data[$i]->grn_emp_id; ?>">
+                                        <td><a href="<?php echo site_url() . 'Report/Report/show_report_detail_assessor/' . $sec_data[$i]->grn_id; ?>">
                                                 <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                                     <i class="fas fa-search"></i>
                                                 </button>

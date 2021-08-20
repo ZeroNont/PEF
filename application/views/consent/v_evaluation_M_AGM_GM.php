@@ -72,7 +72,7 @@ table {
                     </div>
                     <div class="col-sm-3">
                         <a
-                            href="<?php echo base_url()?>upload/<?php echo $ev_file[0]->fil_location ?>" target="_blank">
+                            href="<?php //echo base_url()?>upload/<?php //echo $ev_file[0]->fil_location ?>" target="_blank">
                             <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
                                 <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
                             </button>
@@ -97,6 +97,7 @@ table {
                             <?php $count_discription=0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
                             $count_itm=1; //จำนวนหัวข้อหลัก
                             $weight=0;
+                            $point_old=0;
                             for($i=0;$i<count($arr_dis);$i++){
                                 if($i!=0){
                                     if($arr_dis[$i]->itm_id !=$arr_dis[$i-1]->itm_id){
@@ -105,6 +106,7 @@ table {
                                    
                                 }
                                 $weight =  $weight+$arr_dis[$i]->for_des_weight;
+                                
                             }//นับหัวข้อหลัก
                             $weight =  $weight*5;
                             for($i=0;$i< $count_itm;$i++) {   //ลูปตามหัวข้อหลัก?>
@@ -138,43 +140,39 @@ table {
                                 </td>
                                 <!-- แสดง point    -->
                                     <?php if($ev_gno[0]->grn_status == 0){ ?>
-                                        <td colspan ="2"><div class="form-group">
-                                                <label for="sel"></label>
+                                        <td colspan ="2">
                                                     <select class="form-control" name="form[]" id="form" >
+                                                    <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
                                                         <option value=3>3</option>
                                                         <option value=4>4</option>
                                                         <option value=5>5</option>
                                                     </select>
-                                            </div> 
+                                           
                                         </td>
-                                        <td colspan ="2"><div class="form-group">
-                                                <label for="sel2"></label>
-                                                    <select class="form-control" hidden >
+                                        <td colspan ="2">
+                                                    <select class="form-control" name="form[]" id="form"hidden >
+                                                    <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
                                                         <option value=3>3</option>
                                                         <option value=4>4</option>
                                                         <option value=5>5</option>
                                                     </select>
-                                            </div> 
+                                           
                                         </td>
                                     <?php }else if($ev_gno[0]->grn_status == 1) { ?>
-                                        <td colspan ="2"><div class="form-group">
-                                                <label for="sel"></label>
-                                                    <select class="form-control" hidden>
-                                                        <option value=1>1</option>
-                                                        <option value=2>2</option>
-                                                        <option value=3>3</option>
-                                                        <option value=4>4</option>
-                                                        <option value=5>5</option>
-                                                    </select>
-                                            </div> 
+                                        <td colspan ="2" align="center">
+                                                  <?php  echo $arr_point[$count_discription]->ptf_point;
+                                                  $point_old=$point_old+$arr_point[$count_discription]->ptf_point;?>
+                                                  
+                                            
                                         </td>
                                         <td colspan ="2"><div class="form-group">
                                                 <label for="sel2"></label>
                                                     <select class="form-control" name="form[]" id="form">
+                                                    <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
                                                         <option value=3>3</option>
@@ -187,16 +185,15 @@ table {
                             <?php } ?>
                             </tr>
                             <?php  $count_discription++; ?>
-
+                                            
                                 <input type="hidden" value="<?php echo 	$arr_dis[$i]->for_id ?>" name="for_id[]">
                             <?php } ?>
                             <input type="text" name="weight"  ID="weight" value=<?php echo $weight ; ?> hidden>
                            
                             <tr>
                                 <td rowspan="2"><center><b>Rating 
- 
-                                             <br> Criteria</b>
-                                              </td></center>
+                                <br> Criteria</b>
+                                 </td></center>
                                 <td rowspan="2">
                                 5 ： Exceed expected level for Manager level
                                 <br>4 ： Absolutely satisfies expected level for Manager level
@@ -205,11 +202,20 @@ table {
                                 <br>1 ： Do Not satisfy expected level for Manager level
                                 </td>
                                 <td>Total</td>
+                                <?php if($ev_gno[0]->grn_status == 0){ ?>
                                 <td><input type="text" name="total" size='1' disabled  style='border: none'> </td>
                                 <td><input type="text" name="total_weight" size='1' disabled     style='border: none';></td>
                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                 <td><input type="text" name="total" size='1' disabled hidden></td>
-                                
+                                <?php  } ?>
+                                <?php if($ev_gno[0]->grn_status == 1){ 
+                                 $l = $point_old/$weight*100;?>
+                                <td><input type="text"  size='1' value="<?php echo $point_old;?>" disabled   style='border: none'></td>
+                                <td><input type="text"  size='1' value="<?php echo (int)"$l"?>%" disabled  style='border: none' ></td>
+                                <td><input type="text" name="total" size='1' disabled  style='border: none'> </td>
+                                <td><input type="text" name="total_weight" size='1' disabled     style='border: none';></td>
+                                <?php  } ?>
+                                    
                             </tr>
                             <tr>
                                 
@@ -297,30 +303,41 @@ table {
 </div>
 </form>
 <!-- end modal success -->
-
+                    
 <script>
 $( document ).ready(function() {
-    $("#btn_success").click(function() {
-        $("#Modal_confirm").hide()
-    });
-    
     $("select").change(function(){
         var toplem=0;
-        $("select[name=form]").each(function(){
+        $("select[name='form[]']").each(function(){
+
             toplem = toplem + parseInt($(this).val());
         })
         $("input[name=total]").val(toplem);
-        });
-        
+    });  //คืนค่าคะแนนรวม
+    
     $("select").change(function(){
         var toplem=0;
         var weight = $("#weight").val();
-        $("select[name=form]").each(function(){
+        $("select[name='form[]']").each(function(){
             toplem = toplem + parseInt($(this).val());
+
         }) 
+        
             toplem = Math.round(toplem / weight*100);
             var a = '%'
         $("input[name=total_weight]").val(toplem + a);
-        });
-});
+
+    }); //คืนค่าคะแนนรวมแบบเปอเซ็น
+
+
+    //คืนค่าคะแนนรวมแบบรายการ
+
+    // ซ่อน Modal ยืนยันการประเมิน
+    $("#btn_success").click(function() {
+        $("#Modal_confirm").hide();
+
+    });
+    
+})
+        
 </script>

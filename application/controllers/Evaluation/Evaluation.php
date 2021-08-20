@@ -51,7 +51,7 @@ class Evaluation extends MainController
 	*/
     function show_evaluation()
     {
-        $id_ass = $_SESSION['UsEmp_ID'];;
+        $id_ass = $_SESSION['UsEmp_ID'];
         $this->load->model('M_pef_evaluation', 'pef');
         $data['ev_all'] = $this->pef->get_all_list($id_ass)->result();//คืนค่าชื่อกรรมการ ชื่อกลุ่ม วันที่ประเมิน จำนวนNominee ชื่อ Nominee ตำแหน่ง แผนก Promote to
         $this->output('consent/v_evaluation', $data);
@@ -93,15 +93,20 @@ class Evaluation extends MainController
     * @Update Date 2564-08-17
     * @Update Date 2564-08-19
 	*/
-    function show_evaluation_M_AGM_GM($id, $emp_id, $position)
+    function show_evaluation_M_AGM_GM($id, $emp_id, $position,$status)
     {
         $this->load->model('M_pef_evaluation', 'pef');
+        $id_r = $this->pef->get_ase_id($id)->row();
+        $id_ase = $id_r->ase_id;
         $data['ev_ass'] = $this->pef->get_group_assessor($id)->result();
         $data['ev_gno'] = $this->pef->get_group_nominee($emp_id)->result();
         $data['ev_no'] = $this->pef->get_nominee($emp_id)->result();
         $data['ev_file'] = $this->pef->get_file_present_nominee($emp_id)->result();
         $data['arr_dis'] = $this->pef->get_all_form_M_AGM_GM($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
+        if($status==1){
+            $data['arr_point'] = $this->pef->get_point_list($id_ase,$emp_id)->result();
+        }
         $this->output('consent/v_evaluation_M_AGM_GM', $data);
     }// function show_evaluation_T5
 
@@ -118,24 +123,23 @@ class Evaluation extends MainController
         $this->per->per_date = $date;
         $this->per->per_ase_id = $this->input->post('ase_id');
         $this->per->per_emp_id = $this->input->post('emp_id');
-        
+        $emp = $this->per->per_emp_id;
         $this->load->model('M_pef_evaluation', 'pef');
         
-        $max = $this->pef->get_point()->row();
-        $this->per->ptf_point = $this->input->post('form[]');
+        $this->per->ptf_point = $this->input->post('form');
         $this->per->ptf_date = $date; 
-
         $this->per->ptf_ase_id = $this->input->post('ase_id');
         $this->per->ptf_for_id = $this->input->post('for_id[]');
         $this->per->ptf_emp_id = $this->input->post('emp_id');
-        $this->per->ptf_per_id = $max->max_id;
         $this->per->insert_performance_form();
-        print_r($max);
+        $max = $this->pef->get_point()->row();
+        $this->per->ptf_per_id = $max->max_id;
+        print_r( $this->per->ptf_per_id);
         $this->per->insert_point();
-        redirect('Evaluation/Evaluation/show_evaluation');
-    }
+        $this->per->grn_emp_id = $emp;
+        $this->per->grn_status = 1;
+        $this->per->update_status();
 
-    function insert(){
         redirect('Evaluation/Evaluation/show_evaluation');
     }
 

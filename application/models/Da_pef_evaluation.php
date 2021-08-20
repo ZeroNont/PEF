@@ -63,4 +63,14 @@ class Da_pef_evaluation extends pefs_model
 
         $this->db->query($sql, array($this->ptf_point, $this->pef_date, $this->pef_row, $this->ptf_ase_id, $this->ptf_for_id, $this->ptf_emp_id, $this->ptf_per_id));
     }//อัพเดทข้อมูล Point(คะแนน), Date(วันที่ประเมิน), row(คะแนนแต่ละข้อ), Assessor ที่ประเมิน, ID แบบฟอร์มประเมิน, รหัส Nominee, per_id
+
+    function update_status()
+    {
+        $sql = "UPDATE pefs_database.pef_group_nominee
+        SET grn_status = ? 
+        WHERE grn_emp_id = ?";
+
+        $this->db->query($sql, array($this->grn_status,$this->grn_emp_id));
+    }
+    
 }

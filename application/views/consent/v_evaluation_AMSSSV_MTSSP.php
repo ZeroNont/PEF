@@ -177,28 +177,32 @@ table {
                                                     <td>
                                                         <div class="form-group">
                                                             <label for="sel"></label>
-                                                                <select class="form-control" name="form[]" id="form" >
+                                                            <select class="form-control" name="form[]" id="form_<?php echo $count_discription ;?>" onchange="calculate_weight()" >
+                                                                    <option value="0">please selected</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
                                                                     <option value="3">3</option>
                                                                     <option value="4">4</option>
                                                                     <option value="5">5</option>
-                                                                </select>
+                                                            </select>
                                                         </div> 
                                                     </td>
                                                     <!-- แสดง Score -->
-                                                    <td>
-
                                                     </td>
-                                                    <?php  $count_discription++; ?>
-                                            <?php $loop_dis++;} ?>
+                                    <td colspan ="2" id="show_weight_<?php echo $count_discription ;?>"  style="vertical-align:middle; text-align: center;"></td>
+                                    <input type="text" name="point_list[]" ID="point_list<?php  echo  $count_discription ;?>" value="0" hidden>
+                                    <input type="text"  ID="weight_list_<?php echo $count_discription ;?>" value=<?php echo$arr_dis[$i]->for_des_weight ; ?> hidden>  
+                                            <?php $count_discription++ ;$loop_dis++;}?> 
                                             <input type="hidden" value="<?php echo 	$arr_dis[$i]->for_id ?>" name="for_id[]">
                                             
                             </tr>
+                            
                             <?php } ?>
-                            <!-- แสดง Score -->              
-                            <input type="text" name="weight"  ID="weight" value=<?php echo $weight ; ?> hidden>
-                            <input type="text" name="weight-per"  ID="weight-per" value=<?php echo $weight * 5 ; ?> hidden>
+                            <!-- แสดง Score -->
+                            
+                            <input type="text"  ID="count_index" value=<?php echo $count_discription ; ?> hidden>              
+                            <input type="text" name="weight"  ID="weight" value=<?php echo $weight ; ?>  hidden>
+                            <input type="text" name="weight-per"  ID="weight-per" value=<?php echo $weight * 5 ; ?> hidden >
                             <tr>
                                 <td colspan="2" align='right'><b>Total</b></td>
                                 <td align='center'>100</td>
@@ -284,33 +288,63 @@ table {
 </form>
 <!-- end modal success -->
 
-<!--ซ่อน Modal ยืนยันการประเมิน-->
-<script>
-$(document).ready(function() {
-    $("#btn_success").click(function() {
-        $("#Modal_confirm").hide()
-    });
 
-//เก็บคะแนน
+<script>
+$( document ).ready(function() {
     $("select").change(function(){
         var toplem=0;
-        $("select[name=form]").each(function(){
-            toplem = toplem + parseInt($(this).val());
+        var i =0;
+        $("select[name='form[]']").each(function(){
+            
+            var w = document.getElementById("weight_list_"+i).value;
+            var s = w*parseInt($(this).val());
+            toplem = toplem+s;
+            i = i+1;
         })
         $("input[name=total]").val(toplem);
-        });
-
+    });  //คืนค่าคะแนนรวม
+    
     $("select").change(function(){
         var toplem=0;
+        var i =0;
         var weight = $("#weight-per").val();
-        $("select[name=form]").each(function(){
-            toplem = toplem + parseInt($(this).val());
+        $("select[name='form[]']").each(function(){
+            var w = document.getElementById("weight_list_"+i).value;
+            var s = w*parseInt($(this).val());
+            toplem = toplem+s;
+            i = i+1;
+
         }) 
+        
             toplem = Math.round(toplem / weight*100);
             var a = '%'
         $("input[name=total_weight]").val(toplem + a);
+
+    }); //คืนค่าคะแนนรวมแบบเปอเซ็น
+
+
+    //คืนค่าคะแนนรวมแบบรายการ
+    calculate_weight()
+
+    // ซ่อน Modal ยืนยันการประเมิน
+    $("#btn_success").click(function() {
+        $("#Modal_confirm").hide();
+
     });
-});
+})
+        
+        function calculate_weight(){
+            var count = document.getElementById("count_index").value;
+            
+            for(i=0;i<count;i++){
+                var h = document.getElementById("form_"+i).value;
+                var w = document.getElementById("weight_list_"+i).value;
+                $("#show_weight_"+i).html( h*w );
+                $("#point_list"+i).val(h*w );
+            }
+        }
+
+       
 </script>
-    
+
  

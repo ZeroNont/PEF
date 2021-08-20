@@ -1,7 +1,7 @@
 <!--
-    v_evaluation_mts
-    display for Evaluation Form Promote to Master Senior Specialist T5
-    @author Phatchara and Pontakon
+    v_history_T5
+    display for Result For T5-T6
+    @author Apinya Phadungkit
     Create date 2564-08-14   
     Update date 2564-08-15
     Update date 2564-08-16
@@ -123,6 +123,7 @@
                                     $count_itm=1; //จำนวนหัวข้อหลัก
                                     $total=0; //ผลรวมของคะแนน
                                     $total_weight=0; //ผลรวมของน้ำหนัก
+                                    $total_per=0;
                                     $weight=0; //น้ำหนักของคะแนน
                                     for($i=0;$i<count($arr_dis);$i++){
                                         if($i!=0){
@@ -162,24 +163,22 @@
                                                     </td>
                                                     <!-- แสดง % Weight -->
                                                     <td align="center">
-                                                        <?php  echo $arr_dis[$count_discription]->for_des_weight; ?>
+                                                        <?php  echo $arr_sco[$count_discription]->for_des_weight; ?>
                                                     </td>
                                                     <!-- แสดง point    -->
                                                     <td align="center">
                                                         <div class="form-group">
 
-                                                        <?php  echo $arr_dis[$count_discription]->ptf_point; ?>
+                                                        <?php  echo $arr_sco[$count_discription]->ptf_point; ?>
 
                                                         </div> 
                                                     </td>
                                                     <!-- แสดง Score -->
                                                     <td align="center">
-                                                        <?php echo $arr_dis[$count_discription]->for_des_weight*$arr_dis[$count_discription]->ptf_point;
-                                                            $total=$total+$arr_dis[$count_discription]->for_des_weight*$arr_dis[$count_discription]->ptf_point;
-                                                            $weight+=5*$arr_dis[$count_discription]->for_des_weight;
-                                                            
-
-                                                        ?>
+                                                        <?php echo $arr_sco[$count_discription]->for_des_weight*$arr_sco[$count_discription]->ptf_point;
+                                                            $total=$total+$arr_sco[$count_discription]->for_des_weight*$arr_sco[$count_discription]->ptf_point;
+                                                            $weight+=5*$arr_sco[$count_discription]->for_des_weight;
+                                                        ?> 
                                                     </td>
                                                     <?php  $count_discription++; ?>
                                             <?php $loop_dis++;} ?>
