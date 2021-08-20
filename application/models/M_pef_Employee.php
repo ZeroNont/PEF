@@ -37,7 +37,7 @@ class M_pef_Employee extends Da_pef_Employee
             ON emp.Sectioncode_ID=sec.Sectioncode
             INNER JOIN pefs_database.pef_section AS section
             ON ass.position_level=section.sec_id
-			WHERE ass.position_level =?";
+			WHERE section.sec_level=?";
         $query = $this->db->query($sql, array($this->position_level));
         return $query;
     } //end  get_group
@@ -109,7 +109,7 @@ class M_pef_Employee extends Da_pef_Employee
         FROM pefs_database.pef_section AS sec 
         INNER JOIN dbmc.position AS pos
         ON pos.Position_Level=sec.sec_level
-        WHERE sec.sec_id=?
+        WHERE sec.sec_level=?
        ";
         $query = $this->db->query($sql, array($this->sec_id));
         return $query;

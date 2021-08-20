@@ -39,8 +39,8 @@
                                         <option value="0">--------------------------------------------Please
                                             select--------------------------------</option>
                                         <?php for ($i = 0; $i < count($obj_sec); $i++) { ?>
-                                            <option value="<?php echo $obj_sec[$i]->sec_id ?>">
-                                            <?php echo $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name;
+                                            <option value="<?php echo $obj_sec[$i]->sec_level ?>" name="">
+                                            <?php echo "T" . $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name;
                                         }
                                             ?>
                                             </option>
@@ -173,7 +173,7 @@
                     <input type="text" class="form-control" id="department_modal" disabled name="Plant_name">
                 </div>
                 <div class="mb-3">
-                    <label class="form-control-label" for="input-city">Posotion to Promote</label>
+                    <label class="form-control-label" for="input-city">Position to Promote</label>
                     <select name="promote" id="select2" class="form-select" aria-label="Default select example">
                         <option value="0">----------------------Please select------------------</option>
 
@@ -367,7 +367,7 @@
      */
     function get_position() {
         position_level = document.getElementById('select').value;
-        // console.log(position_level)
+        console.log(position_level)
         $.ajax({
             type: "POST",
             url: "<?php echo base_url() ?>Get_Employee/Get_nominee/get_position_by_sec",
@@ -439,7 +439,7 @@
                     data_row += row.Empname_eng + "          " + row.Empsurname_eng
                     data_row += '</td>'
                     data_row += '<td>'
-                    data_row += row.sec_level
+                    data_row += 'T' + row.sec_level
                     data_row += '</td>'
                     data_row += '<td>'
                     data_row += row.Department
