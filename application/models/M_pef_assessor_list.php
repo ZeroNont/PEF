@@ -13,7 +13,7 @@ class M_pef_assessor_list extends Da_pef_assessor_list
 /*
 * get_sec_level
 * get_sec_level in database
-* @sec_id
+* @input sec_id
 * @output - 
 * @author Niphat Kuhokciw
 * @Create @Create Date 2564-08-12
@@ -30,7 +30,7 @@ class M_pef_assessor_list extends Da_pef_assessor_list
 /*
 * get_assessor
 * get_assessor in database
-* @sec_id and year
+* @input sec_id and year
 * @output - 
 * @author Niphat Kuhokciw
 * @Create @Create Date 2564-08-12
@@ -53,7 +53,7 @@ class M_pef_assessor_list extends Da_pef_assessor_list
 /*
 * get_addassessor
 * get_addassessor in database
-* @Emp_ID
+* @input Emp_ID
 * @output - 
 * @author Niphat Kuhokciw
 * @Create @Create Date 2564-08-12
@@ -70,6 +70,7 @@ class M_pef_assessor_list extends Da_pef_assessor_list
 /*
 * get_year
 * get_year in database
+* @input -
 * @output - 
 * @author Niphat Kuhokciw
 * @Create @Create Date 2564-08-12
@@ -85,7 +86,7 @@ class M_pef_assessor_list extends Da_pef_assessor_list
 /*
 * cheack_data
 * cheack_data in database
-* grp_date
+* @input grp_date
 * @output - 
 * @author Niphat Kuhokciw
 * @Create @Create Date 2564-08-12

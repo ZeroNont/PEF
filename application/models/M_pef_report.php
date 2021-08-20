@@ -136,7 +136,7 @@ class M_pef_report extends Da_pef_report
     }
 
     /*
-    * get_ass_by_sec_id
+    * get_data_point
     * get data section, point_form, nominee, group
     * @input    -
     * @output   get data section, point_form, nominee, group

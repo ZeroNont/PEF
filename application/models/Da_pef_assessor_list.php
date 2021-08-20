@@ -15,7 +15,7 @@ class Da_pef_assessor_list extends pefs_model
 * construct
 * @input  -
 * @output -
-* @author -
+* @author Niphat Kuhokciw
 * @Create Date 2564-08-12
 */
     function construct()

@@ -1,13 +1,11 @@
 <?php
-
-// M_pef_review
-// model for reviewer
-// @input -
-// @output -
-// @author Nattakorn
-// Create date 2564-08-13
-// Update date 2564-08-19
-
+/*
+*M_pef_review
+*model for reviewer
+*@author Nattakorn
+*Create date 2564-08-13
+*Update date 2564-08-19
+*/
 defined('BASEPATH') or exit('No direct script access allowed');
 
 include_once('Da_pef_review.php');
