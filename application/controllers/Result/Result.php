@@ -87,10 +87,10 @@ class Result extends MainController
         $data['arr_dis_m'] = $this->mpef->get_all_M_AGM_GM($promote)->result();
         $data['arr_com'] = $this->mpef->get_comment($nor_id)->row();
         
-        if($promote=='T5'||$promote=='T6'){
+        if($promote=='5'||$promote=='6'){
             $data['arr_sco'] = $this->mpef->get_score_T5($nor_id)->result();
             $this->output('consent/v_history_T5',$data);
-        }else if($promote=='T4'|| $promote=='T3' || $promote=='T2'){
+        }else if($promote=='4'|| $promote=='3' || $promote=='2'){
             $data['arr_sco'] = $this->mpef->get_score($nor_id)->result();
             $this->output('consent/v_history_M_AGM_GM',$data);
         }

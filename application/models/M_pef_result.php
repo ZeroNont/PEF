@@ -212,7 +212,7 @@ class M_pef_result extends Da_pef_result
         ON pef_description_form.des_id=pef_format_form.for_des_id
         INNER JOIN pefs_database.pef_item_form
         ON pef_description_form.des_itm_id= pef_item_form.itm_id
-        WHERE pef_format_form.for_pos_level= '$position';";
+        WHERE pef_format_form.for_pos_level= 'T$position';";
         $query = $this->db->query($sql);
         return $query;
     }//ประเมินของ Nominee T5,T6
@@ -235,7 +235,7 @@ class M_pef_result extends Da_pef_result
         ON pef_description_form.des_id=pef_format_form.for_des_id
         INNER JOIN pefs_database.pef_item_form
         ON pef_description_form.des_itm_id= pef_item_form.itm_id
-        WHERE pef_format_form.for_pos_level= '$position';";
+        WHERE pef_format_form.for_pos_level= 'T$position';";
         $query = $this->db->query($sql);
         return $query;
     }//ประเมินของ Nominee T2,T3,T4
@@ -253,10 +253,11 @@ class M_pef_result extends Da_pef_result
     public function get_comment($id){
         $sql = "SELECT *
         FROM pefs_database.pef_point_form AS poi
-        INNER JOIN pefs_database.pef_performance_form AS per
-        ON poi.ptf_emp_id = per.per_emp_id
         INNER JOIN pefs_database.pef_group_nominee AS gnor
         ON poi.ptf_emp_id = gnor.grn_id
+        INNER JOIN pefs_database.pef_performance_form AS per
+        ON gnor.grn_emp_id = per.per_emp_id
+        
         WHERE gnor.grn_emp_id = $id";
 
         $query = $this->db->query($sql);
@@ -324,7 +325,7 @@ class M_pef_result extends Da_pef_result
         ON pef_description_form.des_id=pef_format_form.for_des_id
         INNER JOIN pefs_database.pef_item_form
         ON pef_description_form.des_itm_id= pef_item_form.itm_id
-        WHERE pef_format_form.for_pos_level= '$position';";
+        WHERE pef_format_form.for_pos_level= 'T$position';";
         $query = $this->db->query($sql);
         return $query;
     }//ข้อมูลแบบฟอร์มการประเมิน T2-4

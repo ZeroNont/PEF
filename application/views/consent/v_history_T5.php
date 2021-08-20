@@ -178,6 +178,7 @@
                                                         <?php echo $arr_sco[$count_discription]->for_des_weight*$arr_sco[$count_discription]->ptf_point;
                                                             $total=$total+$arr_sco[$count_discription]->for_des_weight*$arr_sco[$count_discription]->ptf_point;
                                                             $weight+=5*$arr_sco[$count_discription]->for_des_weight;
+                                                            $total_per=($total/$weight)*100;
                                                         ?> 
                                                     </td>
                                                     <?php  $count_discription++; ?>
@@ -188,7 +189,7 @@
                                 <td colspan="2" align='right'><b>Total</b></td>
                                 <td align='center'>100</td>
                                 <td align='center'><?php echo $total; ?></td>
-                                <td align='center'><?php echo ($total/$weight)*100; ?> %</td>
+                                <td align='center'><?php echo number_format($total_per, 2, '.', '');  ?> %</td>
                             </tr>
                     </table>
                     <br>
