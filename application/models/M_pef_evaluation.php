@@ -45,8 +45,9 @@ class M_pef_evaluation extends Da_pef_evaluation
         ON sec.sec_id = gr.grp_position_group 
         INNER JOIN dbmc.employee AS employee
         ON groupno.grn_emp_id = employee.Emp_ID 
-
-        WHERE  ass.ase_emp_id = '$id_ass'";
+		INNER JOIN dbmc.position AS pos 
+        ON pos.Position_ID = groupno.grn_promote_to 
+        WHERE  ass.ase_emp_id =  '$id_ass'";
 
         $query = $this->db->query($sql);
         return $query;
@@ -219,7 +220,15 @@ class M_pef_evaluation extends Da_pef_evaluation
         $query = $this->db->query($sql);
         return $query;
     }
-
+    /*
+	* get_all_form_T5
+	* คืนค่าแบบฟอร์มการประเมิน T5
+	* @input 	$position
+	* @output 	ข้อมูลแบบฟอร์มการประเมิน T5
+	* @author 	Phatchara Khongthandee
+	* @Create   Date 2564-08-15 
+	* @Update   Date 2564-08-16
+	*/
     function get_point(){
         $sql = "SELECT MAX(per_id) AS max_id
         FROM pefs_database.pef_performance_form";
@@ -227,7 +236,15 @@ class M_pef_evaluation extends Da_pef_evaluation
         $query = $this->db->query($sql);
         return $query;
     }
-    
+    /*
+	* get_all_form_T5
+	* คืนค่าแบบฟอร์มการประเมิน T5
+	* @input 	$position
+	* @output 	ข้อมูลแบบฟอร์มการประเมิน T5
+	* @author 	Phatchara Khongthandee
+	* @Create   Date 2564-08-15 
+	* @Update   Date 2564-08-16
+	*/
     function get_point_list($id,$id_emp){
         $sql = "SELECT *
         FROM  pefs_database.pef_point_form
@@ -240,6 +257,14 @@ class M_pef_evaluation extends Da_pef_evaluation
         $sql = "SELECT pef_assessor.ase_id 
         FROM pefs_database.pef_assessor 
         WHERE pef_assessor.ase_emp_id = '$id'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    function get_performance($id,$id_emp){
+        $sql = "SELECT *
+        FROM  pefs_database.pef_performance_form
+        WHERE pef_performance_form.per_ase_id = '$id' AND pef_performance_form.per_emp_id = '$id_emp'";
         $query = $this->db->query($sql);
         return $query;
     }

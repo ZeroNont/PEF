@@ -291,6 +291,14 @@
         show_all_data();
     });
 
+    /*
+    * show_chart
+    * display chart with data
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2564-08-20
+    */
     function show_chart(label, data) {
         // var bar_charts = document.getElementById("myChart");
 
@@ -338,6 +346,14 @@
 
     }
 
+    /*
+    * show_all_data
+    * display all data report
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2564-08-16
+    */
     function show_all_data() {
         var year = document.getElementById('year').value;
         var have = 0;
@@ -410,6 +426,14 @@
 
     }
 
+    /*
+    * show_table
+    * display table report
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2564-08-28
+    */
     function show_table() {
         $.get("<?php echo base_url(); ?>Report/Report/get_section", function(data) {
             var obj = JSON.parse(data);
@@ -434,6 +458,14 @@
         });
     }
 
+    /*
+    * show_data_table
+    * display data in table report
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2564-08-18
+    */
     function show_data_table() {
         var sum_total = 0;
         var assess_total = 0;

@@ -1,9 +1,12 @@
-<!--v_user_login
+<!--
+/*
+*v_user_login
 * Display login for user
 * @input User_login and Pass_login
 * @output  -
 * @author Niphat Kuhokciw
-* @Create @Create Date 2564-08-12 -->
+* @Create @Create Date 2564-08-12
+*/ -->
 <!DOCTYPE html>
 <html lang="en">
 <style>

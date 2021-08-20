@@ -1,9 +1,13 @@
-<!--v_assessor_list
-* Display assessor management
-* @input -
-* @output  -
-* @author Niphat Kuhokciw
-* @Create Date 2564-08-12 -->
+<!--
+    /*
+    *v_assessor_list
+    * Display assessor management
+    * @input -
+    * @output  -
+    * @author Niphat Kuhokciw
+    * @Create Date 2564-08-12
+    */ 
+-->
 <script>
 function get_ase_id() {//get_ase_id
     Ase_id = document.getElementById('ase_id_modal').value;

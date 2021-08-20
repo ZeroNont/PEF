@@ -30,7 +30,7 @@ table {
                     <option value="0"> Please Select</option>
                     <?php foreach ($arr_sec as $row) { ?>
 
-                    <option value="<?php echo $row->sec_id ?>"><?php echo 'T'.$row->sec_level ?></option>
+                    <option value="<?php echo $row->sec_id ?>"><?php echo $row->sec_level ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -179,14 +179,28 @@ table {
     </div>
 </div>
 
-
-
+<!-- 
+/*
+    * (document).ready(function()
+    * data table
+    * @input #example
+    * @output data table
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */ -->
 <script>
 $(document).ready(function() {
     $('#example').DataTable();
 });
 
-
+/*
+ * show_all_data
+ * show data for search
+ * @input -
+ * @output -
+ * @author Nattakorn
+ * @Create date 2564-08-13
+ */
 function show_all_data() {
     var promote = document.getElementById('promote_to').value;
     var date_search = document.getElementById('grp_date').value;
@@ -202,6 +216,7 @@ function show_all_data() {
                 "date_search": date_search
             },
             dataType: "json",
+
             success: function(data) {
                 console.log(data);
                 var no = 1;
@@ -248,7 +263,14 @@ function show_all_data() {
 
 }
 
-
+/*
+ * show_success
+ * show success modal
+ * @input -
+ * @output success modal
+ * @author Nattakorn
+ * @Create date 2564-08-13
+ */
 function show_success() {
     $("#success").modal("show")
     $("#save_data").modal("hide")
@@ -258,6 +280,14 @@ function show_success() {
 
 }
 
+/*
+ * show_modal
+ * show update date modal
+ * @input grp_id
+ * @output date change in database
+ * @author Nattakorn
+ * @Create date 2564-08-13
+ */
 function show_modal(grp_id) {
     $("#save_data").modal("show")
     $("#grp_data").val(grp_id)

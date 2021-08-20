@@ -24,7 +24,7 @@ class Login extends MainController
 * show login
 * @input -
 * @output show display login for user
-* @Niphat Kuhokciw
+* @author Niphat Kuhokciw
 * @Create Date 2564-08-12
 */
     public function show_user_login()
@@ -37,7 +37,7 @@ class Login extends MainController
 * show login
 * @input Enp_ID
 * @output show display home for user
-* @Niphat Kuhokciw
+* @author Niphat Kuhokciw
 * @Create Date 2564-08-12
 */	
 	public function show_user_home($Enp_ID)
@@ -60,7 +60,7 @@ class Login extends MainController
 * Login for user
 * @input User_login and Pass_login
 * @output -
-* @Niphat Kuhokciw
+* @author Niphat Kuhokciw
 * @Create Date 2564-08-12
 */	
     public function login()
@@ -85,7 +85,7 @@ class Login extends MainController
 * check role for user
 * @input UsEmp_ID  and Usrole
 * @output show display home for role
-* @Niphat Kuhokciw
+* @author Niphat Kuhokciw
 * @Create Date 2564-08-12
 */	
 	public function check_role()
@@ -105,11 +105,11 @@ class Login extends MainController
     }//end check_role
     
 /*
-* main
-* Login for user
+* logout
+* Logout for user
 * @input User_login and Pass_login
 * @output -
-* @Niphat Kuhokciw
+* @author Niphat Kuhokciw
 * @Create Date 2564-08-12
 */	
     public function logout()
