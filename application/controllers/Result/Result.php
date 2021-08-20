@@ -83,18 +83,15 @@ class Result extends MainController
         $data['ev_gno'] = $this->mpef->get_group_nominee($nor_id)->result();
         $data['arr_his'] = $this->mpef->get_by_id($nor_id)->row();
         $data['pos_pos'] = $this->mpef->get_position($promote)->row();
-        // $data['arr_dis'] = $this->mpef->get_all_form($nor_id)->result();
-        $data['arr_dis'] = $this->mpef->get_all_form($nor_id,$promote)->result();
+        $data['arr_dis'] = $this->mpef->get_all_AMSSSV_MTSSP($promote)->result();
         $data['arr_dis_m'] = $this->mpef->get_all_M_AGM_GM($promote)->result();
-
         $data['arr_com'] = $this->mpef->get_comment($nor_id)->row();
-        $data['arr_sco'] = $this->mpef->get_score($nor_id)->result();
         
         if($promote=='T5'||$promote=='T6'){
-            // $data['arr_dis'] = $this->mpef->get_all_form($nor_id,$promote)->result();
+            $data['arr_sco'] = $this->mpef->get_score_T5($nor_id)->result();
             $this->output('consent/v_history_T5',$data);
         }else if($promote=='T4'|| $promote=='T3' || $promote=='T2'){
-            // $data['arr_dis_m'] = $this->mpef->get_all_M_AGM_GM($nor_id,$promote)->result();
+            $data['arr_sco'] = $this->mpef->get_score($nor_id)->result();
             $this->output('consent/v_history_M_AGM_GM',$data);
         }
 
