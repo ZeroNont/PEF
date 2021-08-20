@@ -94,7 +94,7 @@ class Login extends MainController
 			if($_SESSION['Usrole']==1){
             redirect('Main/Main/show_main', 'refresh');
 			}else if($_SESSION['Usrole']==2){
-				redirect('Main/Main/show_main', 'refresh');
+				redirect('Group_management/Group_list/index/', 'refresh');
 			}
         }
         // if
