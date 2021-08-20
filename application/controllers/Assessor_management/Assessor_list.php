@@ -2,8 +2,8 @@
 /*
 * Assessor_list.php
 * Assessor Management
-* @Niphat Kuhokciw
-* @Create Date 2564-08-12
+* @author : Niphat Kuhokciw
+* @Create Date : 2564-08-12
 */
 ?>
 <?php

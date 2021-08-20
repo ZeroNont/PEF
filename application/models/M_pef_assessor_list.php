@@ -2,8 +2,8 @@
 /*
 	* M_pef_assessor_list.php
     * M_pef_assessor_list Assessor Management
-    * @Niphat Kuhokciw
-    * @Create Date 2564-08-12
+    * @author : Niphat Kuhokciw
+    * @Create : Date 2564-08-12
 */
 include_once("Da_pef_assessor_list.php");
 
