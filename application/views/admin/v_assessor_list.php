@@ -73,7 +73,7 @@ function get_ase_id() {//get_ase_id
     <div>
         <br>
         <div>
-        <h1>Promote To <?php echo $obj_assessor->sec_level?></h1>
+        <h1>Promote To T<?php echo $obj_assessor->sec_level?></h1>
         <!-------------------------------------  Select Year  --------------------------------------------------------------->
         <form action="<?php echo site_url() . 'Assessor_management/Assessor_list/show_year/'.$sec_id.'/' ?>" method="post"
                     enctype="multipart/form-data" name = "formyear">

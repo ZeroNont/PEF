@@ -46,7 +46,7 @@
                                         <?php for ($i = 0; $i < count($obj_sec); $i++) {
                                             if ($obj_sec[$i]->sec_id == $obj_group->grp_position_group) { ?>
 
-                                        <option value="<?php echo $obj_sec[$i]->sec_level ?>" selected>
+                                        <option value="<?php echo $obj_sec[$i]->sec_id ?>" selected>
                                             <?php echo $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name; ?>
                                         </option>
                                         <?php     } //if
