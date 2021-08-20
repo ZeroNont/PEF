@@ -227,6 +227,20 @@ class M_pef_evaluation extends Da_pef_evaluation
         $query = $this->db->query($sql);
         return $query;
     }
+    
+    function get_point_list($id,$id_emp){
+        $sql = "SELECT *
+        FROM  pefs_database.pef_point_form
+        WHERE pef_point_form.ptf_emp_id = '$id_emp'AND pef_point_form.ptf_ase_id = '$id' ";
 
-
+        $query = $this->db->query($sql);
+        return $query;
+    }
+    function get_ase_id($id){
+        $sql = "SELECT pef_assessor.ase_id 
+        FROM pefs_database.pef_assessor 
+        WHERE pef_assessor.ase_emp_id = '$id'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }

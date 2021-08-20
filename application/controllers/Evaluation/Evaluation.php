@@ -93,15 +93,20 @@ class Evaluation extends MainController
     * @Update Date 2564-08-17
     * @Update Date 2564-08-19
 	*/
-    function show_evaluation_M_AGM_GM($id, $emp_id, $position)
+    function show_evaluation_M_AGM_GM($id, $emp_id, $position,$status)
     {
         $this->load->model('M_pef_evaluation', 'pef');
+        $id_r = $this->pef->get_ase_id($id)->row();
+        $id_ase = $id_r->ase_id;
         $data['ev_ass'] = $this->pef->get_group_assessor($id)->result();
         $data['ev_gno'] = $this->pef->get_group_nominee($emp_id)->result();
         $data['ev_no'] = $this->pef->get_nominee($emp_id)->result();
         $data['ev_file'] = $this->pef->get_file_present_nominee($emp_id)->result();
         $data['arr_dis'] = $this->pef->get_all_form_M_AGM_GM($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
+        if($status==1){
+            $data['arr_point'] = $this->pef->get_point_list($id_ase,$emp_id)->result();
+        }
         $this->output('consent/v_evaluation_M_AGM_GM', $data);
     }// function show_evaluation_T5
 
