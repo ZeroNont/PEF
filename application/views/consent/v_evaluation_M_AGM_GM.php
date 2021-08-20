@@ -154,13 +154,13 @@ table {
                                     for($loop_dis=1;$loop_dis<=$count_rowspan;$loop_dis++) {?>
                                     <tr>
                                     <?php  if($loop_dis===1) {?> 
-                                <td rowspan="<?php echo $count_rowspan; ?>" align="center"> <b>
+                                <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center;"> <b>
                                     <?php  echo $arr_dis[$count_discription]->itm_detail_eng ;?>
                                     <br><?php  echo $arr_dis[$count_discription]->itm_detail_th; ?></b> 
                                 </td> 
                                 <?php }//แสดงห้อข้อหลัก?> 
 
-                                <td colspan ="2"> 
+                                <td colspan ="2" > 
                                     <b> <?php  echo $arr_dis[$count_discription]->des_description_th ;?></b>	
                                     <br>
                                         <!-- แสดง Disription    -->
@@ -171,7 +171,7 @@ table {
                                 </td>
                                 <!-- แสดง point    -->
                                     <?php if($ev_gno[0]->grn_status == -1){ ?>
-                                        <td colspan ="2">
+                                        <td colspan ="2"style="vertical-align:middle;text-align: center;">
                                                     <select class="form-control" name="form[]" id="form" required>
                                                     <option value="0">please selected</option>
                                                         <option value=1>1</option>
@@ -187,7 +187,7 @@ table {
                                            
                                         </td>
                                     <?php }else if($ev_gno[0]->grn_status == 0) { ?>
-                                        <td colspan ="2" align="center">
+                                        <td colspan ="2" style="vertical-align:middle;text-align: center;">
                                                   <?php  echo $arr_point[$count_discription]->ptf_point;
                                                   $point_old=$point_old+$arr_point[$count_discription]->ptf_point;?>
                                                   
