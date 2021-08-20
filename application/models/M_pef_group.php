@@ -8,8 +8,6 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 include_once("Da_pef_group.php");
-
-
 class M_pef_group extends Da_pef_group
 { //class M_ttp_login
 
@@ -48,7 +46,7 @@ class M_pef_group extends Da_pef_group
         $sql = "SELECT *
 			FROM pefs_database.pef_group AS grp INNER JOIN pefs_database.pef_section AS sec
             ON grp.grp_position_group=sec.sec_id
-			WHERE CURDATE() <= grp.grp_date AND grp.grp_status=0
+			WHERE CURDATE() <= grp.grp_date 
 			";
         $query = $this->db->query($sql);
         return $query;
