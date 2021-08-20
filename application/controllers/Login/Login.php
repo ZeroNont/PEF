@@ -2,7 +2,7 @@
 /*
 * Login.php
 * Login เข้าสู่ระบบ
-* @Niphat Kuhokciw
+* @author :Niphat Kuhokciw
 * @Create Date 2564-08-12
 */
 defined('BASEPATH') or exit('No direct script access allowed');
