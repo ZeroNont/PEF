@@ -72,7 +72,7 @@ table {
                     </div>
                     <div class="col-sm-3">
                         <a
-                            href="<?php echo base_url()?>upload/<?php echo $ev_file[0]->fil_location ?>" target="_blank">
+                            href="<?php //echo base_url()?>upload/<?php //echo $ev_file[0]->fil_location ?>" target="_blank">
                             <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
                                 <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
                             </button>
@@ -105,6 +105,7 @@ table {
                                    
                                 }
                                 $weight =  $weight+$arr_dis[$i]->for_des_weight;
+                                echo $weight;
                             }//นับหัวข้อหลัก
                             $weight =  $weight*5;
                             for($i=0;$i< $count_itm;$i++) {   //ลูปตามหัวข้อหลัก?>
@@ -138,43 +139,44 @@ table {
                                 </td>
                                 <!-- แสดง point    -->
                                     <?php if($ev_gno[0]->grn_status == 0){ ?>
-                                        <td colspan ="2"><div class="form-group">
-                                                <label for="sel"></label>
-                                                    <select class="form-control" name="form[]" id="form" >
+                                        <td colspan ="2">
+                                                    <select class="form-control" name="form" id="form" >
+                                                    <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
                                                         <option value=3>3</option>
                                                         <option value=4>4</option>
                                                         <option value=5>5</option>
                                                     </select>
-                                            </div> 
+                                           
                                         </td>
-                                        <td colspan ="2"><div class="form-group">
-                                                <label for="sel2"></label>
-                                                    <select class="form-control" hidden >
+                                        <td colspan ="2">
+                                                    <select class="form-control" name="form" id="form"hidden >
+                                                    <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
                                                         <option value=3>3</option>
                                                         <option value=4>4</option>
                                                         <option value=5>5</option>
                                                     </select>
-                                            </div> 
+                                           
                                         </td>
                                     <?php }else if($ev_gno[0]->grn_status == 1) { ?>
-                                        <td colspan ="2"><div class="form-group">
-                                                <label for="sel"></label>
-                                                    <select class="form-control" hidden>
+                                        <td colspan ="2">
+                                                    <select class="form-control"name="form" id="form" hidden>
+                                                    <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
                                                         <option value=3>3</option>
                                                         <option value=4>4</option>
                                                         <option value=5>5</option>
                                                     </select>
-                                            </div> 
+                                            
                                         </td>
                                         <td colspan ="2"><div class="form-group">
                                                 <label for="sel2"></label>
-                                                    <select class="form-control" name="form[]" id="form">
+                                                    <select class="form-control" name="form" id="form">
+                                                    <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
                                                         <option value=3>3</option>
@@ -300,27 +302,33 @@ table {
 
 <script>
 $( document ).ready(function() {
-    $("#btn_success").click(function() {
-        $("#Modal_confirm").hide()
-    });
-    
     $("select").change(function(){
         var toplem=0;
         $("select[name=form]").each(function(){
+
             toplem = toplem + parseInt($(this).val());
         })
         $("input[name=total]").val(toplem);
-        });
-        
+    });  //คืนค่าคะแนนรวม
+    
     $("select").change(function(){
         var toplem=0;
         var weight = $("#weight").val();
         $("select[name=form]").each(function(){
             toplem = toplem + parseInt($(this).val());
+
         }) 
+        
             toplem = Math.round(toplem / weight*100);
             var a = '%'
         $("input[name=total_weight]").val(toplem + a);
-        });
-});
+
+    }); //คืนค่าคะแนนรวมแบบเปอเซ็น
+
+
+    //คืนค่าคะแนนรวมแบบรายการ
+    
+})
+        
+       
 </script>

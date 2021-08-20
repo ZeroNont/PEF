@@ -32,22 +32,21 @@ class M_pef_evaluation extends Da_pef_evaluation
     public function get_all_list($id_ass)
     {
         $sql = "SELECT * 
-            FROM pefs_database.pef_assessor AS ass
-            INNER JOiN pefs_database.pef_group_assessor AS groupass
-            ON ass.ase_emp_id = groupass.gro_ase_id
-            INNER JOIN pefs_database.pef_group_nominee AS groupno
-            ON groupno.grn_grp_id = groupass.gro_grp_id
-            INNER JOIN pefs_database.pef_group AS gr
-            ON gr.grp_id = groupno.grn_grp_id
-            INNER JOIN pefs_database.pef_section AS sec
-            ON sec.sec_id = gr.grp_position_group
-            INNER JOIN dbmc.employee
-            ON groupno.grn_emp_id = employee.Emp_ID 
-            INNER JOIN dbmc.position 
-            ON position.Position_ID = employee.Position_ID 
-            INNER JOIN dbmc.company
-            ON employee.Company_ID = company.Company_ID
-            WHERE Emp_ID = groupno.grn_emp_id && ass.ase_emp_id = $id_ass";
+        FROM pefs_database.pef_assessor AS ass
+        INNER JOiN pefs_database.pef_group_assessor AS groupass
+        ON ass.ase_emp_id = groupass.gro_ase_id
+        INNER JOIN pefs_database.pef_group AS gr
+        ON gr.grp_id = groupass.gro_grp_id
+        INNER JOIN pefs_database.pef_group_nominee AS groupno
+        ON groupno.grn_grp_id = gr.grp_id
+        INNER JOIN dbmc.position 
+        ON position.Position_ID = groupno.grn_promote_to 
+        INNER JOIN pefs_database.pef_section AS sec
+        ON sec.sec_id =  gr.grp_position_group 
+        INNER JOIN dbmc.employee AS employee
+        ON groupno.grn_emp_id =  employee.Emp_ID 
+
+        WHERE  ass.ase_emp_id = '$id_ass'";
 
         $query = $this->db->query($sql);
         return $query;

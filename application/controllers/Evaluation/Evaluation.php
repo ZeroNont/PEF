@@ -51,7 +51,7 @@ class Evaluation extends MainController
 	*/
     function show_evaluation()
     {
-        $id_ass = $_SESSION['UsEmp_ID'];;
+        $id_ass = "05241";;
         $this->load->model('M_pef_evaluation', 'pef');
         $data['ev_all'] = $this->pef->get_all_list($id_ass)->result();//คืนค่าชื่อกรรมการ ชื่อกลุ่ม วันที่ประเมิน จำนวนNominee ชื่อ Nominee ตำแหน่ง แผนก Promote to
         $this->output('consent/v_evaluation', $data);
