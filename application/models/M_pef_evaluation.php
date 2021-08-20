@@ -42,9 +42,9 @@ class M_pef_evaluation extends Da_pef_evaluation
         INNER JOIN dbmc.position 
         ON position.Position_ID = groupno.grn_promote_to 
         INNER JOIN pefs_database.pef_section AS sec
-        ON sec.sec_id =  gr.grp_position_group 
+        ON sec.sec_id = gr.grp_position_group 
         INNER JOIN dbmc.employee AS employee
-        ON groupno.grn_emp_id =  employee.Emp_ID 
+        ON groupno.grn_emp_id = employee.Emp_ID 
 
         WHERE  ass.ase_emp_id = '$id_ass'";
 
