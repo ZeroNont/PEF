@@ -104,8 +104,9 @@ class Evaluation extends MainController
         $data['ev_file'] = $this->pef->get_file_present_nominee($emp_id)->result();
         $data['arr_dis'] = $this->pef->get_all_form_M_AGM_GM($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
-        if($status==1){
-            $data['arr_point'] = $this->pef->get_point_list($id_ase,$emp_id)->result();
+        if($status==0){
+         $data['arr_point'] = $this->pef->get_point_list($id_ase,$emp_id)->result();
+         $data['arr_per'] = $this->pef->get_performance($id_ase,$emp_id)->result();
         }
         $this->output('consent/v_evaluation_M_AGM_GM', $data);
     }// function show_evaluation_T5
@@ -137,7 +138,15 @@ class Evaluation extends MainController
         print_r( $this->per->ptf_per_id);
         $this->per->insert_point();
         $this->per->grn_emp_id = $emp;
-        $this->per->grn_status = 1;
+        if($this->per->grn_status=="-1"){
+            $this->per->grn_status = 0;
+        }else if($this->per->grn_status=="0"){
+            $this->per->grn_status = 1;
+        }
+
+        $get_group=$this->pef->get_group_nominee($emp);
+        $group= $get_group->grp_id;
+        $this->per->update_status_used($group);
         $this->per->update_status();
 
         redirect('Evaluation/Evaluation/show_evaluation');

@@ -177,7 +177,7 @@ table {
                                                     <td>
                                                         <div class="form-group">
                                                             <label for="sel"></label>
-                                                            <select class="form-control" name="form[]" id="form_<?php echo $count_discription ;?>" onchange="calculate_weight()" >
+                                                            <select class="form-control" name="form[]" id="form_<?php echo $count_discription ;?>" onchange="calculate_weight()" required>
                                                                     <option value="0">please selected</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -214,13 +214,13 @@ table {
                         <!-- Comment -->
                         <div class="form-group">
                             <label for="comment"><b>Comment :</b></label>
-                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment"></textarea>
+                            <textarea class="form-control" rows="5" id="comment" type="text" name="comment" required></textarea>
                         </div>
                         <br>
                         <!-- Q/A -->
                         <div class="form-group">
                             <label for="QnA"><b>Q/A :</b></label>
-                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"></textarea>
+                            <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA" required></textarea>
                         </div>
                         <br>
                         <input type="hidden" value="<?php echo $ev_ass[0]->ase_id ?>" name="ase_id">

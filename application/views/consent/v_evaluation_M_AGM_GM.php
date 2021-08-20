@@ -78,7 +78,39 @@ table {
                             </button>
                         </a>
                     </div>
-                </div>         
+                </div>       
+                <div class="table-responsive">
+            <form action="<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post" enctype="multipart/form-data" name="evaluation">
+                <table class="table table-bordered table-sm">
+                    <tr id="Manage">
+                        <th colspan="5" id="gray"><center><b>Stretch Assignment Evaluation Form (Promote to <?php echo $pos_pos->sec_name;?> [ <?php echo $pos_pos->sec_level;?> ]) </b>
+                    </tr>
+                    <tbody>
+                        <tr id="Manage">
+                            <!-- ชื่อ-นามสกุล Nominee -->
+                            <th width="50px" id="gray">Name - Surname</th>
+                                <td colspan="2">
+                                    <?php echo $ev_no[0]->Empname_eng . ' ' . $ev_no[0]->Empsurname_eng ?>
+                                </td>
+                            <!-- ตำแหน่ง Nominee -->
+                            <th width="40px" id="gray">Position</th>
+                                <td>
+                                    <?php echo $ev_no[0]->Position_name?>
+                                </td>
+                        </tr>
+                        
+                        <tr id="Manage">
+                            <!-- แผนก Promote to -->
+                            <th width="40px" id="gray">Promote to</th>
+                            <td colspan="2"><?php echo $pos_pos->sec_name;?></td>
+                            <!-- แผนก Nominee -->
+                            <th width="40px" id="gray">Department/Section</th>
+                            <td>
+                                <?php echo $ev_no[0]->Department?>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>  
                 <br>
             <div class="table-responsive">
                 <form action="<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post" enctype="multipart/form-data" name="evaluation">
@@ -103,7 +135,6 @@ table {
                                     if($arr_dis[$i]->itm_id !=$arr_dis[$i-1]->itm_id){
                                         $count_itm++;
                                     }
-                                   
                                 }
                                 $weight =  $weight+$arr_dis[$i]->for_des_weight;
                                 
@@ -139,9 +170,9 @@ table {
                                         <?php echo substr($arr_dis[$count_discription]->des_description_eng, $pos+1 ,strlen($arr_dis[$count_discription]->des_description_eng))?>
                                 </td>
                                 <!-- แสดง point    -->
-                                    <?php if($ev_gno[0]->grn_status == 0){ ?>
+                                    <?php if($ev_gno[0]->grn_status == -1){ ?>
                                         <td colspan ="2">
-                                                    <select class="form-control" name="form[]" id="form" >
+                                                    <select class="form-control" name="form[]" id="form" required>
                                                     <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
@@ -152,17 +183,10 @@ table {
                                            
                                         </td>
                                         <td colspan ="2">
-                                                    <select class="form-control" name="form[]" id="form"hidden >
-                                                    <option value="0">please selected</option>
-                                                        <option value=1>1</option>
-                                                        <option value=2>2</option>
-                                                        <option value=3>3</option>
-                                                        <option value=4>4</option>
-                                                        <option value=5>5</option>
-                                                    </select>
+                                                   
                                            
                                         </td>
-                                    <?php }else if($ev_gno[0]->grn_status == 1) { ?>
+                                    <?php }else if($ev_gno[0]->grn_status == 0) { ?>
                                         <td colspan ="2" align="center">
                                                   <?php  echo $arr_point[$count_discription]->ptf_point;
                                                   $point_old=$point_old+$arr_point[$count_discription]->ptf_point;?>
@@ -171,7 +195,7 @@ table {
                                         </td>
                                         <td colspan ="2"><div class="form-group">
                                                 <label for="sel2"></label>
-                                                    <select class="form-control" name="form[]" id="form">
+                                                    <select class="form-control" name="form[]" id="form" required>
                                                     <option value="0">please selected</option>
                                                         <option value=1>1</option>
                                                         <option value=2>2</option>
@@ -182,11 +206,15 @@ table {
                                             </div> 
                                         </td>
                                     <?php } ?>
-                            <?php } ?>
-                            </tr>
+                                    
+                                    <input type="hidden" value="<?php echo 	$arr_dis[$count_discription]->for_id ?>" name="for_id[]">
                             <?php  $count_discription++; ?>
+                            <?php } ?>
+                            
+                            </tr>
+                            
                                             
-                                <input type="hidden" value="<?php echo 	$arr_dis[$i]->for_id ?>" name="for_id[]">
+                                
                             <?php } ?>
                             <input type="text" name="weight"  ID="weight" value=<?php echo $weight ; ?> hidden>
                            
@@ -202,13 +230,13 @@ table {
                                 <br>1 ： Do Not satisfy expected level for Manager level
                                 </td>
                                 <td>Total</td>
-                                <?php if($ev_gno[0]->grn_status == 0){ ?>
+                                <?php if($ev_gno[0]->grn_status == -1){ ?>
                                 <td><input type="text" name="total" size='1' disabled  style='border: none'> </td>
                                 <td><input type="text" name="total_weight" size='1' disabled     style='border: none';></td>
                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                 <?php  } ?>
-                                <?php if($ev_gno[0]->grn_status == 1){ 
+                                <?php if($ev_gno[0]->grn_status == 0){ 
                                  $l = $point_old/$weight*100;?>
                                 <td><input type="text"  size='1' value="<?php echo $point_old;?>" disabled   style='border: none'></td>
                                 <td><input type="text"  size='1' value="<?php echo (int)"$l"?>%" disabled  style='border: none' ></td>
@@ -231,13 +259,21 @@ table {
                     <!-- comment -->
                     <div class="form-group">
                         <label for="comment"><b>Comment :</b></label>
-                        <textarea class="form-control" rows="5" id="comment" type="text" name="comment"></textarea>
+                        <textarea class="form-control" rows="5" id="comment" type="text" name="comment" required>
+                            <?php if($ev_gno[0]->grn_status == 0){    ?>
+                            <?php   echo $arr_per[0]->per_q_and_a ;?>
+                            <?php } ?>
+                        </textarea>
                     </div>
                     <br>
                     <!-- Q/A -->
                     <div class="form-group">
                         <label for="QnA"><b>Q/A :</b></label>
-                        <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA"></textarea>
+                        <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA" required>
+                        <?php if($ev_gno[0]->grn_status == 0){    ?>
+                            <?php   echo $arr_per[0]->per_q_and_a ;?>
+                            <?php } ?>
+                        </textarea>
                     </div>
                     
                     <input type="hidden" value="<?php echo $ev_ass[0]->ase_id ?>" name="ase_id">
