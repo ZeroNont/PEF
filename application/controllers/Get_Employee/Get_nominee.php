@@ -2,8 +2,6 @@
 /*
 * Employee
 * Employee detail
-* @input  -   
-* @output Employee detail
 * @author Jirayut Saifah
 * @Create Date 2564-8-13
 */
