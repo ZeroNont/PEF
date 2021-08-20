@@ -2,7 +2,7 @@
 /*
 * Login.php
 * Login เข้าสู่ระบบ
-* @Niphat Kuhokciw
+* @author :Niphat Kuhokciw
 * @Create Date 2564-08-12
 */
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -92,9 +92,9 @@ class Login extends MainController
     {// check role
         if (!empty($this->session->userdata('UsEmp_ID'))) {
 			if($_SESSION['Usrole']==1){
-            redirect('Main/Main/show_main', 'refresh');
+            redirect('Evaluation/Evaluation/show_evaluation', 'refresh');
 			}else if($_SESSION['Usrole']==2){
-				redirect('Main/Main/show_main', 'refresh');
+				redirect('Group_management/Group_list/index/', 'refresh');
 			}
         }
         // if

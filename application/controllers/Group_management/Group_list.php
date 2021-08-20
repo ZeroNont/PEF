@@ -32,8 +32,8 @@ class Group_list extends MainController
     /*
 	* index
     *
-    * @input 
-	* @output 
+    * @input -
+	* @output group list
 	* @author 	Jirayut Saifah
 	* @Create Date 2564-8-13
 	*/
@@ -46,8 +46,8 @@ class Group_list extends MainController
      /*
 	* delete_group
 	* felete group from database
-    * @input 
-	* @output 
+    * @input group id
+	* @output -
 	* @author Jirayut Saifah
 	* @Create Date 2564-8-16
 	*/

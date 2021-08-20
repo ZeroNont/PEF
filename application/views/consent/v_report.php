@@ -1,12 +1,12 @@
 <!-- 
     /*
     * v_report
-    * Display report of requests for permission 
+    * Display report of Performance Evaluation Factor System
     * @input    -
     * @output   -
     * @author   Chakrit
     * @Create Date 2564-08-13
-    * @Update Date 2564-08-
+    * @Update Date 2564-08-20
     */ -->
 <h1>
     Report (รายงานข้อมูล)
@@ -279,6 +279,7 @@
 <script src="https://unpkg.com/file-saver@1.3.3/FileSaver.js"></script>
 
 <script>
+    
     var section = [];
     $(document).ready(function() {
         // $("#count_assessed").hide();
@@ -290,55 +291,69 @@
         show_all_data();
     });
 
+    /*
+    * show_chart
+    * display chart with data
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2564-08-20
+    */
     function show_chart(label, data) {
-        var bar_charts = document.getElementById("myChart");
-        var myChart = new Chart(bar_charts, {
-            type: 'bar',
-            data: {
-                labels: label,
-                datasets: [{
-                    label: 'Number of requests',
-                    data: data,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(75, 192, 192, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
+        // var bar_charts = document.getElementById("myChart");
+
+
+        // var myChart = new Chart(bar_charts, {
+        //     type: 'bar',
+        //     DATA_COUNT = 7,
+        //     NUMBER_CFG = {
+        //         count: DATA_COUNT,
+        //         min: -100,
+        //         max: 100
+        //     },
+        //     labels = Utils.months({
+        //         count: 7
+        //     }),
+        //     data: {
+        //         labels: label,
+        //         datasets: [{
+        //                 label: 'NOT PASS',
+        //                 data: Utils.numbers(NUMBER_CFG),
+        //                 borderColor: Utils.CHART_COLORS.red,
+        //                 backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+        //             },
+        //             {
+        //                 label: 'PASS',
+        //                 data: Utils.numbers(NUMBER_CFG),
+        //                 borderColor: Utils.CHART_COLORS.green,
+        //                 backgroundColor: Utils.transparentize(Utils.CHART_COLORS.green, 0.5),
+        //             }
+        //         ]
+        //     },
+        //     options: {
+        //         responsive: true,
+        //         plugins: {
+        //             legend: {
+        //                 position: 'top',
+        //             },
+        //             title: {
+        //                 display: true,
+        //                 text: 'Chart.js Bar Chart'
+        //             }
+        //         }
+        //     }
+        // });
 
     }
 
+    /*
+    * show_all_data
+    * display all data report
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2564-08-16
+    */
     function show_all_data() {
         var year = document.getElementById('year').value;
         var have = 0;
@@ -411,6 +426,14 @@
 
     }
 
+    /*
+    * show_table
+    * display table report
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2564-08-28
+    */
     function show_table() {
         $.get("<?php echo base_url(); ?>Report/Report/get_section", function(data) {
             var obj = JSON.parse(data);
@@ -418,7 +441,7 @@
             obj.forEach((row, index) => {
                 data_row += '<tr>';
                 data_row += '<td>' + (index + 1) + '</td>';
-                data_row += '<td>' + "Promote to " + row.sec_level + '</td>';
+                data_row += '<td>' + "Promote to T" + row.sec_level + '</td>';
                 data_row += '<td id="sum_' + index + '"></td>';
                 data_row += '<td id="assess_' + index + '"></td>';
                 data_row += '<td id="not_assess_' + index + '"></td>';
@@ -435,6 +458,14 @@
         });
     }
 
+    /*
+    * show_data_table
+    * display data in table report
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2564-08-18
+    */
     function show_data_table() {
         var sum_total = 0;
         var assess_total = 0;

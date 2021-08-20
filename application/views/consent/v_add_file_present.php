@@ -48,7 +48,7 @@ div.a {
 
 }
 </style>
-<h1>Add File Nominee</h1>
+<h1>Add File Nominee (เพิ่มไฟล์นำเสนอผลงาน)</h1>
 <!-- Table group Nominee list -->
 <div class="card-header" id="card_radius">
     <div class="table-responsive">

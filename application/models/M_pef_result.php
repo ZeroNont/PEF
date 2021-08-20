@@ -79,7 +79,7 @@ class M_pef_result extends Da_pef_result
         $sql = "SELECT *
                 FROM pefs_database.pef_group_nominee AS gnor
                 INNER JOIN pefs_database.pef_point_form AS pform
-                ON  gnor.grn_emp_id = pform.ptf_emp_id
+                ON  gnor.grn_id = pform.ptf_emp_id
                 WHERE pform.ptf_emp_id = $id";
         $query = $this->db->query($sql);
         return $query;
@@ -204,7 +204,7 @@ class M_pef_result extends Da_pef_result
 	* @Create   Date 2564-08-17 
 	* @Update   Date 2564-08-18
 	*/
-    public function get_all_form($id,$position) //t5-6
+    public function get_all_AMSSSV_MTSSP($position) //t5-6
     {
         $sql = "SELECT *
         FROM  pefs_database.pef_format_form
@@ -212,10 +212,7 @@ class M_pef_result extends Da_pef_result
         ON pef_description_form.des_id=pef_format_form.for_des_id
         INNER JOIN pefs_database.pef_item_form
         ON pef_description_form.des_itm_id= pef_item_form.itm_id
-        INNER JOIN pefs_database.pef_point_form AS poi
-        ON pef_item_form.itm_id = poi.ptf_row
-
-        WHERE pef_format_form.for_pos_level= '$position' AND poi.ptf_emp_id = $id";
+        WHERE pef_format_form.for_pos_level= '$position';";
         $query = $this->db->query($sql);
         return $query;
     }//ประเมินของ Nominee T5,T6
@@ -258,7 +255,9 @@ class M_pef_result extends Da_pef_result
         FROM pefs_database.pef_point_form AS poi
         INNER JOIN pefs_database.pef_performance_form AS per
         ON poi.ptf_emp_id = per.per_emp_id
-        WHERE poi.ptf_emp_id = $id";
+        INNER JOIN pefs_database.pef_group_nominee AS gnor
+        ON poi.ptf_emp_id = gnor.grn_id
+        WHERE gnor.grn_emp_id = $id";
 
         $query = $this->db->query($sql);
         return $query;
@@ -274,10 +273,35 @@ class M_pef_result extends Da_pef_result
 	* @Create   Date 2564-08-17 
 	* @Update   Date 2564-08-18
 	*/
+    public function get_score_T5($id){
+        $sql = "SELECT *
+        FROM pefs_database.pef_point_form AS poi
+        INNER JOIN pefs_database.pef_group_nominee AS gnor
+        ON poi.ptf_emp_id = gnor.grn_id
+        INNER JOIN pefs_database.pef_format_form AS form
+        ON poi.ptf_for_id = form.for_id
+        WHERE gnor.grn_emp_id = $id";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }//คะแนนประเมินของ Nominee
+
+    /*
+	* get_score
+	* คืนค่ากลุ่มประเมินของ nominee
+	* @input 	$id
+	* @output 	คะแนนประเมินของ Nominee
+	* @author 	Apinya Phadungkit
+    * @Update   Date 2564-08-16
+	* @Create   Date 2564-08-17 
+	* @Update   Date 2564-08-18
+	*/
     public function get_score($id){
         $sql = "SELECT *
         FROM pefs_database.pef_point_form AS poi
-        WHERE poi.ptf_emp_id = $id";
+        INNER JOIN pefs_database.pef_group_nominee AS gnor
+        ON poi.ptf_emp_id = gnor.grn_id
+        WHERE gnor.grn_emp_id = $id";
 
         $query = $this->db->query($sql);
         return $query;

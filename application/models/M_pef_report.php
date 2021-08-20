@@ -1,9 +1,10 @@
 <?php
 /*
-* ttps_database.requested_form, ttps_database.approval, dbmc.department, ttps_database.plant, dbmc.company, dbmc.employee, dbmc.sectioncode
+* M_pef_report.php
 * get data of report
 * @author   Chakrit
 * @Create Date 2564-08-16
+* @Update date 2564-08-20
 */
 
 include_once("Da_pef_report.php");
@@ -12,10 +13,10 @@ class M_pef_report extends Da_pef_report
 {
 
     /*
-    * get_department
-    * get data department
+    * get_all_nominee
+    * get data norminee
     * @input    -
-    * @output   data of department
+    * @output   data of norminee
     * @author   Chakrit
     * @Create Date 2564-08-16
     */
@@ -27,6 +28,14 @@ class M_pef_report extends Da_pef_report
         return $query;
     }
 
+    /*
+    * get_year
+    * get data group in year
+    * @input    -
+    * @output   data group in year
+    * @author   Chakrit
+    * @Create Date 2564-08-16
+    */
     public function get_year()
     {
         $sql = "SELECT *
@@ -36,6 +45,14 @@ class M_pef_report extends Da_pef_report
         return $query;
     }
 
+    /*
+    * get_all_section
+    * get data section
+    * @input    -
+    * @output   get data section
+    * @author   Chakrit
+    * @Create Date 2564-08-16
+    */
     public function get_all_section()
     {
         $sql = "SELECT *
@@ -44,6 +61,14 @@ class M_pef_report extends Da_pef_report
         return $query;
     }
 
+    /*
+    * get_data_year
+    * get data section, group, nominee, position in year
+    * @input    -
+    * @output   get data section, group, nominee, position in year
+    * @author   Chakrit
+    * @Create Date 2564-08-18
+    */
     public function get_data_year($year)
     {
         $sql = "SELECT *
@@ -60,6 +85,14 @@ class M_pef_report extends Da_pef_report
         return $query;
     }
 
+    /*
+    * get_data_by_id
+    * get data section, group, nominee, position, employee, scetion_code, company
+    * @input    -
+    * @output   get data section, group, nominee, position, employee, scetion_code, company
+    * @author   Chakrit
+    * @Create Date 2564-08-18
+    */
     public function get_data_by_id()
     {
         $sql = "SELECT * 
@@ -81,6 +114,14 @@ class M_pef_report extends Da_pef_report
         return $query;
     }
 
+    /*
+    * get_ass_by_sec_id
+    * get data section, assessor, employee
+    * @input    -
+    * @output   get data section, assessor, employee
+    * @author   Chakrit
+    * @Create Date 2564-08-18
+    */
     public function get_ass_by_sec_id()
     {
         $sql = "SELECT * 
@@ -94,6 +135,14 @@ class M_pef_report extends Da_pef_report
         return $query;
     }
 
+    /*
+    * get_ass_by_sec_id
+    * get data section, point_form, nominee, group
+    * @input    -
+    * @output   get data section, point_form, nominee, group
+    * @author   Chakrit
+    * @Create Date 2564-08-18
+    */
     public function get_data_point()
     {
         $sql = "SELECT * 
@@ -109,6 +158,14 @@ class M_pef_report extends Da_pef_report
         return $query;
     }
 
+    /*
+    * get_emp_by_id
+    * get data group, nominee, section, employee, position, section_code, company
+    * @input    -
+    * @output   get data group, nominee, section, employee, position, section_code, company
+    * @author   Chakrit
+    * @Create Date 2564-08-18
+    */
     public function get_emp_by_id()
     {
         $sql = "SELECT * 
@@ -130,6 +187,14 @@ class M_pef_report extends Da_pef_report
         return $query;
     }
 
+    /*
+    * get_ass_by_nor_id
+    * get data section, assessor, employee, group, nominee
+    * @input    -
+    * @output   get data section, assessor, employee, group, nominee
+    * @author   Chakrit
+    * @Create Date 2564-08-19
+    */
     public function get_ass_by_nor_id()
     {
         $sql = "SELECT * 
@@ -147,6 +212,14 @@ class M_pef_report extends Da_pef_report
         return $query;
     }
 
+    /*
+    * get_data_point_by_nor_id
+    * get data point_form, nominee, group, section
+    * @input    -
+    * @output   get data point_form, nominee, group, section
+    * @author   Chakrit
+    * @Create Date 2564-08-19
+    */
     public function get_data_point_by_nor_id()
     {
         $sql = "SELECT * 
@@ -162,46 +235,4 @@ class M_pef_report extends Da_pef_report
         return $query;
     }
     
-    // public function get_ass_by_id()
-    // {
-    //     $sql = "SELECT * 
-    //             FROM pefs_database.pef_group AS grp
-    //             INNER JOIN pefs_database.pef_group_nominee AS grn
-    //             ON grn.grn_grp_id = grp.grp_id
-    //             INNER JOIN pefs_database.pef_point_form AS poi
-    //             ON poi.ptf_emp_id = grn.grn_id
-    //             INNER JOIN pefs_database.pef_assessor AS ass
-    //             ON ass.ase_id = poi.ptf_ase_id
-    //             INNER JOIN dbmc.employee AS emp
-    //             ON emp.Emp_ID = ass.ase_emp_id
-    //             INNER JOIN pefs_database.pef_format_form AS form
-    //             ON form.for_id = poi.ptf_for_id
-    //             WHERE grn.grn_id = ?";
-    //     $query = $this->db->query($sql, array($this->grn_id));
-    //     return $query;
-    // }
-
-    /*
-    * get_form_to_excel
-    * get data requested form to excel
-    * @input    -
-    * @output   data of requested form to excel
-    * @author   Chakrit
-    * @Create Date 2564-07-28
-    */
-    public function get_form_to_excel()
-    {
-        $sql = "SELECT * 
-                FROM ttps_database.requested_form AS req
-                INNER JOIN ttps_database.approval AS app
-                ON app.app_form_id = req.req_form_id
-                INNER JOIN ttps_database.plant AS pla
-                ON pla.pla_emp_id = app.app_approve_plant_id
-                INNER JOIN dbmc.company AS com
-                ON com.Company_ID = req.req_company_id
-                INNER JOIN dbmc.employee AS emp
-                ON emp.Emp_ID = req.req_emp_id";
-        $query = $this->db->query($sql);
-        return $query;
-    }
 }

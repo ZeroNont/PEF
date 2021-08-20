@@ -36,8 +36,7 @@
                           <!-- Nav items -->
                           <ul class="navbar-nav">
                               <li class="nav-item">
-                                  <a class="nav-link"
-                                      href="<?php echo base_url() . 'Group_management/Group_list/index/' ?>">
+                                  <a class="nav-link" href="<?php echo base_url() . 'Group_management/Group_list/index/' ?>">
                                       <i class="ni ni-calendar-grid-58 text-orange"></i>
                                       <span class="nav-link-text">Group Management</span>
                                   </a>
@@ -55,17 +54,15 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link"
-                                      href="<?php echo base_url() . 'Assessor_management/Promote_list/index/' ?>">
-                                      <i class="fas fa-address-book text-default"></i>
+                                  <a class="nav-link" href="<?php echo base_url() . 'Assessor_management/Promote_list/index/' ?>">
+                                      <i class="fas fa-address-book text-gray"></i>
                                       <span class="nav-link-text">Assessor Management</span>
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link"
-                                      href="<?php echo base_url() . 'File_present_management/File_present_management/show_list_nominee/' ?>">
+                                  <a class="nav-link" href="<?php echo base_url() . 'File_present_management/File_present_management/show_list_nominee/' ?>">
                                       <i class="fas fa-file-upload text-default"></i>
-                                      <span class="nav-link-text">Add File Nominee</span>
+                                      <span class="nav-link-text">File Management</span>
                                   </a>
                               </li>
                           </ul>

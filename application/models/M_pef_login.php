@@ -2,8 +2,8 @@
 /*
 	* M_pef_login.php
     * M_pef_login เข้าสู่ระบบ
-    * @Niphat Kuhokciw
-    * @Create Date 2564-08-12
+    * @author : Niphat Kuhokciw
+    * @Create : Date 2564-08-12
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
 

@@ -1,22 +1,22 @@
 <!-- /*
 * v_report_detail
-* Display detail of requests for permission
-* @input    Form_ID
+* Display report detail of Performance Evaluation Factor System
+* @input    sec_id
 * @output   -
 * @author   Chakrit
 * @Create Date 2564-08-16
-* @Update Date 2564-08-
+* @Update Date 2564-08-20
 */ -->
 
 <a href='#' id='download_link' onClick='javascript:ExcelReport();' class="btn btn-secondary btn-lg canter float-right"><i class="fa fa-download"></i> Export Excel</a>
 
 <h1>
-    &nbsp; Report Detail (รายละเอียดรายงานข้อมูล)
+    &nbsp; Report Group Detail (รายละเอียดรายงานข้อมูลกลุ่ม)
 </h1>
 <br>
 <div class="card-header">
     <h2>
-        Promote to <?php echo $sec_data[0]->sec_level ?>
+        Promote to <?php echo 'T' . $sec_data[0]->sec_level ?>
     </h2>
     <br>
     <div class="row" id="count_table">
@@ -194,6 +194,14 @@
 <script src="https://unpkg.com/file-saver@1.3.3/FileSaver.js"></script>
 
 <script>
+    /*
+    * ExcelReport
+    * Export data to Excel
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2564-08-16
+    */
     function ExcelReport() //function สำหรับสร้าง ไฟล์ excel จากตาราง
     {
         var sheet_name = "Report"; /* กำหหนดชื่อ sheet ให้กับ excel โดยต้องไม่เกิน 31 ตัวอักษร */

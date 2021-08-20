@@ -31,9 +31,8 @@ class Group_insert extends MainController
 
     /*
 	* index
-	* 
-	* @input 
-	* @output 
+	* @input -
+	* @output section detail
 	* @author 	Jirayut Saifah
 	* @Create Date 2564-7-21
 	*/
@@ -46,8 +45,8 @@ class Group_insert extends MainController
       /*
 	* insert
 	* insert group to database
-    * @input 
-	* @output 
+    * @input information data
+	* @output -
 	* @author Jirayut Saifah
 	* @Create Date 2564-8-13
 	*/

@@ -29,19 +29,18 @@
             </div>
             <div class="card-body">
                 <form>
-
                     <div class="pl-lg-4">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
 
-                                    <label class="form-control-label" for="input-city">Posotion to Promote</label>
+                                    <label class="form-control-label" for="input-city">Position to Promote</label>
                                     <select name="position" id="select" class="form-select" aria-label="Default select example" onchange="get_assessor()">
                                         <option value="0">--------------------------------------------Please
                                             select--------------------------------</option>
                                         <?php for ($i = 0; $i < count($obj_sec); $i++) { ?>
-                                            <option value="<?php echo $obj_sec[$i]->sec_id ?>">
-                                            <?php echo $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name;
+                                            <option value="<?php echo $obj_sec[$i]->sec_level ?>" name="">
+                                            <?php echo "T" . $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name;
                                         }
                                             ?>
                                             </option>
@@ -174,7 +173,7 @@
                     <input type="text" class="form-control" id="department_modal" disabled name="Plant_name">
                 </div>
                 <div class="mb-3">
-                    <label class="form-control-label" for="input-city">Posotion to Promote</label>
+                    <label class="form-control-label" for="input-city">Position to Promote</label>
                     <select name="promote" id="select2" class="form-select" aria-label="Default select example">
                         <option value="0">----------------------Please select------------------</option>
 
@@ -197,13 +196,13 @@
     var num = 1;
     var index_emp = [];
     /*
-    * add
-    * add nominee to list
-    * @input nominee detail
-    * @output 
-    * @author Jirayut Saifah
-    * @Create date 15 / 8 / 2564
-    */
+     * add
+     * add nominee to list
+     * @input nominee detail
+     * @output 
+     * @author Jirayut Saifah
+     * @Create date 15 / 8 / 2564
+     */
     $("#add").click(function() {
         empname = document.getElementById("showname_modal").value;
         empid = document.getElementById("Emp_id_modal").value;
@@ -240,13 +239,13 @@
         console.log(index_emp)
     }
     /*
-    * get_Emp
-    * display employee detail
-    * @input emp_id
-    * @output 
-    * @author Jirayut Saifah
-    * @Create date 15 / 8 / 2564
-    */
+     * get_Emp
+     * display employee detail
+     * @input emp_id
+     * @output 
+     * @author Jirayut Saifah
+     * @Create date 15 / 8 / 2564
+     */
     function get_Emp() {
         Emp_id = document.getElementById('Emp_id_modal').value;
         pos = document.getElementById('select').value;
@@ -283,13 +282,13 @@
         });
     }
     /*
-    * save_data
-    * save data group
-    * @input group detail
-    * @output 
-    * @author Jirayut Saifah
-    * @Create date 15 / 8 / 2564
-    */
+     * save_data
+     * save data group
+     * @input group detail
+     * @output 
+     * @author Jirayut Saifah
+     * @Create date 15 / 8 / 2564
+     */
     function save_data() {
         var emp = []
         var emp_nominee = []
@@ -343,13 +342,13 @@
 
     }
     /*
-    * select_all
-    * check box
-    * @input check id
-    * @output 
-    * @author Jirayut Saifah
-    * @Create date 15 / 8 / 2564
-    */
+     * select_all
+     * check box
+     * @input check id
+     * @output 
+     * @author Jirayut Saifah
+     * @Create date 15 / 8 / 2564
+     */
     function select_all(source) {
         var check = document.querySelectorAll('input[name="checkbox1"]');
         for (var i = 0; i < check.length; i++) {
@@ -359,16 +358,16 @@
         }
     }
     /*
-    * get_position
-    * get position detail
-    * @input position detail
-    * @output 
-    * @author Jirayut Saifah
-    * @Create date 15 / 8 / 2564
-    */
+     * get_position
+     * get position detail
+     * @input position detail
+     * @output 
+     * @author Jirayut Saifah
+     * @Create date 15 / 8 / 2564
+     */
     function get_position() {
         position_level = document.getElementById('select').value;
-        // console.log(position_level)
+        console.log(position_level)
         $.ajax({
             type: "POST",
             url: "<?php echo base_url() ?>Get_Employee/Get_nominee/get_position_by_sec",
@@ -389,7 +388,7 @@
                     var option = document.createElement("option");
                     option.setAttribute("id", row.Position_ID);
                     option.setAttribute("name", "pos");
-                    option.text = row.sec_level + " " + row.Position_name;
+                    option.text = 'T' + row.Position_Level + ' ' + row.Position_name;
                     x.add(option);
                 })
 
@@ -401,13 +400,13 @@
 
     }
     /*
-    * get assessor
-    * display assessor list
-    * @input Group id
-    * @output assessor list
-    * @author Jirayut Saifah
-    * @Create date 15 / 8 / 2564
-    */
+     * get assessor
+     * display assessor list
+     * @input Group id
+     * @output assessor list
+     * @author Jirayut Saifah
+     * @Create date 15 / 8 / 2564
+     */
     function get_assessor() {
         var position_level = document.getElementById('select').value;
         // position_level--;
@@ -440,7 +439,7 @@
                     data_row += row.Empname_eng + "          " + row.Empsurname_eng
                     data_row += '</td>'
                     data_row += '<td>'
-                    data_row += row.sec_level
+                    data_row += 'T' + row.sec_level
                     data_row += '</td>'
                     data_row += '<td>'
                     data_row += row.Department
