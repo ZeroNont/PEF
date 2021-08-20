@@ -57,7 +57,7 @@
                                             $Status = 'Fail'; ?>
                                             <td><span style="color:red;"><?php echo $Status; ?></span></td>
                                         <?php } ?>
-                                        <td><a href="<?php echo site_url() . 'Report/Report/show_report_detail_assessor/' . $sec_data[$i]->grn_emp_id; ?>">
+                                        <td><a href="<?php echo site_url() . 'Report/Report/show_report_detail_assessor/' . $sec_data[$i]->grn_id; ?>">
                                                 <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                                     <i class="fas fa-search"></i>
                                                 </button>

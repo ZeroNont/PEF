@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title text-uppercase text-muted mb-0">Number of people all that must assess</h5>
+                            <h5 class="card-title text-uppercase text-muted mb-0">The number of people all that must assess</h5>
                             <span class="h2 font-weight-bold mb-0" id="total_nominee">
 
                             </span>
