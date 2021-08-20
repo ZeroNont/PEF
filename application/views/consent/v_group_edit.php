@@ -38,7 +38,7 @@
                                 <div class="form-group">
 
                                     <input type="text" value="<?php echo $obj_group->grp_id ?>" id="group" hidden>
-                                    <label class="form-control-label" for="input-city">Posotion to Promote</label>
+                                    <label class="form-control-label" for="input-city">Position to Promote</label>
                                     <select name="position" id="select" class="form-select"
                                         aria-label="Default select example" onchange="get_assessor()" disabled>
                                         <option value="0">--------------------------------------------Please
