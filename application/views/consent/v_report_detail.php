@@ -16,7 +16,7 @@
 <br>
 <div class="card-header">
     <h2>
-        Promote to <?php echo 'T'.$sec_data[0]->sec_level ?>
+        Promote to <?php echo 'T' . $sec_data[0]->sec_level ?>
     </h2>
     <br>
     <div class="row" id="count_table">
@@ -194,6 +194,14 @@
 <script src="https://unpkg.com/file-saver@1.3.3/FileSaver.js"></script>
 
 <script>
+    /*
+    * ExcelReport
+    * Export data to Excel
+    * @input    -
+    * @output   -
+    * @author   Chakrit
+    * @Create Date 2564-08-16
+    */
     function ExcelReport() //function สำหรับสร้าง ไฟล์ excel จากตาราง
     {
         var sheet_name = "Report"; /* กำหหนดชื่อ sheet ให้กับ excel โดยต้องไม่เกิน 31 ตัวอักษร */
