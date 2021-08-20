@@ -7,6 +7,9 @@
 * @author Apinya Phadungkit
 * @Create Date 2564-8-15
 * @Update Date 2564-8-16
+* @Update Date 2564-8-17
+* @Update Date 2564-8-18
+* @Update Date 2564-8-19
 */
 ?>
 
@@ -36,8 +39,9 @@ class M_pef_result extends Da_pef_result
     * @input  -   
     * @output -
     * @author Apinya Phadungkit
-    * @Create Date 2564-7-18
-    * @Update Date 2564-7-28
+    * @Create Date 2564-8-16
+    * @Update Date 2564-8-18
+    * @Update Date 2564-8-19
     */
     function get_group()
     {
@@ -52,7 +56,9 @@ class M_pef_result extends Da_pef_result
                 INNER JOIN dbmc.employee AS emp
                 ON gnor.grn_emp_id = emp.Emp_ID 
                 INNER JOIN dbmc.position AS pos
-                ON emp.Position_ID = pos.Position_ID
+                ON gnor.grn_promote_to = pos.Position_ID
+                INNER JOIN pefs_database.pef_section AS sec
+                ON pos.position_level_id = sec.sec_id
                 WHERE gnor.grn_status = ? AND gass.gro_ase_id = ?";
 
         $query = $this->db->query($sql,array($this->grn_status,$this->gro_ase_id));
@@ -96,20 +102,20 @@ class M_pef_result extends Da_pef_result
         return $query;
     }
 
-    public function get_group_assessor($id){
-        $sql = "SELECT *
-        FROM pefs_database.pef_assessor AS ass
-        INNER JOIN pefs_database.pef_group_assessor AS groupass
-        ON ass.ase_emp_id = groupass.gro_ase_id
-        INNER JOIN pefs_database.pef_group AS gr
-        ON gr.grp_id = groupass.gro_grp_id
-        INNER JOIN dbmc.employee AS emp
-        ON groupass.gro_ase_id = emp.Emp_ID 
-        WHERE ass.ase_emp_id = $id";
+    // public function get_group_assessor($id){
+    //     $sql = "SELECT *
+    //     FROM pefs_database.pef_assessor AS ass
+    //     INNER JOIN pefs_database.pef_group_assessor AS groupass
+    //     ON ass.ase_emp_id = groupass.gro_ase_id
+    //     INNER JOIN pefs_database.pef_group AS gr
+    //     ON gr.grp_id = groupass.gro_grp_id
+    //     INNER JOIN dbmc.employee AS emp
+    //     ON groupass.gro_ase_id = emp.Emp_ID 
+    //     WHERE ass.ase_emp_id = $id";
 
-        $query = $this->db->query($sql);
-        return $query;
-    }//คืนค่ากลุ่ม Assessor
+    //     $query = $this->db->query($sql);
+    //     return $query;
+    // }//คืนค่ากลุ่ม Assessor
 
     public function get_position($position)
     {
@@ -119,13 +125,62 @@ class M_pef_result extends Da_pef_result
         ON gnor.grn_promote_to = pos.Position_ID
         INNER JOIN pefs_database.pef_section AS sec
         ON pos.position_level_id = sec.sec_id
-        WHERE pos.Position_ID = '$position'";
+        WHERE sec.sec_level = '$position'";
 
         $query = $this->db->query($sql);
         return $query;
     }
 
-    public function get_all_form($id) //t5
+    /*
+	* get_group_assessor
+	* คืนค่ากลุ่มประเมินของ assessor
+	* @input 	$emp_id (รหัส Nominee)
+	* @output 	กลุ่มประเมินของ Nominee
+	* @author 	Phatchara Khongthandee
+    * @Update   Date 2564-08-16
+	* @Create   Date 2564-08-17 
+	* @Update   Date 2564-08-18
+	*/
+    public function get_group_assessor($id){
+        $sql = "SELECT *
+            FROM pefs_database.pef_assessor AS ass
+            INNER JOIN pefs_database.pef_group_assessor AS groupass
+            ON ass.ase_emp_id = groupass.gro_ase_id
+            INNER JOIN pefs_database.pef_group AS gr
+            ON gr.grp_id = groupass.gro_grp_id
+            INNER JOIN dbmc.employee
+            ON ass.ase_emp_id = employee.Emp_ID 
+            INNER JOIN dbmc.position 
+            ON position.Position_ID = employee.Position_ID 
+            INNER JOIN dbmc.sectioncode 
+            ON sectioncode.Sectioncode = employee.Sectioncode_ID
+            INNER JOIN dbmc.company
+            ON employee.Company_ID = company.Company_ID
+            WHERE Emp_ID = ass.ase_emp_id && ass.ase_emp_id = $id";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่ากลุ่ม Assessor
+
+    public function get_group_nominee($emp_id)
+    {
+        $sql = "SELECT *
+                FROM pefs_database.pef_group_nominee AS groupno
+                INNER JOIN dbmc.employee
+                ON groupno.grn_emp_id = employee.Emp_ID 
+                INNER JOIN dbmc.position 
+                ON position.Position_ID = employee.Position_ID 
+                INNER JOIN dbmc.sectioncode 
+                ON sectioncode.Sectioncode = employee.Sectioncode_ID
+                INNER JOIN dbmc.company
+                ON employee.Company_ID = company.Company_ID
+                WHERE Emp_ID = groupno.grn_emp_id && groupno.grn_emp_id = $emp_id";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function get_all_form($id,$position) //t5-6
     {
         $sql = "SELECT *
         FROM  pefs_database.pef_format_form
@@ -136,7 +191,20 @@ class M_pef_result extends Da_pef_result
         INNER JOIN pefs_database.pef_point_form AS poi
         ON pef_item_form.itm_id = poi.ptf_row
 
-        WHERE pef_format_form.for_pos_level= 'T5' AND poi.ptf_emp_id = $id";
+        WHERE pef_format_form.for_pos_level= '$position' AND poi.ptf_emp_id = $id";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function get_all_M_AGM_GM($position) //t2-4
+    {
+        $sql = "SELECT *
+        FROM  pefs_database.pef_format_form
+        INNER JOIN pefs_database.pef_description_form
+        ON pef_description_form.des_id=pef_format_form.for_des_id
+        INNER JOIN pefs_database.pef_item_form
+        ON pef_description_form.des_itm_id= pef_item_form.itm_id
+        WHERE pef_format_form.for_pos_level= '$position';";
         $query = $this->db->query($sql);
         return $query;
     }
@@ -151,6 +219,37 @@ class M_pef_result extends Da_pef_result
         $query = $this->db->query($sql);
         return $query;
     }//คืนค่ากลุ่ม Assessor
+
+    public function get_score($id){
+        $sql = "SELECT *
+        FROM pefs_database.pef_point_form AS poi
+        WHERE poi.ptf_emp_id = $id";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }//คืนค่ากลุ่ม Assessor
+
+    /*
+	* get_all_form_T6
+	* คืนค่าแบบฟอร์มการประเมิน T6
+	* @input 	$position
+	* @output 	ข้อมูลแบบฟอร์มการประเมิน T6
+	* @author 	Phatchara Khongthandee
+	* @Create   Date 2564-08-15 
+	* @Update   Date 2564-08-16
+	*/
+    public function get_all_form_M_AGM_GM($position)
+    {
+        $sql = "SELECT *
+        FROM  pefs_database.pef_format_form
+        INNER JOIN pefs_database.pef_description_form
+        ON pef_description_form.des_id=pef_format_form.for_des_id
+        INNER JOIN pefs_database.pef_item_form
+        ON pef_description_form.des_itm_id= pef_item_form.itm_id
+        WHERE pef_format_form.for_pos_level= '$position';";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 
     /*
     * Function get_hr_no
