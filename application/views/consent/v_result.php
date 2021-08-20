@@ -9,6 +9,7 @@
 * @Update Date 2564-8-16
 * @Update Date 2564-8-17
 * @Update Date 2564-8-18
+* @Update Date 2564-8-19
 */
 ?>
 
@@ -95,7 +96,7 @@
 
                                 <!-- ปุ่มดำเนินการ -->
                                 <a
-                                    href="<?php echo site_url() . 'Result/Result/show_result_detail/' . $row->grn_emp_id .'/'. $row->gro_ase_id.'/'. $row->grn_promote_to; ?>">
+                                    href="<?php echo site_url() . 'Result/Result/show_result_detail/' . $row->grn_emp_id .'/'. $row->gro_ase_id.'/'. $row->sec_level; ?>">
                                     <button class="btn btn-primary"> <i class="fa fa-info-circle"></i> </button>
                                 </a>
 
