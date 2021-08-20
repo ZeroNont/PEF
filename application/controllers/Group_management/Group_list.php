@@ -2,8 +2,6 @@
 /*
 * Group_list
 * Group detail to list
-* @input  
-* @output group detail
 * @author Jirayut Saifah
 * @Create Date 2564-8-13
 */
@@ -33,6 +31,9 @@ class Group_list extends MainController
 
     /*
 	* index
+    *
+    * @input 
+	* @output 
 	* @author 	Jirayut Saifah
 	* @Create Date 2564-8-13
 	*/
@@ -45,6 +46,8 @@ class Group_list extends MainController
      /*
 	* delete_group
 	* felete group from database
+    * @input 
+	* @output 
 	* @author Jirayut Saifah
 	* @Create Date 2564-8-16
 	*/

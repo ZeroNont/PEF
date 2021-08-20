@@ -19,41 +19,9 @@ class M_pef_evaluation extends Da_pef_evaluation
         parent::__construct();
     }
 
-    /*
-	* get_assessor
-	* คืนค่าข้อมูลกรรมการ
-	* @input 	$id_ass
-	* @output 	ชื่อกรรมการ, ตำแหน่ง, แผนก
-	* @author 	Phatchara Khongthandee and Pontakon Mujit 
-	* @Create   Date 2564-08-15   
-	* @Update   Date 2564-08-16
-    * @Update   Date 2564-08-17
-	*/
-    public function get_assessor($id_ass)
-    {
-        $sql = "SELECT *
-                FROM pefs_database.pef_assessor AS ass
-                INNER JOIN pefs_database.pef_group_assessor AS groupass
-                ON ass.ase_id = groupass.gro_ase_id
-                INNER JOIN pefs_database.pef_group AS gr
-                ON gr.grp_id = groupass.gro_grp_id
-                INNER JOIN dbmc.employee
-                ON ass.ase_emp_id = employee.Emp_ID 
-                INNER JOIN dbmc.position 
-                ON position.Position_ID = employee.Position_ID 
-                INNER JOIN dbmc.sectioncode 
-                ON sectioncode.Sectioncode = employee.Sectioncode_ID
-                INNER JOIN dbmc.company
-                ON employee.Company_ID = company.Company_ID
-                WHERE Emp_ID = ass.ase_emp_id && ass.ase_emp_id = $id_ass";
-
-        $query = $this->db->query($sql);
-        return $query;
-    }//คืนค่าชื่อกรรมการ ตำแหน่ง แผนก
-
      /*
-	* get_nominee_list
-	* คืนค่าข้อมูลกรรมการ
+	* get_all_list
+	* คืนค่าชื่อกรรมการ, ชื่อกลุ่ม, วันที่ประเมิน, จำนวน Nominee ที่ต้องประเมิน, ชื่อ Nominee, ตำแหน่ง, แผนก, Promote to
 	* @input 	$id_ass
 	* @output 	ชื่อกรรมการ, ชื่อกลุ่ม, วันที่ประเมิน, จำนวน Nominee ที่ต้องประเมิน, ชื่อ Nominee, ตำแหน่ง, แผนก, Promote to
 	* @author 	Phatchara Khongthandee and Pontakon Mujit 
@@ -61,23 +29,24 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Update   Date 2564-08-16
     * @Update   Date 2564-08-17
 	*/
-    public function get_nominee_list($id_ass)
+    public function get_all_list($id_ass)
     {
         $sql = "SELECT * 
-                FROM pefs_database.pef_group_assessor AS groupass
-                INNER JOIN pefs_database.pef_group_nominee AS groupno
-                ON groupno.grn_grp_id = groupass.gro_grp_id
-                INNER JOIN pefs_database.pef_group AS gr
-                ON gr.grp_id = groupno.grn_grp_id
-                INNER JOIN dbmc.employee
-                ON groupno.grn_emp_id = employee.Emp_ID 
-                INNER JOIN dbmc.position 
-                ON position.Position_ID = employee.Position_ID 
-                INNER JOIN dbmc.sectioncode 
-                ON sectioncode.Sectioncode = employee.Sectioncode_ID
-                INNER JOIN dbmc.company
-                ON employee.Company_ID = company.Company_ID
-                WHERE Emp_ID = groupno.grn_emp_id && groupass.gro_ase_emp_id = $id_ass";
+        FROM pefs_database.pef_assessor AS ass
+        INNER JOiN pefs_database.pef_group_assessor AS groupass
+        ON ass.ase_emp_id = groupass.gro_ase_id
+        INNER JOIN pefs_database.pef_group AS gr
+        ON gr.grp_id = groupass.gro_grp_id
+        INNER JOIN pefs_database.pef_group_nominee AS groupno
+        ON groupno.grn_grp_id = gr.grp_id
+        INNER JOIN dbmc.position 
+        ON position.Position_ID = groupno.grn_promote_to 
+        INNER JOIN pefs_database.pef_section AS sec
+        ON sec.sec_id = gr.grp_position_group 
+        INNER JOIN dbmc.employee AS employee
+        ON groupno.grn_emp_id = employee.Emp_ID 
+
+        WHERE  ass.ase_emp_id = '$id_ass'";
 
         $query = $this->db->query($sql);
         return $query;
@@ -95,20 +64,20 @@ class M_pef_evaluation extends Da_pef_evaluation
 	*/
     public function get_group_assessor($id){
         $sql = "SELECT *
-        FROM pefs_database.pef_assessor AS ass
-        INNER JOIN pefs_database.pef_group_assessor AS groupass
-        ON ass.ase_id = groupass.gro_ase_id
-        INNER JOIN pefs_database.pef_group AS gr
-        ON gr.grp_id = groupass.gro_grp_id
-        INNER JOIN dbmc.employee
-        ON ass.ase_emp_id = employee.Emp_ID 
-        INNER JOIN dbmc.position 
-        ON position.Position_ID = employee.Position_ID 
-        INNER JOIN dbmc.sectioncode 
-        ON sectioncode.Sectioncode = employee.Sectioncode_ID
-        INNER JOIN dbmc.company
-        ON employee.Company_ID = company.Company_ID
-        WHERE Emp_ID = ass.ase_emp_id && ass.ase_id = $id";
+            FROM pefs_database.pef_assessor AS ass
+            INNER JOIN pefs_database.pef_group_assessor AS groupass
+            ON ass.ase_emp_id = groupass.gro_ase_id
+            INNER JOIN pefs_database.pef_group AS gr
+            ON gr.grp_id = groupass.gro_grp_id
+            INNER JOIN dbmc.employee
+            ON ass.ase_emp_id = employee.Emp_ID 
+            INNER JOIN dbmc.position 
+            ON position.Position_ID = employee.Position_ID 
+            INNER JOIN dbmc.sectioncode 
+            ON sectioncode.Sectioncode = employee.Sectioncode_ID
+            INNER JOIN dbmc.company
+            ON employee.Company_ID = company.Company_ID
+            WHERE Emp_ID = ass.ase_emp_id && ass.ase_emp_id = $id";
 
         $query = $this->db->query($sql);
         return $query;
@@ -129,6 +98,11 @@ class M_pef_evaluation extends Da_pef_evaluation
         $sql = "SELECT *
                 FROM pefs_database.pef_group_nominee AS groupno
                 INNER JOIN pefs_database.pef_group AS gr
+                ON gr.grp_id = groupno.grn_grp_id
+                INNER JOIN pefs_database.pef_section AS sec
+                ON sec.sec_id = gr.grp_position_group
+                INNER JOIN dbmc.position AS po
+                ON groupno.grn_promote_to = po.Position_ID
                 WHERE groupno.grn_emp_id = $emp_id";
 
         $query = $this->db->query($sql);
@@ -167,7 +141,7 @@ class M_pef_evaluation extends Da_pef_evaluation
 	*/
     public function get_nominee($emp_id)
     {
-        $sql = "SELECT employee.Emp_ID,employee.Empname_eng,employee.Empsurname_eng,position.Position_name,position.Pos_shortName,sectioncode.Department,company.Company_name
+        $sql = "SELECT *
                 FROM pefs_database.pef_group_nominee AS groupno
                 INNER JOIN dbmc.employee
                 ON groupno.grn_emp_id = employee.Emp_ID 
@@ -211,7 +185,7 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Create   Date 2564-08-15 
 	* @Update   Date 2564-08-16
 	*/
-    public function get_all_form_T6($position)
+    public function get_all_form_M_AGM_GM($position)
     {
         $sql = "SELECT *
         FROM  pefs_database.pef_format_form
@@ -233,7 +207,7 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Create   Date 2564-08-15 
 	* @Update   Date 2564-08-16
 	*/
-    public function get_all_form_T5($position)
+    public function get_all_form_AMSSSV_MTSSP($position)
     {
         $sql = "SELECT *
         FROM  pefs_database.pef_format_form
@@ -246,4 +220,27 @@ class M_pef_evaluation extends Da_pef_evaluation
         return $query;
     }
 
+    function get_point(){
+        $sql = "SELECT MAX(per_id) AS max_id
+        FROM pefs_database.pef_performance_form";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
+    
+    function get_point_list($id,$id_emp){
+        $sql = "SELECT *
+        FROM  pefs_database.pef_point_form
+        WHERE pef_point_form.ptf_emp_id = '$id_emp'AND pef_point_form.ptf_ase_id = '$id' ";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
+    function get_ase_id($id){
+        $sql = "SELECT pef_assessor.ase_id 
+        FROM pefs_database.pef_assessor 
+        WHERE pef_assessor.ase_emp_id = '$id'";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }

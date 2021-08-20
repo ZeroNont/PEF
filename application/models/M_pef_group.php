@@ -2,7 +2,7 @@
 /*
 	* M_pef_group.php
     * M_pef_group group data
-    * @Jirayut Saifah
+    * @author Jirayut Saifah
     * @Create Date 2564-08-13
 */
 defined('BASEPATH') or exit('No direct script access allowed');
@@ -54,7 +54,7 @@ class M_pef_group extends Da_pef_group
         return $query;
     } //end  get_group
 /*
-*  get_section
+* get_section
 * get section detail from database
 * @input -
 * @output section detail
@@ -70,7 +70,7 @@ class M_pef_group extends Da_pef_group
         return $query;
     } //end get_section
     /*
-*  get_group_id
+* get_group_id
 * get group detail from database
 * @input -
 * @output last group in database 
@@ -87,7 +87,7 @@ class M_pef_group extends Da_pef_group
         return $query;
     } //end  get_group
     /*
-*  get_nominee_by_group
+* get_nominee_by_group
 * get nominee detail from database
 * @input grn_grp_id
 * @output nominee detail 
@@ -109,7 +109,7 @@ class M_pef_group extends Da_pef_group
         return $query;
     } //end  get_group
     /*
-*  get_pos_nominee_by_group
+* get_pos_nominee_by_group
 * get nominee detail from database
 * @input grn_grp_id
 * @output nominee detail 

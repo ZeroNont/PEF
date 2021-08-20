@@ -28,10 +28,14 @@ class Da_pef_evaluation extends pefs_model
     
     function insert_point()
     {
-        $sql = "INSERT INTO pefs_database.pef_point_form(ptf_point, ptf_date, ptf_row, ptf_ase_id, ptf_for_id, ptf_emp_id, ptf_per_id)
-        VALUES (?,?,?,?,?,?,?,?)";
 
-        $this->db->query($sql, array($this->ptf_point, $this->pef_date, $this->pef_row, $this->ptf_ase_id, $this->ptf_for_id, $this->ptf_emp_id, $this->ptf_per_id));
+        $sql = "INSERT INTO pefs_database.pef_point_form(ptf_point, ptf_date, ptf_row, ptf_ase_id, ptf_for_id, ptf_emp_id, ptf_per_id)
+        VALUES (?,?,?,?,?,?,?)";
+        for ($i= 0; $i < count($this->ptf_for_id);$i++){
+            $this->ptf_row = $i + 1 ;
+        
+            $this->db->query($sql, array($this->ptf_point[$i], $this->ptf_date, $this->ptf_row, $this->ptf_ase_id, $this->ptf_for_id[$i], $this->ptf_emp_id, $this->ptf_per_id));
+        }
     }//เพิ่มข้อมูล Point(คะแนน), Date(วันที่ประเมิน), row(คะแนนแต่ละข้อ), Assessor ที่ประเมิน, ID แบบฟอร์มประเมิน, รหัส Nominee, per_id
 
     function update_performance_form()
@@ -59,4 +63,14 @@ class Da_pef_evaluation extends pefs_model
 
         $this->db->query($sql, array($this->ptf_point, $this->pef_date, $this->pef_row, $this->ptf_ase_id, $this->ptf_for_id, $this->ptf_emp_id, $this->ptf_per_id));
     }//อัพเดทข้อมูล Point(คะแนน), Date(วันที่ประเมิน), row(คะแนนแต่ละข้อ), Assessor ที่ประเมิน, ID แบบฟอร์มประเมิน, รหัส Nominee, per_id
+
+    function update_status()
+    {
+        $sql = "UPDATE pefs_database.pef_group_nominee
+        SET grn_status = ? 
+        WHERE grn_emp_id = ?";
+
+        $this->db->query($sql, array($this->grn_status,$this->grn_emp_id));
+    }
+    
 }

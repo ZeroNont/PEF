@@ -2,8 +2,6 @@
 /*
 * Get_assessor
 * Get_assessor detail
-* @input  -   
-* @output Get_assessor detail
 * @author Jirayut Saifah
 * @Create Date 2564-8-13
 */

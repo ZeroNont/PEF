@@ -4,16 +4,17 @@
     @input -
     @output -
     @author Jirayut Saifah
-    Create 13/8/2564 
+    @Create date 13/8/2564 
 -->
 <script>
-    // get_Emp
-    // display employee detail
-    // @input emp_id
-    // @output employee detail
-    // @author Jirayut Saifah
-    // Create 13 / 8 / 2564
-
+    /*
+    * get_Emp
+    * display employee detail
+    * @input emp_id
+    * @output employee detail
+    * @author Jirayut Saifah
+    * @Create date 13 / 8 / 2564
+    */
     function get_Emp() {
         Emp_id = document.getElementById('Emp_id_modal').value;
         var empname = "";
@@ -38,13 +39,14 @@
             }
         });
     }
-    // get_Emp_edit
-    // display employee detail
-    // @input emp_id
-    // @output employee detail
-    // @author Jirayut Saifah
-    // Create 13 / 8 / 2564
-
+    /*
+    * get_Emp_edit
+    * display employee detail
+    * @input emp_id
+    * @output employee detail
+    * @author Jirayut Saifah
+    * @Create date 13 / 8 / 2564
+    */
     function getEmp_edit(i) {
         Emp_id = document.getElementById('Emp_id' + i).value;
         var empname = "";

@@ -1,9 +1,11 @@
-<!-- v_group_manage
-display group manage
-@input -
-@output -
-@author Jirayut Saifah
-Create 13/8/2564 -->
+<!-- 
+    * v_group_manage
+    * display group manage
+    * @input 
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 13 / 8 / 2564-->
+
 <?php ?>
 
 <!-- Page content -->
@@ -194,12 +196,14 @@ Create 13/8/2564 -->
     var id = "Emp_id";
     var num = 1;
     var index_emp = [];
-    // add
-    // add nominee to list
-    // in: nominee detail
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * add
+    * add nominee to list
+    * @input nominee detail
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 15 / 8 / 2564
+    */
     $("#add").click(function() {
         empname = document.getElementById("showname_modal").value;
         empid = document.getElementById("Emp_id_modal").value;
@@ -235,12 +239,14 @@ Create 13/8/2564 -->
         count_nominee--;
         console.log(index_emp)
     }
-    // get_Emp
-    // display employee detail
-    // in: emp_id
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * get_Emp
+    * display employee detail
+    * @input emp_id
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 15 / 8 / 2564
+    */
     function get_Emp() {
         Emp_id = document.getElementById('Emp_id_modal').value;
         pos = document.getElementById('select').value;
@@ -276,12 +282,14 @@ Create 13/8/2564 -->
             }
         });
     }
-    // save_data
-    // save data group
-    // in: group detail
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * save_data
+    * save data group
+    * @input group detail
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 15 / 8 / 2564
+    */
     function save_data() {
         var emp = []
         var emp_nominee = []
@@ -334,14 +342,14 @@ Create 13/8/2564 -->
         })
 
     }
-
-    // select_all
-    // check box
-    // in: check id
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
-
+    /*
+    * select_all
+    * check box
+    * @input check id
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 15 / 8 / 2564
+    */
     function select_all(source) {
         var check = document.querySelectorAll('input[name="checkbox1"]');
         for (var i = 0; i < check.length; i++) {
@@ -350,13 +358,14 @@ Create 13/8/2564 -->
             }
         }
     }
-    // get_position
-    // get position detail
-    // in: position level
-    // out:position detail
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
-
+    /*
+    * get_position
+    * get position detail
+    * @input position detail
+    * @output 
+    * @author Jirayut Saifah
+    * @Create date 15 / 8 / 2564
+    */
     function get_position() {
         position_level = document.getElementById('select').value;
         // console.log(position_level)
@@ -391,13 +400,14 @@ Create 13/8/2564 -->
         })
 
     }
-
-    // get assessor
-    // display assessor list
-    // in: Group id
-    // out:assessor list
-    // @author Jirayut Saifah
-    // Create date 2564 - 08 - 15
+    /*
+    * get assessor
+    * display assessor list
+    * @input Group id
+    * @output assessor list
+    * @author Jirayut Saifah
+    * @Create date 15 / 8 / 2564
+    */
     function get_assessor() {
         var position_level = document.getElementById('select').value;
         // position_level--;
