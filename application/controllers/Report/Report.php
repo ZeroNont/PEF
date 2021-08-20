@@ -82,7 +82,7 @@ class Report extends MainController
 	}
 
 	/*
-	* show_report_detail_assesor
+	* show_report_detail_assessor
 	* show view report detail assessor
 	* @input    grn_id
 	* @output   data of report detail assessor

@@ -1,13 +1,11 @@
 <?php
-
-// Reviewer 
-// Reviewer module controller
-// @input -
-// @output -
-// @author Nattakorn
-// Create date 2564-08-13
-// Update date 2564-08-19
-
+/*
+*Reviewer 
+*Reviewer module controller
+*@author Nattakorn
+*@Create date 2564-08-13
+*@Update date 2564-08-19
+*/
 
 defined('BASEPATH') or exit('No direct script access allowed');
 require_once(dirname(__FILE__) . "/../MainController.php");

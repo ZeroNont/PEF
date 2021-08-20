@@ -19,12 +19,12 @@ class M_pef_Employee extends Da_pef_Employee
     } //function construct
 
     /*
-*  get_group
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+* get_assessor
+* get assessor detail from database
+* @input sec_level
+* @output assessor detail 
+* @author Jirayut Saifah
+* @Create Date 2564-08-25
 */
     function get_assessor()
     { //check User_login and Pass_login in database
@@ -42,12 +42,12 @@ class M_pef_Employee extends Da_pef_Employee
         return $query;
     } //end  get_group
     /*
-*  get_group
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+* get_section
+* get section detail from database
+* @input 
+* @output section detail 
+* @author Jirayut Saifah
+* @Create Date 2564-08-25
 */
     function get_section()
     { //check User_login and Pass_login in database
@@ -58,12 +58,12 @@ class M_pef_Employee extends Da_pef_Employee
         return $query;
     } //end get_section
     /*
-*  get_group
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+* get_name_emp
+* get employee detail from database
+* @input Emp_ID
+* @output employee detail
+* @author Jirayut Saifah
+* @Create Date 2564-08-25
 */
     public function get_name_emp()
     {
@@ -78,12 +78,12 @@ class M_pef_Employee extends Da_pef_Employee
         return $query;
     }
     /*
-*  get_group
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create Date 2564-07-28
+* get_section_by_emp
+* get section detail from database
+* @input Position_Level
+* @output section detail
+* @author Jirayut Saifah
+* @Create Date 2564-08-25
 */
     public function get_section_by_emp()
     {
@@ -95,10 +95,10 @@ class M_pef_Employee extends Da_pef_Employee
         return $query;
     }
     /*
-* get_emp
-* get Emp_ID in database
-* @input  -
-* @output - 
+* get_position
+* get position in database
+* @input  sec_level
+* @output position detail
 * @author Niphat Kuhokciw
 * @Create Date 2564-07-28
 */
