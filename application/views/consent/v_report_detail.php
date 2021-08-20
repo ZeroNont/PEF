@@ -16,7 +16,7 @@
 <br>
 <div class="card-header">
     <h2>
-        Promote to <?php echo $sec_data[0]->sec_level ?>
+        Promote to <?php echo 'T'.$sec_data[0]->sec_level ?>
     </h2>
     <br>
     <div class="row" id="count_table">

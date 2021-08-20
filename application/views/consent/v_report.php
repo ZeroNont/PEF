@@ -279,6 +279,7 @@
 <script src="https://unpkg.com/file-saver@1.3.3/FileSaver.js"></script>
 
 <script>
+    
     var section = [];
     $(document).ready(function() {
         // $("#count_assessed").hide();
@@ -290,8 +291,7 @@
         show_all_data();
     });
 
-    // function show_chart(label, data) {
-    function show_chart() {
+    function show_chart(label, data) {
         // var bar_charts = document.getElementById("myChart");
 
 
@@ -394,7 +394,6 @@
                 $("#count_table").show();
 
                 // show_chart(label, data);
-                show_chart();
                 show_data_table(data_charts);
                 $('#total_nominee').text(have_not + have);
                 $('#total_have').text(have);
@@ -418,7 +417,7 @@
             obj.forEach((row, index) => {
                 data_row += '<tr>';
                 data_row += '<td>' + (index + 1) + '</td>';
-                data_row += '<td>' + "Promote to " + row.sec_level + '</td>';
+                data_row += '<td>' + "Promote to T" + row.sec_level + '</td>';
                 data_row += '<td id="sum_' + index + '"></td>';
                 data_row += '<td id="assess_' + index + '"></td>';
                 data_row += '<td id="not_assess_' + index + '"></td>';
