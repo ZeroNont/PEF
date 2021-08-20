@@ -1,11 +1,13 @@
 <!--
-    v_review
-    display for review list
-    @input -
-    @output -
-    @author Nattakorn
-    Create date 2564-08-13
-    Update date 2564-08-19
+    /*
+    *v_review
+    *display for review list
+    *@input -
+    *@output -
+    *@author Nattakorn
+    *@Create date 2564-08-13
+    *@Update date 2564-08-19
+    */
 -->
 <style>
 table {

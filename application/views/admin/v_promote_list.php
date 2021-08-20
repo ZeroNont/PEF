@@ -1,9 +1,12 @@
-<!--v_promote_list
-* Display assessor management
-* @input -
-* @output  -
-* @author Niphat Kuhokciw
-* @Create Date 2564-08-12 -->
+<!--
+    /*
+    *v_promote_list
+    * Display assessor management
+    * @input -
+    * @output  -
+    * @author Niphat Kuhokciw
+    * @Create Date 2564-08-12 
+    */-->
 <h1>
     Assessor Management (การจัดการผู้ประเมิน)
 </h1>
