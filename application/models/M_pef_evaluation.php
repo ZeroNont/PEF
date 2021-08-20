@@ -221,7 +221,7 @@ class M_pef_evaluation extends Da_pef_evaluation
         ON pef_description_form.des_id=pef_format_form.for_des_id
         INNER JOIN pefs_database.pef_item_form
         ON pef_description_form.des_itm_id= pef_item_form.itm_id
-        WHERE pef_format_form.for_pos_level= '$position';";
+        WHERE pef_format_form.for_pos_level= 'T$position';";
         $query = $this->db->query($sql);
         return $query;
     }
