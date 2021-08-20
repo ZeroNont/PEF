@@ -13,7 +13,7 @@ table {
 }
 </style>
 <h1>
-    Reviewer (หน้าจอพิจารณาสิทธิการประเมิน )
+    Reviewer (พิจารณาสิทธิการประเมิน )
 
 </h1>
 
@@ -48,7 +48,6 @@ table {
             <div class="form-group">
                 <button onclick='show_all_data()' class="btn btn-primary mb1 bg-blue">Search</button>
             </div>
-
             <div class="form-group">
                 <a href='<?php echo site_url() . 'Reviewer/Reviewer/show_review/' ?>'>
                     <button class="btn btn-default  bg-gray">Clear</button>
