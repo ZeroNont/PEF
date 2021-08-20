@@ -67,7 +67,7 @@ function get_ase_id() {//get_ase_id
 </div>
 <!------------------------------------------------------------------------------->
 <h1>
-    Assessor Management
+    Assessor Management (การจัดการผู้ประเมิน)
 </h1>
 <div class="card-header" id="card_radius">
     <div>
@@ -96,7 +96,7 @@ function get_ase_id() {//get_ase_id
         <!----------------------------------------------------------------------------------------------------------------------->
                     <br>
         <!--------------------------------- Button Add Assessor    --------------------------------------------->
-            <button class="btn btn-success" data-toggle="modal" data-target="#Add" style="margin-left : 84%">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#Add" style="margin-left : 84%">
                 <i class="fa fa-plus-square-o" style="font-size:20px;"></i>&nbsp;Add Assessor
             </button>
         <!------------------------------------------------------------------------------------------------------->
@@ -136,12 +136,12 @@ function get_ase_id() {//get_ase_id
                             }
                             if($cheack == 0){ ?>
                         <a href="<?php echo site_url().'Assessor_management/Assessor_list/delete_assessor/'.$arr_assessor[$i]->ase_id.'/'.$obj_assessor->sec_id.'/';?>">
-                        <button class="btn btn-sm btn-danger">
+                        <button class="btn btn-sm btn-warning">
                             <i class="fa fa-pencil-square"></i>
                         </button>
                     </a>
                 <?php }else{ ?>
-                    <button class="btn btn-sm btn-danger" disabled>
+                    <button class="btn btn-sm btn-danger">
                             <i class="fa fa-pencil-square"></i>
                         </button>
                 <?php } 
@@ -158,9 +158,7 @@ function get_ase_id() {//get_ase_id
         <!------------------------------------------------------------------------------------------------------------------------->
         <br>
         <!--------------------------------------------Button Blace----------------------------------------------------------->
-        <a href="<?php echo base_url() . 'Assessor_management/Promote_list/index/' ?>">
-        <button class="btn btn-dark"  style="margin-left : 87%">Black</button>
-                    </a>
+        <center><a href="<?php echo site_url() . 'Assessor_management/Promote_list/index/'; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
         <!------------------------------------------------------------------------------------------------------------------------->
         </div>
         <script>

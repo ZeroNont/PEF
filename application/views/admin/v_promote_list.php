@@ -5,7 +5,7 @@
 * @author Niphat Kuhokciw
 * @Create Date 2564-08-12 -->
 <h1>
-    Assessor Management 
+    Assessor Management (การจัดการผู้ประเมิน)
 </h1>
 <div class="card-header" id="card_radius">
     <div class="table-responsive">
@@ -30,7 +30,7 @@
                     </td>
                     <td>
                     <a href=" <?php echo site_url().'Assessor_management/Assessor_list/show_assessor/'.$obj_promote[$i]->sec_id?>">
-                        <button class="btn btn-sm btn-dark" data-toggle="modal"
+                        <button class="btn btn-sm btn-warning" data-toggle="modal"
                             data-target="#exampleModal<?php echo $i; ?>"><i class="fa fa-pencil-square-o"></i></button>
                 </a>
                 </td>

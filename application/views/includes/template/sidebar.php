@@ -55,7 +55,7 @@
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link" href="<?php echo base_url() . 'Assessor_management/Promote_list/index/' ?>">
-                                      <i class="fas fa-address-book text-default"></i>
+                                      <i class="fas fa-address-book text-gray"></i>
                                       <span class="nav-link-text">Assessor Management</span>
                                   </a>
                               </li>
