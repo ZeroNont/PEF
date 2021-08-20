@@ -11,7 +11,7 @@
 <a href='#' id='download_link' onClick='javascript:ExcelReport();' class="btn btn-secondary btn-lg canter float-right"><i class="fa fa-download"></i> Export Excel</a>
 
 <h1>
-    &nbsp; Report Detail (รายละเอียดรายงานข้อมูล)
+    &nbsp; Report Group Detail (รายละเอียดรายงานข้อมูลกลุ่ม)
 </h1>
 <br>
 <div class="card-header">

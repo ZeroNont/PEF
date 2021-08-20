@@ -9,7 +9,7 @@
 */ -->
 
 <h1>
-    &nbsp; Report Detail (รายละเอียดรายงานข้อมูล)
+    &nbsp; Report Personal Detail (รายละเอียดรายงานข้อมูลบุคคล)
 </h1>
 <br>
 
