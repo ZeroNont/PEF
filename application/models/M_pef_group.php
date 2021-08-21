@@ -45,7 +45,7 @@ class M_pef_group extends Da_pef_group
     { //check User_login and Pass_login in database
         $sql = "SELECT *
 			FROM pefs_database.pef_group AS grp INNER JOIN pefs_database.pef_section AS sec
-            ON grp.grp_position_group=sec.sec_level
+            ON grp.grp_position_group=sec.sec_id
 			WHERE CURDATE() <= grp.grp_date 
 			";
         $query = $this->db->query($sql);
@@ -75,12 +75,13 @@ class M_pef_group extends Da_pef_group
 * @author Jirayut Saifah
 * @Create Date 2564-08-13
 */
-    function get_section_by_id()
+    function get_section_by_id($id)
     { //check User_login and Pass_login in database
         $sql = "SELECT *
-			FROM pefs_database.pef_section AS sec INNER JOIN pefs_database.pef_group AS group
-            ON sec.sec_id=group.grp_position_group
-            WHERE group.grp_id=?
+			FROM pefs_database.pef_group AS grp 
+            INNER JOIN pefs_database.pef_section AS sec
+            ON grp.grp_position_group=sec.sec_id
+            WHERE grp.grp_id=?
 			";
         $query = $this->db->query($sql, array($this->grp_id));
         return $query;

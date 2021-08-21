@@ -41,8 +41,8 @@
                                     <label class="form-control-label" for="input-city">Position to Promote</label>
                                     <select name="position" id="select" class="form-select"
                                         aria-label="Default select example" onchange="get_assessor()" disabled>
-                                        <option value="0">--------------------------------------------Please
-                                            select--------------------------------</option>
+                                        <!-- <option value="0">--------------------------------------------Please
+                                            select--------------------------------</option> -->
                                         <?php for ($i = 0; $i < count($obj_sec); $i++) {
                                             if ($obj_sec[$i]->sec_id == $obj_group->grp_position_group) { ?>
 
@@ -557,7 +557,7 @@ function get_assessor() {
                 data_row += row.Empname_eng + "  " + row.Empsurname_eng
                 data_row += '</td>'
                 data_row += '<td>'
-                data_row += row.sec_level
+                data_row += 'T' + ' ' + row.sec_level
                 data_row += '</td>'
                 data_row += '<td>'
                 data_row += row.Department
