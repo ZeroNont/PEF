@@ -6,10 +6,6 @@
     * @output -
     * @author Phatchara Khongthandee and Pontakon Mujit 
     * @Create date 2564-08-14
-    * @Update date 2564-08-15
-    * @Update date 2564-08-17
-    * @Update date 2564-08-18
-    * @Update date 2564-08-19
     */
 -->
 <?php
