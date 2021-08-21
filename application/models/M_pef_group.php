@@ -80,9 +80,9 @@ class M_pef_group extends Da_pef_group
         $sql = "SELECT *
 			FROM pefs_database.pef_section AS sec INNER JOIN pefs_database.pef_group AS group
             ON sec.sec_id=group.grp_position_group
-            WHERE 
+            WHERE group.grp_id=?
 			";
-        $query = $this->db->query($sql);
+        $query = $this->db->query($sql, array($this->grp_id));
         return $query;
     } //end get_section
     /*
