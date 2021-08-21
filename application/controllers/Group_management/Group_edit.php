@@ -40,9 +40,10 @@ class Group_edit extends MainController
     function index($id)
     {
         $this->load->model('M_pef_group', 'pef');
-        $data['obj_sec'] = $this->pef->get_section_by_id($id)->result();
         $data['group_id'] = $id;
         $this->pef->grp_id = $id;
+        $data['obj_sec'] = $this->pef->get_section_by_id($id)->result();
+        
         $data['obj_group'] = $this->pef->get_group_by_id()->row();
         $this->output('consent/v_group_edit', $data);
     }
