@@ -68,6 +68,24 @@ class M_pef_group extends Da_pef_group
         return $query;
     } //end get_section
     /*
+* get_section
+* get section detail from database
+* @input -
+* @output section detail
+* @author Jirayut Saifah
+* @Create Date 2564-08-13
+*/
+    function get_section_by_id()
+    { //check User_login and Pass_login in database
+        $sql = "SELECT *
+			FROM pefs_database.pef_section AS sec INNER JOIN pefs_database.pef_group AS group
+            ON sec.sec_id=group.grp_position_group
+            WHERE 
+			";
+        $query = $this->db->query($sql);
+        return $query;
+    } //end get_section
+    /*
 * get_group_id
 * get group detail from database
 * @input -

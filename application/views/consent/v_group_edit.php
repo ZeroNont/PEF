@@ -47,14 +47,14 @@
                                             if ($obj_sec[$i]->sec_id == $obj_group->grp_position_group) { ?>
 
                                         <option value="<?php echo $obj_sec[$i]->sec_id ?>" selected>
-                                            <?php echo 'T'.$obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name; ?>
+                                            <?php echo 'T' . $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name; ?>
                                         </option>
                                         <?php     } //if
                                             else {
                                             ?>
-                                        <option value="<?php echo $obj_sec[$i]->sec_level ?>">
+                                        <option value="<?php echo $obj_sec[$i]->sec_id ?>">
 
-                                            <?php echo 'T'.$obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name; ?>
+                                            <?php echo 'T' . $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name; ?>
                                         </option>
                                         <?php  } //else
                                         } //for
