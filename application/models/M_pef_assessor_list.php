@@ -78,8 +78,8 @@ class M_pef_assessor_list extends Da_pef_assessor_list
     public function get_year()
     {//get_year
         $sql = "SELECT *
-                FROM pefs_database.pef_group
-                GROUP BY YEAR(grp_date) ";
+                FROM pefs_database.pef_assessor
+                GROUP BY YEAR(ase_date) ";
         $query = $this->db->query($sql);
         return $query;
     }//end get_year

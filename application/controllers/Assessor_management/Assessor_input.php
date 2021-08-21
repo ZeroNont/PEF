@@ -40,7 +40,7 @@ class Assessor_input extends MainController
         $this->load->model('Da_pef_assessor_list', 'pef');
         $this->pef->ase_emp_id = $this->input->post('ase_id');
         $this->pef->position_level = $sec_id ;
-        $this->pef->ase_date = date('Y') ;
+        $this->pef->ase_date = date('Y')+1 ;
         $this->pef->insert();
         redirect('Assessor_management/Assessor_list/show_assessor/'.$sec_id);
     }//end insert  

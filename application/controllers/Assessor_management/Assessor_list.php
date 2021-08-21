@@ -39,12 +39,12 @@ class Assessor_list extends MainController
     {//show assessor
         $this->load->model('M_pef_assessor_list', 'pef');
         $data['obj_assessor'] = $this->pef->get_sec_level($sec_id)->row();
-        $data['obj_year'] = $this->pef->get_year($sec_id)->result();
-        $data['arr_assessor'] = $this->pef->get_assessor($sec_id,date('Y'))->result();
+        $data['obj_year'] = $this->pef->get_year()->result();
+        $data['arr_assessor'] = $this->pef->get_assessor($sec_id,date('Y')+1)->result();
         $this->pef->grp_date = date('Y');
         $data['arr_cheack'] = $this->pef->cheack_data()->result();
         $data['sec_id'] = $sec_id ;
-        $data['year_select'] = date('Y') ;
+        $data['year_select'] = date("Y")+1;
         $this->output('admin/v_assessor_list',$data);
     }//end show assessor
 
@@ -94,7 +94,7 @@ class Assessor_list extends MainController
 
         $this->load->model('M_pef_assessor_list', 'pef');
         $data['obj_assessor'] = $this->pef->get_sec_level($sec_id)->row();
-        $data['obj_year'] = $this->pef->get_year($sec_id)->result();
+        $data['obj_year'] = $this->pef->get_year()->result();
         $data['arr_assessor'] = $this->pef->get_assessor($sec_id,$year)->result();
         $this->pef->grp_date = $year;
         $data['arr_cheack'] = $this->pef->cheack_data()->result();

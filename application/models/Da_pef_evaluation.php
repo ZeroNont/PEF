@@ -72,6 +72,15 @@ class Da_pef_evaluation extends pefs_model
         $this->db->query($sql, array($this->grn_status,$this->grn_emp_id));
     }
     
+    function update_status_group()
+    {
+        $sql = "UPDATE pefs_database.pef_group
+        SET grp_status = 1
+        WHERE grp_id = ?";
+
+        $this->db->query($sql, array($this->grp_status, $this->grp_id));
+    }
+
     function update_status_used($group)
     {
         $sql = "UPDATE pefs_database.pef_group

@@ -101,7 +101,7 @@
                                     <!-- แสดงฟอร์มประเมิน T6 & T5 -->
                                     <?php if($ev_all[$i]->Position_Level == 5 || $ev_all[$i]->Position_Level == 6){ ?>
                                         <a  
-                                            href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_amsssv_mtssp/'.$ev_all[$i]->ase_emp_id.'/'.$ev_all[$i]->grn_emp_id.'/'.$ev_all[$i]->sec_level.'/'.$ev_all[$i]->grn_status;?>" >
+                                            href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_amsssv_mtssp/'.$ev_all[$i]->ase_emp_id.'/'.$ev_all[$i]->grn_id.'/'.$ev_all[$i]->sec_level.'/'.$ev_all[$i]->grn_status.'/'.$ev_all[$i]->grn_emp_id;?>" >
                                             <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                                 <i class="fas fa-edit text-white"></i>
                                             </button>
@@ -110,7 +110,7 @@
                                     <!-- แสดงฟอร์มประเมิน T4, T3, T2 -->
                                     <?php } else {?>
                                         <a 
-                                            href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_g_agm_gm/'.$ev_all[$i]->ase_emp_id.'/'.$ev_all[$i]->grn_emp_id.'/'.$ev_all[$i]->sec_level.'/'.$ev_all[$i]->grn_status;?>" >
+                                            href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_g_agm_gm/'.$ev_all[$i]->ase_emp_id.'/'.$ev_all[$i]->grn_id.'/'.$ev_all[$i]->sec_level.'/'.$ev_all[$i]->grn_status.'/'.$ev_all[$i]->grn_emp_id;?>" >
                                             <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
                                                 <i class="fas fa-edit text-white"></i>
                                             </button>

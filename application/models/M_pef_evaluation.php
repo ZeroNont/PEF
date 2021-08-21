@@ -23,7 +23,7 @@ class M_pef_evaluation extends Da_pef_evaluation
         parent::__construct();
     }
 
-     /*
+    /*
 	* get_all_list
 	* คืนค่าชื่อกรรมการ, ชื่อกลุ่ม, วันที่ประเมิน, จำนวน Nominee ที่ต้องประเมิน, ชื่อ Nominee, ตำแหน่ง, แผนก, Promote to
 	* @input   id_ass
@@ -52,10 +52,9 @@ class M_pef_evaluation extends Da_pef_evaluation
 		INNER JOIN dbmc.position AS pos 
         ON pos.Position_ID = groupno.grn_promote_to 
         WHERE  ass.ase_emp_id =  '$id_ass'";
-
         $query = $this->db->query($sql);
         return $query;
-    }//คืนค่าชื่อกรรมการ, ชื่อกลุ่ม, วันที่ประเมิน, จำนวน Nominee ที่ต้องประเมิน, ชื่อ Nominee, ตำแหน่ง, แผนก, Promote to
+    } //คืนค่าชื่อกรรมการ, ชื่อกลุ่ม, วันที่ประเมิน, จำนวน Nominee ที่ต้องประเมิน, ชื่อ Nominee, ตำแหน่ง, แผนก, Promote to
 
     /*
 	* get_group_assessor
@@ -67,7 +66,8 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Create  Date 2564-08-17 
 	* @Update  Date 2564-08-18
 	*/
-    public function get_group_assessor($id){
+    public function get_group_assessor($id)
+    {
         $sql = "SELECT *
             FROM pefs_database.pef_assessor AS ass
             INNER JOIN pefs_database.pef_group_assessor AS groupass
@@ -86,9 +86,9 @@ class M_pef_evaluation extends Da_pef_evaluation
 
         $query = $this->db->query($sql);
         return $query;
-    }//คืนค่ากลุ่ม Assessor
+    } //คืนค่ากลุ่ม Assessor
 
-     /*
+    /*
 	* get_group_nominee
 	* คืนค่ากลุ่มประเมินของ Nominee
 	* @input   emp_id (รหัส Nominee)
@@ -113,7 +113,7 @@ class M_pef_evaluation extends Da_pef_evaluation
 
         $query = $this->db->query($sql);
         return $query;
-    }//คืนค่ากลุ่ม Nominee
+    } //คืนค่ากลุ่ม Nominee
 
     /*
     * get_file_present_nominee
@@ -124,14 +124,14 @@ class M_pef_evaluation extends Da_pef_evaluation
     * @Create   Date 2564-08-15
     * @Update   Date 2564-08-16
     */
-    public function get_file_present_nominee($emp_id)
+    public function get_file_present_nominee($grn_emp_id)
     {
         $sql = "SELECT * 
                 FROM pefs_database.pef_file AS nofile
                 INNER JOIN pefs_database.pef_group_nominee AS groupno
                 ON nofile.fil_emp_id = groupno.grn_emp_id
-                WHERE groupno.grn_emp_id = $emp_id";
-                
+                WHERE groupno.grn_emp_id = $grn_emp_id";
+
         $query = $this->db->query($sql);
         return $query;
     }
@@ -203,7 +203,7 @@ class M_pef_evaluation extends Da_pef_evaluation
         $query = $this->db->query($sql);
         return $query;
     }
-   
+
     /*
 	* get_all_form_amsssv_mtssp
 	* คืนค่าแบบฟอร์มการประเมิน T5 & T6
@@ -234,7 +234,8 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Create  Date 2564-08-18 
 	* @Update  Date 2564-08-19
 	*/
-    function get_point(){
+    function get_point()
+    {
         $sql = "SELECT MAX(per_id) AS max_id
         FROM pefs_database.pef_performance_form";
 
@@ -250,7 +251,8 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Create   Date 2564-08-18 
 	* @Update   Date 2564-08-19
 	*/
-    function get_point_list($id,$id_emp){
+    function get_point_list($id, $id_emp)
+    {
         $sql = "SELECT *
         FROM  pefs_database.pef_point_form
         WHERE pef_point_form.ptf_emp_id = '$id_emp'AND pef_point_form.ptf_ase_id = '$id' ";
@@ -268,7 +270,8 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Create   Date 2564-08-18 
 	* @Update   Date 2564-08-19
     */
-    function get_ase_id($id){
+    function get_ase_id($id)
+    {
         $sql = "SELECT pef_assessor.ase_id 
         FROM pefs_database.pef_assessor 
         WHERE pef_assessor.ase_emp_id = '$id'";
@@ -285,7 +288,8 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Create   Date 2564-08-18 
 	* @Update   Date 2564-08-19
     */
-    function get_performance($id,$id_emp){
+    function get_performance($id, $id_emp)
+    {
         $sql = "SELECT *
         FROM  pefs_database.pef_performance_form
         WHERE pef_performance_form.per_ase_id = '$id' AND pef_performance_form.per_emp_id = '$id_emp'";
