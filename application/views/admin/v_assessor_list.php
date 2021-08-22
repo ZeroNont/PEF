@@ -78,7 +78,7 @@
             <h1>Promote To T<?php echo $obj_assessor->sec_level ?></h1>
             <!-------------------------------------  Select Year  --------------------------------------------------------------->
             <form action="<?php echo site_url() . 'Assessor_management/Assessor_list/show_year/' . $sec_id . '/' ?>" method="post" enctype="multipart/form-data" name="formyear">
-                <label class="form-control-label" for="input-city" style="margin-left : 84%">Select Year</label>
+                <label class="form-control-label" for="input-city" style="margin-left : 88%">Select Year</label>
                 <select name="year" id="year" class="form-select" aria-label="Default select example" onchange="formyear.submit()">
                     <?php for ($i = 0; $i < count($obj_year); $i++) {
                         if ($obj_year[$i]->ase_date == $year_select) { ?>
@@ -99,7 +99,7 @@
             <!----------------------------------------------------------------------------------------------------------------------->
             <br>
             <!--------------------------------- Button Add Assessor    --------------------------------------------->
-            <button class="btn btn-primary" data-toggle="modal" data-target="#Add" style="margin-left : 84%">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#Add" style="margin-left : 88%">
                 <i class="fa fa-plus-square-o" style="font-size:20px;"></i>&nbsp;Add Assessor
             </button>
             <!------------------------------------------------------------------------------------------------------->
@@ -138,13 +138,13 @@
                                     }
                                     if ($cheack == 0) { ?>
                                         <a href="<?php echo site_url() . 'Assessor_management/Assessor_list/delete_assessor/' . $arr_assessor[$i]->ase_id . '/' . $obj_assessor->sec_id . '/'; ?>">
-                                            <button class="btn btn-sm btn-warning">
-                                                <i class="fa fa-pencil-square"></i>
+                                            <button class="btn btn-sm btn-danger">
+                                            <i class="fas fa-times"></i>
                                             </button>
                                         </a>
                                     <?php } else { ?>
-                                        <button class="btn btn-sm btn-danger">
-                                            <i class="fa fa-pencil-square"></i>
+                                        <button class="btn btn-sm btn-danger"disabled>
+                                        <i class="fas fa-times"></i>
                                         </button>
                                     <?php }
                                     $cheack = 0;
