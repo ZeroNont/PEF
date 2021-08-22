@@ -78,7 +78,7 @@
             <h1>Promote To T<?php echo $obj_assessor->sec_level ?></h1>
             <!-------------------------------------  Select Year  --------------------------------------------------------------->
             <form action="<?php echo site_url() . 'Assessor_management/Assessor_list/show_year/' . $sec_id . '/' ?>" method="post" enctype="multipart/form-data" name="formyear">
-                <label class="form-control-label" for="input-city" style="margin-left : 88%">Select Year</label>
+                <label class="form-control-label" for="input-city" style="margin-left : 85%">Select Year</label>
                 <select name="year" id="year" class="form-select" aria-label="Default select example" onchange="formyear.submit()">
                     <?php for ($i = 0; $i < count($obj_year); $i++) {
                         if ($obj_year[$i]->ase_date == $year_select) { ?>
@@ -99,7 +99,7 @@
             <!----------------------------------------------------------------------------------------------------------------------->
             <br>
             <!--------------------------------- Button Add Assessor    --------------------------------------------->
-            <button class="btn btn-primary" data-toggle="modal" data-target="#Add" style="margin-left : 88%">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#Add" style="margin-left : 85%">
                 <i class="fa fa-plus-square-o" style="font-size:20px;"></i>&nbsp;Add Assessor
             </button>
             <!------------------------------------------------------------------------------------------------------->

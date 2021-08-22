@@ -30,7 +30,6 @@
             <div class="card-body">
                 <form>
                     <div class="pl-lg-4">
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
 
@@ -58,9 +57,6 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-
 
                 </form>
 
