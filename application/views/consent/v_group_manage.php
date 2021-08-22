@@ -302,47 +302,56 @@ function save_data() {
     var sum;
     var T = document.getElementById('select').value;
     element = document.getElementsByName("pos");
+    var date = '';
     var date = document.getElementById('date').value;
-    console.log(count_nominee);
-    console.log(15)
-    for (var i = 0; i < count; i++) {
-        if (document.getElementById('check_box' + i).checked) {
-            emp.push(document.getElementById('gro_ase_id_' + i).innerHTML)
-            console.log(emp + "55")
-        }
-    }
-    for (var i = 0; i < count_nominee; i++) {
-        console.log(index_emp[i]);
-        emp_nominee.push(document.getElementById('Emp_id_' + index_emp[i]).innerHTML)
-        promote.push(document.getElementById('Promote_' + index_emp[i]).innerHTML)
-        pos_id[i] = element[i].getAttribute('id');
-        console.log(444)
-    }
-    console.log(date)
-    console.log(emp)
-    console.log(T)
-    console.log(emp_nominee)
-    console.log(promote)
-    console.log(pos_id)
-    console.log(11)
+    if (date == "") {
 
-    //ใช้ ajax 
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url(); ?>Group_management/Group_insert/insert",
-        data: {
-            "emp": emp,
-            "emp_nominee": emp_nominee,
-            "promote": promote,
-            "pos_id": pos_id,
-            "date": date,
-            "position_group": T
-        },
-        success: function(data) {
-            console.log(data);
-            window.location.href = "<?php echo base_url(); ?>Group_management/Group_list/index";
+        alert('Unavailable date');
+
+
+    } else {
+        console.log(count_nominee);
+        console.log(15)
+        for (var i = 0; i < count; i++) {
+            if (document.getElementById('check_box' + i).checked) {
+                emp.push(document.getElementById('gro_ase_id_' + i).innerHTML)
+                console.log(emp + "55")
+            }
         }
-    })
+        for (var i = 0; i < count_nominee; i++) {
+            console.log(index_emp[i]);
+            emp_nominee.push(document.getElementById('Emp_id_' + index_emp[i]).innerHTML)
+            promote.push(document.getElementById('Promote_' + index_emp[i]).innerHTML)
+            pos_id[i] = element[i].getAttribute('id');
+            console.log(444)
+        }
+        console.log(date)
+        console.log(emp)
+        console.log(T)
+        console.log(emp_nominee)
+        console.log(promote)
+        console.log(pos_id)
+        console.log(11)
+
+        //ใช้ ajax 
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url(); ?>Group_management/Group_insert/insert",
+            data: {
+                "emp": emp,
+                "emp_nominee": emp_nominee,
+                "promote": promote,
+                "pos_id": pos_id,
+                "date": date,
+                "position_group": T
+            },
+            success: function(data) {
+                console.log(data);
+                window.location.href = "<?php echo base_url(); ?>Group_management/Group_list/index";
+            }
+        })
+    }
+
 
 }
 /*
