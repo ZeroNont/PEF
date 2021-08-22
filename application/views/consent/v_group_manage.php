@@ -457,4 +457,7 @@ function get_assessor() {
         }
     })
 }
+$(document).ready(function() {
+    document.getElementById("date").required = true;
+});
 </script>
