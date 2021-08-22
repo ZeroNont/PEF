@@ -15,7 +15,7 @@ class Da_pef_evaluation extends pefs_model
 
     function construct()
     {
-        parent::construct();
+        parent::__construct();
     }
 
     /*

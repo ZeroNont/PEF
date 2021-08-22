@@ -35,8 +35,7 @@
                             <div class="form-group">
 
                                 <label class="form-control-label" for="input-city">Position to Promote</label>
-                                <select name="position" id="select" class="form-select"
-                                    aria-label="Default select example" onchange="get_assessor()">
+                                <select name="position" id="select" class="form-select" aria-label="Default select example" onchange="get_assessor()">
                                     <option value="0">--------------------------------------------Please
                                         select--------------------------------</option>
                                     <?php for ($i = 0; $i < count($obj_sec); $i++) { ?>
@@ -53,8 +52,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="form-control-label">Date</label>
-                                <input type="date" id="date" class="form-control" min="<?php echo date('Y-m-d') ?>"
-                                    required>
+                                <input type="date" id="date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
                             </div>
                         </div>
                     </div>
@@ -106,8 +104,7 @@
                     </div>
 
                 </div>
-                <button class="btn btn-primary float-right" data-toggle="modal" data-target="#Add"
-                    onclick="get_position()"><i class="material-icons">Add Nominee</i></button>
+                <button class="btn btn-primary float-right" data-toggle="modal" data-target="#Add" onclick="get_position()"><i class="material-icons">Add Nominee</i></button>
             </div>
             <div class="card-body">
 
@@ -134,8 +131,6 @@
 
                     </ol>
 
-
-
                 </div>
 
             </div>
@@ -161,8 +156,7 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="focusedinput" class="form-label">Employee ID</label>
-                    <input type="text" class="form-control" name="Emp_ID[]" id="Emp_id_modal" placeholder="JS000xxx"
-                        onkeyup="get_Emp()" required>
+                    <input type="text" class="form-control" name="Emp_ID[]" id="Emp_id_modal" placeholder="JS000xxx" onkeyup="get_Emp()" required>
                 </div>
                 <div class="mb-3">
                     <label for="focusedinput" class="form-label">Name</label>

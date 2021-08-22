@@ -2,8 +2,6 @@
 /*
 * M_pef_result
 * Model Result
-* @input  -
-* @output - 
 * @author Apinya Phadungkit
 * @Create Date 2564-8-15
 * @Update Date 2564-8-16
@@ -22,7 +20,7 @@ class M_pef_result extends Da_pef_result
 {
 
     /*
-    * Function __construct
+    * __construct
     * @input  -   
     * @output -
     * @author Apinya Phadungkit
@@ -35,7 +33,7 @@ class M_pef_result extends Da_pef_result
     }
 
     /*
-    * Function get_group
+    * get_group
     * @input  -   
     * @output -
     * @author Apinya Phadungkit
@@ -66,7 +64,7 @@ class M_pef_result extends Da_pef_result
     }//get_group ดึงข้อมูลที่ใช้แสดงใน Result list
 
     /*
-    * Function get_by_id
+    * get_by_id
     * @input  id  
     * @output -
     * @author Apinya Phadungkit
@@ -86,7 +84,7 @@ class M_pef_result extends Da_pef_result
     }//get_by_id ดึงข้อมูลที่อยู่ในตาราง group_nominee ที่join กับตาราง point_form โดยที่ ptf_emp_id ต้องมีค่าเท่ากับค่าในตัวแปร id ที่ถูกส่งมา
 
     /*
-    * Function get_nomonee
+    * get_nomonee
     * @input  id  
     * @output -
     * @author Apinya Phadungkit
@@ -113,7 +111,7 @@ class M_pef_result extends Da_pef_result
     }//get_nomonee ดึงข้อมูล nominee
 
     /*
-    * Function get_position
+    * get_position
     * @input  position  
     * @output -
     * @author Apinya Phadungkit
@@ -195,7 +193,7 @@ class M_pef_result extends Da_pef_result
     }//ดึงข้อมูลกลุ่ม nominee
 
     /*
-	* get_all_form
+	* get_all_AMSSSV_MTSSP
 	* คืนค่ากลุ่มประเมินของ nominee
 	* @input 	$id (รหัส Nominee),$position
 	* @output 	ประเมินของ Nominee
@@ -265,7 +263,7 @@ class M_pef_result extends Da_pef_result
     }//commentประเมินของ Nominee
 
     /*
-	* get_score
+	* get_score_T5
 	* คืนค่ากลุ่มประเมินของ nominee
 	* @input 	$id
 	* @output 	คะแนนประเมินของ Nominee
