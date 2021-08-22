@@ -101,7 +101,7 @@ div.a {
                             // foreach 
                             // ยังไม่มีไฟล์จะเพิ่มไฟล์
                             if ($check == 0) { ?>
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#insert_modal_file<?php echo $i ?>"><i class="fas fa-file-upload"></i></button>
+                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#insert_modal_file<?php echo $i ?>"><i class="fas fa-file-upload"></i></button>
                         <?php  }
                             // if
                             //เคยมีไฟล์แล้วจะอัปเดต

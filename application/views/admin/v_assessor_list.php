@@ -9,30 +9,30 @@
     */ 
 -->
 <script>
-    function get_ase_id() { //get_ase_id
-        Ase_id = document.getElementById('ase_id_modal').value;
-        var empname = "";
-        console.log(Ase_id)
-        $.ajax({
-            type: "POST",
-            url: "<?php echo base_url(); ?>Assessor_management/Assessor_list/search_by_ase_id",
-            data: {
-                "Ase_id": Ase_id
-            },
-            dataType: "JSON",
-            success: function(data, status) {
-                console.log(data);
-                if (data.length == 0) {
-                    document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
-                } else {
-                    empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
-                    document.getElementById("showname_modal").value = empname;
-                    console.log(999)
-                    console.log(empname)
-                }
-            } //end get_ase_id
-        });
-    }
+function get_ase_id() { //get_ase_id
+    Ase_id = document.getElementById('ase_id_modal').value;
+    var empname = "";
+    console.log(Ase_id)
+    $.ajax({
+        type: "POST",
+        url: "<?php echo base_url(); ?>Assessor_management/Assessor_list/search_by_ase_id",
+        data: {
+            "Ase_id": Ase_id
+        },
+        dataType: "JSON",
+        success: function(data, status) {
+            console.log(data);
+            if (data.length == 0) {
+                document.getElementById("showname_modal").value = "ไม่มีข้อมูล";
+            } else {
+                empname = data[0].Empname_eng + " " + data[0].Empsurname_eng;
+                document.getElementById("showname_modal").value = empname;
+                console.log(999)
+                console.log(empname)
+            }
+        } //end get_ase_id
+    });
+}
 </script>
 <!----------------------- Add assessor ------------------>
 <div id="Add" class="modal fade" role="dialog">
@@ -69,7 +69,7 @@
 </div>
 <!------------------------------------------------------------------------------->
 <h1>
-    Assessor Management (การจัดการผู้ประเมิน)
+    Assessor Management (เพิ่มผู้ประเมิน)
 </h1>
 <div class="card-header" id="card_radius">
     <div>
@@ -82,14 +82,14 @@
                 <select name="year" id="year" class="form-select" aria-label="Default select example" onchange="formyear.submit()">
                     <?php for ($i = 0; $i < count($obj_year); $i++) {
                         if ($obj_year[$i]->ase_date == $year_select) { ?>
-                            <option selected value="<?php echo $obj_year[$i]->ase_date; ?>">
-                                <?php echo $obj_year[$i]->ase_date; ?>
-                            </option>
-                        <?php } //if
+                    <option selected value="<?php echo $obj_year[$i]->ase_date; ?>">
+                        <?php echo $obj_year[$i]->ase_date; ?>
+                    </option>
+                    <?php } //if
                         else { ?>
-                            <option value="<?php echo $obj_year[$i]->ase_date; ?>">
-                                <?php echo $obj_year[$i]->ase_date; ?>
-                            </option>
+                    <option value="<?php echo $obj_year[$i]->ase_date; ?>">
+                        <?php echo $obj_year[$i]->ase_date; ?>
+                    </option>
                     <?php } //else
                     } //for
                     ?>
@@ -123,37 +123,37 @@
                     <?php
                     $cheack = 0;
                     for ($i = 0; $i < count($arr_assessor); $i++) { ?>
-                        <tr>
-                            <td><?php echo $i + 1 ?></td>
-                            <td><?php echo $arr_assessor[$i]->ase_emp_id ?></td>
-                            <td><?php echo $arr_assessor[$i]->Empname_eng . ' ' . $arr_assessor[$i]->Empsurname_eng ?></td>
-                            <td><?php echo $arr_assessor[$i]->Position_name ?></td>
-                            <td><?php echo $arr_assessor[$i]->Department ?></td>
-                            <td>
-                                <?php if ($arr_assessor[$i]->ase_date == date("Y")+1) {
+                    <tr>
+                        <td><?php echo $i + 1 ?></td>
+                        <td><?php echo $arr_assessor[$i]->ase_emp_id ?></td>
+                        <td><?php echo $arr_assessor[$i]->Empname_eng . ' ' . $arr_assessor[$i]->Empsurname_eng ?></td>
+                        <td><?php echo $arr_assessor[$i]->Position_name ?></td>
+                        <td><?php echo $arr_assessor[$i]->Department ?></td>
+                        <td>
+                            <?php if ($arr_assessor[$i]->ase_date == date("Y") + 1) {
                                     foreach ($arr_cheack as $row) {
                                         if ($arr_assessor[$i]->ase_emp_id == $row->gro_ase_id) {
                                             $cheack++;
                                         }
                                     }
                                     if ($cheack == 0) { ?>
-                                        <a href="<?php echo site_url() . 'Assessor_management/Assessor_list/delete_assessor/' . $arr_assessor[$i]->ase_id . '/' . $obj_assessor->sec_id . '/'; ?>">
-                                            <button class="btn btn-sm btn-danger">
-                                            <i class="fas fa-times"></i>
-                                            </button>
-                                        </a>
-                                    <?php } else { ?>
-                                        <button class="btn btn-sm btn-danger"disabled>
-                                        <i class="fas fa-times"></i>
-                                        </button>
-                                    <?php }
+                            <a href="<?php echo site_url() . 'Assessor_management/Assessor_list/delete_assessor/' . $arr_assessor[$i]->ase_id . '/' . $obj_assessor->sec_id . '/'; ?>">
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </a>
+                            <?php } else { ?>
+                            <button class="btn btn-sm btn-danger" disabled>
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <?php }
                                     $cheack = 0;
                                     ?>
-                                <?php } else if ($arr_assessor[$i]->ase_date < date("Y") || $arr_assessor[$i]->ase_date > date("Y")) { ?>
-                                    <p>-</p>
-                                <?php } ?>
-                            </td>
-                        </tr>
+                            <?php } else if ($arr_assessor[$i]->ase_date < date("Y") || $arr_assessor[$i]->ase_date > date("Y")) { ?>
+                            <p>-</p>
+                            <?php } ?>
+                        </td>
+                    </tr>
                     <?php } ?>
                 </tbody>
             </table>
@@ -164,9 +164,9 @@
             <!------------------------------------------------------------------------------------------------------------------------->
         </div>
         <script>
-            $(document).ready(function() {
-                $('#example').DataTable();
-            });
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
         </script>
         <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
         <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
