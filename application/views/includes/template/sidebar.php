@@ -56,7 +56,7 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="<?php echo base_url() . 'Report/Summary/score_manage/' ?>">
+                                  <a class="nav-link" href="<?php echo base_url() . 'Report/Summary/score_manage/8' ?>">
                                       <i class="ni ni-single-02 text-green"></i>
                                       <span class="nav-link-text">Score Summary</span>
                                   </a>
@@ -88,6 +88,9 @@
 
           </div>
       </div>
+  </nav>
+
+  <!-- Main content -->
   </nav>
 
   <!-- Main content -->
