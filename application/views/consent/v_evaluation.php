@@ -2,6 +2,8 @@
     /*
     * v_evaluation
     * display Evaluation list
+    * @input id, emp_id, position
+    * @output -
     * @author Phatchara Khongthandee and Pontakon Mujit 
     * @Create date : 2564-08-15   
     * @Update date : 2564-08-16

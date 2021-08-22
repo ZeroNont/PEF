@@ -2,10 +2,8 @@
     /*
     * Evaluation
     * Controller for Evaluation module
-    * @input -
-    * @output -
     * @author Phatchara Khongthandee and Pontakon Mujit 
-    * @Create date 2564-08-14
+    * @Create Date 2564-08-14
     */
 -->
 <?php

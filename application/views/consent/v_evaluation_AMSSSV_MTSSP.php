@@ -309,7 +309,15 @@
 
 <script>
     $(document).ready(function() {
-        //คืนค่าคะแนนรวม
+
+        /*
+        * total_calculete
+        * คืนค่าคะแนนรวม
+        * @input   form
+        * @output  -
+        * @author  Phatchara Khongthandee and Pontakon Mujit
+        * @Create  Date 2564-08-18
+        */
         $("select").change(function() {
             var toplem = 0;
             var i = 0;
@@ -324,6 +332,14 @@
             $("input[name=total]").val(toplem);
         });
 
+        /*
+        * total_calculate_weight
+        * //คืนค่าคะแนนรวมแบบเปอเซ็น
+        * @input   form
+        * @output  -
+        * @author  Phatchara Khongthandee and Pontakon Mujit
+        * @Create  Date 2564-08-18
+        */
         $("select").change(function() {
             var toplem = 0;
             var i = 0;
@@ -335,7 +351,7 @@
                 i = i + 1;
 
             })
-            //คืนค่าคะแนนรวมแบบเปอเซ็น
+            
             toplem = Math.round(toplem / weight * 100);
             var a = '%'
             $("input[name=total_weight]").val(toplem + a);
@@ -346,13 +362,28 @@
         //คืนค่าคะแนนรวมแบบรายการ
         calculate_weight()
 
-        // ซ่อน Modal ยืนยันการประเมิน
+        /*
+        * modal_success
+        * ซ่อน Modal ยืนยันการประเมิน
+        * @input   -
+        * @output  -
+        * @author  Phatchara Khongthandee and Pontakon Mujit
+        * @Create  Date 2564-08-18
+        */
         $("#btn_success").click(function() {
             $("#Modal_confirm").hide();
 
         });
     })
 
+    /*
+    * calculate_weight_list
+    * คืนค่าคะแนนรวมแบบเปอเซ็น
+    * @input   form, count_index
+    * @output  -
+    * @author  Phatchara Khongthandee and Pontakon Mujit
+    * @Create  Date 2564-08-18
+    */
     function calculate_weight() {
         var count = document.getElementById("count_index").value;
 

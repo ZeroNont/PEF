@@ -2,8 +2,6 @@
     /* 
     * M_pef_evaluation
     * Model for evaluation module
-    * @input  -
-    * @output -
     * @author Phatchara Khongthandee and Pontakon Mujit 
     * @Create Date 2564-08-14  
     */

@@ -1,13 +1,15 @@
 <!--
-    v_history_M_AGM_GM
-    display for Result Form Promote to T4, T3, T2
-    @author Phatchara Khongthandee and Pontakon Mujit
-    Create date 2564-08-14   
-    Update date 2564-08-15
-    Update date 2564-08-16
-    Update date 2564-08-17
-    Update date 2564-08-18
-    Update date 2564-08-19
+    * v_history_M_AGM_GM
+    * display for Result Form Promote to T4, T3, T2
+    * @input  -
+    * @output -
+    * @author Apinya Phadungkit
+    * Create date 2564-08-14   
+    * Update date 2564-08-15
+    * Update date 2564-08-16
+    * Update date 2564-08-17
+    * Update date 2564-08-18
+    * Update date 2564-08-19
 -->
 <!-- CSS -->
 <style>

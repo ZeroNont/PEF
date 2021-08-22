@@ -358,7 +358,15 @@
 
     <script>
         $(document).ready(function() {
-            //คืนค่าคะแนนรวม
+            
+            /*
+            * total_calculete
+            * คืนค่าคะแนนรวม
+            * @input   form
+            * @output  -
+            * @author  Phatchara Khongthandee and Pontakon Mujit
+            * @Create  Date 2564-08-18
+            */
             $("select").change(function() {
                 var toplem = 0;
                 $("select[name='form[]']").each(function() {
@@ -367,7 +375,15 @@
                 })
                 $("input[name=total]").val(toplem);
             });
-            //คืนค่าคะแนนรวมแบบเปอเซ็นต์
+            
+             /*
+            * total_calculate_weight
+            * //คืนค่าคะแนนรวมแบบเปอเซ็น
+            * @input   form
+            * @output  -
+            * @author  Phatchara Khongthandee and Pontakon Mujit
+            * @Create  Date 2564-08-18
+            */
             $("select").change(function() {
                 var toplem = 0;
                 var weight = $("#weight").val();
@@ -382,7 +398,15 @@
 
             });
 
-            // ซ่อน Modal ยืนยันการประเมิน
+
+            /*
+            * modal_success
+            * ซ่อน Modal ยืนยันการประเมิน
+            * @input   -
+            * @output  -
+            * @author  Phatchara Khongthandee and Pontakon Mujit
+            * @Create  Date 2564-08-18
+            */
             $("#btn_success").click(function() {
                 $("#Modal_confirm").hide();
 
