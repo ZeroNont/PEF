@@ -16,40 +16,40 @@
 
 <!-- CSS -->
 <style>
-    table {
-        width: 100%;
-    }
+table {
+    width: 100%;
+}
 
-    #card_radius {
-        border-radius: 20px;
-    }
+#card_radius {
+    border-radius: 20px;
+}
 
-    #center_th td {
-        text-align: center;
-        font-weight: bold;
-    }
+#center_th td {
+    text-align: center;
+    font-weight: bold;
+}
 
-    #gray {
-        background-color: #E3E3E3;
-    }
+#gray {
+    background-color: #E3E3E3;
+}
 
-    #img {
-        display: block;
-        margin-left: 150px;
-    }
+#img {
+    display: block;
+    margin-left: 150px;
+}
 
-    /* จัดตำแหน่งชื่อบริษัท */
-    .center_com {
-        padding: 70px;
-    }
+/* จัดตำแหน่งชื่อบริษัท */
+.center_com {
+    padding: 70px;
+}
 
-    #set_id {
-        width: 10px;
-    }
+#set_id {
+    width: 10px;
+}
 
-    #set_button {
-        font-size: 16px;
-    }
+#set_button {
+    font-size: 16px;
+}
 </style>
 
 <!-- Evaluation form -->
@@ -156,7 +156,7 @@
 
                                 for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
                                 ?>
-                                    <?php $count_rowspan = 0;
+                                <?php $count_rowspan = 0;
                                     for ($loop_rowspan = 0; $loop_rowspan < count($arr_dis); $loop_rowspan++) {
                                         if ($arr_dis[$loop_rowspan]->des_itm_id == $arr_dis[$i]->itm_id) {
                                             $count_rowspan++;
@@ -164,14 +164,14 @@
                                     } //นับ discription เพื่อกำหนด rowspan 
                                     ?>
 
-                                    <?php $loop_dis = 1;
+                                <?php $loop_dis = 1;
                                     while ($loop_dis <= $count_rowspan) { ?>
                             <tr>
                                 <?php if ($loop_dis === 1) { ?>
-                                    <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center;"> <b>
-                                            <?php echo $arr_dis[$count_discription]->itm_detail_eng; ?>
-                                            <br><?php echo $arr_dis[$count_discription]->itm_detail_th; ?></b>
-                                    </td>
+                                <td rowspan="<?php echo $count_rowspan; ?>" style="vertical-align:middle;text-align: center;"> <b>
+                                        <?php echo $arr_dis[$count_discription]->itm_detail_eng; ?>
+                                        <br><?php echo $arr_dis[$count_discription]->itm_detail_th; ?></b>
+                                </td>
                                 <?php } //แสดงห้อข้อหลัก
                                 ?>
 
@@ -208,25 +208,25 @@
                                 <td colspan="2" id="show_weight_<?php echo $count_discription; ?>" style="vertical-align:middle; text-align: center;"></td>
                                 <input type="text" name="point_list[]" ID="point_list<?php echo  $count_discription; ?>" value="0" hidden>
                                 <input type="text" ID="weight_list_<?php echo $count_discription; ?>" value=<?php echo $arr_dis[$i]->for_des_weight; ?> hidden>
-                            <?php $count_discription++;
+                                <?php $count_discription++;
                                         $loop_dis++;
                                     } ?>
-                            <input type="hidden" value="<?php echo     $arr_dis[$i]->for_id ?>" name="for_id[]">
+                                <input type="hidden" value="<?php echo     $arr_dis[$i]->for_id ?>" name="for_id[]">
 
                             </tr>
 
-                        <?php } ?>
-                        <!-- แสดง Score -->
+                            <?php } ?>
+                            <!-- แสดง Score -->
 
-                        <input type="text" ID="count_index" value=<?php echo $count_discription; ?> hidden>
-                        <input type="text" name="weight" ID="weight" value=<?php echo $weight; ?> hidden>
-                        <input type="text" name="weight-per" ID="weight-per" value=<?php echo $weight * 5; ?> hidden>
-                        <tr>
-                            <td colspan="2" align='right'><b>Total</b></td>
-                            <td align='center'>100</td>
-                            <td><input type="text" name="total" size='1' disabled style='border: none'> </td>
-                            <td><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
-                        </tr>
+                            <input type="text" ID="count_index" value=<?php echo $count_discription; ?> hidden>
+                            <input type="text" name="weight" ID="weight" value=<?php echo $weight; ?> hidden>
+                            <input type="text" name="weight-per" ID="weight-per" value=<?php echo $weight * 5; ?> hidden>
+                            <tr>
+                                <td colspan="2" align='right'><b>Total</b></td>
+                                <td align='center'>100</td>
+                                <td><input type="text" name="total" size='1' disabled style='border: none'> </td>
+                                <td><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
+                            </tr>
                     </table>
                     <br>
                     <!-- Comment -->
@@ -247,7 +247,7 @@
 
 
                     <!-- Confirm -->
-                    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#Modal_confirm">Confirm</button>
+                    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#Modal_confirm">Save</button>
             </div>
         </div>
     </div>
@@ -308,90 +308,90 @@
 
 
 <script>
-    $(document).ready(function() {
-
-        /*
-        * total_calculete
-        * คืนค่าคะแนนรวม
-        * @input   form
-        * @output  -
-        * @author  Phatchara Khongthandee and Pontakon Mujit
-        * @Create  Date 2564-08-18
-        */
-        $("select").change(function() {
-            var toplem = 0;
-            var i = 0;
-            $("select[name='form[]']").each(function() {
-
-                var w = document.getElementById("weight_list_" + i).value;
-                var s = w * parseInt($(this).val());
-                toplem = toplem + s;
-                i = i + 1;
-            })
-
-            $("input[name=total]").val(toplem);
-        });
-
-        /*
-        * total_calculate_weight
-        * //คืนค่าคะแนนรวมแบบเปอเซ็น
-        * @input   form
-        * @output  -
-        * @author  Phatchara Khongthandee and Pontakon Mujit
-        * @Create  Date 2564-08-18
-        */
-        $("select").change(function() {
-            var toplem = 0;
-            var i = 0;
-            var weight = $("#weight-per").val();
-            $("select[name='form[]']").each(function() {
-                var w = document.getElementById("weight_list_" + i).value;
-                var s = w * parseInt($(this).val());
-                toplem = toplem + s;
-                i = i + 1;
-
-            })
-            
-            toplem = Math.round(toplem / weight * 100);
-            var a = '%'
-            $("input[name=total_weight]").val(toplem + a);
-
-        });
-
-
-        //คืนค่าคะแนนรวมแบบรายการ
-        calculate_weight()
-
-        /*
-        * modal_success
-        * ซ่อน Modal ยืนยันการประเมิน
-        * @input   -
-        * @output  -
-        * @author  Phatchara Khongthandee and Pontakon Mujit
-        * @Create  Date 2564-08-18
-        */
-        $("#btn_success").click(function() {
-            $("#Modal_confirm").hide();
-
-        });
-    })
+$(document).ready(function() {
 
     /*
-    * calculate_weight_list
-    * คืนค่าคะแนนรวมแบบเปอเซ็น
-    * @input   form, count_index
-    * @output  -
-    * @author  Phatchara Khongthandee and Pontakon Mujit
-    * @Create  Date 2564-08-18
-    */
-    function calculate_weight() {
-        var count = document.getElementById("count_index").value;
+     * total_calculete
+     * คืนค่าคะแนนรวม
+     * @input   form
+     * @output  -
+     * @author  Phatchara Khongthandee and Pontakon Mujit
+     * @Create  Date 2564-08-18
+     */
+    $("select").change(function() {
+        var toplem = 0;
+        var i = 0;
+        $("select[name='form[]']").each(function() {
 
-        for (i = 0; i < count; i++) {
-            var h = document.getElementById("form_" + i).value;
             var w = document.getElementById("weight_list_" + i).value;
-            $("#show_weight_" + i).html(h * w);
-            $("#point_list" + i).val(h * w);
-        }
+            var s = w * parseInt($(this).val());
+            toplem = toplem + s;
+            i = i + 1;
+        })
+
+        $("input[name=total]").val(toplem);
+    });
+
+    /*
+     * total_calculate_weight
+     * //คืนค่าคะแนนรวมแบบเปอเซ็น
+     * @input   form
+     * @output  -
+     * @author  Phatchara Khongthandee and Pontakon Mujit
+     * @Create  Date 2564-08-18
+     */
+    $("select").change(function() {
+        var toplem = 0;
+        var i = 0;
+        var weight = $("#weight-per").val();
+        $("select[name='form[]']").each(function() {
+            var w = document.getElementById("weight_list_" + i).value;
+            var s = w * parseInt($(this).val());
+            toplem = toplem + s;
+            i = i + 1;
+
+        })
+
+        toplem = Math.round(toplem / weight * 100);
+        var a = '%'
+        $("input[name=total_weight]").val(toplem + a);
+
+    });
+
+
+    //คืนค่าคะแนนรวมแบบรายการ
+    calculate_weight()
+
+    /*
+     * modal_success
+     * ซ่อน Modal ยืนยันการประเมิน
+     * @input   -
+     * @output  -
+     * @author  Phatchara Khongthandee and Pontakon Mujit
+     * @Create  Date 2564-08-18
+     */
+    $("#btn_success").click(function() {
+        $("#Modal_confirm").hide();
+
+    });
+})
+
+/*
+ * calculate_weight_list
+ * คืนค่าคะแนนรวมแบบเปอเซ็น
+ * @input   form, count_index
+ * @output  -
+ * @author  Phatchara Khongthandee and Pontakon Mujit
+ * @Create  Date 2564-08-18
+ */
+function calculate_weight() {
+    var count = document.getElementById("count_index").value;
+
+    for (i = 0; i < count; i++) {
+        var h = document.getElementById("form_" + i).value;
+        var w = document.getElementById("weight_list_" + i).value;
+        $("#show_weight_" + i).html(h * w);
+        $("#point_list" + i).val(h * w);
     }
+}
 </script>
