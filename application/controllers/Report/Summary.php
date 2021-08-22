@@ -27,8 +27,15 @@ class Summary extends MainController
     }
     public function score_manage($id)
     {
-
-        $this->output('consent/v_score_summary');
+        $this->load->model('M_pef_summary', 'pef');
+        // echo $id;
+        $num_ass = $this->pef->get_assessor($id)->result();
+        $data['assessor'] = $this->pef->get_assessor($id)->result();
+        $data['form'] = $this->pef->get_form($id)->result();
+        $data['nominee'] = $this->pef->get_nominee($id)->result();
+        $data['group'] = $this->pef->get_group_by_id($id)->result();
+        // print_r($data['group']);
+        $this->output('consent/v_score_summary', $data);
     }
     /*
 	* get_report

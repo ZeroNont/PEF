@@ -5,8 +5,9 @@
               <div class="card">
                   <!-- Card header -->
                   <div class="card-header border-0">
-                      <h3 class="mb-0">Group ID : 1</h3>
-                      <h3 class="mb-0">Date: 22-08-2564</h3>
+                      <h3 class="mb-0">Date : <?php echo $group[0]->grp_date ?></h3>
+                      <h3 class="mb-0">Group ID : <?php echo $group[0]->grp_id ?></h3>
+                      <h3 class="mb-0">Group Section : <?php echo $group[0]->sec_name ?></h3>
                   </div>
                   <!-- Light table -->
                   <div class="table-responsive">
@@ -23,6 +24,7 @@
                               </tr>
                           </thead>
                           <tbody class="list">
+                              <?php for ($i = 0; $i < count($nominee); $i++) { ?>
                               <tr>
                                   <th scope="row">
                                       <div class="media align-items-center">
@@ -30,28 +32,31 @@
 
                                           </a> -->
                                           <div class="media-body">
-                                              <span class="name mb-0 text-sm">1</span>
+                                              <span class="name mb-0 text-sm"><?php echo $i + 1 ?></span>
                                           </div>
                                       </div>
                                   </th>
                                   <td class="budget">
-                                      1
+                                      <?php echo $nominee[$i]->Emp_ID ?>
                                   </td>
                                   <td>
                                       <span class="badge badge-dot mr-4">
                                           <!-- <i class="bg-warning"></i> -->
-                                          <span class="status">date</span>
+                                          <span
+                                              class="status"><?php echo $nominee[$i]->Empname_eng . ' ' . $nominee[$i]->Empsurname_eng ?></span>
                                       </span>
                                   </td>
                                   <td>
                                       <span class="badge badge-dot mr-4">
                                           <i class="bg-warning"></i>
-                                          <span class="status">pending</span>
+                                          <span class="status"><?php echo $nominee[$i]->grn_status ?></span>
                                       </span>
                                   </td>
                                   <td>
                                       <div class="avatar-group">
-                                          <span class="User">5/7</span>
+
+                                          <span
+                                              class="User"><?php echo count($form) ?>/<?php echo count($assessor) ?></span>
                                       </div>
                                   </td>
                                   <td>
@@ -81,7 +86,7 @@
                                       </div>
                                   </td>
                               </tr>
-
+                              <?php } ?>
                           </tbody>
                       </table>
                   </div>

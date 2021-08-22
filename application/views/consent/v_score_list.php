@@ -217,7 +217,7 @@ function show_all_data() {
                             "</td>";
                         data_row += "<td>" + row.grp_date + "</td>";
                         data_row +=
-                            '<td> <button class="btn btn-warning" onclick="show_modal(' +
+                            '<td> <button class="btn btn-warning" id="someButton" onclick="show_modal(' +
                             row
                             .grp_id +
                             ')" ><i class="fa fa-pencil-square" ></i></button></td>';
@@ -232,6 +232,7 @@ function show_all_data() {
                     data_row += "</tr>";
                 }
                 $("#show_data").html(data_row);
+
             },
             // success
             error: function(data) {
@@ -275,7 +276,11 @@ function show_success() {
  * @Create date 2564-08-13
  */
 function show_modal(grp_id) {
-    $("#save_data").modal("show")
-    $("#grp_data").val(grp_id)
+
+    console.log(grp_id)
+    window.location.href = '../score_manage/' + grp_id;
+
+
+
 }
 </script>
