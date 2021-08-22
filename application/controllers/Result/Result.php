@@ -2,9 +2,6 @@
 /*
 * Result
 * Controller Result
-* @input  - 
-* @output - Show Result List
-          - Show Result Detail
 * @author Apinya Phadungkit
 * @Create Date 2564-8-15
 * @Update Date 2564-8-16
@@ -35,7 +32,7 @@ class Result extends MainController
      */
 
     /*
-    * Function index
+    * index
     * @input  -   
     * @output show v_request_form.php
     * @author Apinya Phadungkit
@@ -48,7 +45,7 @@ class Result extends MainController
     } // function index()
 
     /*
-    * Function show_result_list
+    * show_result_list
     * @input  -   
     * @output show v_request_form.php
     * @author Apinya Phadungkit
@@ -67,7 +64,7 @@ class Result extends MainController
     } //show result list แสดงผลการประเมินของหัวหน้าคนนั้นๆประเมิน
 
     /*
-    * Function show_request_detail
+    * show_request_detail
     * @input  $nor_id,$ass_id,$promote  
     * @output show v_request_form_detail.php
     * @author Apinya Phadungkit

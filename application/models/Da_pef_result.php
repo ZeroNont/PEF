@@ -2,8 +2,6 @@
 /*
 * Da_pef_result
 * Model Result
-* @input  - 
-* @output - 
 * @author Apinya Phadungkit
 * @Create Date 2564-8-15
 * @Update Date 2564-8-16
