@@ -57,11 +57,11 @@ table {
             <!-- Logo บริษัท -->
             <div class="row">
                 <div class="col-sm-4">
-                    <img src=<?php echo base_url()."argon/assets/img/brand/denso_1.png" ?> width="150" height="150">
+                    <img src=<?php echo base_url() . "argon/assets/img/brand/denso_1.png" ?> width="150" height="150">
                 </div>
                 <!-- ชื่อบริษัท -->
                 <div class="col-sm-8 center_com">
-                    <h1><?php echo $ev_no[0]->Company_name?></h1>
+                    <h1><?php echo $ev_no[0]->Company_name ?></h1>
                 </div>
             </div>
             <!-- ชื่อกรรมการ และวันประเมิน -->
@@ -82,8 +82,8 @@ table {
                 <table class="table table-bordered table-sm">
                     <tr id="Manage">
                         <th colspan="5" id="gray">
-                            <center><b>Stretch Assignment Evaluation Form (Promote to <?php echo $pos_pos->sec_name;?> [
-                                    <?php echo $pos_pos->sec_level;?> ]) </b>
+                            <center><b>Stretch Assignment Evaluation Form (Promote to <?php echo $pos_pos->sec_name; ?> [
+                                    <?php echo $pos_pos->sec_level; ?> ]) </b>
                     </tr>
                     <tbody>
                         <tr id="Manage">
@@ -95,16 +95,16 @@ table {
                             <!-- ตำแหน่ง Nominee -->
                             <th width="40px" id="gray">Position</th>
                             <td>
-                                <?php echo $ev_no[0]->Position_name?>
+                                <?php echo $ev_no[0]->Position_name ?>
                             </td>
                         </tr>
                         <!-- แผนก Nominee -->
                         <tr id="Manage">
                             <th width="40px" id="gray">Promote to</th>
-                            <td colspan="2"><?php echo $pos_pos->sec_name;?></td>
+                            <td colspan="2"><?php echo $pos_pos->sec_name; ?></td>
                             <th width="40px" id="gray">Department/Section</th>
                             <td>
-                                <?php echo $ev_no[0]->Department?>
+                                <?php echo $ev_no[0]->Department ?>
                             </td>
                         </tr>
                     </tbody>
@@ -125,58 +125,60 @@ table {
                             <td colspan="2" align='center'>Final round</td>
                         </tr>
                         <!--เริ่ม ตารางหัวข้อลงคะแนน-->
-                        <?php $count_discription=0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
-                            $count_itm=1; //จำนวนหัวข้อหลัก
-                            $weight=0;
-                            $total=0;
-                            $total_per=0;
-                            for($i=0;$i<count($arr_dis_m);$i++){
-                                if($i!=0){
-                                    if($arr_dis_m[$i]->itm_id !=$arr_dis_m[$i-1]->itm_id){
-                                        $count_itm++;
-                                    }
-                                   
+                        <?php $count_discription = 0;  //จำนวนหัวข้อย่อยจริงๆเป็นของอันเก่าไม่ต้องทำแต่ขี้เกียจแก้
+                        $count_itm = 1; //จำนวนหัวข้อหลัก
+                        $weight = 0;
+                        $total = 0;
+                        $total_per = 0;
+                        for ($i = 0; $i < count($arr_dis_m); $i++) {
+                            if ($i != 0) {
+                                if ($arr_dis_m[$i]->itm_id != $arr_dis_m[$i - 1]->itm_id) {
+                                    $count_itm++;
                                 }
-                                $weight =  $weight+$arr_dis_m[$i]->for_des_weight;
-                            }//นับหัวข้อหลัก
-                            $weight =  $weight*5;
-                            for($i=0;$i< $count_itm;$i++) {   //ลูปตามหัวข้อหลัก?>
+                            }
+                            $weight =  $weight + $arr_dis_m[$i]->for_des_weight;
+                        } //นับหัวข้อหลัก
+                        $weight =  $weight * 5;
+                        for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
+                        ?>
 
-                        <?php $count_rowspan=0; 
-                                for($loop_rowspan=0;$loop_rowspan<count($arr_dis_m);$loop_rowspan++){
-                                    if($arr_dis_m[$loop_rowspan]->des_itm_id == $arr_dis_m[$i]->itm_id){
-                                        $count_rowspan++;
-                                    }
-                                }//นับdiscriptionเพื่อกำหนด rowspan ?>
+                        <?php $count_rowspan = 0;
+                            for ($loop_rowspan = 0; $loop_rowspan < count($arr_dis_m); $loop_rowspan++) {
+                                if ($arr_dis_m[$loop_rowspan]->des_itm_id == $arr_dis_m[$i]->itm_id) {
+                                    $count_rowspan++;
+                                }
+                            } //นับdiscriptionเพื่อกำหนด rowspan 
+                            ?>
 
 
-                        <?php 
-                                    for($loop_dis=1;$loop_dis<=$count_rowspan;$loop_dis++) {?>
+                        <?php
+                            for ($loop_dis = 1; $loop_dis <= $count_rowspan; $loop_dis++) { ?>
                         <tr>
-                            <?php  if($loop_dis===1) {?>
+                            <?php if ($loop_dis === 1) { ?>
                             <td rowspan="<?php echo $count_rowspan; ?>" align="center"> <b>
-                                    <?php  echo $arr_dis_m[$count_discription]->itm_detail_eng ;?>
-                                    <br><?php  echo $arr_dis_m[$count_discription]->itm_detail_th; ?></b>
+                                    <?php echo $arr_dis_m[$count_discription]->itm_detail_eng; ?>
+                                    <br><?php echo $arr_dis_m[$count_discription]->itm_detail_th; ?></b>
                             </td>
-                            <?php }//แสดงห้อข้อหลัก?>
+                            <?php } //แสดงห้อข้อหลัก
+                                    ?>
 
                             <td colspan="2">
-                                <b> <?php  echo $arr_dis_m[$count_discription]->des_description_th ;?></b>
+                                <b> <?php echo $arr_dis_m[$count_discription]->des_description_th; ?></b>
                                 <br>
                                 <!-- แสดง Disription    -->
-                                <?php $pos = strrpos($arr_dis_m[$count_discription]->des_description_eng, ".");//ตัดประโยคโดยหา"."
-                                            echo substr($arr_dis_m[$count_discription]->des_description_eng, 0 ,$pos+1); ?>
+                                <?php $pos = strrpos($arr_dis_m[$count_discription]->des_description_eng, "."); //ตัดประโยคโดยหา"."
+                                        echo substr($arr_dis_m[$count_discription]->des_description_eng, 0, $pos + 1); ?>
                                 <br>
-                                <?php echo substr($arr_dis_m[$count_discription]->des_description_eng, $pos+1 ,strlen($arr_dis_m[$count_discription]->des_description_eng))?>
+                                <?php echo substr($arr_dis_m[$count_discription]->des_description_eng, $pos + 1, strlen($arr_dis_m[$count_discription]->des_description_eng)) ?>
                             </td>
                             <!-- แสดง point    -->
 
                             <td colspan="2">
                                 <div class="form-group" align="center">
-                                    <?php echo $arr_sco[$count_discription]->ptf_point; 
-                                                $total=$total+$arr_sco[$count_discription]->ptf_point;
-                                                $total_per = ($total/$weight)*100;
-                                                ?>
+                                    <?php echo $arr_sco[$count_discription]->ptf_point;
+                                            $total = $total + $arr_sco[$count_discription]->ptf_point;
+                                            $total_per = ($total / $weight) * 100;
+                                            ?>
                                 </div>
                             </td>
                             <td colspan="2">
@@ -185,7 +187,7 @@ table {
                                 </div>
                             </td>
 
-                            <?php  $count_discription++; ?>
+                            <?php $count_discription++; ?>
                             <?php } ?>
                         </tr>
 
@@ -218,12 +220,12 @@ table {
 
                             <td>Judgement</td>
                             <td colspan="4" align='center'>
-                                <?php if($total_per >= 60){
-                                            echo "PASS";
-                                    }//if ดูผล Judgement
-                                    else{
+                                <?php if ($total_per >= 60) {
+                                        echo "PASS";
+                                    } //if ดูผล Judgement
+                                    else {
                                         echo "NOT PASS";
-                                    }    
+                                    }
                                     ?>
                             </td>
 
@@ -245,9 +247,12 @@ table {
                 </div>
 
                 <!-- Back button -->
-                <a href="<?php echo base_url() . 'Result/Result/show_result_list/'; ?>">
-                    <button type="submit" class="btn btn-secondary" data-toggle="modal">Back</button>
-                </a>
+                <center>
+                    <a href="<?php echo base_url() . 'Result/Result/show_result_list/'; ?>">
+                        <button type="submit" class="btn btn-secondary" data-toggle="modal">Back</button>
+                    </a>
+                </center>
+
             </div>
         </div>
     </div>
