@@ -140,7 +140,7 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Create   Date 2564-08-15 
 	* @Update   Date 2564-08-16
 	*/
-    public function get_nominee($emp_id)
+    public function get_nominee($grn_emp_id)
     {
         $sql = "SELECT *
                 FROM pefs_database.pef_group_nominee AS groupno
@@ -152,8 +152,16 @@ class M_pef_evaluation extends Da_pef_evaluation
                 ON sectioncode.Sectioncode = employee.Sectioncode_ID
                 INNER JOIN dbmc.company
                 ON employee.Company_ID = company.Company_ID
-                WHERE Emp_ID = groupno.grn_emp_id && groupno.grn_emp_id = $emp_id";
+                WHERE Emp_ID = groupno.grn_emp_id && groupno.grn_emp_id = $grn_emp_id";
 
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function get_file_nominee()
+    {
+        $sql = "SELECT *
+                FROM pefs_database.pef_file";
         $query = $this->db->query($sql);
         return $query;
     }
