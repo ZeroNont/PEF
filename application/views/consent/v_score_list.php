@@ -96,7 +96,7 @@
             </div>
 
             <div class="modal-body">
-                <p>Please select Promote to or Date first</p>
+                <p>Please select Date first</p>
 
             </div>
             <div class="modal-footer">

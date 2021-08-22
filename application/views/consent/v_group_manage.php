@@ -30,64 +30,68 @@
             <div class="card-body">
                 <form>
                     <div class="pl-lg-4">
-                            <div class="col-lg-6">
-                                <div class="form-group">
 
-                                    <label class="form-control-label" for="input-city">Position to Promote</label>
-                                    <select name="position" id="select" class="form-select"
-                                        aria-label="Default select example" onchange="get_assessor()">
-                                        <option value="0">--------------------------------------------Please
-                                            select--------------------------------</option>
-                                        <?php for ($i = 0; $i < count($obj_sec); $i++) { ?>
-                                        <option value="<?php echo $obj_sec[$i]->sec_id ?>" name="">
-                                            <?php echo "T" . $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name;
-                                        }
-                                            ?>
-                                        </option>
+                        <div class="col-lg-6">
+                            <div class="form-group">
 
-                                    </select>
+                                <label class="form-control-label" for="input-city">Position to Promote</label>
+                                <select name="position" id="select" class="form-select"
+                                    aria-label="Default select example" onchange="get_assessor()">
+                                    <option value="0">--------------------------------------------Please
+                                        select--------------------------------</option>
+                                    <?php for ($i = 0; $i < count($obj_sec); $i++) { ?>
+                                    <option value="<?php echo $obj_sec[$i]->sec_id ?>" name="">
+                                        <?php echo "T" . $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name;
+                                    }
+                                        ?>
+                                    </option>
 
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="form-control-label">Date</label>
-                                    <input type="date" id="date" class="form-control" min="<?php echo date('Y-m-d') ?>"
-                                        required>
-                                </div>
+                                </select>
+
                             </div>
                         </div>
-
-                </form>
-
-                <div class="card-header" id="card_radius">
-                    <div class="table-responsive">
-
-                        <table class="table" id="example">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>#</th>
-                                    <th>
-                                        <input type="checkbox" onclick="select_all(this);">
-                                        Select
-                                    </th>
-                                    <th>Employee ID</th>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Departmant</th>
-                                </tr>
-                            </thead>
-                            <tbody id="select_data"></tbody>
-                        </table>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Date</label>
+                                <input type="date" id="date" class="form-control" min="<?php echo date('Y-m-d') ?>"
+                                    required>
+                            </div>
+                        </div>
                     </div>
 
+            </div>
 
 
+            </form>
+
+            <div class="card-header" id="card_radius">
+                <div class="table-responsive">
+
+                    <table class="table" id="example">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>#</th>
+                                <th>
+                                    <input type="checkbox" onclick="select_all(this);">
+                                    Select
+                                </th>
+                                <th>Employee ID</th>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Departmant</th>
+                            </tr>
+                        </thead>
+                        <tbody id="select_data"></tbody>
+                    </table>
                 </div>
 
+
+
             </div>
+
         </div>
     </div>
+</div>
 </div>
 
 <div class="container-fluid mt--12">
