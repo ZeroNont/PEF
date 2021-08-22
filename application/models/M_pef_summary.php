@@ -18,6 +18,7 @@ class M_pef_summary extends Da_pef_summary
         parent::__construct();
     } //function construct
 
+   
     /*
 * check_login
 * Check User_login and Pass_login in database
@@ -29,10 +30,10 @@ class M_pef_summary extends Da_pef_summary
     function get_group()
     { //check User_login and Pass_login in database
         $sql = "SELECT *
-			FROM pefs_database.pef_group AS grp INNER JOIN pefs_database.pef_section AS sec
-            ON grp.grp_position_group=sec.sec_id
-			WHERE grp_date=?
-			";
+			FROM pefs_database.pef_group AS grp 
+            INNER JOIN pefs_database.pef_section AS sec
+            ON grp.grp_position_group = sec.sec_id
+			WHERE grp_date = ?";
         $query = $this->db->query($sql, array($this->grp_date));
         return $query;
     } //end check_login
