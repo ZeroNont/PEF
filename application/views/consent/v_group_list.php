@@ -74,7 +74,7 @@ function getEmp_edit(i) {
 </script>
 <h1>
     Group Management (การจัดการข้อมูลกลุ่ม)<a href="<?php echo site_url() . 'Group_management/Group_insert/index' ?>">
-        <button class="btn btn-primary float-right" value="Add group"> Add group</button></a>
+        <button class="btn btn-primary float-right" value="Add group"> Add Group</button></a>
 </h1>
 
 <div class="card-header" id="card_radius">
@@ -108,12 +108,10 @@ function getEmp_edit(i) {
                     <td>
                         <?php if ($obj_group[$i]->grp_status == -1) { ?>
 
-                        <a
-                            href="<?php echo site_url() . 'Group_management/Group_edit/index/' . $obj_group[$i]->grp_id; ?>">
+                        <a href="<?php echo site_url() . 'Group_management/Group_edit/index/' . $obj_group[$i]->grp_id; ?>">
                             <button class="btn btn-warning">Edit</button>
                         </a>
-                        <a
-                            href="<?php echo site_url() . 'Group_management/Group_list/delete_group/' . $obj_group[$i]->grp_id; ?>">
+                        <a href="<?php echo site_url() . 'Group_management/Group_list/delete_group/' . $obj_group[$i]->grp_id; ?>">
                             <button class="btn btn-danger">Delete</button>
                         </a>
                         <?php } ?>
