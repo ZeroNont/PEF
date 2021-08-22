@@ -95,32 +95,35 @@
                                 <!-- column ดำเนินการ -->
                                 <td style='text-align: center;'>
                                     <!-- ปุ่มดำเนินการ -->
-                                    <!-- แสดงฟอร์มประเมิน T6 & T5 -->
-
+                                    <?php $status = 0 ?>
                                     <?php for ($j = 0; $j < count($check); $j++) {
                                         if ($check[$j]->fil_emp_id == $ev_all[$i]->grn_emp_id) {
+                                            $status++;
                                     ?>
-                                            <?php if ($ev_all[$i]->Position_Level == 5 || $ev_all[$i]->Position_Level == 6) { ?>
-                                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_amsssv_mtssp/' . $ev_all[$i]->ase_emp_id . '/' . $ev_all[$i]->grn_id . '/' . $ev_all[$i]->sec_level . '/' . $ev_all[$i]->grn_status . '/' . $ev_all[$i]->grn_emp_id; ?>">
-                                                    <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
-                                                        <i class="fas fa-edit text-white"></i>
-                                                    </button>
-                                                </a>
-
-                                                <!-- แสดงฟอร์มประเมิน T4, T3, T2 -->
-                                            <?php } else { ?>
-                                                <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_g_agm_gm/' . $ev_all[$i]->ase_emp_id . '/' . $ev_all[$i]->grn_id . '/' . $ev_all[$i]->sec_level . '/' . $ev_all[$i]->grn_status . '/' . $ev_all[$i]->grn_emp_id; ?>">
-                                                    <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
-                                                        <i class="fas fa-edit text-white"></i>
-                                                    </button>
-                                                </a>
-                                            <?php } ?>
-                                        <?php } else { ?>
-                                            <button type="button" class="btn btn-danger btn-sm">
-                                                Not have file
-                                            </button>
                                     <?php }
                                     } ?>
+                                    <?php if ($status == 1) { ?>
+                                        <!-- แสดงฟอร์มประเมิน T6 & T5 -->
+                                        <?php if ($ev_all[$i]->Position_Level == 5 || $ev_all[$i]->Position_Level == 6) { ?>
+                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_amsssv_mtssp/' . $ev_all[$i]->ase_emp_id . '/' . $ev_all[$i]->grn_id . '/' . $ev_all[$i]->sec_level . '/' . $ev_all[$i]->grn_status . '/' . $ev_all[$i]->grn_emp_id; ?>">
+                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                                    <i class="fas fa-edit text-white"></i>
+                                                </button>
+                                            </a>
+                                            <!-- แสดงฟอร์มประเมิน T4, T3, T2 -->
+                                        <?php } else { ?>
+                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_g_agm_gm/' . $ev_all[$i]->ase_emp_id . '/' . $ev_all[$i]->grn_id . '/' . $ev_all[$i]->sec_level . '/' . $ev_all[$i]->grn_status . '/' . $ev_all[$i]->grn_emp_id; ?>">
+                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                                    <i class="fas fa-edit text-white"></i>
+                                                </button>
+                                            </a>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <button type="button" class="btn btn-danger btn-sm">
+                                            Not have file
+                                        </button>
+                                    <?php } ?>
+
                                 </td>
                             </tr>
                         <?php } ?>
@@ -144,4 +147,10 @@
 <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 <!-- Argon JS -->
 <script src="../../assets/js/argon.js?v=1.2.0"></script>
+<script type="text/javascript">
+    < script src = "../../assets/js/argon.js?v=1.2.0" >
+</script>
+<script type="text/javascript">
+    < script src = "../../assets/js/argon.js?v=1.2.0" >
+</script>
 <script type="text/javascript">

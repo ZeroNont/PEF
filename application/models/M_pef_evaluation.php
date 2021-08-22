@@ -100,8 +100,8 @@ class M_pef_evaluation extends Da_pef_evaluation
                 FROM pefs_database.pef_group_nominee AS groupno
                 INNER JOIN pefs_database.pef_group AS gr
                 ON gr.grp_id = groupno.grn_grp_id
-                INNER JOIN pefs_database.pef_section AS sec
-                ON sec.sec_level = gr.grp_position_group
+                -- INNER JOIN pefs_database.pef_section AS sec
+                -- ON sec.sec_level = gr.grp_position_group
                 -- INNER JOIN dbmc.position AS po
                 -- ON groupno.grn_promote_to = po.Position_ID
                 WHERE groupno.grn_emp_id = $emp_id";

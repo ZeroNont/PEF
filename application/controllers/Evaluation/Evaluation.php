@@ -134,9 +134,9 @@ class Evaluation extends MainController
 	*/
     function insert_evaluation_form()
     {
-        echo "<pre>";
-            print_r($_POST);
-        echo "</pre>";
+        // echo "<pre>";
+        //     print_r($_POST);
+        // echo "</pre>";
         $date = date("Y-m-d");
         $id = $_SESSION['UsEmp_ID'];
         $this->load->model('Da_pef_evaluation', 'per');
@@ -145,28 +145,29 @@ class Evaluation extends MainController
         $this->per->per_date = $date;
         $this->per->per_ase_id = $this->input->post('ase_id');
         $this->per->per_emp_id = $this->input->post('emp_id');
-        $emp = $this->per->per_emp_id;
+        $emp = $this->input->post('emp_id');
         $this->load->model('M_pef_evaluation', 'pef');
 
         $this->per->ptf_point = $this->input->post('form');
         $this->per->ptf_date = $date; 
         $this->per->ptf_ase_id = $this->input->post('ase_id');
         $this->per->ptf_for_id = $this->input->post('for_id[]');
-        $this->per->ptf_emp_id = $this->input->post('emp_id');
+        $this->per->ptf_emp_id = $this->input->post('nor_id');
         $this->per->insert_performance_form();
         $max = $this->pef->get_point()->row();
         $this->per->ptf_per_id = $max->max_id;
-        print_r( $this->per->ptf_per_id);
+        // print_r( $this->per->ptf_per_id);
         $this->per->insert_point();
         $this->per->grn_emp_id = $emp;
-        if($this->per->grn_status ==-1){
+        $status = $this->input->post('grn_status');
+        if($status == -1){
             $this->per->grn_status = 0;
-        }else if($this->per->grn_status==0){
+        }else if($status == 0){
             $this->per->grn_status = 3;
         }
 
-        $get_group=$this->pef->get_group_nominee($emp);
-        $group= $get_group->grp_id;
+        $get_group['data']=$this->pef->get_group_nominee($emp)->result();
+        $group= $get_group['data'][0]->grp_id;
         $this->per->update_status_used($group);
         $this->per->update_status();
 

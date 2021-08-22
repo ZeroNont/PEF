@@ -74,7 +74,7 @@ class Result extends MainController
     * @Create Date 2564-7-18
     * @Update Date 2564-7-28
     */
-    function show_result_detail($nor_id,$ass_id,$promote)
+    function show_result_detail($nor_id,$ass_id,$promote,$grn_id)
 	{
         $this->load->model('M_pef_result', 'mpef');
         $this->mpef->ptf_emp_id = $nor_id;
@@ -94,6 +94,12 @@ class Result extends MainController
             $data['arr_sco'] = $this->mpef->get_score($nor_id)->result();
             $this->output('consent/v_history_M_AGM_GM',$data);
         }
+        // echo $nor_id;
+        // echo '  ';
+        // echo $grn_id;
+        // echo '  ';
+
+        // print_r($data['arr_sco']);
 
 	} //show result detail แสดงรายละเอียดเพิ่มเติมของผลการประเมิน
 

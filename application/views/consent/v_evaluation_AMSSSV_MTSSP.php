@@ -123,6 +123,8 @@
                     <h2><b>
                             < Assessor>
                         </b></h2>
+                    <input type="text" name="grn_status" value="<?php echo $ev_gno[0]->grn_status; ?>" hidden>
+
                     <!-- Table Score -->
                     <table class="table table-bordered table-sm">
                         <tbody>
@@ -240,7 +242,9 @@
                     </div>
                     <br>
                     <input type="hidden" value="<?php echo $ev_ass[0]->ase_id ?>" name="ase_id">
-                    <input type="hidden" value="<?php echo $ev_no[0]->grn_id ?>" name="emp_id">
+                    <input type="hidden" value="<?php echo $ev_no[0]->grn_emp_id ?>" name="emp_id">
+                    <input type="hidden" value="<?php echo $ev_no[0]->grn_id ?>" name="nor_id">
+
 
                     <!-- Confirm -->
                     <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#Modal_confirm">Confirm</button>
