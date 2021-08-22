@@ -50,7 +50,7 @@ table {
 </style>
 
 <!-- Evaluation form -->
-<h1>Evaluation</h1>
+<h1>Evaluation (การประเมิน) </h1>
 <div class="container">
     <div class="card" id="border-radius">
         <div class="card-body">
