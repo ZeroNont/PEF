@@ -33,46 +33,46 @@
                 <form>
 
                     <div class="pl-lg-4">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
 
-                                    <input type="text" value="<?php echo $obj_group->grp_id ?>" id="group" hidden>
-                                    <label class="form-control-label" for="input-city">Position to Promote</label>
-                                    <select name="position" id="select" class="form-select"
-                                        aria-label="Default select example" onchange="get_assessor()" disabled>
-                                        <!-- <option value="0">--------------------------------------------Please
+                        <div class="col-lg-6">
+                            <div class="form-group">
+
+                                <input type="text" value="<?php echo $obj_group->grp_id ?>" id="group" hidden>
+                                <label class="form-control-label" for="input-city">Position to Promote</label>
+                                <select name="position" id="select" class="form-select"
+                                    aria-label="Default select example" onchange="get_assessor()" disabled>
+                                    <!-- <option value="0">--------------------------------------------Please
                                             select--------------------------------</option> -->
-                                        <?php for ($i = 0; $i < count($obj_sec); $i++) {
-                                            if ($obj_sec[$i]->sec_id == $obj_group->grp_position_group) { ?>
+                                    <?php for ($i = 0; $i < count($obj_sec); $i++) {
+                                        if ($obj_sec[$i]->sec_id == $obj_group->grp_position_group) { ?>
 
-                                        <option value="<?php echo $obj_sec[$i]->sec_id ?>" selected>
-                                            <?php echo 'T' . $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name; ?>
-                                        </option>
-                                        <?php     } //if
-                                            else {
-                                            ?>
-                                        <option value="<?php echo $obj_sec[$i]->sec_id ?>">
-
-                                            <?php echo 'T' . $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name; ?>
-                                        </option>
-                                        <?php  } //else
-                                        } //for
+                                    <option value="<?php echo $obj_sec[$i]->sec_id ?>" selected>
+                                        <?php echo 'T' . $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name; ?>
+                                    </option>
+                                    <?php     } //if
+                                        else {
                                         ?>
+                                    <option value="<?php echo $obj_sec[$i]->sec_id ?>">
+
+                                        <?php echo 'T' . $obj_sec[$i]->sec_level . " " . $obj_sec[$i]->sec_name; ?>
+                                    </option>
+                                    <?php  } //else
+                                    } //for
+                                    ?>
 
 
-                                    </select>
+                                </select>
 
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label class="form-control-label" for="input-email">Date</label>
-                                    <input type="date" id="date" class="form-control" min="<?php echo date('Y-m-d'); ?>"
-                                        value="<?php echo $obj_group->grp_date ?>" required>
-                                </div>
                             </div>
                         </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-email">Date</label>
+                                <input type="date" id="date" class="form-control" min="<?php echo date('Y-m-d'); ?>"
+                                    value="<?php echo $obj_group->grp_date ?>" required>
+                            </div>
+                        </div>
+
 
                     </div>
 
