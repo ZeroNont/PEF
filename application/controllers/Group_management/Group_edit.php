@@ -97,7 +97,7 @@ class Group_edit extends MainController
         for ($i = 0; $i < sizeof($nominee); $i++) {
             $this->pefd->grn_grp_id = $group_id;
             $this->pefd->grn_emp_id = $nominee[$i];
-            $this->pefd->grn_status = 1;
+            $this->pefd->grn_status = -1;
             $this->pefd->grn_promote_to = $pos_id[$i];
             $this->pefd->insert_nominee();
         }
