@@ -6,10 +6,6 @@
     * @output -
     * @author Phatchara Khongthandee and Pontakon Mujit 
     * @Create date 2564-08-14
-    * @Update date 2564-08-15
-    * @Update date 2564-08-17
-    * @Update date 2564-08-18
-    * @Update date 2564-08-19
     */
 -->
 <?php
@@ -35,7 +31,8 @@ class Evaluation extends MainController
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
     }
 
@@ -55,9 +52,9 @@ class Evaluation extends MainController
     {
         $id_ass = $_SESSION['UsEmp_ID'];
         $this->load->model('M_pef_evaluation', 'pef');
-        $data['ev_all'] = $this->pef->get_all_list($id_ass)->result();//คืนค่าชื่อกรรมการ ชื่อกลุ่ม วันที่ประเมิน จำนวนNominee ชื่อ Nominee ตำแหน่ง แผนก Promote to
+        $data['ev_all'] = $this->pef->get_all_list($id_ass)->result(); //คืนค่าชื่อกรรมการ ชื่อกลุ่ม วันที่ประเมิน จำนวนNominee ชื่อ Nominee ตำแหน่ง แผนก Promote to
         $this->output('consent/v_evaluation', $data);
-    }// function show_evaluation
+    } // function show_evaluation
 
     /*
 	* show_evaluation_amsssv_mtssp
@@ -82,7 +79,7 @@ class Evaluation extends MainController
         $data['arr_dis'] = $this->pef->get_all_form_amsssv_mtssp($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
         $this->output('consent/v_evaluation_amsssv_mtssp', $data);
-    }// function show_evaluation_amsssv_mtssp
+    } // function show_evaluation_amsssv_mtssp
 
     /*
 	* show_evaluation_g_agm_gm
@@ -96,11 +93,11 @@ class Evaluation extends MainController
     * @Update Date 2564-08-17
     * @Update Date 2564-08-19
 	*/
-    function show_evaluation_g_agm_gm($id, $emp_id, $position,$status, $grn_emp_id)
+    function show_evaluation_g_agm_gm($id, $emp_id, $position, $status, $grn_emp_id)
     {
         $this->load->model('M_pef_evaluation', 'pef');
         $id_r = $this->pef->get_ase_id($id)->row();
-        
+
         $id_ase = $id_r->ase_id;
         $data['ev_ass'] = $this->pef->get_group_assessor($id)->result();
         $data['ev_gno'] = $this->pef->get_group_nominee($grn_emp_id)->result();
@@ -108,9 +105,9 @@ class Evaluation extends MainController
         $data['ev_file'] = $this->pef->get_file_present_nominee($grn_emp_id)->result();
         $data['arr_dis'] = $this->pef->get_all_form_m_agm_gm($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
-        if($status==0){
-         $data['arr_point'] = $this->pef->get_point_list($id_ase,$emp_id)->result();
-         $data['arr_per'] = $this->pef->get_performance($id_ase,$grn_emp_id)->result();
+        if ($status == 0) {
+            $data['arr_point'] = $this->pef->get_point_list($id_ase, $emp_id)->result();
+            $data['arr_per'] = $this->pef->get_performance($id_ase, $grn_emp_id)->result();
         }
         $this->output('consent/v_evaluation_m_agm_gm', $data);
         // // print_r($data['arr_point']);
@@ -119,7 +116,7 @@ class Evaluation extends MainController
         // echo $emp_id;
         // echo '   ';
         // echo $id;
-    }// function show_evaluation_m_agm_gm
+    } // function show_evaluation_m_agm_gm
 
 
     /*
@@ -136,9 +133,9 @@ class Evaluation extends MainController
 	*/
     function insert_evaluation_form()
     {
-        echo "<pre>";
-            print_r($_POST);
-        echo "</pre>";
+        // echo "<pre>";
+        //     print_r($_POST);
+        // echo "</pre>";
         $date = date("Y-m-d");
         $id = $_SESSION['UsEmp_ID'];
         $this->load->model('Da_pef_evaluation', 'per');
@@ -147,27 +144,29 @@ class Evaluation extends MainController
         $this->per->per_date = $date;
         $this->per->per_ase_id = $this->input->post('ase_id');
         $this->per->per_emp_id = $this->input->post('emp_id');
-        $emp = $this->per->per_emp_id;
+        $emp = $this->input->post('emp_id');
         $this->load->model('M_pef_evaluation', 'pef');
-        
+
         $this->per->ptf_point = $this->input->post('form');
-        $this->per->ptf_date = $date; 
+        $this->per->ptf_date = $date;
         $this->per->ptf_ase_id = $this->input->post('ase_id');
         $this->per->ptf_for_id = $this->input->post('for_id[]');
         $this->per->ptf_emp_id = $this->input->post('emp_id');
         $this->per->insert_performance_form();
         $max = $this->pef->get_point()->row();
         $this->per->ptf_per_id = $max->max_id;
-        print_r( $this->per->ptf_per_id);
         $this->per->insert_point();
+
+        $data['get_group'] = $this->pef->get_group_nominee($emp);
+        
+        print_r($data['get_group']->result());
         $this->per->grn_emp_id = $emp;
-        if($this->per->grn_status ==-1){
+        
+        if ($get_group->grn_status == -1) {
             $this->per->grn_status = 0;
-        }else if($this->per->grn_status==0){
+        } else if ($get_group->grn_status == 0) {
             $this->per->grn_status = 3;
         }
-
-        $get_group=$this->pef->get_group_nominee($emp);
         $group = $get_group->grp_id;
         $this->per->grp_id = $group;
         $this->per->update_status_used($group);
@@ -176,5 +175,4 @@ class Evaluation extends MainController
 
         redirect('Evaluation/Evaluation/show_evaluation');
     }
-
 }

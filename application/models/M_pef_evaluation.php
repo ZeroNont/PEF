@@ -5,12 +5,7 @@
     * @input  -
     * @output -
     * @author Phatchara Khongthandee and Pontakon Mujit 
-    * @Create date 2564-08-14  
-    * @Update date 2564-08-15
-    * @Update date 2564-08-16
-    * @Update date 2564-08-17
-    * @Update date 2564-08-18
-    * @Update date 2564-08-19
+    * @Create Date 2564-08-14  
     */
 -->
 <?php
@@ -61,7 +56,7 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* คืนค่ากลุ่มประเมินของ assessor
 	* @input   emp_id (รหัส Nominee)
 	* @output  กลุ่มประเมินของ Nominee
-	* @author  Phatchara Khongthandee
+	* @author  Phatchara Khongthandee and Pontakon Mujit 
     * @Update  Date 2564-08-16
 	* @Create  Date 2564-08-17 
 	* @Update  Date 2564-08-18
@@ -93,7 +88,7 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* คืนค่ากลุ่มประเมินของ Nominee
 	* @input   emp_id (รหัส Nominee)
 	* @output  กลุ่มประเมินของ Nominee
-	* @author  Phatchara Khongthandee
+	* @author  Phatchara Khongthandee and Pontakon Mujit 
     * @Update  Date 2564-08-16
 	* @Create  Date 2564-08-17 
 	* @Update  Date 2564-08-18
@@ -106,9 +101,9 @@ class M_pef_evaluation extends Da_pef_evaluation
                 INNER JOIN pefs_database.pef_group AS gr
                 ON gr.grp_id = groupno.grn_grp_id
                 INNER JOIN pefs_database.pef_section AS sec
-                ON sec.sec_id = gr.grp_position_group
-                INNER JOIN dbmc.position AS po
-                ON groupno.grn_promote_to = po.Position_ID
+                ON sec.sec_level = gr.grp_position_group
+                -- INNER JOIN dbmc.position AS po
+                -- ON groupno.grn_promote_to = po.Position_ID
                 WHERE groupno.grn_emp_id = $emp_id";
 
         $query = $this->db->query($sql);
