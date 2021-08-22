@@ -68,6 +68,7 @@
                 </div>
             </div>
             <!-- ชื่อกรรมการ และวันประเมิน -->
+
             <div class="row">
                 <div class="col-sm-6">
                     <h3>Assessor Name :&nbsp; <?php echo $ev_ass[0]->Empname_eng . ' ' . $ev_ass[0]->Empsurname_eng ?></h3>
@@ -77,17 +78,13 @@
                     <h3>Date : <?php echo $newDate ?></h3>
                 </div>
                 <div class="col-sm-3">
-                    <?php if (!is_object($ev_file)) { ?>
+
+                    <a href="<?php echo base_url() ?>upload/<?php echo $ev_file[0]->fil_location ?>" target="_blank">
                         <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
                             <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
                         </button>
-                    <?php } else { ?>
-                        <a href="<?php echo base_url() ?>upload/<?php echo $ev_file[0]->fil_location ?>" target="_blank">
-                            <button type="button" class="btn btn-primary" style="background-color: info;" id="set_button">
-                                <i class="far fa-file-pdf text-white"></i> &nbsp; Present Nominee
-                            </button>
-                        </a>
-                    <?php } ?>
+                    </a>
+
                 </div>
             </div>
             <br>

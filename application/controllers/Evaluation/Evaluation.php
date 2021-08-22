@@ -52,6 +52,7 @@ class Evaluation extends MainController
     {
         $id_ass = $_SESSION['UsEmp_ID'];
         $this->load->model('M_pef_evaluation', 'pef');
+        $data['check'] = $this->pef->get_file_nominee()->result();
         $data['ev_all'] = $this->pef->get_all_list($id_ass)->result(); //คืนค่าชื่อกรรมการ ชื่อกลุ่ม วันที่ประเมิน จำนวนNominee ชื่อ Nominee ตำแหน่ง แผนก Promote to
         $this->output('consent/v_evaluation', $data);
     } // function show_evaluation
@@ -69,7 +70,7 @@ class Evaluation extends MainController
     * @Update  Date 2564-08-19
 	*/
 
-    function show_evaluation_amsssv_mtssp($id, $emp_id, $position, $grn_emp_id)
+    function show_evaluation_amsssv_mtssp($id, $emp_id, $position, $status, $grn_emp_id)
     {
         $this->load->model('M_pef_evaluation', 'pef');
         $data['ev_ass'] = $this->pef->get_group_assessor($id)->result();
