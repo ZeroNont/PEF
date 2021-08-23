@@ -147,8 +147,8 @@
                                                 </button>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="#">Pass</a>
-                                                <a class="dropdown-item" href="#">Not Pass</a>
+                                                <a class="dropdown-item" href="<?php echo site_url() . 'Report/Summary/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Pass</a>
+                                                <a class="dropdown-item" href="<?php echo site_url() . 'Report/Summary/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Not Pass</a>
                                                 <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_<?php echo $i ?>">Review</a>
                                             </div>
                                         </div>
