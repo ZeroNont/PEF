@@ -68,7 +68,8 @@
                                 <div>
                                     <div class="progress">
                                         <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60"
-                                            aria-valuemin="0" aria-valuemax="100" style="width: <?php echo '60%' ?>;">
+                                            aria-valuemin="0" aria-valuemax="100"
+                                            style="width: <?php echo '100' . '%' ?>;">
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +85,11 @@
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                     <a class="dropdown-item" href="#">Pass</a>
                                     <a class="dropdown-item" href="#">Not Pass</a>
-                                    <a class="dropdown-item" href="#">Review</a>
+                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                            Launch demo modal
+                                        </button> -->
+                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal">Review</a>
                                 </div>
                             </div>
                         </td>
@@ -97,12 +102,31 @@
     <center><a href="<?php echo site_url() . 'Report/Summary/index'; ?>" class="btn btn-secondary float-center"><i
                 class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
 </div>
-<script>
-function get_evaluation(num) {
-    console.log(num);
-    console.log(123);
-};
-</script>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Manage Group review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="modal-title" id="exampleModalLabel">Date</h5>
+                <input type="date" class="form-control" min="<?php echo date('Y-m-d') ?>">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
 $(document).ready(function() {
     $('#Score').DataTable();
