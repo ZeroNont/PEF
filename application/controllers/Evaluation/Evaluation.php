@@ -158,11 +158,8 @@ class Evaluation extends MainController
         $this->per->insert_point();
         $this->per->grn_emp_id = $emp;
         $status = $this->input->post('grn_status');
-        if($status == 0){
-            $this->per->grn_status = 1;
-        }else if($status == 1){
-            $this->per->grn_status = 3;
-        }
+        
+            $this->per->grn_status = 0;
 
         $get_group['data']=$this->pef->get_group_nominee($emp)->result();
         $group= $get_group['data'][0]->grp_id;

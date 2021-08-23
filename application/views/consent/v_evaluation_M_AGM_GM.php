@@ -183,7 +183,7 @@
                                                     <?php echo substr($arr_dis[$count_discription]->des_description_eng, $pos + 1, strlen($arr_dis[$count_discription]->des_description_eng)) ?>
                                                 </td>
                                                 <!-- แสดง point    -->
-                                                <?php if ($ev_gno[0]->grn_status == 0) { ?>
+                                                <?php if ($ev_gno[0]->grn_status == -1) { ?>
                                                     <td colspan="2" style="vertical-align:middle;text-align: center;">
                                                         <select class="form-control" name="form[]" id="form" required>
                                                             <option value="0">please selected</option>
@@ -246,7 +246,7 @@
                                                 <br>1 ： Do Not satisfy expected level for Manager level
                                             </td>
                                             <td>Total</td>
-                                            <?php if ($ev_gno[0]->grn_status == 0) { ?>
+                                            <?php if ($ev_gno[0]->grn_status == -1) { ?>
                                                 <td><input type="text" name="total" size='1' disabled style='border: none'> </td>
                                                 <td><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
                                                 <td><input type="text" name="total" size='1' disabled hidden></td>
