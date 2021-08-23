@@ -177,7 +177,7 @@
                                         data-target="#exampleModal_<?php echo $i ?>">Review</a>
                                     <?php if ($group[0]->grp_position_group > 2) { ?>
                                     <a class="dropdown-item" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#Modal_<?php echo $i ?>">Review</a>
+                                        data-target="#Modal_<?php echo $i ?>">Next Evaluation</a>
                                     <?php } ?>
                                 </div>
                             </div>
