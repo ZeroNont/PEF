@@ -91,7 +91,7 @@ class Da_pef_group extends pefs_model
 */
     public function delete_performance()
     {
-        $sql = "DELETE FROM pefs_database.pef_group_nominee WHERE per_date=? AND per_emp_id=?";
+        $sql = "DELETE FROM pefs_database.pef_performance_form WHERE per_date=? AND per_emp_id=?";
         $this->db->query(
             $sql,
             array($this->per_date, $this->per_emp_id)
@@ -107,7 +107,7 @@ class Da_pef_group extends pefs_model
 */
     public function delete_point()
     {
-        $sql = "DELETE FROM pefs_database.pef_group_nominee WHERE ptf_date=? AND ptf_emp_id=?";
+        $sql = "DELETE FROM pefs_database.pef_point_form WHERE ptf_date=? AND ptf_emp_id=?";
         $this->db->query(
             $sql,
             array($this->ptf_date, $this->ptf_emp_id)
