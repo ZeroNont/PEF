@@ -30,11 +30,30 @@ class Summary extends MainController
     {
         $this->load->model('M_pef_summary', 'pef');
         // echo $id;
+        $data['count'] = '';
         $num_ass = $this->pef->get_assessor($id)->result();
         $data['assessor'] = $this->pef->get_assessor($id)->result();
         $data['form'] = $this->pef->get_form($id)->result();
         $data['nominee'] = $this->pef->get_nominee($id)->result();
         $data['group'] = $this->pef->get_group_by_id($id)->result();
+
+        for ($i = 0; $i < count($data['nominee']); $i++) {
+            // echo $data['nominee'][$i]->Emp_ID;
+            $data['per'] = $this->pef->get_evaluation($data['nominee'][$i]->Emp_ID)->result();
+            // print_r($data['per']);
+            // echo " ";
+            $num = 0;
+            // echo count($data['per']);
+            for ($j = 0; $j < count($data['per']); $j++) {
+
+                if ($data['nominee'][$i]->Emp_ID == $data['per'][$j]->per_emp_id) {
+                    $num++;
+                }
+            }
+            $data['count'][$i] = $num;
+        }
+        // print_r($data['count']);
+
         // print_r($data['group']);
         $this->output('consent/v_score_summary', $data);
     }
