@@ -79,7 +79,7 @@ class File_present_management extends MainController
     function insert_file_nominee()
     {
         $pefs_file =  $_FILES['fil']['tmp_name'];
-        $fil_name =  $_FILES['fil']['name'];
+        $fil_name = iconv("UTF-8", "TIS-620", $_FILES['fil']['name']);
         $Emp_ID = $this->input->post("Emp_ID");
 
         $this->load->model('Da_pef_file_present', 'pef');
