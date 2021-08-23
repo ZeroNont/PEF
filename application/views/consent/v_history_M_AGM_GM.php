@@ -82,8 +82,7 @@ table {
                 <table class="table table-bordered table-sm">
                     <tr id="Manage">
                         <th colspan="5" id="gray">
-                            <center><b>Stretch Assignment Evaluation Form (Promote to <?php echo $pos_pos->sec_name; ?> [
-                                    <?php echo $pos_pos->sec_level; ?> ]) </b>
+                            <center><b>Stretch Assignment Evaluation Form (Promote to <?php echo $pos_pos->sec_name; ?> [ <?php echo $pos_pos->sec_level; ?> ]); ?> </b>
                     </tr>
                     <tbody>
                         <tr id="Manage">

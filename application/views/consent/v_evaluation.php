@@ -65,70 +65,142 @@
             <tbody class="list">
                 <?php $s = 1; ?>
                 <?php for ($i = 0; $i < count($ev_all); $i++) { ?>
-                    <?php if ($ev_all[$i]->grn_status == -1 || $ev_all[$i]->sec_id > 2) { ?>
-                        <?php if ($ev_all[$i]->grn_status == -1 || $ev_all[$i]->grn_status == 0) { ?>
-                            <tr>
-                                <!-- column แสดง ลำดับ -->
-                                <td>
-                                    <?php echo $s ?>
-                                    <?php $s++;  ?>
-                                </td>
-                                <!-- column แสดง รหัสผู้ที่ถูกประเมิน หรือ Nominee -->
-                                <td>
-                                    <?php echo $ev_all[$i]->Emp_ID ?>
-                                </td>
-                                <!-- column แสดง ลำดับ ชื่อ-นามสกุล ผู้ที่ถูกประเมิน หรือ Nominee-->
-                                <td>
-                                    <?php echo $ev_all[$i]->Empname_eng . ' ' . $ev_all[$i]->Empsurname_eng ?>
-                                </td>
-                                <!-- column แสดงชื่อกลุ่มผู้ที่ถูกประเมิน หรือ Nominee -->
-                                <td>
-                                    <?php echo $ev_all[$i]->gro_grp_id ?>
-                                </td>
-                                <!-- column แสดงวันที่ต้องทำการประเมิน -->
-                                <td>
-                                    <?php $newDate = date("d/m/Y", strtotime($ev_all[$i]->grp_date)); ?>
-                                    <?php echo $newDate ?>
-                                </td>
-                                <!-- column แสดงตำแหน่งที่จะ promote -->
-                                <td>
-                                    <?php echo $ev_all[$i]->grn_promote_to ?>
-                                </td>
-                                <!-- column ดำเนินการ -->
-                                <td style='text-align: center;'>
-                                    <!-- ปุ่มดำเนินการ -->
-                                    <?php $status = 0 ?>
-                                    <?php for ($j = 0; $j < count($check); $j++) {
-                                        if ($check[$j]->fil_emp_id == $ev_all[$i]->grn_emp_id) {
-                                            $status++;
-                                    ?>
-                                    <?php }
-                                    } ?>
-                                    <?php if ($status == 1) { ?>
-                                        <!-- แสดงฟอร์มประเมิน T6 & T5 -->
-                                        <?php if ($ev_all[$i]->Position_Level == 5 || $ev_all[$i]->Position_Level == 6) { ?>
-                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_amsssv_mtssp/' . $ev_all[$i]->ase_emp_id . '/' . $ev_all[$i]->grn_id . '/' . $ev_all[$i]->sec_level . '/' . $ev_all[$i]->grn_status . '/' . $ev_all[$i]->grn_emp_id; ?>">
-                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
-                                                    <i class="fas fa-edit text-white"></i>
-                                                </button>
-                                            </a>
-                                            <!-- แสดงฟอร์มประเมิน T4, T3, T2 -->
-                                        <?php } else { ?>
-                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_g_agm_gm/' . $ev_all[$i]->ase_emp_id . '/' . $ev_all[$i]->grn_id . '/' . $ev_all[$i]->sec_level . '/' . $ev_all[$i]->grn_status . '/' . $ev_all[$i]->grn_emp_id; ?>">
-                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
-                                                    <i class="fas fa-edit text-white"></i>
-                                                </button>
-                                            </a>
-                                        <?php } ?>
-                                    <?php } else { ?>
-                                        <button type="button" class="btn btn-danger btn-sm">
-                                            Not have file
-                                        </button>
-                                    <?php } ?>
+                    <?php if(count($ev_per) != 0) {?>
+                            <?php for ($j = 0 ;$j < count($ev_per); $j++ ) {  ?>
+                                <?php if($ev_all[$i]->gro_ase_id != $ev_per[$j]->per_ase_id && $ev_all[$i]->grn_emp_id != $ev_per[$j]->per_emp_id || $ev_all[$i]->gro_ase_id == $ev_per[$j]->per_ase_id && $ev_all[$i]->grn_emp_id== $ev_per[$j]->per_emp_id &&  $ev_all[$i]->grp_date != $ev_per[$j]->per_date) {?>
+                                    <?php if($ev_all[$i]->grn_status == 0 || $ev_all[$i]->Position_Level > 2){ ?>
+                                        <?php if($ev_all[$i]->grn_status == 0 || $ev_all[$i]->grn_status == 3){ ?>
+                                            <tr>
+                                                <!-- column แสดง ลำดับ -->
+                                                <td>
+                                                    <?php echo $s ?>
+                                                    <?php $s++;  ?>
+                                                </td>
+                                                <!-- column แสดง รหัสผู้ที่ถูกประเมิน หรือ Nominee -->
+                                                <td>
+                                                    <?php echo $ev_all[$i]->Emp_ID ?>
+                                                </td>
+                                                <!-- column แสดง ลำดับ ชื่อ-นามสกุล ผู้ที่ถูกประเมิน หรือ Nominee-->
+                                                <td>
+                                                    <?php echo $ev_all[$i]->Empname_eng . ' ' . $ev_all[$i]->Empsurname_eng ?>
+                                                </td>
+                                                <!-- column แสดงชื่อกลุ่มผู้ที่ถูกประเมิน หรือ Nominee -->
+                                                <td>
+                                                    <?php echo $ev_all[$i]->gro_grp_id ?>
+                                                </td>
+                                                <!-- column แสดงวันที่ต้องทำการประเมิน -->
+                                                <td>
+                                                    <?php $newDate = date("d/m/Y", strtotime($ev_all[$i]->grp_date)); ?>
+                                                    <?php echo $newDate ?>
+                                                </td>
+                                                <!-- column แสดงตำแหน่งที่จะ promote -->
+                                                <td>
+                                                    <?php echo $ev_all[$i]->Position_name ?>
+                                                </td>
+                                                <!-- column ดำเนินการ -->
+                                                <td style='text-align: center;'>
+                                                    <!-- ปุ่มดำเนินการ -->
+                                                    <?php $status = 0 ?>
+                                                    <?php for ($j = 0; $j < count($check); $j++) {
+                                                        if ($check[$j]->fil_emp_id == $ev_all[$i]->grn_emp_id) {
+                                                            $status++;
+                                                    ?>
+                                                    <?php }
+                                                    } ?>
+                                                    <?php if ($status == 1) { ?>
+                                                        <!-- แสดงฟอร์มประเมิน T6 & T5 -->
+                                                        <?php if ($ev_all[$i]->Position_Level == 5 || $ev_all[$i]->Position_Level == 6) { ?>
+                                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_amsssv_mtssp/' . $ev_all[$i]->gro_ase_id . '/' . $ev_all[$i]->grn_id . '/' . $ev_all[$i]->sec_level . '/' . $ev_all[$i]->grn_status . '/' . $ev_all[$i]->grn_emp_id; ?>">
+                                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                                                    <i class="fas fa-edit text-white"></i>
+                                                                </button>
+                                                            </a>
+                                                            <!-- แสดงฟอร์มประเมิน T4, T3, T2 -->
+                                                        <?php } else { ?>
+                                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_g_agm_gm/' . $ev_all[$i]->gro_ase_id . '/' . $ev_all[$i]->grn_id . '/' . $ev_all[$i]->sec_level . '/' . $ev_all[$i]->grn_status . '/' . $ev_all[$i]->grn_emp_id; ?>">
+                                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                                                    <i class="fas fa-edit text-white"></i>
+                                                                </button>
+                                                            </a>
+                                                        <?php } ?>
+                                                    <?php } else { ?>
+                                                        <button type="button" class="btn btn-danger btn-sm">
+                                                            Not have file
+                                                        </button>
+                                                    <?php } ?>
 
-                                </td>
-                            </tr>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    <?php } ?>
+                                <?php } ?>
                         <?php } ?>
+                    <?php }else {?>
+                        <?php if($ev_all[$i]->grn_status == 0 || $ev_all[$i]->Position_Level > 2){ ?>
+                                        <?php if($ev_all[$i]->grn_status == 0 || $ev_all[$i]->grn_status == 3){ ?>
+                                            <tr>
+                                                <!-- column แสดง ลำดับ -->
+                                                <td>
+                                                    <?php echo $s ?>
+                                                    <?php $s++;  ?>
+                                                </td>
+                                                <!-- column แสดง รหัสผู้ที่ถูกประเมิน หรือ Nominee -->
+                                                <td>
+                                                    <?php echo $ev_all[$i]->Emp_ID ?>
+                                                </td>
+                                                <!-- column แสดง ลำดับ ชื่อ-นามสกุล ผู้ที่ถูกประเมิน หรือ Nominee-->
+                                                <td>
+                                                    <?php echo $ev_all[$i]->Empname_eng . ' ' . $ev_all[$i]->Empsurname_eng ?>
+                                                </td>
+                                                <!-- column แสดงชื่อกลุ่มผู้ที่ถูกประเมิน หรือ Nominee -->
+                                                <td>
+                                                    <?php echo $ev_all[$i]->gro_grp_id ?>
+                                                </td>
+                                                <!-- column แสดงวันที่ต้องทำการประเมิน -->
+                                                <td>
+                                                    <?php $newDate = date("d/m/Y", strtotime($ev_all[$i]->grp_date)); ?>
+                                                    <?php echo $newDate ?>
+                                                </td>
+                                                <!-- column แสดงตำแหน่งที่จะ promote -->
+                                                <td>
+                                                    <?php echo $ev_all[$i]->Position_name ?>
+                                                </td>
+                                                <!-- column ดำเนินการ -->
+                                                <td style='text-align: center;'>
+                                                    <!-- ปุ่มดำเนินการ -->
+                                                    <?php $status = 0 ?>
+                                                    <?php for ($j = 0; $j < count($check); $j++) {
+                                                        if ($check[$j]->fil_emp_id == $ev_all[$i]->grn_emp_id) {
+                                                            $status++;
+                                                    ?>
+                                                    <?php }
+                                                    } ?>
+                                                    <?php if ($status == 1) { ?>
+                                                        <!-- แสดงฟอร์มประเมิน T6 & T5 -->
+                                                        <?php if ($ev_all[$i]->Position_Level == 5 || $ev_all[$i]->Position_Level == 6) { ?>
+                                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_amsssv_mtssp/' . $ev_all[$i]->gro_ase_id . '/' . $ev_all[$i]->grn_id . '/' . $ev_all[$i]->sec_level . '/' . $ev_all[$i]->grn_status . '/' . $ev_all[$i]->grn_emp_id; ?>">
+                                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                                                    <i class="fas fa-edit text-white"></i>
+                                                                </button>
+                                                            </a>
+                                                            <!-- แสดงฟอร์มประเมิน T4, T3, T2 -->
+                                                        <?php } else { ?>
+                                                            <a href="<?php echo site_url() . 'Evaluation/Evaluation/show_evaluation_g_agm_gm/' . $ev_all[$i]->gro_ase_id . '/' . $ev_all[$i]->grn_id . '/' . $ev_all[$i]->sec_level . '/' . $ev_all[$i]->grn_status . '/' . $ev_all[$i]->grn_emp_id; ?>">
+                                                                <button type="button" class="btn btn-primary btn-sm" style="background-color: info;">
+                                                                    <i class="fas fa-edit text-white"></i>
+                                                                </button>
+                                                            </a>
+                                                        <?php } ?>
+                                                    <?php } else { ?>
+                                                        <button type="button" class="btn btn-danger btn-sm">
+                                                            Not have file
+                                                        </button>
+                                                    <?php } ?>
+
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    <?php } ?>
                     <?php } ?>
                 <?php } ?>
             </tbody>

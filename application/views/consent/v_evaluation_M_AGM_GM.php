@@ -183,7 +183,7 @@
                                                     <?php echo substr($arr_dis[$count_discription]->des_description_eng, $pos + 1, strlen($arr_dis[$count_discription]->des_description_eng)) ?>
                                                 </td>
                                                 <!-- แสดง point    -->
-                                                <?php if ($ev_gno[0]->grn_status == -1) { ?>
+                                                <?php if ($ev_gno[0]->grn_status == 0) { ?>
                                                     <td colspan="2" style="vertical-align:middle;text-align: center;">
                                                         <select class="form-control" name="form[]" id="form" required>
                                                             <option value="0">please selected</option>
@@ -199,7 +199,7 @@
 
 
                                                     </td>
-                                                <?php } else if ($ev_gno[0]->grn_status == 0) { ?>
+                                                <?php } else if ($ev_gno[0]->grn_status == 3) { ?>
                                                     <td colspan="2" style="vertical-align:middle;text-align: center;">
                                                         <?php echo $arr_point[$count_discription]->ptf_point;
                                                         $point_old = $point_old + $arr_point[$count_discription]->ptf_point; ?>
@@ -246,13 +246,13 @@
                                                 <br>1 ： Do Not satisfy expected level for Manager level
                                             </td>
                                             <td>Total</td>
-                                            <?php if ($ev_gno[0]->grn_status == -1) { ?>
+                                            <?php if ($ev_gno[0]->grn_status == 0) { ?>
                                                 <td><input type="text" name="total" size='1' disabled style='border: none'> </td>
                                                 <td><input type="text" name="total_weight" size='1' disabled style='border: none' ;></td>
                                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                             <?php  } ?>
-                                            <?php if ($ev_gno[0]->grn_status == 0) {
+                                            <?php if ($ev_gno[0]->grn_status == 3) {
                                                 $l = $point_old / $weight * 100; ?>
                                                 <td><input type="text" size='1' value="<?php echo $point_old; ?>" disabled style='border: none'></td>
                                                 <td><input type="text" size='1' value="<?php echo (int)"$l" ?>%" disabled style='border: none'></td>
@@ -276,7 +276,7 @@
                             <div class="form-group">
                                 <label for="comment"><b>Comment :</b></label>
                                 <textarea class="form-control" rows="5" id="comment" type="text" name="comment" required>
-                            <?php if ($ev_gno[0]->grn_status == 0) {    ?>
+                            <?php if ($ev_gno[0]->grn_status == 3) {    ?>
                             <?php echo $arr_per[0]->per_comment; ?>
                             <?php } ?>
                         </textarea>
@@ -286,7 +286,7 @@
                             <div class="form-group">
                                 <label for="QnA"><b>Q/A :</b></label>
                                 <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA" required>
-                        <?php if ($ev_gno[0]->grn_status == 0) {    ?>
+                        <?php if ($ev_gno[0]->grn_status == 3) {    ?>
                             <?php echo $arr_per[0]->per_q_and_a; ?>
                             <?php } ?>
                         </textarea>

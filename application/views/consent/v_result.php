@@ -95,7 +95,7 @@
                             <td style='text-align: center;'>
 
                                 <!-- ปุ่มดำเนินการ -->
-                                <a href="<?php echo site_url() . 'Result/Result/show_result_detail/' . $row->grn_emp_id . '/' . $row->gro_ase_id . '/' . $row->sec_level . '/' . $row->grn_id; ?>">
+                                <a href="<?php echo site_url() . 'Result/Result/show_result_detail/' . $row->grn_emp_id . '/' . $row->gro_ase_id . '/' . $row->Position_Level . '/' . $row->grn_id; ?>">
                                     <button class="btn btn-primary"> <i class="fa fa-info-circle"></i> </button>
                                 </a>
 

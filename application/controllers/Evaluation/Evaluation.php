@@ -52,6 +52,11 @@ class Evaluation extends MainController
         $this->load->model('M_pef_evaluation', 'pef');
         $data['check'] = $this->pef->get_file_nominee()->result();
         $data['ev_all'] = $this->pef->get_all_list($id_ass)->result(); //คืนค่าชื่อกรรมการ ชื่อกลุ่ม วันที่ประเมิน จำนวนNominee ชื่อ Nominee ตำแหน่ง แผนก Promote to
+        $data['ev_ass'] = $this->pef->get_ase_id($id_ass)->result();
+        $data['ev_per'] = $this->pef->get_performance_form()->result();
+        // echo "<pre>";
+        //     print_r($data['ev_all']);
+        // echo "</pre>";
         $this->output('consent/v_evaluation', $data);
     } // function show_evaluation
 
@@ -109,12 +114,7 @@ class Evaluation extends MainController
             $data['arr_per'] = $this->pef->get_performance($id_ase, $grn_emp_id)->result();
         }
         $this->output('consent/v_evaluation_m_agm_gm', $data);
-        // // print_r($data['arr_point']);
-        // echo $id_ase;
-        // echo '   ';
-        // echo $emp_id;
-        // echo '   ';
-        // echo $id;
+        
     } // function show_evaluation_m_agm_gm
 
 
@@ -158,9 +158,9 @@ class Evaluation extends MainController
         $this->per->insert_point();
         $this->per->grn_emp_id = $emp;
         $status = $this->input->post('grn_status');
-        if($status == -1){
-            $this->per->grn_status = 0;
-        }else if($status == 0){
+        if($status == 0){
+            $this->per->grn_status = 1;
+        }else if($status == 1){
             $this->per->grn_status = 3;
         }
 
