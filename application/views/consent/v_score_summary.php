@@ -28,86 +28,100 @@
                 </thead>
                 <tbody class="list">
                     <?php for ($i = 0; $i < count($nominee); $i++) { ?>
-                    <tr>
-                        <th scope="row">
-                            <div class="media align-items-center">
-                                <div class="media-body">
-                                    <span class="name mb-0 text-sm"><?php echo $i + 1 ?></span>
+                        <tr>
+                            <th scope="row">
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <span class="name mb-0 text-sm"><?php echo $i + 1 ?></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </th>
-                        <td class="budget">
-                            <?php echo $nominee[$i]->Emp_ID ?>
-                            <input type="text" id="<?php echo 'emp_id_' . $i ?>"
-                                value=" <?php echo $nominee[$i]->Emp_ID ?>" hidden
-                                onchange="get_evaluation(<?php echo $nominee[$i]->Emp_ID ?>)">
-                        </td>
-                        <td>
-                            <span class="badge badge-dot mr-4">
-                                <!-- <i class="bg-warning"></i> -->
-                                <span
-                                    class="status"><?php echo $nominee[$i]->Empname_eng . ' ' . $nominee[$i]->Empsurname_eng ?></span>
-                            </span>
-                        </td>
-                        <td>
-                            <span class="badge badge-dot mr-4">
-                                <i class="bg-warning"></i>
-                                <span class="status"><?php echo $nominee[$i]->grn_status ?></span>
-                            </span>
-                        </td>
-                        <td>
-                            <div class="avatar-group">
+                            </th>
+                            <td class="budget">
+                                <?php echo $nominee[$i]->Emp_ID ?>
+                                <input type="text" id="<?php echo 'emp_id_' . $i ?>" value=" <?php echo $nominee[$i]->Emp_ID ?>" hidden onchange="get_evaluation(<?php echo $nominee[$i]->Emp_ID ?>)">
+                            </td>
+                            <td>
+                                <span class="badge badge-dot mr-4">
+                                    <!-- <i class="bg-warning"></i> -->
+                                    <span class="status"><?php echo $nominee[$i]->Empname_eng . ' ' . $nominee[$i]->Empsurname_eng ?></span>
+                                </span>
+                            </td>
+                            <td>
+                                <?php
+                                if ($count[$i] == count($assessor)) {
+                                    if ($nominee[$i]->grn_status == 0) { ?>
+                                        <span class="badge badge-dot mr-4">
+                                            <i class="bg-success"></i>
+                                            <span class="status"><?php echo 'Assessed' ?></span>
+                                        </span>
+                                    <?php }
+                                } else { ?>
+                                    <span class="badge badge-dot mr-4">
+                                        <i class="bg-warning"></i>
+                                        <span class="status"><?php echo 'Pending Assess' ?></span>
+                                    </span>
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <div class="avatar-group">
 
-                                <span id="<?php echo 'demo_' . $i ?>"
-                                    class="User"><?php echo $count[$i] ?>/<?php echo count($assessor) ?></span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <span class="completion mr-2">60%</span>
-                                <div>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60"
-                                            aria-valuemin="0" aria-valuemax="100"
-                                            style="width: <?php echo '100' . '%' ?>;">
+                                    <span id="<?php echo 'demo_' . $i ?>" class="User"><?php echo $count[$i] ?>/<?php echo count($assessor) ?></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <span class="completion mr-2">60%</span>
+                                    <div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo '100' . '%' ?>;">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="dropdown">
-                                <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <button type="button" class="btn btn-warning btn-lg" data-toggle="modal">
-                                        <i class="fa fa-pencil-square"></i></button>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a class="dropdown-item" href="#">Pass</a>
-                                    <a class="dropdown-item" href="#">Not Pass</a>
-                                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            </td>
+                            <td>
+                                <?php
+                                if ($count[$i] == count($assessor)) {
+                                    if ($nominee[$i]->grn_status == 0) { ?>
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <button type="button" class="btn btn-warning btn-lg" data-toggle="modal">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a class="dropdown-item" href="#">Pass</a>
+                                                <a class="dropdown-item" href="#">Not Pass</a>
+                                                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                             Launch demo modal
-                                        </button> -->
-                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModal">Review</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                                            </button> -->
+                                                <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Review</a>
+                                            </div>
+                                        </div>
+                                    <?php }
+                                } else { ?>
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" disabled>
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
+                                        </a>
+                                    </div>
+                                <?php } ?>
+                            </td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
     </div>
-    <center><a href="<?php echo site_url() . 'Report/Summary/index'; ?>" class="btn btn-secondary float-center"><i
-                class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
+    <center><a href="<?php echo site_url() . 'Report/Summary/index'; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
 </div>
 <!-- Button trigger modal -->
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -128,13 +142,13 @@
     </div>
 </div>
 <script>
-$(document).ready(function() {
-    $('#Score').DataTable();
-    console.log(999);
+    $(document).ready(function() {
+        $('#Score').DataTable();
+        console.log(999);
 
 
 
-});
+    });
 </script>
 </script>
 <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
