@@ -48,4 +48,19 @@ class Da_pef_summary extends pefs_model
         WHERE nom.grn_grp_id = ? ";
         $this->db->query($sql, array($this->grn_status, $this->grn_grp_id));
     }
+    /*
+    * update_nom_stat
+    * update nominee status
+    * @input -
+    * @output -
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */
+    public function update_pass()
+    {
+        $sql = " UPDATE pefs_database.pef_group_nominee as nom
+        SET nom.grn_status = ? 
+        WHERE nom.grn_grp_id = ? AND nom.grn_emp_id=?";
+        $this->db->query($sql, array($this->grn_status, $this->grn_grp_id, $this->grn_emp_id));
+    }
 }
