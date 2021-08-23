@@ -58,86 +58,96 @@
                 </thead>
                 <tbody class="list">
                     <?php for ($i = 0; $i < count($nominee); $i++) { ?>
-                        <tr>
-                            <th scope="row">
-                                <div class="media align-items-center">
-                                    <div class="media-body">
-                                        <span class="name mb-0 text-sm"><?php echo $i + 1 ?></span>
-                                    </div>
+                    <tr>
+                        <th scope="row">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                    <span class="name mb-0 text-sm"><?php echo $i + 1 ?></span>
                                 </div>
-                            </th>
-                            <td class="budget">
-                                <?php echo $nominee[$i]->Emp_ID ?>
-                                <input type="text" id="<?php echo 'emp_id_' . $i ?>" value=" <?php echo $nominee[$i]->Emp_ID ?>" hidden onchange="get_evaluation(<?php echo $nominee[$i]->Emp_ID ?>)">
-                            </td>
-                            <td>
-                                <span class="badge badge-dot mr-4">
-                                    <!-- <i class="bg-warning"></i> -->
-                                    <span class="status"><?php echo $nominee[$i]->Empname_eng . ' ' . $nominee[$i]->Empsurname_eng ?></span>
-                                </span>
-                            </td>
-                            <td>
-                                <?php
+                            </div>
+                        </th>
+                        <td class="budget">
+                            <?php echo $nominee[$i]->Emp_ID ?>
+                            <input type="text" id="<?php echo 'emp_id_' . $i ?>"
+                                value=" <?php echo $nominee[$i]->Emp_ID ?>" hidden
+                                onchange="get_evaluation(<?php echo $nominee[$i]->Emp_ID ?>)">
+                        </td>
+                        <td>
+                            <span class="badge badge-dot mr-4">
+                                <!-- <i class="bg-warning"></i> -->
+                                <span
+                                    class="status"><?php echo $nominee[$i]->Empname_eng . ' ' . $nominee[$i]->Empsurname_eng ?></span>
+                            </span>
+                        </td>
+                        <td>
+                            <?php
                                 if ($count[$i] == count($assessor)) {
                                     if ($nominee[$i]->grn_status == 0) { ?>
-                                        <span class="badge badge-dot mr-4">
-                                            <i class="bg-success"></i>
-                                            <span class="status"><?php echo 'Assessed' ?></span>
-                                        </span>
-                                    <?php }
+                            <span class="badge badge-dot mr-4">
+                                <i class="bg-success"></i>
+                                <span class="status"><?php echo 'Assessed' ?></span>
+                            </span>
+                            <?php }
                                 } else { ?>
-                                    <span class="badge badge-dot mr-4">
-                                        <i class="bg-warning"></i>
-                                        <span class="status"><?php echo 'Pending Assess' ?></span>
-                                    </span>
-                                <?php } ?>
-                            </td>
-                            <td>
-                                <div class="avatar-group">
+                            <span class="badge badge-dot mr-4">
+                                <i class="bg-warning"></i>
+                                <span class="status"><?php echo 'Pending Assess' ?></span>
+                            </span>
+                            <?php } ?>
+                        </td>
+                        <td>
+                            <div class="avatar-group">
 
-                                    <span id="<?php echo 'demo_' . $i ?>" class="User"><?php echo $count[$i] ?>/<?php echo count($assessor) ?></span>
-                                </div>
-                            </td>
-                            <td>
+                                <span id="<?php echo 'demo_' . $i ?>"
+                                    class="User"><?php echo $count[$i] ?>/<?php echo count($assessor) ?></span>
+                            </div>
+                        </td>
+                        <td>
 
-                                <?php
+                            <?php
                                 if ($count[$i] == count($assessor)) {
                                     if ($nominee[$i]->grn_status == 0) { ?>
-                                        <?php
+                            <?php
                                         $index_point = 0;
                                         ?>
-                                        <b>Totally score : </b><?php echo  $total[$index_point]; ?> points<br>
-                                        <b>Get score : </b><?php echo $get[$index_point]; ?> points<br>
-                                        <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
-                                        <div class="d-flex align-items-center">
-                                            <span class="completion mr-2"><?php echo number_format($percent, 2, '.', ''); ?> %</span>
-                                            <div>
-                                                <?php if ($percent >= 55) { ?>
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
-                                                        </div>
-                                                    </div>
-                                                <?php } else { ?>
-                                                    <div class="progress">
-                                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
-                                                        </div>
-                                                    </div>
-                                                <?php } ?>
-                                            </div>
-                                        <?php } ?>
+                            <b>Totally score : </b><?php echo  $total[$index_point]; ?> points<br>
+                            <b>Get score : </b><?php echo $get[$index_point]; ?> points<br>
+                            <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
+                            <div class="d-flex align-items-center">
+                                <span class="completion mr-2"><?php echo number_format($percent, 2, '.', ''); ?>
+                                    %</span>
+                                <div>
+                                    <?php if ($percent >= 55) { ?>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60"
+                                            aria-valuemin="0" aria-valuemax="100"
+                                            style="width: <?php echo $percent . '%' ?>;">
                                         </div>
+                                    </div>
                                     <?php } else { ?>
-                                        <span class="completion mr-2"><?php echo number_format(0, 2, '.', ''); ?> %</span>
-                                        <div>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo '0' . '%' ?>;">
-                                                </div>
-                                            </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60"
+                                            aria-valuemin="0" aria-valuemax="100"
+                                            style="width: <?php echo $percent . '%' ?>;">
                                         </div>
+                                    </div>
                                     <?php } ?>
-                            </td>
-                            <td>
-                                <?php
+                                </div>
+                                <?php } ?>
+                            </div>
+                            <?php } else { ?>
+                            <span class="completion mr-2"><?php echo number_format(0, 2, '.', ''); ?> %</span>
+                            <div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60"
+                                        aria-valuemin="0" aria-valuemax="100" style="width: <?php echo '0' . '%' ?>;">
+                                    </div>
+                                </div>
+                            </div>
+                            <?php } ?>
+                        </td>
+                        <td>
+                            <?php
                                 if ($count[$i] == count($assessor)) {
                                     if ($nominee[$i]->grn_status == 0) { ?>
                                         <div class="dropdown">
@@ -154,58 +164,67 @@
                                         </div>
                                     <?php }
                                 } else { ?>
-                                    <div class="dropdown">
-                                        <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" disabled>
-                                                <i class="fa fa-pencil"></i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                <?php } ?>
-                            </td>
-                        </tr>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal_<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Manage Group review</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form action="<?php echo site_url() . 'Report/Summary/review'; ?>" method="post" enctype="multipart/form-data">
-                                        <div class="modal-body">
-                                            <h5 class="modal-title" id="exampleModalLabel">Date</h5>
-                                            <input type="date" id="date" name="date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
-                                            <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
-                                            <input type="text" id="group" name="group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
-                                            <input type="text" id="pos" name="pos" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
-                                            <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-success">Save changes</button>
-                                        </div>
-                                    </form>
+                            <div class="dropdown">
+                                <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" disabled>
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                </a>
+                            </div>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal_<?php echo $i ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Manage Group review</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
+                                <form action="<?php echo site_url() . 'Report/Summary/review'; ?>" method="post"
+                                    enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <h5 class="modal-title" id="exampleModalLabel">Date</h5>
+                                        <input type="date" id="date" name="date" class="form-control"
+                                            min="<?php echo date('Y-m-d') ?>" required>
+                                        <input type="text" id="Emp_id" name="emp_id" class="form-control"
+                                            value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
+                                        <input type="text" id="group" name="group" class="form-control"
+                                            value="<?php echo $group[0]->grp_position_group ?>" hidden>
+                                        <input type="text" id="pos" name="pos" class="form-control"
+                                            value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
+                                        <input type="text" id="grp_id" name="grp_id" class="form-control"
+                                            value="<?php echo $group[0]->grp_id ?>" hidden>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <!-- Modal -->
+                    </div>
+                    <!-- Modal -->
                     <?php } ?>
                 </tbody>
             </table>
         </div>
     </div>
-    <center><a href="<?php echo site_url() . 'Report/Summary/index'; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
+    <center><a href="<?php echo site_url() . 'Report/Summary/index'; ?>" class="btn btn-secondary float-center"><i
+                class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
 </div>
 <!-- Button trigger modal -->
 
 <script>
-    $(document).ready(function() {
-        $('#Score').DataTable();
-        console.log(999);
-    });
+$(document).ready(function() {
+    $('#Score').DataTable();
+    console.log(999);
+});
 </script>
 </script>
 <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>

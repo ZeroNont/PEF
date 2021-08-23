@@ -110,6 +110,24 @@ class Summary extends MainController
         $data = $this->pef->get_group()->result();
         echo json_encode($data);
     }
+    public function update_pass($grp_id, $emp_id)
+    {
+        $this->load->model('Da_pef_summary', 'pef');
+        $this->pef->grn_grp_id = $grp_id;
+        $this->pef->grn_emp_id = $emp_id;
+        $this->pef->grn_status = 1;
+        $this->pef->update_pass();
+        Redirect('/Report/Summary/score_manage/' . $grp_id);
+    }
+    public function update_fail($grp_id, $emp_id)
+    {
+        $this->load->model('Da_pef_summary', 'pef');
+        $this->pef->grn_grp_id = $grp_id;
+        $this->pef->grn_emp_id = $emp_id;
+        $this->pef->grn_status = 2;
+        $this->pef->update_pass();
+        Redirect('/Report/Summary/score_manage/' . $grp_id);
+    }
 
     /*
 	* get_section
