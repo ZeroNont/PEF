@@ -69,7 +69,7 @@
     }
     //for each ass_data
     array_push($point_ass, $point_total);
-    array_push($total, (sizeof($ass_data) * 5 * sizeof($ass_data)));
+    array_push($total, (sizeof($point_data) * 5));
     array_push($get, array_sum($point_total));
     $point_total = [];
     ?>

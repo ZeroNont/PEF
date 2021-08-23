@@ -65,6 +65,54 @@ class Da_pef_group extends pefs_model
             array($this->grn_grp_id)
         );
     }
+    /*
+* delete_nominee
+* delete nominee from database
+* @input grn_grp_id
+* @output 
+* @author Jirayut Saifah
+* @Create Date 2564-08-23
+*/
+    public function delete_nominee()
+    {
+        $sql = "DELETE FROM pefs_database.pef_group_nominee WHERE grn_grp_id=? AND grn_emp_id=?";
+        $this->db->query(
+            $sql,
+            array($this->grn_grp_id, $this->grn_emp_id)
+        );
+    }
+    /*
+* delete_nominee
+* delete nominee from database
+* @input grn_grp_id
+* @output 
+* @author Jirayut Saifah
+* @Create Date 2564-08-23
+*/
+    public function delete_performance()
+    {
+        $sql = "DELETE FROM pefs_database.pef_group_nominee WHERE per_date=? AND per_emp_id=?";
+        $this->db->query(
+            $sql,
+            array($this->per_date, $this->per_emp_id)
+        );
+    }
+    /*
+* delete_nominee
+* delete nominee from database
+* @input grn_grp_id
+* @output 
+* @author Jirayut Saifah
+* @Create Date 2564-08-23
+*/
+    public function delete_point()
+    {
+        $sql = "DELETE FROM pefs_database.pef_group_nominee WHERE ptf_date=? AND ptf_emp_id=?";
+        $this->db->query(
+            $sql,
+            array($this->ptf_date, $this->ptf_emp_id)
+        );
+    }
       /*
 * insert_group
 * insert group to database

@@ -15,33 +15,33 @@
 
 <!-- CSS -->
 <style>
-    #history_table td,
-    #history_table th {
-        padding: 8px;
-        text-align: center;
-    }
+#history_table td,
+#history_table th {
+    padding: 8px;
+    text-align: center;
+}
 
-    #history_table tr:nth-child(even) {
-        background-color: #e9ecef;
-    }
+#history_table tr:nth-child(even) {
+    background-color: #e9ecef;
+}
 
-    #history_table tr:hover {
-        background-color: #adb5bd;
-    }
+#history_table tr:hover {
+    background-color: #adb5bd;
+}
 
-    #card_radius {
-        margin-left: 14px;
-        margin-right: 15px;
-        border-radius: 20px;
-        width: auto;
-        min-height: 300px;
-    }
+#card_radius {
+    margin-left: 14px;
+    margin-right: 15px;
+    border-radius: 20px;
+    width: auto;
+    min-height: 300px;
+}
 
-    #history_table {
-        width: 98%;
-        margin-top: 20px;
-        margin-left: 10px;
-    }
+#history_table {
+    width: 98%;
+    margin-top: 20px;
+    margin-left: 10px;
+}
 </style>
 
 
@@ -200,9 +200,10 @@
                                                 </td>
                                             </tr>
                                         <?php } ?>
-                                    <?php } ?>
+                        <?php } ?>
                     <?php } ?>
                 <?php } ?>
+                
             </tbody>
         </table>
     </div>
@@ -210,9 +211,9 @@
 
 
 <script>
-    $(document).ready(function() {
-        $('#history_table').DataTable();
-    });
+$(document).ready(function() {
+    $('#history_table').DataTable();
+});
 </script>
 <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
 <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
