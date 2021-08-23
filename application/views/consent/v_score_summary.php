@@ -150,19 +150,26 @@
                             <?php
                                 if ($count[$i] == count($assessor)) {
                                     if ($nominee[$i]->grn_status == 0) { ?>
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <button type="button" class="btn btn-warning btn-lg" data-toggle="modal">
-                                                    <i class="fa fa-pencil"></i>
-                                                </button>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="<?php echo site_url() . 'Report/Summary/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Pass</a>
-                                                <a class="dropdown-item" href="<?php echo site_url() . 'Report/Summary/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Not Pass</a>
-                                                <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_<?php echo $i ?>">Review</a>
-                                            </div>
-                                        </div>
-                                    <?php }
+                            <div class="dropdown">
+                                <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <button type="button" class="btn btn-warning btn-lg" data-toggle="modal">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item"
+                                        href="<?php echo site_url() . 'Report/Summary/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Pass</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo site_url() . 'Report/Summary/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Not
+                                        Pass</a>
+                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal_<?php echo $i ?>">Review</a>
+                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#review_<?php echo $i ?>">Review</a>
+                                </div>
+                            </div>
+                            <?php }
                                 } else { ?>
                             <div class="dropdown">
                                 <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -177,6 +184,41 @@
                     </tr>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal_<?php echo $i ?>" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Manage Group review</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="<?php echo site_url() . 'Report/Summary/review'; ?>" method="post"
+                                    enctype="multipart/form-data">
+                                    <div class="modal-body">
+                                        <h5 class="modal-title" id="exampleModalLabel">Date</h5>
+                                        <input type="date" id="date" name="date" class="form-control"
+                                            min="<?php echo date('Y-m-d') ?>" required>
+                                        <input type="text" id="Emp_id" name="emp_id" class="form-control"
+                                            value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
+                                        <input type="text" id="group" name="group" class="form-control"
+                                            value="<?php echo $group[0]->grp_position_group ?>" hidden>
+                                        <input type="text" id="pos" name="pos" class="form-control"
+                                            value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
+                                        <input type="text" id="grp_id" name="grp_id" class="form-control"
+                                            value="<?php echo $group[0]->grp_id ?>" hidden>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="review_<?php echo $i ?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
