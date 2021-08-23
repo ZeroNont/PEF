@@ -38,6 +38,9 @@
                                   </th>
                                   <td class="budget">
                                       <?php echo $nominee[$i]->Emp_ID ?>
+                                      <input type="text" id="<?php echo 'emp_id_' . $i ?>"
+                                          value=" <?php echo $nominee[$i]->Emp_ID ?>" hidden
+                                          onchange="get_evaluation(<?php echo $nominee[$i]->Emp_ID ?>)">
                                   </td>
                                   <td>
                                       <span class="badge badge-dot mr-4">
@@ -55,7 +58,7 @@
                                   <td>
                                       <div class="avatar-group">
 
-                                          <span
+                                          <span id="<?php echo 'demo_' . $i ?>"
                                               class="User"><?php echo count($form) ?>/<?php echo count($assessor) ?></span>
                                       </div>
                                   </td>
@@ -96,9 +99,41 @@
           </div>
       </div>
       <script>
+      function get_evaluation(num) {
+          console.log(num);
+          console.log(123);
+      };
+      </script>
+      <script>
       $(document).ready(function() {
           $('#Score').DataTable();
           console.log(999);
+
+          var i = [0, 1];
+          var T = [];
+
+          for (j = 0; j < 2; j++) {
+              var T = document.getElementById('emp_id_' + i[j]).value;
+              console.log(j);
+              //   var num = T.length;
+              document.getElementById('demo_' + j).innerHTML = 'Hello JavaScript!'
+
+              $.ajax({
+                  type: "POST",
+                  url: "<?php echo base_url(); ?>Report/Summary/get_evaluation",
+                  data: {
+                      "emp": T,
+                  },
+                  success: function(data, status) {
+                      for (var k = 0; k < 2; k++) {
+                          console.log(data);
+                          console.log(T);
+                      }
+                  }
+              })
+          }
+
+
       });
       </script>
       </script>

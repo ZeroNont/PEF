@@ -70,6 +70,13 @@ class Summary extends MainController
         $data = $this->pef->get_all_section()->result();
         echo json_encode($data);
     }
+    public function get_evaluation()
+    {
+        $id = $this->input->post('emp');
+        $this->load->model('M_pef_summary', 'pef');
+        $data = $this->pef->get_evaluation($id)->result();
+        echo json_encode($data);
+    }
 
     /*
 	* show_report_detail

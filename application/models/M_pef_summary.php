@@ -17,7 +17,24 @@ class M_pef_summary extends Da_pef_summary
     {
         parent::__construct();
     } //function construct
-
+    /*
+* check_login
+* Check User_login and Pass_login in database
+* @input User_login and Pass_loginn
+* @output - 
+* @author Niphat Kuhokciw
+* @Create @Create Date 2564-08-12
+*/
+    function get_evaluation($id)
+    { //check User_login and Pass_login in database
+        $sql = "SELECT *
+			FROM pefs_database.pef_performance_form
+			WHERE per_emp_id=$id
+			";
+        $query = $this->db->query($sql);
+        return $query;
+    } //end check_login
+    /*
     /*
 * check_login
 * Check User_login and Pass_login in database

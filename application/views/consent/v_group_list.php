@@ -108,10 +108,12 @@ function getEmp_edit(i) {
                     <td>
                         <?php if ($obj_group[$i]->grp_status == -1) { ?>
 
-                        <a href="<?php echo site_url() . 'Group_management/Group_edit/index/' . $obj_group[$i]->grp_id; ?>">
+                        <a
+                            href="<?php echo site_url() . 'Group_management/Group_edit/index/' . $obj_group[$i]->grp_id; ?>">
                             <button class="btn btn-warning">Edit</button>
                         </a>
-                        <a href="<?php echo site_url() . 'Group_management/Group_list/delete_group/' . $obj_group[$i]->grp_id; ?>">
+                        <a
+                            href="<?php echo site_url() . 'Group_management/Group_list/delete_group/' . $obj_group[$i]->grp_id; ?>">
                             <button class="btn btn-danger">Delete</button>
                         </a>
                         <?php } ?>
