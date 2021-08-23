@@ -102,6 +102,40 @@ class Summary extends MainController
 	* @Create Date 2564-08-13
 	* @Update Date 2564-08-18
 	*/
+    public function next_evaluation()
+    {
+        $date = $this->input->post('date');
+        $emp  = $this->input->post('emp_id');
+        $grp_id = $this->input->post('grp_id');
+        $pos = $this->input->post('pos');
+        $group = $this->input->post('group');
+        echo $group;
+        $this->load->model('Da_pef_group', 'pefd');
+        $this->load->model('M_pef_group', 'pef');
+        $this->load->model('M_pef_summary', 'pefs');
+        $this->pefd->grp_date = $date;
+        $this->pefd->grp_position_group = $group;
+        $this->pefd->insert_group();
+        $group_id = $this->pef->get_group_id()->result();
+        $data['assessor'] = $this->pefs->get_assessor($grp_id)->result();
+        // print_r($data['assessor']);
+        $this->pefd->grn_grp_id = $group_id[0]->grp_id;
+        $this->pefd->grn_emp_id = $emp;
+        $this->pefd->grn_status = 3;
+        $this->pefd->grn_promote_to = $pos;
+        $this->pefd->insert_nominee();
+        for ($i = 0; $i < count($data['assessor']); $i++) {
+            $this->pefd->gro_grp_id = $group_id[0]->grp_id;
+            $this->pefd->gro_ase_id = $data['assessor'][$i]->gro_id;
+            $this->pefd->insert_assessor();
+        }
+        $this->pefd->grn_grp_id = $grp_id;
+        $this->pefd->grn_emp_id = $emp;
+        // $this->pefd->delete_nominee();
+        // $this->load->model('M_pef_summary', 'pef');
+
+        Redirect('/Report/Summary/score_manage/' . $grp_id);
+    }
     public function get_group()
     {
         $date = $this->input->post('date');
