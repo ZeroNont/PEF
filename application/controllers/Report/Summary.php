@@ -62,7 +62,8 @@ class Summary extends MainController
     public function review()
     {
         $date = $this->input->post('date');
-        $emp  = $this->input->post('emp_id');
+        $emp  = $this->input->post('emp');
+        $emp_id  = $this->input->post('emp_id');
         $grp_id = $this->input->post('grp_id');
         $pos = $this->input->post('pos');
         $group = $this->input->post('group');
@@ -86,6 +87,12 @@ class Summary extends MainController
             $this->pefd->gro_ase_id = $data['assessor'][$i]->gro_id;
             $this->pefd->insert_assessor();
         }
+        $this->pefd->per_date = $date;
+        $this->pefd->per_emp_id = $emp;
+        $this->pefd->delete_performance();
+        $this->pefd->ptf_date = $date;
+        $this->pefd->ptf_emp_id = $emp_id;
+        $this->pefd->delete_point();
         $this->pefd->grn_grp_id = $grp_id;
         $this->pefd->grn_emp_id = $emp;
         $this->pefd->delete_nominee();
