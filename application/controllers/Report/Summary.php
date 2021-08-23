@@ -46,7 +46,7 @@ class Summary extends MainController
             // echo count($data['per']);
             for ($j = 0; $j < count($data['per']); $j++) {
 
-                if ($data['nominee'][$i]->Emp_ID == $data['per'][$j]->per_emp_id) {
+                if ($data['nominee'][$i]->Emp_ID == $data['per'][$j]->per_emp_id && $data['group'][0]->grp_date == $data['per'][$j]->per_date) {
                     $num++;
                 }
             }
