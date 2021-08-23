@@ -115,4 +115,45 @@ class M_pef_summary extends Da_pef_summary
         return $query;
     } //end check_login
 
+    /*
+    * get_ass_by_nor_id
+    * get data section, assessor, employee, group, nominee
+    * @input    -
+    * @output   get data section, assessor, employee, group, nominee
+    * @author   Chakrit
+    * @Create Date 2564-08-19
+    */
+    public function get_ass_by_grp_id($id)
+    {
+        $sql = "SELECT * 
+                FROM pefs_database.pef_assessor AS ass
+                INNER JOIN pefs_database.pef_group_assessor AS gro
+                ON ass.ase_emp_id = gro.gro_ase_id 
+                INNER JOIN pefs_database.pef_group AS grp
+                ON grp.grp_id = gro.gro_grp_id
+                WHERE grp.grp_id = $id";
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    /*
+    * get_data_point_by_nor_id
+    * get data point_form, nominee, group, section
+    * @input    -
+    * @output   get data point_form, nominee, group, section
+    * @author   Chakrit
+    * @Create Date 2564-08-19
+    */
+    public function get_data_point_by_grp_id($id)
+    {
+        $sql = "SELECT * 
+                FROM pefs_database.pef_point_form AS poi
+                INNER JOIN pefs_database.pef_group_nominee AS grn
+                ON poi.ptf_emp_id = grn.grn_id
+                INNER JOIN pefs_database.pef_group AS grp
+                ON grp.grp_id = grn.grn_grp_id
+                WHERE grp.grp_id = $id";
+        $query = $this->db->query($sql);
+        return $query;
+    }
 }//end class M_pef_login

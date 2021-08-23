@@ -36,6 +36,8 @@ class Summary extends MainController
         $data['form'] = $this->pef->get_form($id)->result();
         $data['nominee'] = $this->pef->get_nominee($id)->result();
         $data['group'] = $this->pef->get_group_by_id($id)->result();
+        $data['ass_data'] = $this->pef->get_ass_by_grp_id($id)->result();
+		$data['point_data'] = $this->pef->get_data_point_by_grp_id($id)->result();
 
         for ($i = 0; $i < count($data['nominee']); $i++) {
             // echo $data['nominee'][$i]->Emp_ID;

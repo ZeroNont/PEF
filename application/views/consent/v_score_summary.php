@@ -12,6 +12,36 @@
             <h3 class="mb-0">Group Section : <?php echo $group[0]->sec_name ?></h3>
             <hr class="my-4" color="gray">
         </div>
+
+        <?php
+        $sum_point = 0;
+        $point_total = [];
+        $check_emp = '';
+        $point_ass = [];
+        $total = [];
+        $get = [];
+        foreach ($ass_data as $index_ass => $row_ass) {
+            foreach ($point_data as $index => $row) {
+                if ($row_ass->ase_id == $row->ptf_ase_id) {
+                    $sum_point += intval($row->ptf_point);
+                }
+                //if 
+            }
+            //for each point_data
+            if ($sum_point != 0) {
+                array_push($point_total, $sum_point);
+            } else {
+                array_push($point_total, 0);
+            }
+            $sum_point = 0;
+        }
+        //for each ass_data
+        array_push($point_ass, $point_total);
+        array_push($total, (sizeof($point_data) * 5));
+        array_push($get, array_sum($point_total));
+        $point_total = [];
+        ?>
+
         <!-- Light table -->
         <div class="table-responsive">
             <table class="table" id="Score">
@@ -69,15 +99,42 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="d-flex align-items-center">
-                                    <span class="completion mr-2">60%</span>
-                                    <div>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo '100' . '%' ?>;">
+
+                                <?php
+                                if ($count[$i] == count($assessor)) {
+                                    if ($nominee[$i]->grn_status == 0) { ?>
+                                        <?php
+                                        $index_point = 0;
+                                        ?>
+                                        <b>Totally score : </b><?php echo  $total[$index_point]; ?> points<br>
+                                        <b>Get score : </b><?php echo $get[$index_point]; ?> points<br>
+                                        <?php $percent = $get[$index_point] * 100 / $total[$index_point]; ?>
+                                        <div class="d-flex align-items-center">
+                                            <span class="completion mr-2"><?php echo number_format($percent, 2, '.', ''); ?> %</span>
+                                            <div>
+                                                <?php if ($percent >= 55) { ?>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
+                                                        </div>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
+                                                        </div>
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        </div>
+                                    <?php } else { ?>
+                                        <span class="completion mr-2"><?php echo number_format(0, 2, '.', ''); ?> %</span>
+                                        <div>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo '0' . '%' ?>;">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    <?php } ?>
                             </td>
                             <td>
                                 <?php
