@@ -25,6 +25,7 @@ class Summary extends MainController
     {
         $this->output('consent/v_score_list');
     }
+
     public function score_manage($id)
     {
         $this->load->model('M_pef_summary', 'pef');

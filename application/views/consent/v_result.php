@@ -33,7 +33,7 @@
 </style>
 
 <h1>
-    Result
+    Result (ผลการประเมิน)
 </h1>
 
 <body>
@@ -57,46 +57,45 @@
 
                     <tbody align="center">
                         <?php
-                            foreach($arr_gro as $index => $row ){ ?>
+                        foreach ($arr_gro as $index => $row) { ?>
                         <tr>
 
                             <!-- column ลำดับ # -->
                             <td style='text-align: center;'>
-                                <?php echo ($index+1);?>
+                                <?php echo ($index + 1); ?>
                             </td>
 
                             <!-- column รหัสผู้ถูกประเมิน -->
                             <td>
-                                <?php echo $row->grn_emp_id;?>
+                                <?php echo $row->grn_emp_id; ?>
                             </td>
 
                             <!-- column ชื่อผู้ถูกประเมิน -->
                             <td>
-                                <?php echo $row->Empname_eng.' '.$row->Empsurname_eng;?>
+                                <?php echo $row->Empname_eng . ' ' . $row->Empsurname_eng; ?>
                             </td>
 
                             <!-- column กลุ่มของผู้ถูกประเมิน -->
                             <td>
-                                <?php echo $row->grn_grp_id;?>
+                                <?php echo $row->grn_grp_id; ?>
                             </td>
 
                             <!-- column วันที่ทำการประเมิน -->
                             <td>
 
-                                <?php echo date("d-m-Y",strtotime($row->grp_date));?>
+                                <?php echo date("d-m-Y", strtotime($row->grp_date)); ?>
                             </td>
 
                             <!-- column ตำแหน่ง -->
                             <td>
-                                <?php echo $row->Position_name;?>
+                                <?php echo $row->Position_name; ?>
                             </td>
 
                             <!-- column ดำเนินการ -->
                             <td style='text-align: center;'>
 
                                 <!-- ปุ่มดำเนินการ -->
-                                <a
-                                    href="<?php echo site_url() . 'Result/Result/show_result_detail/' . $row->grn_emp_id .'/'. $row->gro_ase_id.'/'. $row->sec_level.'/'. $row->grn_id; ?>">
+                                <a href="<?php echo site_url() . 'Result/Result/show_result_detail/' . $row->grn_emp_id . '/' . $row->gro_ase_id . '/' . $row->sec_level . '/' . $row->grn_id; ?>">
                                     <button class="btn btn-primary"> <i class="fa fa-info-circle"></i> </button>
                                 </a>
 
