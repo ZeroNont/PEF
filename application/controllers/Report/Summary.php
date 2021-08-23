@@ -83,7 +83,7 @@ class Summary extends MainController
         $this->pefd->insert_nominee();
         for ($i = 0; $i < count($data['assessor']); $i++) {
             $this->pefd->gro_grp_id = $group_id[0]->grp_id;
-            $this->pefd->gro_ase_id = $data['assessor'][$i]->gro_id;
+            $this->pefd->gro_ase_id = $data['assessor'][$i]->gro_ase_id;
             $this->pefd->insert_assessor();
         }
         $this->pefd->grn_grp_id = $grp_id;
@@ -126,7 +126,7 @@ class Summary extends MainController
         $this->pefd->insert_nominee();
         for ($i = 0; $i < count($data['assessor']); $i++) {
             $this->pefd->gro_grp_id = $group_id[0]->grp_id;
-            $this->pefd->gro_ase_id = $data['assessor'][$i]->gro_id;
+            $this->pefd->gro_ase_id = $data['assessor'][$i]->gro_ase_id;
             $this->pefd->insert_assessor();
         }
         $this->pefd->grn_grp_id = $grp_id;

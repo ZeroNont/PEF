@@ -162,7 +162,7 @@
                                                 <a class="dropdown-item" href="<?php echo site_url() . 'Report/Summary/update_fail/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Not Pass</a>
                                                 <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_<?php echo $i ?>">Review</a>
                                                 <?php if ($group[0]->grp_position_group > 2) { ?>
-                                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#Modal_<?php echo $i ?>">Review</a>
+                                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#Modal_<?php echo $i ?>">Next Evaluation</a>
                                                 <?php } ?>
                                             </div>
                                         </div>
