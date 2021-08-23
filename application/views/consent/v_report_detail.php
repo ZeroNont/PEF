@@ -103,7 +103,7 @@
         //for each ass_data
         if ($row_emp->grn_status > 0) {
             array_push($point_emp, $point_total);
-            array_push($total, (sizeof($ass_data) * 5 * sizeof($ass_data)));
+            array_push($total, (sizeof($point_data) * 5));
             array_push($get, array_sum($point_total));
         }
         $point_total = [];
