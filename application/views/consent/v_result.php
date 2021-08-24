@@ -45,9 +45,11 @@
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
-                    <th>Group ID</th>
-                    <th>Promote to</th>
+                    <th>Employee ID</th>
+                    <th>List of nominee</th>
+                    <th>Group</th>
                     <th>Date</th>
+                    <th>Position</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -95,7 +97,7 @@ function show_all_data() {
         console.log(date_search)
         $.ajax({
             type: "post",
-            url: "<?php echo base_url(); ?>Report/Summary/get_group",
+            url: "<?php echo base_url(); ?>Result/Result/get_result",
             data: {
                 "date": date_search
             },
@@ -108,12 +110,14 @@ function show_all_data() {
                     data.forEach((row, index) => {
                         data_row += '<tr>';
                         data_row += '<td>' + no++ + '</td>';
+                        data_row += '<td>' + row.grn_emp_id + '</td>';
+                        data_row += '<td>' + 'T' + row.Empname_eng + '  ' + row.Empsurname_eng + '</td>';
                         data_row += '<td>' + row.grp_id + '</td>';
-                        data_row += '<td>' + 'T' + row.sec_level + '  ' + row.sec_name + '</td>';
                         data_row += '<td>' + row.grp_date + '</td>';
+                        data_row += '<td>' + row.Position_name + '</td>';
                         data_row +=
-                            '<td><a href="<?php echo site_url() ?>Report/Summary/score_manage/' +
-                            row.grp_id + ' ">'
+                            '<td><a href="<?php echo site_url() ?>Result/Result/show_result_detail/' +
+                            row.grn_emp_id + '/' + row.gro_ase_id + '/' + row.Position_Level + '/' + row.grn_id +'">'
                         data_row +=
                             '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
                         data_row += '<i class="fas fa-search"></i></button></a></td>'
@@ -126,7 +130,7 @@ function show_all_data() {
                     data_row += "</tr>";
                 }
                 $("#show_data").html(data_row);
-
+                console.log(data)
             },
             // success
             error: function(data) {
@@ -154,10 +158,7 @@ function show_all_data() {
  * @author Nattakorn
  * @Create date 2564-08-13
  */
-function show_modal(grp_id) {
-    console.log(grp_id)
-    window.location.href = '../score_manage/' + grp_id;
-}
+
 </script>
 <script>
 $(document).ready(function() {
