@@ -47,8 +47,6 @@ class M_pef_result extends Da_pef_result
                 FROM pefs_database.pef_group AS gro
                 INNER JOIN pefs_database.pef_group_assessor AS gass
                 ON gro.grp_id = gass.gro_grp_id
-                INNER JOIN pefs_database.pef_assessor AS ass
-                ON gass.gro_ase_id = ass.ase_emp_id
                 INNER JOIN pefs_database.pef_group_nominee AS gnor
                 ON gass.gro_grp_id = gnor.grn_grp_id
                 INNER JOIN dbmc.employee AS emp
@@ -122,12 +120,8 @@ class M_pef_result extends Da_pef_result
     public function get_position($position)
     {
         $sql = "SELECT *
-        FROM  pefs_database.pef_group_nominee AS gnor
-        INNER JOIN dbmc.position AS pos
-        ON gnor.grn_promote_to = pos.Position_ID
-        INNER JOIN pefs_database.pef_section AS sec
-        ON pos.position_level_id = sec.sec_id
-        WHERE sec.sec_level = '$position'";
+        FROM  pefs_database.pef_section
+        WHERE pef_section.sec_level = '$position'";
 
         $query = $this->db->query($sql);
         return $query;

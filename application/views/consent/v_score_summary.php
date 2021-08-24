@@ -9,7 +9,7 @@
     * @Update Date 2564-08-23
     */ -->
 <h1>
-    Score management group (การจัดการคะแนนกลุ่ม)
+    Score Management Group (การจัดการคะแนนกลุ่ม)
 </h1>
 <div class="card-header" id="card_radius">
     <div class="row">
@@ -78,15 +78,12 @@
                         </th>
                         <td class="budget">
                             <?php echo $nominee[$i]->Emp_ID ?>
-                            <input type="text" id="<?php echo 'emp_id_' . $i ?>"
-                                value=" <?php echo $nominee[$i]->Emp_ID ?>" hidden
-                                onchange="get_evaluation(<?php echo $nominee[$i]->Emp_ID ?>)">
+                            <input type="text" id="<?php echo 'emp_id_' . $i ?>" value=" <?php echo $nominee[$i]->Emp_ID ?>" hidden onchange="get_evaluation(<?php echo $nominee[$i]->Emp_ID ?>)">
                         </td>
                         <td>
                             <span class="badge badge-dot mr-4">
                                 <!-- <i class="bg-warning"></i> -->
-                                <span
-                                    class="status"><?php echo $nominee[$i]->Empname_eng . ' ' . $nominee[$i]->Empsurname_eng ?></span>
+                                <span class="status"><?php echo $nominee[$i]->Empname_eng . ' ' . $nominee[$i]->Empsurname_eng ?></span>
                             </span>
                         </td>
                         <td>
@@ -118,8 +115,7 @@
                         <td>
                             <div class="avatar-group">
 
-                                <span id="<?php echo 'demo_' . $i ?>"
-                                    class="User"><?php echo $count[$i] ?>/<?php echo count($assessor) ?></span>
+                                <span id="<?php echo 'demo_' . $i ?>" class="User"><?php echo $count[$i] ?>/<?php echo count($assessor) ?></span>
                             </div>
                         </td>
                         <td>
@@ -139,16 +135,12 @@
                                 <div>
                                     <?php if ($percent >= 55) { ?>
                                     <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60"
-                                            aria-valuemin="0" aria-valuemax="100"
-                                            style="width: <?php echo $percent . '%' ?>;">
+                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
                                         </div>
                                     </div>
                                     <?php } else { ?>
                                     <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60"
-                                            aria-valuemin="0" aria-valuemax="100"
-                                            style="width: <?php echo $percent . '%' ?>;">
+                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percent . '%' ?>;">
                                         </div>
                                     </div>
                                     <?php } ?>
@@ -159,8 +151,7 @@
                             <span class="completion mr-2"><?php echo number_format(0, 2, '.', ''); ?> %</span>
                             <div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: <?php echo '0' . '%' ?>;">
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo '0' . '%' ?>;">
                                     </div>
                                 </div>
                             </div>
@@ -171,31 +162,25 @@
                                 if ($count[$i] == count($assessor)) {
                                     if ($nominee[$i]->grn_status == 0 || $nominee[$i]->grn_status == 1 || $nominee[$i]->grn_status == 2) { ?>
                             <div class="dropdown">
-                                <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <button type="button" class="btn btn-warning btn-lg" data-toggle="modal">
                                         <i class="fa fa-pencil"></i>
                                     </button>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a class="dropdown-item"
-                                        href="<?php echo site_url() . 'Report/Summary/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Pass</a>
-                                    <a class="dropdown-item"
-                                        href="<?php echo site_url() . 'Report/Summary/update_fail/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Not
+                                    <a class="dropdown-item" href="<?php echo site_url() . 'Report/Summary/update_pass/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Pass</a>
+                                    <a class="dropdown-item" href="<?php echo site_url() . 'Report/Summary/update_fail/' . $group[0]->grp_id . '/' . $nominee[$i]->Emp_ID ?>">Not
                                         Pass</a>
-                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#exampleModal_<?php echo $i ?>">Review</a>
+                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_<?php echo $i ?>">Review</a>
                                     <?php if ($group[0]->grp_position_group > 2) { ?>
-                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#Modal_<?php echo $i ?>">Next Evaluation</a>
+                                    <a class="dropdown-item" class="btn btn-primary" data-toggle="modal" data-target="#Modal_<?php echo $i ?>">Next Evaluation</a>
                                     <?php } ?>
                                 </div>
                             </div>
                             <?php }
                                 } else { ?>
                             <div class="dropdown">
-                                <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <a class="btn btn-sm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" disabled>
                                         <i class="fa fa-pencil"></i>
                                     </button>
@@ -205,8 +190,7 @@
                         </td>
                     </tr>
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal_<?php echo $i ?>" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal_<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -215,22 +199,15 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form action="<?php echo site_url() . 'Report/Summary/review'; ?>" method="post"
-                                    enctype="multipart/form-data">
+                                <form action="<?php echo site_url() . 'Report/Summary/review'; ?>" method="post" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <h5 class="modal-title" id="exampleModalLabel">Date</h5>
-                                        <input type="date" id="date" name="date" class="form-control"
-                                            min="<?php echo date('Y-m-d') ?>" required>
-                                        <input type="text" id="Emp_id" name="emp" class="form-control"
-                                            value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
-                                        <input type="text" id="Emp_id" name="emp_id" class="form-control"
-                                            value="<?php echo $nominee[$i]->grn_id ?>" hidden>
-                                        <input type="text" id="group" name="group" class="form-control"
-                                            value="<?php echo $group[0]->grp_position_group ?>" hidden>
-                                        <input type="text" id="pos" name="pos" class="form-control"
-                                            value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
-                                        <input type="text" id="grp_id" name="grp_id" class="form-control"
-                                            value="<?php echo $group[0]->grp_id ?>" hidden>
+                                        <input type="date" id="date" name="date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
+                                        <input type="text" id="Emp_id" name="emp" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
+                                        <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->grn_id ?>" hidden>
+                                        <input type="text" id="group" name="group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
+                                        <input type="text" id="pos" name="pos" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
+                                        <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -243,8 +220,7 @@
         </div>
         <!-- Modal -->
         <!-- Modal -->
-        <div class="modal fade" id="review_<?php echo $i ?>" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="review_<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -253,20 +229,14 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="<?php echo site_url() . 'Report/Summary/review'; ?>" method="post"
-                        enctype="multipart/form-data">
+                    <form action="<?php echo site_url() . 'Report/Summary/review'; ?>" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                             <h5 class="modal-title" id="exampleModalLabel">Date</h5>
-                            <input type="date" id="date" name="date" class="form-control"
-                                min="<?php echo date('Y-m-d') ?>" required>
-                            <input type="text" id="Emp_id" name="emp_id" class="form-control"
-                                value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
-                            <input type="text" id="group" name="group" class="form-control"
-                                value="<?php echo $group[0]->grp_position_group ?>" hidden>
-                            <input type="text" id="pos" name="pos" class="form-control"
-                                value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
-                            <input type="text" id="grp_id" name="grp_id" class="form-control"
-                                value="<?php echo $group[0]->grp_id ?>" hidden>
+                            <input type="date" id="date" name="date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
+                            <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
+                            <input type="text" id="group" name="group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
+                            <input type="text" id="pos" name="pos" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
+                            <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -279,8 +249,7 @@
         <!-- Modal -->
 
         <!-- Modal -->
-        <div class="modal fade" id="Modal_<?php echo $i ?>" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="Modal_<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -289,20 +258,14 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="<?php echo site_url() . 'Report/Summary/next_evaluation'; ?>" method="post"
-                        enctype="multipart/form-data">
+                    <form action="<?php echo site_url() . 'Report/Summary/next_evaluation'; ?>" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                             <h5 class="modal-title" id="exampleModalLabel">Date</h5>
-                            <input type="date" id="date" name="date" class="form-control"
-                                min="<?php echo date('Y-m-d') ?>" required>
-                            <input type="text" id="Emp_id" name="emp_id" class="form-control"
-                                value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
-                            <input type="text" id="group" name="group" class="form-control"
-                                value="<?php echo $group[0]->grp_position_group ?>" hidden>
-                            <input type="text" id="pos" name="pos" class="form-control"
-                                value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
-                            <input type="text" id="grp_id" name="grp_id" class="form-control"
-                                value="<?php echo $group[0]->grp_id ?>" hidden>
+                            <input type="date" id="date" name="date" class="form-control" min="<?php echo date('Y-m-d') ?>" required>
+                            <input type="text" id="Emp_id" name="emp_id" class="form-control" value="<?php echo $nominee[$i]->Emp_ID ?>" hidden>
+                            <input type="text" id="group" name="group" class="form-control" value="<?php echo $group[0]->grp_position_group ?>" hidden>
+                            <input type="text" id="pos" name="pos" class="form-control" value="<?php echo $nominee[$i]->grn_promote_to ?>" hidden>
+                            <input type="text" id="grp_id" name="grp_id" class="form-control" value="<?php echo $group[0]->grp_id ?>" hidden>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -318,8 +281,7 @@
         </table>
     </div>
 </div>
-<center><a href="<?php echo site_url() . 'Report/Summary/index'; ?>" class="btn btn-secondary float-center"><i
-            class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
+<center><a href="<?php echo site_url() . 'Report/Summary/index'; ?>" class="btn btn-secondary float-center"><i class="fas fa-arrow-alt-circle-left"></i> Back</a></center>
 </div>
 <!-- Button trigger modal -->
 

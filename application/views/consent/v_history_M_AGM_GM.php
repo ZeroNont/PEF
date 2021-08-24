@@ -77,13 +77,12 @@ table {
 
             </div>
             <br>
-
+           
             <div class="table-responsive">
                 <table class="table table-bordered table-sm">
                     <tr id="Manage">
                         <th colspan="5" id="gray">
-                            <center><b>Stretch Assignment Evaluation Form (Promote to <?php echo $pos_pos->sec_name; ?> [
-                                    <?php echo $pos_pos->sec_level; ?> ]) </b>
+                            <center><b>Stretch Assignment Evaluation Form (Promote to <?php echo $pos_pos->sec_name; ?> [ <?php echo $pos_pos->sec_level; ?> ]) </b>
                     </tr>
                     <tbody>
                         <tr id="Manage">
@@ -130,6 +129,8 @@ table {
                         $weight = 0;
                         $total = 0;
                         $total_per = 0;
+                        $total2 = 0;
+                        $total_per2 = 0;
                         for ($i = 0; $i < count($arr_dis_m); $i++) {
                             if ($i != 0) {
                                 if ($arr_dis_m[$i]->itm_id != $arr_dis_m[$i - 1]->itm_id) {
@@ -182,8 +183,12 @@ table {
                                 </div>
                             </td>
                             <td colspan="2">
-                                <div class="form-group">
-
+                                <div class="form-group" align="center">
+                                <?php if(count($arr_dis_m)<count($arr_sco)-1){?>
+                                <?php echo $arr_sco[$count_discription+count($arr_dis_m)-1]->ptf_point;
+                                            $total2 = $total2 + $arr_sco[$count_discription+count($arr_dis_m)-1]->ptf_point;
+                                            $total_per2 = ($total2 / $weight) * 100;
+                                }?>
                                 </div>
                             </td>
 
@@ -210,9 +215,9 @@ table {
                             </td>
                             <td>Total</td>
                             <td align='center'><?php echo $total; ?></td>
-                            <td align='center'><?php echo number_format($total_per, 2, '.', '');  ?> %</td>
-                            <td><input type="text" name="total" size='1' disabled hidden></td>
-                            <td><input type="text" name="total" size='1' disabled hidden></td>
+                            <td align='center'><?php echo number_format($total_per, 2, '.', '').'%';  ?> </td>
+                            <td><input type="text" name="total" size='1' disabled hidden><?php if(count($arr_dis_m)<count($arr_sco)){ echo $total2; }?></td>
+                            <td><input type="text" name="total" size='1' disabled hidden><?php if(count($arr_dis_m)<count($arr_sco)){echo number_format($total_per2, 2, '.', '').'%';}?></td>
 
                         </tr>
                         <tr>

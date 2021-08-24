@@ -122,7 +122,7 @@
                     </table>
                     <br>
                 <input type="text" name="grn_status" value="<?php echo $ev_gno[0]->grn_status; ?>" hidden>
-
+                
                     <div class="table-responsive">
                         <form action="<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post" enctype="multipart/form-data" name="evaluation">
                             <table class="table table-bordered table-sm">
@@ -199,11 +199,11 @@
 
 
                                                     </td>
-                                                <?php } else if ($ev_gno[0]->grn_status == 0) { ?>
+                                                <?php } else if ($ev_gno[0]->grn_status == 3) { ?>
                                                     <td colspan="2" style="vertical-align:middle;text-align: center;">
                                                         <?php echo $arr_point[$count_discription]->ptf_point;
                                                         $point_old = $point_old + $arr_point[$count_discription]->ptf_point; ?>
-
+                                                         
 
                                                     </td>
                                                     <td colspan="2">
@@ -252,7 +252,7 @@
                                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                                 <td><input type="text" name="total" size='1' disabled hidden></td>
                                             <?php  } ?>
-                                            <?php if ($ev_gno[0]->grn_status == 0) {
+                                            <?php if ($ev_gno[0]->grn_status == 3) {
                                                 $l = $point_old / $weight * 100; ?>
                                                 <td><input type="text" size='1' value="<?php echo $point_old; ?>" disabled style='border: none'></td>
                                                 <td><input type="text" size='1' value="<?php echo (int)"$l" ?>%" disabled style='border: none'></td>
@@ -276,7 +276,7 @@
                             <div class="form-group">
                                 <label for="comment"><b>Comment :</b></label>
                                 <textarea class="form-control" rows="5" id="comment" type="text" name="comment" required>
-                            <?php if ($ev_gno[0]->grn_status == 0) {    ?>
+                            <?php if ($ev_gno[0]->grn_status == 3) {    ?>
                             <?php echo $arr_per[0]->per_comment; ?>
                             <?php } ?>
                         </textarea>
@@ -286,7 +286,7 @@
                             <div class="form-group">
                                 <label for="QnA"><b>Q/A :</b></label>
                                 <textarea class="form-control" rows="5" id="QnA" type="text" name="QnA" required>
-                        <?php if ($ev_gno[0]->grn_status == 0) {    ?>
+                        <?php if ($ev_gno[0]->grn_status == 3) {    ?>
                             <?php echo $arr_per[0]->per_q_and_a; ?>
                             <?php } ?>
                         </textarea>

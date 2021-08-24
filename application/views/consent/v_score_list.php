@@ -9,7 +9,7 @@
     * @Update Date 2564-08-23
     */ -->
 <h1>
-    Score management (การจัดการคะแนน)
+    Score Management (การจัดการคะแนน)
 
 </h1>
 
