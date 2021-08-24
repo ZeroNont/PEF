@@ -1,3 +1,13 @@
+<!-- 
+    /*
+    * v_score_summary
+    * Display score norminee list in group
+    * @input    -
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */ -->
 <h1>
     Score management group (การจัดการคะแนนกลุ่ม)
 </h1>

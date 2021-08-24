@@ -1,12 +1,13 @@
-<!--
-    v_review
-    display for review list
-    @input -
-    @output -
-    @author Nattakorn
-    Create date 2564-08-13
-    Update date 2564-08-19
--->
+<!-- 
+    /*
+    * v_score_list
+    * Display score norminee list
+    * @input    -
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */ -->
 <h1>
     Score management (การจัดการคะแนน)
 
@@ -52,13 +53,11 @@
                 </tr>
             </thead>
             <tbody id="show_data">
-
-
+                
             </tbody>
-
         </table>
-
     </div>
+
 </div>
 
 <div id="warning" class="modal fade" role="dialog">
@@ -83,10 +82,11 @@
     /*
      * show_all_data
      * show data for search
-     * @input -
-     * @output -
-     * @author Nattakorn
-     * @Create date 2564-08-13
+     * @input    -
+     * @output   -
+     * @author   Chakrit and Jirayut
+     * @Create Date 2564-08-22
+     * @Update Date 2564-08-23
      */
     function show_all_data() {
         var date_search = document.getElementById('grp_date').value;
@@ -137,35 +137,19 @@
         } else {
             $("#warning").modal("show")
         }
-
-
     }
-
-
 
     /*
      * show_modal
      * show update date modal
-     * @input grp_id
-     * @output date change in database
-     * @author Nattakorn
-     * @Create date 2564-08-13
+     * @input    -
+     * @output   -
+     * @author   Chakrit and Jirayut
+     * @Create Date 2564-08-22
+     * @Update Date 2564-08-23
      */
     function show_modal(grp_id) {
         console.log(grp_id)
         window.location.href = '../score_manage/' + grp_id;
     }
 </script>
-<!-- <script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>
-</script>
-<script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
-<script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-<script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-<script src="../../assets/js/argon.js?v=1.2.0"></script>
-<script type="text/javascript"> -->
