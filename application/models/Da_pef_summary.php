@@ -31,6 +31,7 @@ class Da_pef_summary extends pefs_model
         WHERE up.grp_id = ? ";
         $this->db->query($sql, array($this->grp_date, $this->grp_status, $this->grp_id));
     }
+   
 
 
     /*
