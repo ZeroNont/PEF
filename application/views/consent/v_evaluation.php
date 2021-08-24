@@ -67,14 +67,14 @@
                  
                 <?php for ($i = 0; $i < count($ev_all); $i++) { ?>
                     <?php if(count($ev_per) != 0) {?>
+                        <?php $check_re = 0;?>
                             <?php for ($j = 0 ;$j < count($ev_per); $j++ ) {  ?>
-                                <?php $check_re = 0;?>
-                                  
+
                                             <?php if($ev_ass[0]->ase_id == $ev_per[$j]->per_ase_id && $ev_all[$i]->grn_emp_id == $ev_per[$j]->per_emp_id &&  $ev_all[$i]->grp_date == $ev_per[$j]->per_date) {?>
-                                             <?php       $check_re++;?>
+                                                <?php $check_re=1;?>
                                              <?php  }
                                             }?>
-                                      
+                                    
                                     <?php if($check_re == 0 ){?>
                                     <?php if(date("Y-m-d") ==  $ev_all[$i]->grp_date) {?>
                                         
