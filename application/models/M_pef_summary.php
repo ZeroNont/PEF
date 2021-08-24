@@ -1,50 +1,55 @@
 <?php
 /*
-	* M_pef_login.php
-    * M_pef_login เข้าสู่ระบบ
-    * @author : Niphat Kuhokciw
-    * @Create : Date 2564-08-12
-*/
+    * M_pef_summary
+    * get data for summary
+    * @input    -
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */
 defined('BASEPATH') or exit('No direct script access allowed');
 
 include_once("Da_pef_summary.php");
 
-
 class M_pef_summary extends Da_pef_summary
-{ //class M_pef_login
+{
 
     public function __construct()
     {
         parent::__construct();
     } //function construct
+
     /*
-* check_login
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create @Create Date 2564-08-12
-*/
+    * get_evaluation
+    * get data for summary in performance form
+    * @input    id
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */
     function get_evaluation($id)
-    { //check User_login and Pass_login in database
+    {
         $sql = "SELECT *
 			FROM pefs_database.pef_performance_form
 			WHERE per_emp_id=$id
 			";
         $query = $this->db->query($sql);
         return $query;
-    } //end check_login
+    }
+
     /*
-    /*
-* check_login
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create @Create Date 2564-08-12
-*/
+    * get_group
+    * get data for summary in gruop, section
+    * @input    -
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */
     function get_group()
-    { //check User_login and Pass_login in database
+    {
         $sql = "SELECT *
 			FROM pefs_database.pef_group AS grp 
             INNER JOIN pefs_database.pef_section AS sec
@@ -52,17 +57,19 @@ class M_pef_summary extends Da_pef_summary
 			WHERE grp_date = ?";
         $query = $this->db->query($sql, array($this->grp_date));
         return $query;
-    } //end check_login
+    }
+
     /*
-* check_login
-* Check User_login and Pass_login in database
-* @input User_login and Pass_loginn
-* @output - 
-* @author Niphat Kuhokciw
-* @Create @Create Date 2564-08-12
-*/
+    * get_group_by_id
+    * get data for summary in group, section
+    * @input    id
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */
     function get_group_by_id($id)
-    { //check User_login and Pass_login in database
+    {
         $sql = "SELECT *
 			FROM pefs_database.pef_group AS grp INNER JOIN pefs_database.pef_section AS sec
             ON grp.grp_position_group=sec.sec_id
@@ -70,18 +77,38 @@ class M_pef_summary extends Da_pef_summary
 			";
         $query = $this->db->query($sql);
         return $query;
-    } //end check_login
+    }
+
+    /*
+    * get_assessor
+    * get data for summary in assessor
+    * @input    id
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */
     function get_assessor($id)
-    { //check User_login and Pass_login in database
+    {
         $sql = "SELECT *
 			FROM pefs_database.pef_group_assessor 
 			WHERE gro_grp_id=$id
 			";
         $query = $this->db->query($sql);
         return $query;
-    } //end check_login
+    }
+
+    /*
+    * get_nominee
+    * get data for summary in group_nominee, employee
+    * @input    id
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */
     function get_nominee($id)
-    { //check User_login and Pass_login in database
+    {
         $sql = "SELECT *
 			FROM pefs_database.pef_group_nominee AS nom
             INNER JOIN dbmc.employee AS emp
@@ -90,9 +117,19 @@ class M_pef_summary extends Da_pef_summary
 			";
         $query = $this->db->query($sql);
         return $query;
-    } //end check_login
+    }
+
+    /*
+    * get_nominee_by_id
+    * get data for summary in group_nominee, performance_form
+    * @input    id
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */
     function get_nominee_by_id($id)
-    { //check User_login and Pass_login in database
+    {
         $sql = "SELECT *
 			FROM pefs_database.pef_group_nominee AS nom 
             INNER JOIN pefs_database.pef_performance_form AS per
@@ -102,9 +139,19 @@ class M_pef_summary extends Da_pef_summary
 			";
         $query = $this->db->query($sql);
         return $query;
-    } //end check_login
+    }
+
+    /*
+    * get_form
+    * get data for summary in group_nominee, performance_form
+    * @input    id
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */
     function get_form($id)
-    { //check User_login and Pass_login in database
+    {
         $sql = "SELECT *
 			FROM pefs_database.pef_group_nominee AS nom 
             INNER JOIN pefs_database.pef_performance_form AS per
@@ -113,15 +160,16 @@ class M_pef_summary extends Da_pef_summary
 			";
         $query = $this->db->query($sql);
         return $query;
-    } //end check_login
+    }
 
     /*
     * get_ass_by_nor_id
-    * get data section, assessor, employee, group, nominee
-    * @input    -
-    * @output   get data section, assessor, employee, group, nominee
-    * @author   Chakrit
-    * @Create Date 2564-08-19
+    * get data assessor, group, nominee
+    * @input    id
+    * @output   get data assessor, group, nominee
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
     */
     public function get_ass_by_grp_id($id)
     {
@@ -138,11 +186,12 @@ class M_pef_summary extends Da_pef_summary
 
     /*
     * get_data_point_by_nor_id
-    * get data point_form, nominee, group, section
-    * @input    -
-    * @output   get data point_form, nominee, group, section
-    * @author   Chakrit
-    * @Create Date 2564-08-19
+    * get data point_form, nominee, group
+    * @input    id
+    * @output   get data point_form, nominee, group
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
     */
     public function get_data_point_by_grp_id($id)
     {
@@ -156,4 +205,4 @@ class M_pef_summary extends Da_pef_summary
         $query = $this->db->query($sql);
         return $query;
     }
-}//end class M_pef_login
+}
