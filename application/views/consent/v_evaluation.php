@@ -64,12 +64,13 @@
             </thead>
             <tbody class="list">
                 <?php $s = 1; ?>
+                  <?php  echo  count($ev_all)  .' '. count($ev_per)?>  
                 <?php for ($i = 0; $i < count($ev_all); $i++) { ?>
                     <?php if(count($ev_per) != 0) {?>
                             <?php for ($j = 0 ;$j < count($ev_per); $j++ ) {  ?>
-                                <!-- <?php// echo  count($ev_all)  .' '. count($ev_per)?> 
-                                 <?php //echo $ev_ass[0]->ase_id  .' '. $ev_per[$j]->per_ase_id .' '. $ev_all[$i]->grn_emp_id .' '. $ev_per[$j]->per_emp_id .' '. $ev_ass[0]->ase_id .' '. $ev_per[$j]->per_ase_id .' '.$ev_all[$i]->grn_emp_id.' '.$ev_per[$j]->per_emp_id .' '.  $ev_all[$i]->grp_date .' '. $ev_per[$j]->per_date?>  -->
-                                <?php if($ev_ass[0]->ase_id != $ev_per[$j]->per_ase_id && $ev_all[$i]->grn_emp_id != $ev_per[$j]->per_emp_id || $ev_ass[0]->ase_id == $ev_per[$j]->per_ase_id && $ev_all[$i]->grn_emp_id== $ev_per[$j]->per_emp_id &&  $ev_all[$i]->grp_date != $ev_per[$j]->per_date) {?>
+                           
+                                 <!-- <?php //echo $ev_ass[0]->ase_id  .' '. $ev_per[$j]->per_ase_id .' '. $ev_all[$i]->grn_emp_id .' '. $ev_per[$j]->per_emp_id .' '. $ev_ass[0]->ase_id .' '. $ev_per[$j]->per_ase_id .' '.$ev_all[$i]->grn_emp_id.' '.$ev_per[$j]->per_emp_id .' '.  $ev_all[$i]->grp_date .' '. $ev_per[$j]->per_date?>  --> 
+                                <?php if($ev_ass[0]->ase_id != $ev_per[$j]->per_ase_id || $ev_all[$i]->grn_emp_id != $ev_per[$j]->per_emp_id || $ev_ass[0]->ase_id == $ev_per[$j]->per_ase_id && $ev_all[$i]->grn_emp_id== $ev_per[$j]->per_emp_id &&  $ev_all[$i]->grp_date != $ev_per[$j]->per_date) {?>
                                     <?php if(date("Y-m-d") ==  $ev_all[$i]->grp_date) {?>
                                         <?php if($ev_all[$i]->grn_status == -1 || $ev_all[$i]->Position_Level < 5){ ?>
                                             <?php if($ev_all[$i]->grn_status == -1 || $ev_all[$i]->grn_status == 3){ ?>
@@ -141,7 +142,7 @@
                         <?php } ?>
                     <?php }else {?>
                             <?php if(date("Y-m-d") ==  $ev_all[$i]->grp_date) {?>
-                                <?php if($ev_all[$i]->grn_status == -1 || $ev_all[$i]->Position_Level > 2){ ?>
+                                <?php if($ev_all[$i]->grn_status == -1 || $ev_all[$i]->Position_Level < 5){ ?>
                                         <?php if($ev_all[$i]->grn_status == -1 || $ev_all[$i]->grn_status == 3){ ?>
                                             <tr>
                                                 <!-- column แสดง ลำดับ -->

@@ -77,7 +77,7 @@ table {
 
             </div>
             <br>
-
+           
             <div class="table-responsive">
                 <table class="table table-bordered table-sm">
                     <tr id="Manage">
@@ -184,11 +184,11 @@ table {
                             </td>
                             <td colspan="2">
                                 <div class="form-group" align="center">
-                                <?php if(count($arr_dis_m)<count($arr_sco))?>
+                                <?php if(count($arr_dis_m)<count($arr_sco)-1){?>
                                 <?php echo $arr_sco[$count_discription+count($arr_dis_m)-1]->ptf_point;
                                             $total2 = $total2 + $arr_sco[$count_discription+count($arr_dis_m)-1]->ptf_point;
                                             $total_per2 = ($total2 / $weight) * 100;
-                                            ?>
+                                }?>
                                 </div>
                             </td>
 
