@@ -64,7 +64,7 @@
             </thead>
             <tbody class="list">
                 <?php $s = 1; ?>
-                  <?php  echo  count($ev_all)  .' '. count($ev_per)?>  
+                 
                 <?php for ($i = 0; $i < count($ev_all); $i++) { ?>
                     <?php if(count($ev_per) != 0) {?>
                             <?php for ($j = 0 ;$j < count($ev_per); $j++ ) {  ?>
