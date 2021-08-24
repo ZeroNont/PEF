@@ -43,7 +43,16 @@ class Result extends MainController
     {
         $this->output('consent/v_result');
     } // function index()
-
+    public function get_result()
+    {
+        $date = $this->input->post('date');
+        $this->load->model('M_pef_result', 'mpef');
+        $this->mpef->gro_ase_id = $_SESSION["UsEmp_ID"];
+        $this->mpef->grn_status = 0;
+        $this->mpef->grp_date = $date;
+        $data = $this->mpef->get_group_date()->result();
+        echo json_encode($data);
+    }
     /*
     * show_result_list
     * @input  -   

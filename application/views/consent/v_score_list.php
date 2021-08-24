@@ -111,8 +111,11 @@ function show_all_data() {
                         data_row += '<td>' + row.grp_id + '</td>';
                         data_row += '<td>' + 'T' + row.sec_level + '  ' + row.sec_name + '</td>';
                         data_row += '<td>' + row.grp_date + '</td>';
-                        data_row += '<td><a href="<?php echo site_url() ?>Report/Summary/score_manage/' + row.grp_id + ' ">'
-                        data_row += '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
+                        data_row +=
+                            '<td><a href="<?php echo site_url() ?>Report/Summary/score_manage/' +
+                            row.grp_id + ' ">'
+                        data_row +=
+                            '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
                         data_row += '<i class="fas fa-search"></i></button></a></td>'
                         data_row += '</tr>';
                     });
@@ -156,10 +159,10 @@ function show_modal(grp_id) {
     window.location.href = '../score_manage/' + grp_id;
 }
 </script>
-<!-- <script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+});
 </script>
 </script>
 <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -168,4 +171,4 @@ function show_modal(grp_id) {
 <script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
 <script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 <script src="../../assets/js/argon.js?v=1.2.0"></script>
-<script type="text/javascript"> -->
+<script type="text/javascript">
