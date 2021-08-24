@@ -59,8 +59,36 @@ class M_pef_result extends Da_pef_result
 
         $query = $this->db->query($sql,array($this->grn_status,$this->gro_ase_id));
         return $query;
-    }//get_group ดึงข้อมูลที่ใช้แสดงใน Result list
+    } //get_group ดึงข้อมูลที่ใช้แสดงใน Result list
 
+    /*
+    * get_group
+    * @input  -   
+    * @output -
+    * @author Apinya Phadungkit
+    * @Create Date 2564-8-16
+    * @Update Date 2564-8-18
+    * @Update Date 2564-8-19
+    */
+    function get_group_date()
+    {
+        $sql = "SELECT *
+                FROM pefs_database.pef_group AS gro
+                INNER JOIN pefs_database.pef_group_assessor AS gass
+                ON gro.grp_id = gass.gro_grp_id
+                INNER JOIN pefs_database.pef_group_nominee AS gnor
+                ON gass.gro_grp_id = gnor.grn_grp_id
+                INNER JOIN dbmc.employee AS emp
+                ON gnor.grn_emp_id = emp.Emp_ID 
+                INNER JOIN dbmc.position AS pos
+                ON gnor.grn_promote_to = pos.Position_ID
+                INNER JOIN pefs_database.pef_section AS sec
+                ON pos.position_level_id = sec.sec_id
+                WHERE gnor.grn_status = ? AND gass.gro_ase_id = ? AND gro.grp_date = ?";
+
+        $query = $this->db->query($sql, array($this->grn_status, $this->gro_ase_id, $this->grp_date));
+        return $query;
+    }//get_group ดึงข้อมูลที่ใช้แสดงใน Result list
     /*
     * get_by_id
     * @input  id  
@@ -298,8 +326,18 @@ class M_pef_result extends Da_pef_result
 
         $query = $this->db->query($sql);
         return $query;
-    }//คะแนนประเมินของ Nominee
-
+    } //คะแนนประเมินของ Nominee
+    /*
+	* get_score
+	* คืนค่ากลุ่มประเมินของ nominee
+	* @input 	$id
+	* @output 	คะแนนประเมินของ Nominee
+	* @author 	Apinya Phadungkit
+    * @Update   Date 2564-08-16
+	* @Create   Date 2564-08-17 
+	* @Update   Date 2564-08-18
+	*/
+   
     /*
 	* get_all_form_M_AGM_GM
 	* คืนค่าแบบฟอร์มการประเมิน T2-4

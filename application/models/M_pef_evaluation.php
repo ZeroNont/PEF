@@ -322,7 +322,7 @@ class M_pef_evaluation extends Da_pef_evaluation
     {
         $sql = "SELECT *
         FROM  pefs_database.pef_performance_form as performance
-        WHERE performance.per_emp_id = '$id_emp' AND performance.per_ase_id = '$id' AND performance.per_date !='$date'";
+        WHERE performance.per_emp_id = '$id_emp' AND performance.per_ase_id = '$id' AND performance.per_date ='$date'";
         $query = $this->db->query($sql);
         return $query;
     }

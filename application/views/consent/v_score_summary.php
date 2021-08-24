@@ -1,5 +1,15 @@
+<!-- 
+    /*
+    * v_score_summary
+    * Display score norminee list in group
+    * @input    -
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */ -->
 <h1>
-    Score management group (การจัดการคะแนนกลุ่ม)
+    Score Management Group (การจัดการคะแนนกลุ่ม)
 </h1>
 <div class="card-header" id="card_radius">
     <div class="row">

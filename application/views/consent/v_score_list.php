@@ -1,14 +1,15 @@
-<!--
-    v_review
-    display for review list
-    @input -
-    @output -
-    @author Nattakorn
-    Create date 2564-08-13
-    Update date 2564-08-19
--->
+<!-- 
+    /*
+    * v_score_list
+    * Display score norminee list
+    * @input    -
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */ -->
 <h1>
-    Score management (การจัดการคะแนน)
+    Score Management (การจัดการคะแนน)
 
 </h1>
 
@@ -53,12 +54,10 @@
             </thead>
             <tbody id="show_data">
 
-
             </tbody>
-
         </table>
-
     </div>
+
 </div>
 
 <div id="warning" class="modal fade" role="dialog">
@@ -80,92 +79,80 @@
 </div>
 
 <script>
-    /*
-     * show_all_data
-     * show data for search
-     * @input -
-     * @output -
-     * @author Nattakorn
-     * @Create date 2564-08-13
-     */
-    function show_all_data() {
-        var date_search = document.getElementById('grp_date').value;
-        var data_row = "";
-        if (date_search != "") {
-            console.log(date_search)
-            $.ajax({
-                type: "post",
-                url: "<?php echo base_url(); ?>Report/Summary/get_group",
-                data: {
-                    "date": date_search
-                },
-                dataType: "json",
+/*
+ * show_all_data
+ * show data for search
+ * @input    -
+ * @output   -
+ * @author   Chakrit and Jirayut
+ * @Create Date 2564-08-22
+ * @Update Date 2564-08-23
+ */
+function show_all_data() {
+    var date_search = document.getElementById('grp_date').value;
+    var data_row = "";
+    if (date_search != "") {
+        console.log(date_search)
+        $.ajax({
+            type: "post",
+            url: "<?php echo base_url(); ?>Report/Summary/get_group",
+            data: {
+                "date": date_search
+            },
+            dataType: "json",
 
-                success: function(data) {
-                    console.log(data);
-                    var no = 1;
-                    if (data.length != 0) {
-                        data.forEach((row, index) => {
-                            data_row += '<tr>';
-                            data_row += '<td>' + no++ + '</td>';
-                            data_row += '<td>' + row.grp_id + '</td>';
-                            data_row += '<td>' + 'T' + row.sec_level + '  ' + row.sec_name + '</td>';
-                            data_row += '<td>' + row.grp_date + '</td>';
-                            data_row += '<td><a href="<?php echo site_url() ?>Report/Summary/score_manage/' + row.grp_id + ' ">'
-                            data_row += '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
-                            data_row += '<i class="fas fa-search"></i></button></a></td>'
-                            data_row += '</tr>';
-                        });
-                        // forEach
-                    } else {
-                        data_row += "<tr>";
-                        data_row += "<td colspan='4'>" + "No data" + "</td>";
-                        data_row += "</tr>";
-                    }
-                    $("#show_data").html(data_row);
-
-                },
-                // success
-                error: function(data) {
-                    console.log("9999 : error");
-                    console.log(data);
+            success: function(data) {
+                console.log(data);
+                var no = 1;
+                if (data.length != 0) {
+                    data.forEach((row, index) => {
+                        data_row += '<tr>';
+                        data_row += '<td>' + no++ + '</td>';
+                        data_row += '<td>' + row.grp_id + '</td>';
+                        data_row += '<td>' + 'T' + row.sec_level + '  ' + row.sec_name + '</td>';
+                        data_row += '<td>' + row.grp_date + '</td>';
+                        data_row +=
+                            '<td><a href="<?php echo site_url() ?>Report/Summary/score_manage/' +
+                            row.grp_id + ' ">'
+                        data_row +=
+                            '<button type="button" class="btn btn-primary btn-sm" style="background-color: info;">'
+                        data_row += '<i class="fas fa-search"></i></button></a></td>'
+                        data_row += '</tr>';
+                    });
+                    // forEach
+                } else {
+                    data_row += "<tr>";
+                    data_row += "<td colspan='4'>" + "No data" + "</td>";
+                    data_row += "</tr>";
                 }
-                // error
-            });
-            // ajax 
+                $("#show_data").html(data_row);
 
-        } else {
-            $("#warning").modal("show")
-        }
+            },
+            // success
+            error: function(data) {
+                console.log("9999 : error");
+                console.log(data);
+            }
+            // error
+        });
+        // ajax 
 
-
+    } else {
+        $("#warning").modal("show")
     }
+}
 
-
-
-    /*
-     * show_modal
-     * show update date modal
-     * @input grp_id
-     * @output date change in database
-     * @author Nattakorn
-     * @Create date 2564-08-13
-     */
-    function show_modal(grp_id) {
-        console.log(grp_id)
-        window.location.href = '../score_manage/' + grp_id;
-    }
+/*
+ * show_modal
+ * show update date modal
+ * @input    -
+ * @output   -
+ * @author   Chakrit and Jirayut
+ * @Create Date 2564-08-22
+ * @Update Date 2564-08-23
+ */
+function show_modal(grp_id) {
+    console.log(grp_id)
+    window.location.href = '../score_manage/' + grp_id;
+}
 </script>
-<!-- <script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>
-</script>
-<script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="../../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../../assets/vendor/js-cookie/js.cookie.js"></script>
-<script src="../../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-<script src="../../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-<script src="../../assets/js/argon.js?v=1.2.0"></script>
-<script type="text/javascript"> -->

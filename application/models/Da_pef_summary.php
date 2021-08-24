@@ -1,28 +1,33 @@
 <?php
-/*
-*Da_pef_review
-*database for reviewer
-*@author Nattakorn
-*@Create date 2564-08-13
-*@Update date 2564-08-19
-*/
+
+    /*
+    * Da_pef_summary
+    * database for summary
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
+    */
+
 include_once("pefs_model.php");
 
 
 class Da_pef_summary extends pefs_model
 {
     public $End_date;
+
     function construct()
     {
-        parent::construct();
+        parent::__construct();
     }
+
     /*
     * update_grn_status
-    * update group status
-    * @input -
-    * @output -
-    * @author Nattakorn
-    * @Create date 2564-08-13
+    * update data for summary
+    * @input    -
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
     */
     public function update_grn_status()
     {
@@ -31,15 +36,16 @@ class Da_pef_summary extends pefs_model
         WHERE up.grp_id = ? ";
         $this->db->query($sql, array($this->grp_date, $this->grp_status, $this->grp_id));
     }
-
+   
 
     /*
     * update_nom_stat
-    * update nominee status
-    * @input -
-    * @output -
-    * @author Nattakorn
-    * @Create date 2564-08-13
+    * update data for summary
+    * @input    -
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
     */
     public function update_nom_stat()
     {
@@ -48,13 +54,15 @@ class Da_pef_summary extends pefs_model
         WHERE nom.grn_grp_id = ? ";
         $this->db->query($sql, array($this->grn_status, $this->grn_grp_id));
     }
+
     /*
-    * update_nom_stat
-    * update nominee status
-    * @input -
-    * @output -
-    * @author Nattakorn
-    * @Create date 2564-08-13
+    * update_pass
+    * update data for summary
+    * @input    -
+    * @output   -
+    * @author   Chakrit and Jirayut
+    * @Create Date 2564-08-22
+    * @Update Date 2564-08-23
     */
     public function update_pass()
     {
