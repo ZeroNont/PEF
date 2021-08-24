@@ -130,15 +130,18 @@ table {
                         $total = 0;
                         $total_per = 0;
                         $total2 = 0;
-                        $total_per2 = 0;
+                        $total_per2 = 0;  
                         for ($i = 0; $i < count($arr_dis_m); $i++) {
                             if ($i != 0) {
                                 if ($arr_dis_m[$i]->itm_id != $arr_dis_m[$i - 1]->itm_id) {
                                     $count_itm++;
                                 }
                             }
-                            $weight =  $weight + $arr_dis_m[$i]->for_des_weight;
+                           
                         } //นับหัวข้อหลัก
+                        for ($i = 0; $i < count($arr_dis_m)-1; $i++) {
+                            $weight =  $weight + $arr_dis_m[$i]->for_des_weight;
+                        } 
                         $weight =  $weight * 5;
                         for ($i = 0; $i < $count_itm; $i++) {   //ลูปตามหัวข้อหลัก
                         ?>
