@@ -122,7 +122,7 @@
                     </table>
                     <br>
                 <input type="text" name="grn_status" value="<?php echo $ev_gno[0]->grn_status; ?>" hidden>
-
+                
                     <div class="table-responsive">
                         <form action="<?php echo site_url() ?>Evaluation/Evaluation/insert_evaluation_form" method="post" enctype="multipart/form-data" name="evaluation">
                             <table class="table table-bordered table-sm">
@@ -203,7 +203,7 @@
                                                     <td colspan="2" style="vertical-align:middle;text-align: center;">
                                                         <?php echo $arr_point[$count_discription]->ptf_point;
                                                         $point_old = $point_old + $arr_point[$count_discription]->ptf_point; ?>
-
+                                                         
 
                                                     </td>
                                                     <td colspan="2">

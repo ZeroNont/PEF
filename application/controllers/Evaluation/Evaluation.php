@@ -97,21 +97,26 @@ class Evaluation extends MainController
     * @Update Date 2564-08-17
     * @Update Date 2564-08-19
 	*/
-    function show_evaluation_g_agm_gm($id, $emp_id, $position, $status, $grn_emp_id)
+    function show_evaluation_g_agm_gm($id, $emp_id, $position, $status, $grn_emp_id,$date)
     {
         $this->load->model('M_pef_evaluation', 'pef');
         $id_r = $this->pef->get_ase_id($id)->row();
 
         $id_ase = $id_r->ase_id;
         $data['ev_ass'] = $this->pef->get_group_assessor($id)->result();
-        $data['ev_gno'] = $this->pef->get_group_nominee($grn_emp_id)->result();
+        $data['ev_gno'] = $this->pef->get_group_nominee_final($grn_emp_id,$date)->result();
         $data['ev_no'] = $this->pef->get_nominee($grn_emp_id)->result();
         $data['ev_file'] = $this->pef->get_file_present_nominee($grn_emp_id)->result();
         $data['arr_dis'] = $this->pef->get_all_form_m_agm_gm($position)->result();
         $data['pos_pos'] = $this->pef->get_position($position)->row();
-        if ($status == 0) {
-            $data['arr_point'] = $this->pef->get_point_list($id_ase, $emp_id)->result();
-            $data['arr_per'] = $this->pef->get_performance($id_ase, $grn_emp_id)->result();
+        if ($status == 3) {
+            
+            $data['arr_per'] = $this->pef->get_performance($id_ase, $grn_emp_id,$date)->result();
+            $per_get = $this->pef->get_performance($id_ase, $grn_emp_id,$date)->result();
+            $per  = $per_get[0]->per_id;
+            
+            $data['arr_point'] = $this->pef->get_point_list( $per)->result();
+            
         }
         $this->output('consent/v_evaluation_m_agm_gm', $data);
         

@@ -114,7 +114,29 @@ class M_pef_evaluation extends Da_pef_evaluation
         $query = $this->db->query($sql);
         return $query;
     } //คืนค่ากลุ่ม Nominee
+/*
+	* get_group_nominee_final
+	* คืนค่ากลุ่มประเมินของ Nominee
+	* @input   emp_id (รหัส Nominee)
+	* @output  กลุ่มประเมินของ Nominee
+	* @author  Phatchara Khongthandee and Pontakon Mujit 
+    * @Update  Date 2564-08-16
+	* @Create  Date 2564-08-17 
+	* @Update  Date 2564-08-18
+	*/
 
+    function get_group_nominee_final($emp_id,$date)
+    {
+        $sql = "SELECT *
+                FROM pefs_database.pef_group_nominee AS groupno
+                INNER JOIN pefs_database.pef_group AS gr
+                ON gr.grp_id = groupno.grn_grp_id
+                
+                WHERE groupno.grn_emp_id = $emp_id AND gr.grp_date='$date'"  ;
+
+        $query = $this->db->query($sql);
+        return $query;
+    } //คืนค่ากลุ่ม Nominee
     /*
     * get_file_present_nominee
     * คืนค่าไฟล์นำเสนอ Nominee
@@ -259,11 +281,11 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Create   Date 2564-08-18 
 	* @Update   Date 2564-08-19
 	*/
-    function get_point_list($id, $id_emp)
+    function get_point_list($per_id)
     {
         $sql = "SELECT *
         FROM  pefs_database.pef_point_form
-        WHERE pef_point_form.ptf_emp_id = '$id_emp'AND pef_point_form.ptf_ase_id = '$id' ";
+        WHERE pef_point_form.ptf_per_id = '$per_id' ";
 
         $query = $this->db->query($sql);
         return $query;
@@ -296,11 +318,11 @@ class M_pef_evaluation extends Da_pef_evaluation
 	* @Create   Date 2564-08-18 
 	* @Update   Date 2564-08-19
     */
-    function get_performance($id, $id_emp)
+    function get_performance($id, $id_emp,$date)
     {
         $sql = "SELECT *
-        FROM  pefs_database.pef_performance_form
-        WHERE pef_performance_form.per_ase_id = '$id' AND pef_performance_form.per_emp_id = '$id_emp'";
+        FROM  pefs_database.pef_performance_form as performance
+        WHERE performance.per_emp_id = '$id_emp' AND performance.per_ase_id = '$id' AND performance.per_date !='$date'";
         $query = $this->db->query($sql);
         return $query;
     }
