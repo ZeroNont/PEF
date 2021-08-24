@@ -164,4 +164,22 @@ class Da_pef_group extends pefs_model
             array($this->grn_promote_to, $this->grn_status, $this->grn_emp_id, $this->grn_grp_id)
         );
     }
+    /*
+    * update_grn_status
+    * update group status
+    * @input -
+    * @output -
+    * @author Nattakorn
+    * @Create date 2564-08-13
+    */
+    public function group_update()
+    {
+        $sql = " UPDATE pefs_database.pef_group as up
+        SET up.grp_date = ? 
+        WHERE up.grp_id = ? ";
+        $this->db->query(
+            $sql,
+            array($this->grp_date, $this->grp_id)
+        );
+    }
 }//end class Da_pef_group

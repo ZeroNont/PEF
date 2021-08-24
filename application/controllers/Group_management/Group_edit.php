@@ -86,8 +86,10 @@ class Group_edit extends MainController
         $this->pefd->grn_grp_id = $group;
         $this->pefd->delete_group_assessor();
         $this->pefd->delete_group_nominee();
+        $this->pefd->grp_id =  $group;
         $this->pefd->grp_date = $date;
         $this->pefd->grp_position_group = $position_group;
+        $this->pefd->group_update();
         $group_id = $group;
         for ($i = 0; $i < sizeof($assessor); $i++) {
             $this->pefd->gro_grp_id = $group_id;
