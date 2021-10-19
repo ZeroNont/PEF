@@ -52,7 +52,7 @@
                               <li class="nav-item">
                                   <a class="nav-link" href="<?php echo base_url() . 'Report/Summary/index/' ?>">
                                       <i class="ni ni-single-02 text-green"></i>
-                                      <span class="nav-link-text">Score Summary</span>
+                                      <span class="nav-link-text">Score Management</span>
                                   </a>
                               </li>
                               <li class="nav-item">
@@ -66,7 +66,7 @@
                                   <a class="nav-link"
                                       href="<?php echo base_url() . 'File_present_management/File_present_management/show_list_nominee/' ?>">
                                       <i class="fas fa-file-upload text-default"></i>
-                                      <span class="nav-link-text">File Management</span>
+                                      <span class="nav-link-text">Add File Nominee</span>
                                   </a>
                               </li>
                           </ul>
